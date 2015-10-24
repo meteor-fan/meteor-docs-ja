@@ -1,0 +1,9 @@
+{
+  "Meteor supports <a href=\"https://github.com/meteor/meteor/wiki/Supported-Platforms\">OS X, Windows, and Linux</a>.": "Meteor は <a href=\"https://github.com/meteor/meteor/wiki/Supported-Platforms\">OSX, Windows, Linux</a> をサポートしています。",
+  "On Windows?  <a href=\"https://install.meteor.com/windows\">Download the official Meteor installer here</a>.": "Windows ですか？ <a href=\"https://install.meteor.com/windows\">公式の Meteor インストーラをここからダウンロードできます。</a>",
+  "On OS X or Linux?  Install the latest official Meteor release from your terminal:": "OS X または Linux ですか？ Meteor 最新版をターミナルからインストールできます。",
+  "The Windows installer supports Windows 7, Windows 8.1, Windows Server 2008, and Windows Server 2012.  The command line installer supports Mac OS X 10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.": "Windows インストーラは Windows 7, Windows 8.1, Windows Server 2008, Windows Server 2012 をサポートしています。コマンドインストーラは Mac OS X 10.7 (Lion) 以上, それから x86 と x86_64 アーキテクチャ上で動く Linux をサポートしています。",
+  "Once you&apos;ve installed Meteor, create a project:": "一度 Meteor をインストールしたら, プロジェクトを作成します。",
+  "Run it locally:": "ローカルで起動:",
+  "Then, open a new terminal tab and unleash it on the world (on a free server we provide):": "それから, 新しいターミナルタブを開き, 世界に解き放ってください(我々が提供している無料のサーバー上で動きます):"
+}
