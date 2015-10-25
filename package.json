@@ -1,11 +1,21 @@
 {
   "scripts": {
+    "start": "npm run translate & npm run watch-jade & npm run watch-stylus & npm run server",
     "fetch": "node scripts/fetch-docs.js",
-    "translate": "node scripts/translate-docs.js"
+    "translate": "node scripts/translate-docs.js",
+    "server": "live-server ./",
+    "watch": "npm run watch-jade & npm run watch-stylus",
+    "watch-jade": "jade -w sources -o ./",
+    "watch-stylus": "stylus sources/stylesheets -w -o public/stylesheets"
   },
   "dependencies": {
     "cheerio": "0.19.0",
     "nightmare": "1.8.2",
-    "phantomjs": "1.9.17"
+    "phantomjs": "1.9.17",
+    "browserify": "",
+    "jade": "",
+    "live-server": "",
+    "stylus": "",
+    "watchify": ""
   }
 }
