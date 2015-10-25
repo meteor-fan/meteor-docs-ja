@@ -2,7 +2,7 @@ ul {
   padding: 0;
 }
 body {
-  background: url("intro.jpg") no-repeat center center scroll;
+  background: url("public/intro.jpg") no-repeat center center scroll;
   text-align: center;
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   width: 65%;
