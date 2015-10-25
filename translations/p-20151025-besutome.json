@@ -1,0 +1,11 @@
+{
+    "Create views that update automatically when data changes": "自動的にデータ変更を更新するビューを作成",
+    "Store temporary data for the user interface": "ユーザーインターフェースのための一時的なデータ保存",
+    "Re-run functions when data changes": "データ変更時の再実行",
+    "Store persistent data": "永続データを格納",
+    "Let users log in with passwords, Facebook, Google, GitHub, etc.": "SNSを利用したソーシャルログイン",
+    "Call server functions from the client": "クライアントからの実行",
+    "Sync part of your data to the client": "クライアント側へのデータ同期",
+    "Control when and where your code runs": "スクリプトの実行をコントロール",
+    "Choose from thousands of community packages": "コミュニティパッケージ"
+}
