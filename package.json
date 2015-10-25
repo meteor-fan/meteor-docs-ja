@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run translate & npm run watch-jade & npm run watch-stylus & npm run server",
+    "start": "node scripts/translate-docs.js & npm run watch-jade & npm run watch-stylus & npm run server",
     "fetch": "node scripts/fetch-docs.js",
     "translate": "node scripts/translate-docs.js",
     "server": "live-server ./",
