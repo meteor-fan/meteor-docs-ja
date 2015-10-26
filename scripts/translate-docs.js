@@ -39,6 +39,7 @@ function normalize(str) {
 function loadTranslations() {
   var target = {};
   fs.readdirSync('translations').forEach(function(file) {
+    if (!/\.json$/.test(file)) return;
     var tag = /^\w+/.exec(file);
     if (!target[tag]) target[tag] = {};
     var content = fs.readFileSync(path.join('translations', file), 'utf8');
@@ -65,7 +66,7 @@ function getTranslatedText(tag, text) {
 function translate(file) {
   var content = fs.readFileSync(path.join('sources', file), 'utf8');
   var $ = cheerio.load(content);
-  ['p', 'strong'].forEach(function(tag) {
+  ['p', 'strong', 'dt', 'dd'].forEach(function(tag) {
     $(tag).each(function() {
       $(this).html(getTranslatedText(tag, $(this).html()));
     });
