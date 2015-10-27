@@ -39,7 +39,6 @@ function processResult(result) {
   $('link').each(function() {
     $(this).attr('href', 'http://docs.meteor.com' + $(this).attr('href'));
   });
-  $('.logo').attr('src', 'http://docs.meteor.com/logo.png');
   $('img[src="/logo.png"]').attr('src', 'http://docs.meteor.com/logo.png');
   $('h2, h3, h4').each(function() {
     $(this).attr('id', '/basic/' + $(this).attr('id'));
