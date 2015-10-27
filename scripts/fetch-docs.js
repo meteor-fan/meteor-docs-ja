@@ -62,9 +62,11 @@ function processFullResult(result) {
 
 Nightmare()
   .goto('http://docs.meteor.com/')
+  .wait(1000)
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processBasicResult)
+  .select('.basic-or-full', 'full')
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processFullResult)
