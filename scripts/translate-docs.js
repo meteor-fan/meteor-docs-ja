@@ -64,6 +64,7 @@ function getTranslatedText(tag, text) {
 }
 
 function translate(file) {
+  if (!/\.html$/.test(file)) return;
   var content = fs.readFileSync(path.join('sources', file), 'utf8');
   var $ = cheerio.load(content);
   var tags = ['p', 'strong', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4'];

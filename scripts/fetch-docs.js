@@ -33,25 +33,36 @@ var path = require('path');
 var Nightmare = require('nightmare');
 var cheerio = require('cheerio');
 
-function processResult(result) {
+function processResult(type, result) {
   var $ = cheerio.load(result);
-  var version = /\d\.\d\.\d\.\d/.exec($('h1').text());
+  var version = /\d\.(?:\d\.){1,2}\d/.exec($('h1').text());
   $('link').each(function() {
     $(this).attr('href', 'http://docs.meteor.com' + $(this).attr('href'));
   });
   $('img[src="/logo.png"]').attr('src', 'http://docs.meteor.com/logo.png');
   $('h2, h3, h4').each(function() {
-    $(this).attr('id', '/basic/' + $(this).attr('id'));
+    $(this).attr('id', '/' + type + '/' + $(this).attr('id'));
   });
   $('script').remove();
   $('.hidden').remove();
-  $('.basic-or-full option[value="full"]').remove();
-  fs.writeFileSync(path.join('sources', 'basic-' + version + '.html'), $.html(), 'utf8');
+  $('.basic-or-full option[value!="' + type + '"]').remove();
+  fs.writeFileSync(path.join('sources', type + '-' + version + '.html'), $.html(), 'utf8');
+}
+
+function processBasicResult(result) {
+  processResult('basic', result);
+}
+function processFullResult(result) {
+  processResult('full', result);
 }
 
 Nightmare()
   .goto('http://docs.meteor.com/')
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult)
+  }, processBasicResult)
+  .select('.basic-or-full', 'full')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processFullResult)
   .run();
