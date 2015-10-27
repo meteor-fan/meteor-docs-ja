@@ -490,61 +490,45 @@ meteor
 
 <h4 id="/basic/meteorhelp"><code>meteor help</code></h4>
 
-<p>Get help on <code>meteor</code> command line usage. Running <code>meteor help</code> by itself
-will list the common <code>meteor</code> commands. Running <code>meteor help &lt;command&gt;</code>
-will print detailed help about <code>meteor &lt;command&gt;</code>.</p>
+<p><code>meteor</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x30D8;&#x30EB;&#x30D7;&#x3092;&#x898B;&#x307E;&#x3059;&#x3002;<code>meteor help</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;<code>meteor help &lt;command&gt;</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;<code>meteor &lt;command&gt;</code>&#x306E;&#x8A73;&#x3057;&#x3044;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteorcreatename"><code>meteor create &lt;name&gt;</code></h4>
 
-<p>Make a subdirectory called <code>&lt;name&gt;</code> and create a new Meteor app there.</p>
+<p><code>&lt;name&gt;</code>&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x4F5C;&#x308A;&#x3001;&#x305D;&#x3053;&#x306B;Meteor&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x65B0;&#x3057;&#x304F;&#x4F5C;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteorrun"><code>meteor run</code></h4>
 
-<p>Serve the current app at <a href="http://localhost:3000">http://localhost:3000</a>
-using Meteor&apos;s local development server.</p>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x8D77;&#x52D5;&#x3057;&#x3001;<a href="http://localhost:3000">http://localhost:3000</a>&#x306B;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x958B;&#x767A;&#x30B5;&#x30FC;&#x30D0;&#x3092;&#x7528;&#x610F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteordebug"><code>meteor debug</code></h4>
 
-<p>Run the project with Node Inspector attached, so that you can step through your server code line by line. See <a href="#/full/meteordebug"><code>meteor debug</code></a> in the full docs for more information.</p>
+<p>Node&#x30A4;&#x30F3;&#x30B9;&#x30DA;&#x30AF;&#x30BF;&#x3067;&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x8D77;&#x52D5;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x30B5;&#x30FC;&#x30D0;&#x30B5;&#x30A4;&#x30C9;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x8A73;&#x3057;&#x304F;&#x306F;Full API&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
 
 <h4 id="/basic/meteordeploysite"><code>meteor deploy &lt;site&gt;</code></h4>
 
-<p>Bundle your app and deploy it to <code>&lt;site&gt;</code>. Meteor provides free hosting if
-you deploy to <code>&lt;your app&gt;.meteor.com</code> as long as <code>&lt;your app&gt;</code> is a name
-that has not been claimed by someone else.</p>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x3092;<code>&lt;site&gt;</code>&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x307E;&#x3059;&#x3002;<code>&lt;your app&gt;.meteor.com</code>&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;Meteor&#x306F;&#x7121;&#x6599;&#x306E;&#x30DB;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x63D0;&#x4F9B;&#x3057;&#x307E;&#x3059;&#x3002;&#x305F;&#x3060;&#x3057;&#x3001;<code>&lt;your app&gt;</code>&#x304C;&#x65E2;&#x306B;&#x4ED6;&#x306B;&#x4EBA;&#x306B;&#x3068;&#x3089;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x3067;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteorupdate"><code>meteor update</code></h4>
 
-<p>Update your Meteor installation to the latest released version and then
-(if <code>meteor update</code> was run from an app directory) update the packages
-used by the current app to the latest versions that are compatible with
-all other packages used by the app.</p>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;Meteor&#x3092;&#x6700;&#x65B0;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;&#x3055;&#x3089;&#x306B;&#x3001;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#x306F;&#x3001;&#x305D;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x4E92;&#x63DB;&#x6027;&#x3092;&#x4FDD;&#x3066;&#x308B;&#x7BC4;&#x56F2;&#x3067;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteoradd"><code>meteor add</code></h4>
 
-<p>Add a package (or multiple packages) to your Meteor project. To query for
-available packages, use the <code>meteor search</code> command.</p>
+<p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;Meteor&#x30A2;&#x30D7;&#x30EA;&#x306B;&#x8FFD;&#x52A0;&#x3057;&#x307E;&#x3059;&#x3002;&#x4F7F;&#x3048;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#x306B;&#x306F;&#x3001;<code>meteor search</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteorremove"><code>meteor remove</code></h4>
 
-<p>Remove a package previously added to your Meteor project. For a list of
-the packages that your application is currently using, use the
-<code>meteor list</code> command.</p>
+<p>&#x4EE5;&#x524D;Meteor&#x30A2;&#x30D7;&#x30EA;&#x306B;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x524A;&#x9664;&#x3057;&#x307E;&#x3059;&#x3002;&#x73FE;&#x5728;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x306B;&#x306F;&#x3001;<code>meteor list</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteormongo"><code>meteor mongo</code></h4>
 
-<p>Opens a MongoDB shell for viewing and/or manipulating collections stored
-in the database. Note that you must already be running a server for the
-current app (in another terminal window) in order for <code>meteor mongo</code> to
-connect to the app&apos;s database.</p>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x95B2;&#x89A7;&#x3082;&#x3057;&#x304F;&#x306F;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;MongoDB&#x30B7;&#x30A7;&#x30EB;&#x3092;&#x958B;&#x304D;&#x307E;&#x3059;&#x3002;<code>meteor mongo</code>&#x3067;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#x3001;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;(&#x5225;&#x306E;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#x3067;)&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x8D77;&#x52D5;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 
 <h4 id="/basic/meteorreset"><code>meteor reset</code></h4>
 
-<p>Reset the current project to a fresh state. Removes all local data.</p>
+<p>&#x73FE;&#x5728;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x5B8C;&#x5168;&#x306B;&#x65B0;&#x3057;&#x3044;&#x72B6;&#x614B;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;&#x3059;&#x3079;&#x3066;&#x306E;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 
-<p>If you use <code>meteor reset</code> often, but you have some initial data that you don&apos;t
-want to discard, consider using <a href="#/basic/Meteor-startup"><code>Meteor.startup</code></a> to
-recreate that data the first time the server starts up:</p>
+<p><code>meteor reset</code>&#x3092;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x5834;&#x5408;&#x3067;&#x3001;&#x521D;&#x671F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5165;&#x308C;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;<a href="#/basic/Meteor-startup"><code>Meteor.startup</code></a>&#x3092;&#x4F7F;&#x3063;&#x3066;&#x6B21;&#x306E;&#x3088;&#x3046;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x518D;&#x751F;&#x6210;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 
 <pre><code class="hljs javascript"><span class="hljs-keyword">if</span> (Meteor.isServer) {
   Meteor.startup(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
