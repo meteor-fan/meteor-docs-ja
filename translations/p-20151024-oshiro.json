@@ -5,5 +5,10 @@
   "The Windows installer supports Windows 7, Windows 8.1, Windows Server 2008, and Windows Server 2012.  The command line installer supports Mac OS X 10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.": "WindowsインストーラはWindows 7、Windows 8.1、Windows Server 2008、Windows Server 2012をサポートしています。コマンドインストーラはMac OS X 10.7 (Lion)以上、それからx86とx86_64アーキテクチャ上で動くLinuxをサポートしています。",
   "Once you&apos;ve installed Meteor, create a project:": "Meteorをインストールしたら、プロジェクトを作成しましょう。",
   "Run it locally:": "ローカルで動かします:",
-  "Then, open a new terminal tab and unleash it on the world (on a free server we provide):": "さらに、新しいターミナルタブを開き、以下のコマンドを実行して世界中に公開しましょう(Meteorが提供している無料のサーバー上で動きます):"
+  "Then, open a new terminal tab and unleash it on the world (on a free server we provide):": "さらに、新しいターミナルタブを開き、以下のコマンドを実行して世界中に公開しましょう(Meteorが提供している無料のサーバー上で動きます):",
+  "Once you&apos;ve built your web app with Meteor, you can easily build a native wrapper for your app and publish it to the Google Play Store or iOS App Store with just a few commands. We&apos;ve put a lot of work into making the same packages and APIs work on desktop and mobile, so that you don&apos;t have to worry about a lot of the edge cases associated with mobile app development.":"ウェブアプリをMeteorで構築すると、簡単にネイティブラッパーを作成したり、わずか数コマンドでGoogle Play StoreやiOS App Storeにそのアプリを配信できます。我々はデスクトップとモバイルで同一のパッケージとAPIが動くように、多くの仕事をしており、モバイルアプリ開発に関連したエッジケースについて心配する必要はありません。",
+  "Install the development tools for Android or iOS with one command:":"1コマンドでAndroidまたはiOSの開発ツールをインストール:",
+  "Add the relevant platform to your app:":"あなたのアプリに関連するプラットフォームを追加:",
+  "You can configure your app&apos;s icons, title, version number, splash screen, and other metadata with the special <a href=\"#/full/mobileconfigjs\"><code>mobile-config.js</code> file</a>.":"特別なファイルの<a href=\"#/full/mobileconfigjs\"><code>mobile-config.js</code></a>でアプリのアイコン、タイトル、バージョン番号、スプラッシュスクリーン、その他のメタデータを設定することができます。",
+  "Learn more about Meteor&apos;s mobile support on the <a href=\"https://github.com/meteor/meteor/wiki/Meteor-Cordova-Phonegap-integration\">GitHub wiki page</a>.":"<a href=\"https://github.com/meteor/meteor/wiki/Meteor-Cordova-Phonegap-integration\">GitHub wiki ページ</a>でモバイルサポートについて詳しく学ぶことができます。"
 }

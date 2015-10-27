@@ -1,4 +1,9 @@
 {
   "Default file loading":"デフォルトのファイル読み込み",
-  "Special directories":"特別なディレクトリ"
+  "Special directories":"特別なディレクトリ",
+  "Installing mobile SDKs":"モバイルSDKのインストール",
+  "Adding platforms":"プラットフォームの追加",
+  "Running on a simulator":"シミュレータで動作確認",
+  "Running on a device":"実機で動作確認",
+  "Configuring app icons and metadata":"アプリのアイコンとメタデータの設定"
 }
