@@ -41,7 +41,10 @@ function processResult(type, result) {
   });
   $('img[src="/logo.png"]').attr('src', 'http://docs.meteor.com/logo.png');
   $('h2, h3, h4').each(function() {
-    $(this).attr('id', '/' + type + '/' + $(this).attr('id'));
+    var oldId = $(this).attr('id');
+    if (oldId) {
+      $(this).attr('id', '/' + type + '/' + oldId);
+    }
   });
   $('script').remove();
   $('.hidden').remove();
@@ -52,6 +55,7 @@ function processResult(type, result) {
 function processBasicResult(result) {
   processResult('basic', result);
 }
+
 function processFullResult(result) {
   processResult('full', result);
 }
@@ -61,7 +65,6 @@ Nightmare()
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processBasicResult)
-  .select('.basic-or-full', 'full')
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processFullResult)
