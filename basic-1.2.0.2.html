@@ -610,28 +610,17 @@ meteor run ios-device          <span class="hljs-comment"># for iOS</span>
 <p><a href="https://github.com/meteor/meteor/wiki/Meteor-Cordova-Phonegap-integration">GitHub wiki &#x30DA;&#x30FC;&#x30B8;</a>&#x3067;&#x30E2;&#x30D0;&#x30A4;&#x30EB;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x306B;&#x3064;&#x3044;&#x3066;&#x8A73;&#x3057;&#x304F;&#x5B66;&#x3076;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
   <h1 id="api">The Meteor API</h1>
 
-<p>Your JavaScript code can run in two environments: the <em>client</em> (browser), and
-the <em>server</em> (a <a href="http://nodejs.org/">Node.js</a> container on a server).  For each
-function in this API reference, we&apos;ll indicate if the function is available just
-on the client, just on the server, or <em>Anywhere</em>.</p>
+<p>JavaScript&#x30B3;&#x30FC;&#x30C9;&#x306F;2&#x3064;&#x306E;&#x74B0;&#x5883;&#x3067;&#x52D5;&#x304D;&#x307E;&#x3059;&#x3002;&#x4E00;&#x3064;&#x306F;<em>client</em>&#x3059;&#x306A;&#x308F;&#x3061;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3067;&#x3059;&#x3002;&#x3082;&#x3046;&#x4E00;&#x3064;&#x306F;&#x3001;<em>server</em>&#x3059;&#x306A;&#x308F;&#x3061;&#x30B5;&#x30FC;&#x30D0;&#x4E0A;&#x306E;<a href="http://nodejs.org/">Node.js</a>&#x306E;&#x4E2D;&#x3067;&#x3059;&#x3002;&#x3053;&#x306E;API&#x4ED5;&#x69D8;&#x66F8;&#x3067;&#x306F;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x95A2;&#x6570;&#x304C;&#x3069;&#x3061;&#x3089;&#x3067;&#x52D5;&#x304F;&#x3082;&#x306E;&#x304B;&#x660E;&#x8A18;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3068;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x4E21;&#x65B9;&#x3067;&#x52D5;&#x304F;&#x5834;&#x5408;&#x306F;<em>Anywhere</em>&#x3068;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 
 <p></p><h2 id="/basic/templates"><span>Templates</span></h2>
 
-<p>In Meteor, views are defined in <em>templates</em>. A template is a snippet of HTML
-that can include dynamic data. You can also interact with your templates from
-JavaScript code to insert data and listen to events.</p>
+<p>Meteor&#x3067;&#x306F;&#x30D3;&#x30E5;&#x30FC;&#x306F;<em>templates</em>&#x5185;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x4E00;&#x3064;&#x306E;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306F;&#x52D5;&#x7684;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5FA9;&#x3080;&#x3053;&#x3068;&#x306E;&#x3067;&#x304D;&#x308B;HTML&#x306E;&#x30B9;&#x30CB;&#x30DA;&#x30C3;&#x30C8;&#x3067;&#x3059;&#x3002;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306B;&#x306F;JavaScript&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x633F;&#x5165;&#x3057;&#x305F;&#x308A;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x5F85;&#x3061;&#x53D7;&#x3051;&#x305F;&#x308A;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 
 <h3 class="api-title" id="/basic/defining-templates">Defining Templates in HTML</h3>
 
-<p>Templates are defined in <code>.html</code> files that can be located anywhere in your
-Meteor project folder except the <code>server</code>, <code>public</code>, and <code>private</code> directories.</p>
+<p>&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306F;<code>.html</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x8907;&#x6570;&#x3067;&#x3082;&#x3088;&#x304F;Meteor&#x30D7;&#x30ED;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x3069;&#x3053;&#x306B;&#x3042;&#x3063;&#x3066;&#x3082;&#x69CB;&#x3044;&#x307E;&#x305B;&#x3093;&#x3002;&#x305F;&#x3060;&#x3057;&#x3001;&#x6B21;&#x306E;3&#x3064;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306F;&#x9664;&#x304D;&#x307E;&#x3059;&#x3002;<code>server</code>&#x3068;<code>public</code>&#x3068;<code>private</code>&#x3002;</p>
 
-<p>Each <code>.html</code> file can contain any number of the following top-level elements:
-<code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, or <code>&lt;template&gt;</code>. Code in the <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tags is
-appended to that section of the HTML page, and code inside <code>&lt;template&gt;</code> tags can
-be included using <code>{{&gt; templateName}}</code>, as shown in the example below.
-Templates can be included more than once &#x2014; one of the main purposes of
-templates is to avoid writing the same HTML multiple times by hand.</p>
+<p><code>.html</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#x6B21;&#x306E;&#x30C8;&#x30C3;&#x30D7;&#x30EC;&#x30D9;&#x30EB;&#x8981;&#x7D20;&#x3092;&#x3044;&#x304F;&#x3064;&#x3067;&#x3082;&#x542B;&#x3080;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;<code>&lt;head&gt;</code>&#x3084;<code>&lt;body&gt;</code>&#x3084;<code>&lt;template&gt;</code>&#x3002;<code>&lt;head&gt;</code>&#x3068;<code>&lt;body&gt;</code>&#x30BF;&#x30B0;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#x3059;&#x3079;&#x3066;&#x9023;&#x7D50;&#x3055;&#x308C;HTML&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x6240;&#x5B9A;&#x306E;&#x4F4D;&#x7F6E;&#x306B;&#x5165;&#x308C;&#x3089;&#x308C;&#x307E;&#x3059;&#x3002;<code>&lt;template&gt;</code>&#x30BF;&#x30B0;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x306F;<code>{{&gt; templateName}}</code>&#x3092;&#x4F7F;&#x3063;&#x3066;&#x30A4;&#x30F3;&#x30AF;&#x30EB;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x6B21;&#x306E;&#x4F8B;&#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306F;&#x8907;&#x6570;&#x56DE;&#x30A4;&#x30F3;&#x30AF;&#x30EB;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306F;&#x540C;&#x3058;HTML&#x3092;&#x8907;&#x6570;&#x56DE;&#x8A18;&#x8FF0;&#x3057;&#x306A;&#x304F;&#x3059;&#x3080;&#x305F;&#x3081;&#x306E;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;</p>
 
 <pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- add code to the &lt;head&gt; of the page --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
@@ -650,11 +639,7 @@ templates is to avoid writing the same HTML multiple times by hand.</p>
 <span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
 </code></pre>
 
-<p>The <code>{{ ... }}</code> syntax is part of a language called Spacebars that
-Meteor uses to add functionality to HTML. As shown above, it lets you include
-templates in other parts of your page. Using Spacebars, you can also display
-data obtained from <em>helpers</em>. Helpers are written in JavaScript, and can be
-either simple values or functions.</p>
+<p><code>{{ ... }}</code>&#x3068;&#x3044;&#x3046;&#x6587;&#x6CD5;&#x306F;Meteor&#x304C;HTML&#x3092;&#x62E1;&#x5F35;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;Spacebars&#x3068;&#x3044;&#x3046;&#x8A00;&#x8A9E;&#x306E;&#x4E00;&#x90E8;&#x3067;&#x3059;&#x3002;&#x4E0A;&#x8A18;&#x306E;&#x4F8B;&#x3088;&#x3046;&#x306B;&#x3001;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3092;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x4EFB;&#x610F;&#x306E;&#x4F4D;&#x7F6E;&#x306B;&#x30A4;&#x30F3;&#x30AF;&#x30EB;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;Spacebars&#x3092;&#x4F7F;&#x3046;&#x3068;<em>helpers</em>&#x304B;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x30D8;&#x30EB;&#x30D1;&#x30FC;&#x306F;JavaScript&#x3067;&#x8A18;&#x8FF0;&#x3057;&#x3001;&#x5358;&#x306A;&#x308B;&#x5024;&#x3082;&#x3057;&#x304F;&#x306F;&#x95A2;&#x6570;&#x3067;&#x66F8;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 
 
 <div class="api new-api-box">
