@@ -1,0 +1,5 @@
+{
+    "<code>{{#each data}} ... {{/each}}</code> - Iterate over the items in <code>data</code> and display the HTML inside the block for each one.": "<code>{{#each data}} ... {{/each}}</code> - <code>data</code>の要素について繰り返し、それぞれについてブロック内のHTMLを表示する",
+    "<code>{{#if data}} ... {{else}} ... {{/if}}</code> - If <code>data</code> is <code>true</code>, display the first block; if it is false, display the second one.": "<code>{{#if data}} ... {{else}} ... {{/if}}</code> - もし<code>data</code>が<code>true</code>ならば、ひとつ目のブロックを表示する; falseならば、ふたつ目のブロックを表示する",
+    "<code>{{#with data}} ... {{/with}}</code> - Set the data context of the HTML inside, and display it.": "<code>{{#with data}} ... {{/with}}</code> - ブロック内のHTMLをデータコンテキストを設定して、表示する"
+}
