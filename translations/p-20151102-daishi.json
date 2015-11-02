@@ -1,0 +1,9 @@
+{
+    "Specify event handlers for this template.": "テンプレートのイベントハンドラを指定する",
+    "Event handlers to associate with this template.": "テンプレートに関係づけるイベントハンドラ",
+    "The event map passed into <code>Template.myTemplate.events</code> has event descriptors as its keys and event handler functions as the values. Event handlers get two arguments: the event object and the template instance. Event handlers can also access the data context of the target element in <code>this</code>.": "<code>Template.myTemplate.events</code>に渡されるイベントハンドラはイベントディスクリプタをキーとしイベントハンドラの関数を値にしたオブジェクトです。イベントハンドラ関数は2つの引数をとります: イベントオブジェクトとテンプレートインスタンスです。また、イベントハンドラはターゲット要素のデータコンテキストに<code>this</code>でアクセスできます。",
+    "To attach event handlers to the following template": "次のテンプレートにイベントハンドラを指定するには",
+    "you might call <code>Template.example.events</code> as follows:": "次のように<code>Template.example.events</code>を呼び出します。",
+    "The first part of the key (before the first space) is the name of the event being captured. Pretty much any DOM event is supported. Some common ones are: <code>click</code>, <code>mousedown</code>, <code>mouseup</code>, <code>mouseenter</code>, <code>mouseleave</code>, <code>keydown</code>, <code>keyup</code>, <code>keypress</code>, <code>focus</code>, <code>blur</code>, and <code>change</code>.": "キーの前半(スペースの前)はイベント名です。ほとんどのDOMイベントがサポートされています。よく使うものは、<code>click</code>, <code>mousedown</code>, <code>mouseup</code>, <code>mouseenter</code>, <code>mouseleave</code>, <code>keydown</code>, <code>keyup</code>, <code>keypress</code>, <code>focus</code>, <code>blur</code>, <code>change</code>です。",
+    "The second part of the key (after the first space) is a CSS selector that indicates which elements to listen to. This can be almost any selector <a href=\"http://api.jquery.com/category/selectors/\">supported by JQuery</a>.": "キーの後半(スペースの後ろ)はどの要素を対象とするかを示すCSSセレクタです。これはほとんどすべての<a href=\"http://api.jquery.com/category/selectors/\">supported by JQuery</a>のセレクタが使えます。"
+}
