@@ -1114,9 +1114,7 @@ Session.set(<span class="hljs-string">&quot;enemy&quot;</span>, <span class="hlj
   </h3>
 
   <div class="desc">
-    <p>Run a function now and rerun it later whenever its dependencies
-change. Returns a Computation object that can be used to stop or observe the
-rerunning.</p>
+    <p>&#x95A2;&#x6570;&#x3092;&#x76F4;&#x3061;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x3001;&#x307E;&#x305F;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x306B;&#x3042;&#x308B;&#x3082;&#x306E;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x308B;&#x305F;&#x3073;&#x306B;&#x3001;&#x5F8C;&#x3067;&#x305D;&#x308C;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x307E;&#x3059;&#x3002;&#x505C;&#x6B62;&#x307E;&#x305F;&#x306F;&#x518D;&#x5B9F;&#x884C;&#x3092;&#x89B3;&#x5BDF;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x6F14;&#x7B97;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -1128,8 +1126,7 @@ rerunning.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>The function to run. It receives
-one argument: the Computation object that will be returned.</p>
+          <p>&#x5B9F;&#x884C;&#x3059;&#x308B;&#x95A2;&#x6570;&#x3002;1&#x3064;&#x306E;&#x5F15;&#x6570;&#x3092;&#x53D6;&#x308B;: &#x6F14;&#x7B97;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -1144,9 +1141,7 @@ one argument: the Computation object that will be returned.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional. The function to run when an error
-happens in the Computation. The only argument it recieves is the Error
-thrown. Defaults to the error being logged to the console.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;runFunc&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x6642;&#x306B;&#x3053;&#x306E;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x95A2;&#x6570;&#x306F;1&#x3064;&#x306E;&#x5F15;&#x6570;&#x3092;&#x53D6;&#x308A;&#x3001;&#x767A;&#x751F;&#x3057;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#x307E;&#x3059;&#x3002;&#x7701;&#x7565;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -1156,11 +1151,9 @@ thrown. Defaults to the error being logged to the console.</p>
 </div>
 
 
-<p><code>Tracker.autorun</code> allows you to run a function that depends on reactive
-data sources. Whenever those data sources are updated with new data, the
-function will be rerun.</p>
+<p><code>Tracker.autorun</code>&#x306F;&#x30EA;&#x30A2;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x30C7;&#x30FC;&#x30BF;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x305F;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x308C;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x3067;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x308B;&#x305F;&#x3073;&#x306B;&#x3001;&#x305D;&#x306E;&#x95A2;&#x6570;&#x306F;&#x518D;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 
-<p>For example, you can monitor one <code>Session</code> variable and set another:</p>
+<p>&#x4F8B;&#x3048;&#x3070;&#x3001;1&#x3064;&#x306E;<code>Session</code>&#x5909;&#x6570;&#x3092;&#x76E3;&#x8996;&#x3057;&#x3001;&#x305D;&#x308C;&#x3092;&#x5225;&#x306E;&#x3082;&#x306E;&#x306B;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;:</p>
 
 <pre><code class="hljs javascript">Tracker.autorun(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">var</span> celsius = Session.get(<span class="hljs-string">&quot;celsius&quot;</span>);
@@ -1168,10 +1161,7 @@ function will be rerun.</p>
 });
 </code></pre>
 
-<p>Or you can wait for a session variable to have a certain value, and do
-something the first time it does. If you want to prevent further rerunning
-of the function, you can call <code>stop</code> on the computation object that is
-passed as the first parameter to the callback function:</p>
+<p>&#x307E;&#x305F;&#x3001;Session&#x5909;&#x6570;&#x304C;&#x7279;&#x5B9A;&#x306E;&#x5024;&#x306B;&#x306A;&#x3063;&#x305F;&#x6642;&#x306B;&#x521D;&#x3081;&#x3066;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x3082;&#x3057;&#x3001;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x95A2;&#x6570;&#x3092;&#x518D;&#x5B9F;&#x884C;&#x3055;&#x305B;&#x305F;&#x304F;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#xFF11;&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3055;&#x308C;&#x308B;&#x6F14;&#x7B97;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;<code>stop</code>&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3053;&#x3068;&#x3067;&#x3001;&#x518D;&#x5B9F;&#x884C;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 
 <pre><code class="hljs cs"><span class="hljs-comment">// Initialize a session variable called &quot;counter&quot; to 0</span>
 Session.<span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;counter&quot;</span>, <span class="hljs-number">0</span>);
@@ -1194,20 +1184,11 @@ Session.<span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;co
 Session.<span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;counter&quot;</span>, Session.<span class="hljs-keyword">get</span>(<span class="hljs-string">&quot;counter&quot;</span>) + <span class="hljs-number">1</span>);
 </code></pre>
 
-<p>The first time <code>Tracker.autorun</code> is called, the callback function is
-invoked immediately, at which point it alerts and stops right away if
-<code>counter === 2</code> already. In this example, <code>Session.get(&quot;counter&quot;) === 0</code>
-when <code>Tracker.autorun</code> is called, so nothing happens the first time, and
-the function is run again each time <code>counter</code> changes, until
-<code>computation.stop()</code> is called after <code>counter</code> reaches <code>2</code>.</p>
+<p>&#x521D;&#x3081;&#x3066;<code>Tracker.autorun</code>&#x304C;&#x547C;&#x3070;&#x308C;&#x308B;&#x3068;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306F;&#x3059;&#x3050;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3001;&#x3082;&#x3057;&#x3059;&#x3067;&#x306B; <code>counter === 2</code> &#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x30A2;&#x30E9;&#x30FC;&#x30C8;&#x3092;&#x8868;&#x793A;&#x3057;&#x3066;&#x3059;&#x3050;&#x306B;&#x505C;&#x6B62;&#x3057;&#x307E;&#x3059;&#x3002;&#x4E0A;&#x306E;&#x4F8B;&#x3067;&#x306F;&#x3001;<code>Tracker.autorun</code>&#x304C;&#x547C;&#x3070;&#x308C;&#x305F;&#x6642;&#x306F; <code>Session.get(&quot;counter&quot;) === 0</code> &#x306A;&#x306E;&#x3067;&#x3001;&#x521D;&#x3081;&#x306F;&#x4F55;&#x3082;&#x8D77;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;&#x305D;&#x3057;&#x3066;&#x3001;<code>counter</code>&#x304C;<code>2</code>&#x306B;&#x306A;&#x308A;<code>computation.stop()</code>&#x304C;&#x547C;&#x3070;&#x308C;&#x308B;&#x307E;&#x3067;&#x306F;&#x3001;<code>counter</code>&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x308B;&#x305F;&#x3073;&#x306B;&#x95A2;&#x6570;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 
-<p>If the initial run of an autorun throws an exception, the computation
-is automatically stopped and won&apos;t be rerun.</p>
+<p>&#x3082;&#x3057;&#x3001;autorun&#x306E;&#x521D;&#x671F;&#x5B9F;&#x884C;&#x3067;&#x4F8B;&#x5916;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#x3068;&#x3001;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x51E6;&#x7406;&#x306F;&#x505C;&#x6B62;&#x3057;&#x3001;&#x518D;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</p>
 
-<p>To learn more about how <code>Tracker</code> works and to explore advanced ways to
-use it, visit the <a href="http://manual.meteor.com/#tracker">Tracker</a>
-chapter in the <a href="http://manual.meteor.com/">Meteor Manual</a>,
-which describes it in much more detail.</p>
+<p><code>Tracker</code>&#x306E;&#x52D5;&#x304D;&#x306B;&#x3064;&#x3044;&#x3066;&#x3082;&#x3063;&#x3068;&#x5B66;&#x7FD2;&#x3057;&#x305F;&#x308A;&#x3001;&#x9AD8;&#x5EA6;&#x306A;&#x4F7F;&#x3044;&#x65B9;&#x3092;&#x77E5;&#x308A;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;<a href="http://manual.meteor.com/">Meteor Manual</a>&#x306E;<a href="http://manual.meteor.com/#tracker">Tracker</a>&#x30C1;&#x30E3;&#x30D7;&#x30BF;&#x30FC;&#x306B;&#x3088;&#x308A;&#x8A73;&#x7D30;&#x306A;&#x8AAC;&#x660E;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 <h2 id="/basic/collections"><span>Collections</span></h2>
 
 <p>Meteor stores data in <em>collections</em>. JavaScript objects stored in collections
