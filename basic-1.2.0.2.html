@@ -1479,7 +1479,7 @@ Comments = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="h
   </h3>
 
   <div class="desc">
-    <p>Insert a document in the collection.  Returns its unique _id.</p>
+    <p>&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x633F;&#x5165;&#x3057;&#x307E;&#x3059;&#x3002;&#x305D;&#x3057;&#x3066;&#x4E00;&#x610F;&#x306E;_id&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -1491,7 +1491,7 @@ Comments = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="h
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p>The document to insert. May not yet have an _id attribute, in which case Meteor will generate one for you.</p>
+          <p>&#x633F;&#x5165;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3002;_id&#x5C5E;&#x6027;&#x304C;&#x6301;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;Meteor&#x306F;_id&#x3092;&#x751F;&#x6210;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
         <dt>
@@ -1499,7 +1499,7 @@ Comments = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="h
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional.  If present, called with an error object as the first argument and, if no error, the _id as the second.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;&#x5B58;&#x5728;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#xFF11;&#x5F15;&#x6570;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;&#x3082;&#x3057;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;_id&#x3092;&#x7B2C;&#xFF12;&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -1511,7 +1511,7 @@ Comments = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="h
 </div>
 
 
-<p>Here&apos;s how you insert a document into a collection:</p>
+<p>&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x633F;&#x5165;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306F;&#x6B21;&#x306E;&#x901A;&#x308A;&#x3067;&#x3059;:</p>
 
 <pre><code class="hljs css"><span class="hljs-tag">Posts</span><span class="hljs-class">.insert</span>(<span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">createdBy</span>:<span class="hljs-value"> Meteor.<span class="hljs-function">userId</span>(),
@@ -1521,10 +1521,7 @@ Comments = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="h
 </span></span></span>});
 </code></pre>
 
-<p>Every document in every <code>Mongo.Collection</code> has an <code>_id</code> field. It must be
-unique, and is automatically generated if you don&apos;t provide one. The <code>_id</code>
-field can be used to retrieve a specific document using
-<a href="#findOne"><code>collection.findOne</code></a>.</p>
+<p>&#x3059;&#x3079;&#x3066;&#x306E;<code>Mongo.Collection</code>&#x306E;&#x3059;&#x3079;&#x3066;&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306F;&#x3001;_id&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;&#x6301;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x305D;&#x308C;&#x306F;&#x4E00;&#x610F;&#x3067;&#x3042;&#x308A;&#x3001;<code>_id</code>&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x6642;&#x306F;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;<code>_id</code>&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306F;<a href="#findOne"><code>collection.findOne</code></a>&#x3067;&#x7279;&#x5B9A;&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 
 
 <div class="api new-api-box">
@@ -1539,7 +1536,7 @@ field can be used to retrieve a specific document using
   </h3>
 
   <div class="desc">
-    <p>Modify one or more documents in the collection. Returns the number of affected documents.</p>
+    <p>&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x306E;1&#x3064;&#x307E;&#x305F;&#x306F;&#x8907;&#x6570;&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;&#x3002;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6570;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -1551,7 +1548,7 @@ field can be used to retrieve a specific document using
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p>Specifies which documents to modify</p>
+          <p>&#x4FEE;&#x6B63;&#x3057;&#x305F;&#x3044;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -1559,7 +1556,7 @@ field can be used to retrieve a specific document using
           <span class="type"><a href="#modifiers">Mongo Modifier</a></span>
         </dt>
         <dd>
-          <p>Specifies how to modify the documents</p>
+          <p>&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#x304B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -1567,7 +1564,7 @@ field can be used to retrieve a specific document using
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;&#x5B58;&#x5728;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#xFF11;&#x5F15;&#x6570;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x6E21;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x3082;&#x3057;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6570;&#x3092;&#x7B2C;&#xFF12;&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -1582,7 +1579,7 @@ field can be used to retrieve a specific document using
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>True to modify all matching documents; false to only modify one of the matching documents (the default).</p>
+          <p>true&#x306A;&#x3089;selector&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3059;&#x3079;&#x3066;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;&#x3002;false&#x306A;&#x3089;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x4E00;&#x3064;&#x3092;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;(&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;)&#x3002;</p>
         </dd>
       
         <dt>
@@ -1590,7 +1587,7 @@ field can be used to retrieve a specific document using
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>True to insert a document if no matching documents are found.</p>
+          <p>true&#x306A;&#x3089;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x304C;&#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x65B0;&#x305F;&#x306B;&#x633F;&#x5165;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -1600,14 +1597,9 @@ field can be used to retrieve a specific document using
 </div>
 
 
-<p>The selector here is just like the one you would pass to <code>find</code>, and can
-match multiple documents. The modifier is an object that specifies which
-changes should be made to the matched documents. Watch out - unless you use
-an operator like <code>$set</code>, <code>update</code> will simply replace the entire matched
-document with the modifier.</p>
+<p>selector&#x306F;<code>find</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x6E21;&#x3059;&#x306E;&#x3068;&#x540C;&#x3058;&#x3088;&#x3046;&#x306A;&#x3082;&#x306E;&#x3067;&#x3001;&#x8907;&#x6570;&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306B;&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x307E;&#x3059;&#x3002;modifier&#x306F;&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3059;&#x3002;&#x6CE8;:modifier&#x3067;<code>$set</code>&#x30AA;&#x30DA;&#x30EC;&#x30FC;&#x30BF;&#x30FC;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;<code>update</code>&#x306F;&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;modifier&#x3068;&#x307E;&#x308B;&#x3054;&#x3068;&#x4EA4;&#x63DB;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 
-<p>Here&apos;s an example of setting the <code>content</code> field on all posts whose titles
-contain the word &quot;first&quot;:</p>
+<p>&#x3053;&#x3053;&#x3067;&#x3001;&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306B;&quot;first&quot;&#x3092;&#x542B;&#x3080;&#x3059;&#x3079;&#x3066;&#x306E;posts&#x306B;&#x3001;content&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#x4F8B;&#x3092;&#x793A;&#x3057;&#x307E;&#x3059;:</p>
 
 <pre><code class="hljs css"><span class="hljs-tag">Posts</span><span class="hljs-class">.update</span>(<span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">title</span>:<span class="hljs-value"> {$regex: /first/</span></span></span>}
@@ -1616,12 +1608,9 @@ contain the word &quot;first&quot;:</p>
 });
 </code></pre>
 
-<p>You can read about all of the different operators that are supported in the
-<a href="http://docs.mongodb.org/manual/reference/operator/update/">MongoDB documentation</a>.</p>
+<p>update&#x306E;&#x5404;&#x30AA;&#x30DA;&#x30EC;&#x30FC;&#x30BF;&#x30FC;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;<a href="http://docs.mongodb.org/manual/reference/operator/update/">MongoDB documentation</a>&#x3067;&#x77E5;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 
-<p>There&apos;s one catch: when you call <code>update</code> on the client, you can only find
-documents by their <code>_id</code> field. To use all of the possible selectors, you
-must call <code>update</code> in server code or from a <a href="#meteor_methods">method</a>.</p>
+<p>&#x6CE8;:&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4E0A;&#x3067;update&#x3092;&#x547C;&#x3073;&#x51FA;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;_id&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3067;&#x306E;&#x307F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x898B;&#x3064;&#x3051;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x30BB;&#x30EC;&#x30AF;&#x30BF;&#x306B;&#x4ED6;&#x306E;&#x3082;&#x306E;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#x304B;<a href="#meteor_methods">method</a>&#x7D4C;&#x7531;&#x3067;update&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 
 
 <div class="api new-api-box">

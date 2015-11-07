@@ -8421,7 +8421,7 @@ that don&apos;t depend on an entire document.</p>
   </h3>
 
   <div class="desc">
-    <p>Insert a document in the collection.  Returns its unique _id.</p>
+    <p>&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x633F;&#x5165;&#x3057;&#x307E;&#x3059;&#x3002;&#x305D;&#x3057;&#x3066;&#x4E00;&#x610F;&#x306E;_id&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -8433,7 +8433,7 @@ that don&apos;t depend on an entire document.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p>The document to insert. May not yet have an _id attribute, in which case Meteor will generate one for you.</p>
+          <p>&#x633F;&#x5165;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3002;_id&#x5C5E;&#x6027;&#x304C;&#x6301;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;Meteor&#x306F;_id&#x3092;&#x751F;&#x6210;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
         <dt>
@@ -8441,7 +8441,7 @@ that don&apos;t depend on an entire document.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional.  If present, called with an error object as the first argument and, if no error, the _id as the second.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;&#x5B58;&#x5728;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#xFF11;&#x5F15;&#x6570;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;&#x3082;&#x3057;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;_id&#x3092;&#x7B2C;&#xFF12;&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -8497,7 +8497,7 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
   </h3>
 
   <div class="desc">
-    <p>Modify one or more documents in the collection. Returns the number of affected documents.</p>
+    <p>&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x306E;1&#x3064;&#x307E;&#x305F;&#x306F;&#x8907;&#x6570;&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;&#x3002;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6570;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -8509,7 +8509,7 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p>Specifies which documents to modify</p>
+          <p>&#x4FEE;&#x6B63;&#x3057;&#x305F;&#x3044;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -8517,7 +8517,7 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type"><a href="#modifiers">Mongo Modifier</a></span>
         </dt>
         <dd>
-          <p>Specifies how to modify the documents</p>
+          <p>&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#x304B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -8525,7 +8525,7 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;&#x5B58;&#x5728;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#xFF11;&#x5F15;&#x6570;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x6E21;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x3082;&#x3057;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6570;&#x3092;&#x7B2C;&#xFF12;&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -8540,7 +8540,7 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>True to modify all matching documents; false to only modify one of the matching documents (the default).</p>
+          <p>true&#x306A;&#x3089;selector&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3059;&#x3079;&#x3066;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;&#x3002;false&#x306A;&#x3089;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x4E00;&#x3064;&#x3092;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;(&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;)&#x3002;</p>
         </dd>
       
         <dt>
@@ -8548,7 +8548,7 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>True to insert a document if no matching documents are found.</p>
+          <p>true&#x306A;&#x3089;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x304C;&#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x65B0;&#x305F;&#x306B;&#x633F;&#x5165;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -8649,7 +8649,7 @@ in addition to the number of affected documents.</p>
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p>Specifies which documents to modify</p>
+          <p>&#x4FEE;&#x6B63;&#x3057;&#x305F;&#x3044;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -8657,7 +8657,7 @@ in addition to the number of affected documents.</p>
           <span class="type"><a href="#modifiers">Mongo Modifier</a></span>
         </dt>
         <dd>
-          <p>Specifies how to modify the documents</p>
+          <p>&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#x304B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -8665,7 +8665,7 @@ in addition to the number of affected documents.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;&#x5B58;&#x5728;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#xFF11;&#x5F15;&#x6570;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x6E21;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x3082;&#x3057;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x305F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6570;&#x3092;&#x7B2C;&#xFF12;&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -8680,7 +8680,7 @@ in addition to the number of affected documents.</p>
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>True to modify all matching documents; false to only modify one of the matching documents (the default).</p>
+          <p>true&#x306A;&#x3089;selector&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x3059;&#x3079;&#x3066;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;&#x3002;false&#x306A;&#x3089;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x4E00;&#x3064;&#x3092;&#x4FEE;&#x6B63;&#x3057;&#x307E;&#x3059;(&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;)&#x3002;</p>
         </dd>
       
     </dl>
