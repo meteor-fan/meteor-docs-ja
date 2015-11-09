@@ -5684,7 +5684,7 @@ names.</p>
   </h3>
 
   <div class="desc">
-    <p>Boolean variable.  True if running in client environment.</p>
+    <p>&#x771F;&#x507D;&#x5024;&#x3002;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x306E;&#x5834;&#x5408;True&#x306B;&#x306A;&#x308B;&#x3002;</p>
   </div>
 
   
@@ -5707,7 +5707,7 @@ names.</p>
   </h3>
 
   <div class="desc">
-    <p>Boolean variable.  True if running in server environment.</p>
+    <p>&#x771F;&#x507D;&#x5024;&#x3002;&#x30B5;&#x30FC;&#x30D0;&#x74B0;&#x5883;&#x306E;&#x5834;&#x5408;True&#x306B;&#x306A;&#x308B;&#x3002;</p>
   </div>
 
   
@@ -5719,12 +5719,7 @@ names.</p>
 </p>
 
 <div class="note">
-  <p>
-<code>Meteor.isServer</code> can be used to limit where code runs, but it does not
-prevent code from being sent to the client. Any sensitive code that you
-don&apos;t want served to the client, such as code containing passwords or
-authentication mechanisms, should be kept in the <code>server</code> directory.
-</p>
+  <p><code>Meteor.isServer</code>&#x306F;&#x305D;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x3069;&#x3053;&#x3067;&#x52D5;&#x304F;&#x304B;&#x3092;&#x5236;&#x9650;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306F;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x304C;&#x3001;&#x305D;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x306B;&#x9001;&#x3089;&#x308C;&#x308B;&#x3053;&#x3068;&#x306F;&#x963B;&#x6B62;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x9001;&#x308A;&#x305F;&#x304F;&#x306A;&#x3044;&#x79D8;&#x5BC6;&#x306E;&#x30B3;&#x30FC;&#x30C9;<code>server</code>&#x306B;&#x683C;&#x7D0D;&#x3059;&#x3079;&#x304D;&#x3067;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3084;&#x8A8D;&#x8A3C;&#x306E;&#x30E1;&#x30AB;&#x30CB;&#x30BA;&#x30E0;&#x304C;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x30B3;&#x30FC;&#x30C9;&#x306A;&#x3069;&#x304C;&#x8A72;&#x5F53;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 </div>
 
 
@@ -5764,7 +5759,7 @@ authentication mechanisms, should be kept in the <code>server</code> directory.
   </h3>
 
   <div class="desc">
-    <p>Run code when a client or a server starts.</p>
+    <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3084;&#x30B5;&#x30FC;&#x30D0;&#x304C;&#x8D77;&#x52D5;&#x3057;&#x305F;&#x3068;&#x304D;&#x306B;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
   </div>
 
   
@@ -5776,7 +5771,7 @@ authentication mechanisms, should be kept in the <code>server</code> directory.
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>A function to run on startup.</p>
+          <p>&#x8D77;&#x52D5;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x95A2;&#x6570;</p>
         </dd>
       
     </dl>
@@ -8693,7 +8688,7 @@ and <code>insertedId</code>. (<code>update</code> returns only the number of aff
   </h3>
 
   <div class="desc">
-    <p>Remove documents from the collection</p>
+    <p>&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x524A;&#x9664;&#x3057;&#x307E;&#x3059;</p>
   </div>
 
   
@@ -8705,7 +8700,7 @@ and <code>insertedId</code>. (<code>update</code> returns only the number of aff
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p>Specifies which documents to remove</p>
+          <p>&#x524A;&#x9664;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
@@ -8713,7 +8708,7 @@ and <code>insertedId</code>. (<code>update</code> returns only the number of aff
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional.  If present, called with an error object as its argument.</p>
+          <p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3002;&#x3082;&#x3057;&#x5B58;&#x5728;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x5F15;&#x6570;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x304C;&#x547C;&#x3070;&#x308C;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -8800,7 +8795,7 @@ Meteor.startup(<span class="hljs-function"><span class="hljs-keyword">function</
   </h3>
 
   <div class="desc">
-    <p>Allow users to write directly to this collection from client code, subject to limitations you define.</p>
+    <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x3053;&#x306E;&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x76F4;&#x63A5;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x5236;&#x9650;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -8814,7 +8809,7 @@ Meteor.startup(<span class="hljs-function"><span class="hljs-keyword">function</
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Functions that look at a proposed modification to the database and return true if it should be allowed.</p>
+          <p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3078;&#x306E;&#x5909;&#x66F4;&#x306E;&#x63D0;&#x6848;&#x3092;&#x898B;&#x3066;&#x3001;&#x8A31;&#x53EF;&#x3059;&#x3079;&#x304D;&#x306A;&#x3089;&#x3001;true&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3067;&#x3059;&#x3002;</p>
         </dd>
       
         <dt>
@@ -8985,7 +8980,7 @@ mode by default.</strong> To turn it off just run in your terminal:</p>
   </h3>
 
   <div class="desc">
-    <p>Override <code>allow</code> rules.</p>
+    <p><code>allow</code>&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -8999,7 +8994,7 @@ mode by default.</strong> To turn it off just run in your terminal:</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Functions that look at a proposed modification to the database and return true if it should be denied, even if an <a href="#allow">allow</a> rule says otherwise.</p>
+          <p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3078;&#x306E;&#x5909;&#x66F4;&#x306E;&#x63D0;&#x6848;&#x3092;&#x898B;&#x3066;&#x3001;&#x62D2;&#x5426;&#x3059;&#x3079;&#x304D;&#x306A;&#x3089;&#x3001;true&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3067;&#x3059;&#x3002;<a href="#allow">allow</a>&#x30EB;&#x30FC;&#x30EB;&#x3067;&#x8A31;&#x53EF;&#x3057;&#x3066;&#x3044;&#x3066;&#x3082;&#x3001;deny&#x30EB;&#x30FC;&#x30EB;&#x3067;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x307E;&#x3059;</p>
         </dd>
       
         <dt>
