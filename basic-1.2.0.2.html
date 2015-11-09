@@ -2000,12 +2000,9 @@ Meteor.subscribe(<span class="hljs-string">&quot;userData&quot;</span>);
 
 <h2 id="/basic/methods"><span>Methods</span></h2>
 
-<p>Methods are server functions that can be called from the client. They are
-useful in situations where you want to do something more complicated than
-<code>insert</code>, <code>update</code> or <code>remove</code>, or when you need to do data validation that
-is difficult to achieve with just <code>allow</code> and <code>deny</code>.</p>
+<p>Methods(&#x30E1;&#x30BD;&#x30C3;&#x30C9;)&#x306F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304B;&#x3089;&#x547C;&#x3070;&#x308C;&#x308B;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x95A2;&#x6570;&#x3067;&#x3059;. &#x3053;&#x308C;&#x3089;&#x306F;&#x3001;<code>insert</code>&#x3001;<code>update</code>&#x3084;<code>remove</code>&#x3088;&#x308A;&#x3082;&#x3063;&#x3068;&#x8907;&#x96D1;&#x306B;&#x4F55;&#x304B;&#x3092;&#x3057;&#x305F;&#x3044;&#x72B6;&#x6CC1;&#x3084;&#x3001;<code>allow</code>&#x3068;<code>deny</code>&#x3060;&#x3051;&#x3067;&#x306F;&#x96E3;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x72B6;&#x6CC1;&#x3067;&#x4FBF;&#x5229;&#x306A;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;</p>
 
-<p>Methods can return values and throw errors.</p>
+<p>Methods(&#x30E1;&#x30BD;&#x30C3;&#x30C9;)&#x306F;&#x623B;&#x308A;&#x5024;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 
 
 <div class="api new-api-box">
@@ -2020,7 +2017,7 @@ is difficult to achieve with just <code>allow</code> and <code>deny</code>.</p>
   </h3>
 
   <div class="desc">
-    <p>Defines functions that can be invoked over the network by clients.</p>
+    <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x3088;&#x3063;&#x3066;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x8D8A;&#x3057;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -2032,7 +2029,7 @@ is difficult to achieve with just <code>allow</code> and <code>deny</code>.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p>Dictionary whose keys are method names and values are functions.</p>
+          <p>&#x8F9E;&#x66F8;&#x306E;&#x30AD;&#x30FC;&#x306F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x3067;&#x3001;&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x306F;&#x95A2;&#x6570;&#x3067;&#x3059;&#x3002;</p>
         </dd>
       
     </dl>
@@ -2044,9 +2041,7 @@ is difficult to achieve with just <code>allow</code> and <code>deny</code>.</p>
 </div>
 
 
-<p>Calling <code>Meteor.methods</code> on the server defines functions that can be
-called remotely by clients. Here&apos;s an example of a method that checks its
-arguments and throws an error:</p>
+<p>&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x4E0A;&#x3067;&#x306E;<code>Meteor.methods</code>&#x306E;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306F;&#x3001;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x304B;&#x3089;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x3067;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3053;&#x3068;&#x306E;&#x3067;&#x304D;&#x308B;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x3053;&#x3067;&#x306F;&#x3001;&#x5F15;&#x6570;&#x306E;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E00;&#x4F8B;&#x3092;&#x793A;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// On the server</span>
 Meteor.methods({
@@ -2071,29 +2066,17 @@ Meteor.methods({
 });
 </code></pre>
 
-<p>The <a href="#check"><code>check</code></a> function is a convenient way to enforce the expected
-<a href="#matchpatterns">types and structure</a> of method arguments.</p>
+<p>&#x3053;&#x3053;&#x3067;&#x306E;<a href="#check"><code>check</code></a>&#x95A2;&#x6570;&#x306F;&#x3001;&#x671F;&#x5F85;&#x3055;&#x308C;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5F15;&#x6570;&#x306E;<a href="#matchpatterns">types&#x3068;structure</a>&#x3092;&#x5F37;&#x5236;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x4E00;&#x3064;&#x306E;&#x4FBF;&#x5229;&#x306A;&#x65B9;&#x6CD5;&#x3067;&#x3059;&#x3002;</p>
 
-<p>Inside your method definition, <code>this</code> is bound to a method invocation object,
-which has several useful properties, including <code>this.userId</code>, which
-identifies the currently logged-in user.</p>
+<p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9A;&#x7FA9;&#x4E0A;&#x3067;&#x3001;<code>this</code>&#x306F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3055;&#x308C;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3059;&#x3002;<code>this</code>&#x306F;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x4FBF;&#x5229;&#x306A;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3061;&#x3001;&#x305D;&#x306E;&#x5185;&#x306E;<code>this.userId</code>&#x306F;&#x73FE;&#x72B6;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3057;&#x3066;&#x3044;&#x308B;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 
-<p>You don&apos;t have to put all your method definitions into a single <code>Meteor.methods</code>
-call; you may call it multiple times, as long as each method has a unique name.</p>
+<p>&#x3072;&#x3068;&#x3064;&#x306E;<code>Meteor.methods</code>&#x547C;&#x3073;&#x51FA;&#x3057;&#x306B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9A;&#x7FA9;&#x5168;&#x3066;&#x3092;&#x7F6E;&#x304F;&#x5FC5;&#x8981;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;&#x30E6;&#x30CB;&#x30FC;&#x30AF;&#x306A;&#x540D;&#x524D;&#x3092;&#x5404;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x6301;&#x3064;&#x9650;&#x308A;&#x3001;&#x3042;&#x306A;&#x305F;&#x306F;&#x3053;&#x308C;&#x3092;&#x8907;&#x6570;&#x56DE;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3067;&#x3057;&#x3087;&#x3046;&#x3002;</p>
 
 <h3 id="/basic/latencycompensation">Latency Compensation</h3>
 
-<p>Calling a method on the server requires a round-trip over the network. It would
-be really frustrating if users had to wait a whole second to see their comment
-show up due to this delay. That&apos;s why Meteor has a feature called <em>method
-stubs</em>. If you define a method on the client with the same name as a server
-method, Meteor will run it to attempt to predict the outcome of the server
-method. When the code on the server actually finishes, the prediction generated
-on the client will be replaced with the actual outcome of the server method.</p>
+<p>&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x4E0A;&#x3067;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306F;&#x3001;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x8D8A;&#x3057;&#x306B;&#x5F80;&#x5FA9;&#x304C;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x3053;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x5F80;&#x5FA9;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30A4;&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x8868;&#x793A;&#x3055;&#x305B;&#x308B;&#x306E;&#x306B;&#x6570;&#x79D2;&#x9593;&#x5F85;&#x305F;&#x306A;&#x304F;&#x3066;&#x306F;&#x306A;&#x3089;&#x306A;&#x3044;&#x306E;&#x306F;&#x975E;&#x5E38;&#x306B;&#x30B9;&#x30C8;&#x30EC;&#x30B9;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x306A;&#x305C;&#x306A;&#x3089;Meteor&#x306F;<em>method stubs</em>&#x3068;&#x3044;&#x3046;&#x7279;&#x5FB4;&#x3092;&#x6301;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3089;&#x3067;&#x3059;&#x3002;&#x3082;&#x3057;&#x3001;&#x3042;&#x306A;&#x305F;&#x304C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4E0A;&#x3067;&#x4E00;&#x3064;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4E00;&#x3064;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3057;&#x3066;&#x540C;&#x3058;&#x540D;&#x524D;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x5834;&#x5408;&#x3001;Meteor&#x306F;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304B;&#x3089;&#x306E;&#x7D50;&#x679C;&#x3092;&#x4E88;&#x6E2C;&#x3057;&#x3066;&#x8A66;&#x307F;&#x308B;&#x70BA;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x307E;&#x3059;&#x3002;&#x5B9F;&#x969B;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x4E0A;&#x3067;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x7D42;&#x4E86;&#x3059;&#x308B;&#x3068;&#x3001;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4E0A;&#x3067;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x305D;&#x306E;&#x4E88;&#x6E2C;&#x306F;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x969B;&#x306E;&#x7D50;&#x679C;&#x306B;&#x7F6E;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 
-<p>The client versions of <a href="#insert"><code>insert</code></a>, <a href="#update"><code>update</code></a>, and
-<a href="#remove"><code>remove</code></a>, which are implemented as methods, use this feature to make
-client-side interactions with the database appear instant.</p>
+<p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3057;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x305F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x7248;&#x306E;<a href="#insert"><code>insert</code></a>&#x3084;<a href="#update"><code>update</code></a>&#x3084;<a href="#remove"><code>remove</code></a>&#x306F;&#x3001;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30E9;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x5373;&#x6642;&#x53CD;&#x6620;&#x3055;&#x305B;&#x308B;&#x305F;&#x3081;&#x306B;&#x3053;&#x306E;&#x7279;&#x5FB4;&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 
 
 <div class="api new-api-box">
@@ -2108,7 +2091,7 @@ client-side interactions with the database appear instant.</p>
   </h3>
 
   <div class="desc">
-    <p>Invokes a method passing any number of arguments.</p>
+    <p>&#x8907;&#x6570;&#x306E;&#x5F15;&#x6570;&#x3092;&#x901A;&#x3057;&#x3066;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -2120,7 +2103,7 @@ client-side interactions with the database appear instant.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p>Name of method to invoke</p>
+          <p>&#x547C;&#x3073;&#x51FA;&#x3059;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;</p>
         </dd>
       
         <dt>
@@ -2128,7 +2111,7 @@ client-side interactions with the database appear instant.</p>
           <span class="type"><a href="#ejson">EJSON-able Object</a></span>
         </dt>
         <dd>
-          <p>Optional method arguments</p>
+          <p>&#x4EFB;&#x610F;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5F15;&#x6570;</p>
         </dd>
       
         <dt>
@@ -2136,7 +2119,7 @@ client-side interactions with the database appear instant.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>Optional callback, which is called asynchronously with the error or result after the method is complete. If not provided, the method runs synchronously if possible (see below).</p>
+          <p>&#x4EFB;&#x610F;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#xFF08;&#x3053;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B8C;&#x4E86;&#x5F8C;&#x306B;&#x7D50;&#x679C;&#x3084;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x975E;&#x540C;&#x671F;&#x7684;&#x306B;&#x547C;&#x3070;&#x308C;&#x308B;&#xFF09;&#x3002;&#x3082;&#x3057;&#x5F15;&#x6570;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;&#x3053;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308C;&#x3070;&#x540C;&#x671F;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3002;&#xFF08;&#x4EE5;&#x4E0B;&#x53C2;&#x7167;&#xFF09;</p>
         </dd>
       
     </dl>
@@ -2148,19 +2131,13 @@ client-side interactions with the database appear instant.</p>
 </div>
 
 
-<p>This is how you call a method.</p>
+<p>&#x4EE5;&#x4E0B;&#x306F;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x547C;&#x3073;&#x51FA;&#x3057;&#x65B9;&#x3067;&#x3059;&#x3002;</p>
 
 <h3 id="/basic/ontheclient">On the client</h3>
 
-<p>Methods called on the client run asynchronously, so you need to pass a
-callback in order to observe the result of the call. The callback will be
-called with two arguments, <code>error</code> and <code>result</code>. The <code>error</code> argument will
-be <code>null</code> unless an exception was thrown. When an exception is thrown, the
-<code>error</code> argument is a <code>Meteor.Error</code> instance and the <code>result</code> argument is
-undefined.</p>
+<p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4E0A;&#x3067;&#x975E;&#x540C;&#x671F;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#x3001;&#x547C;&#x3073;&#x51FA;&#x3057;&#x7D50;&#x679C;&#x3092;&#x76E3;&#x8996;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x6E21;&#x3059;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x306F;<code>error</code>&#x3068;<code>result</code>&#x306E;&#xFF12;&#x3064;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6301;&#x3061;&#x3001;&#x547C;&#x3073;&#x3060;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;<code>error</code>&#x5F15;&#x6570;&#x306F;&#x3001;&#x4F8B;&#x5916;&#x304C;&#x6295;&#x3052;&#x3089;&#x308C;&#x306A;&#x3044;&#x9650;&#x308A;<code>null</code>&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;&#x4F8B;&#x5916;&#x304C;&#x6295;&#x3052;&#x3089;&#x308C;&#x305F;&#x5834;&#x5408;&#x3001;<code>error</code>&#x5F15;&#x6570;&#x306F;<code>Meteor.Error</code>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3068;&#x306A;&#x308A;&#x3001;<code>result</code>&#x306F;undefined&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 
-<p>Here&apos;s an example of calling the <code>commentOnPost</code> method with arguments
-<code>comment</code> and <code>postId</code>:</p>
+<p>&#x3053;&#x3053;&#x3067;&#x306E;&#x4F8B;&#x3067;&#x306F;&#x3001;<code>commentOnPost</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;<code>comment</code>&#x3068;<code>postId</code>&#x306E;&#x5F15;&#x6570;&#x3068;&#x5171;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// Asynchronous call with a callback on the client</span>
 Meteor.call(<span class="hljs-string">&apos;commentOnPost&apos;</span>, comment, postId, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(error, result)</span> </span>{
@@ -2172,15 +2149,11 @@ Meteor.call(<span class="hljs-string">&apos;commentOnPost&apos;</span>, comment,
 });
 </code></pre>
 
-<p>Meteor tracks the database updates performed as part of a method call, and
-waits to invoke the client-side callback until all of those updates have
-been sent to the client.</p>
+<p>Meteor&#x306F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306E;&#x4E00;&#x90E8;&#x3068;&#x3057;&#x3066;&#x6A5F;&#x80FD;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x3092;&#x8FFD;&#x8DE1;&#x3057;&#x3001;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x30B5;&#x30A4;&#x30C9;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x305F;&#x3081;&#x306B;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x305D;&#x308C;&#x3089;&#x5168;&#x3066;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x304C;&#x9001;&#x3089;&#x308C;&#x308B;&#x307E;&#x3067;&#x5F85;&#x3061;&#x307E;&#x3059;&#x3002;</p>
 
 <h3 id="/basic/ontheserver">On the server</h3>
 
-<p>On the server, you don&apos;t have to pass a callback &#x2014; the method call
-will simply block until the method is complete, returning a result or
-throwing an exception, just as if you called the function directly:</p>
+<p>&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x4E0A;&#x3067;&#x306F;&#x3001;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x6E21;&#x3059;&#x5FC5;&#x8981;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#xFF08;&#x305F;&#x3060;&#x5358;&#x306B;&#x76F4;&#x63A5;&#x7684;&#x306B;&#x95A2;&#x6570;&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3068;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x7D50;&#x679C;&#x3084;&#x4F8B;&#x5916;&#x3092;&#x8FD4;&#x3057;&#x5B8C;&#x4E86;&#x3059;&#x308B;&#x307E;&#x3067;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306F;&#x5358;&#x7D14;&#x306B;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3057;&#x307E;&#x3059;&#xFF09;</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// Synchronous call on the server with no callback</span>
 <span class="hljs-keyword">var</span> result = Meteor.call(<span class="hljs-string">&apos;commentOnPost&apos;</span>, comment, postId);
@@ -2199,7 +2172,7 @@ throwing an exception, just as if you called the function directly:</p>
   </h3>
 
   <div class="desc">
-    <p>This class represents a symbolic error thrown by a method.</p>
+    <p>&#x3053;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;&#x3001;&#x4F55;&#x304B;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x6295;&#x3052;&#x3089;&#x308C;&#x305F;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8868;&#x3057;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -2211,10 +2184,7 @@ throwing an exception, just as if you called the function directly:</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p>A string code uniquely identifying this kind of error.
-This string should be used by callers of the method to determine the
-appropriate action to take, instead of attempting to parse the reason
-or details fields. For example:</p>
+          <p>&#x6587;&#x5B57;&#x5217;&#x306F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x7279;&#x5B9A;&#x3059;&#x308B;&#x30E6;&#x30CB;&#x30FC;&#x30AF;&#x306A;&#x3082;&#x306E;&#x3068;&#x3057;&#x3066;&#x8868;&#x73FE;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x6587;&#x5B57;&#x5217;&#x306F;&#x3001;reason&#x3084;details&#x3092;&#x30D1;&#x30FC;&#x30B9;&#x3057;&#x3088;&#x3046;&#x3068;&#x3059;&#x308B;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x9069;&#x5207;&#x306A;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x547C;&#x3073;&#x51FA;&#x3057;&#x5143;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x3079;&#x304D;&#x3067;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;:</p>
 <pre class="prettyprint source"><code class="hljs javascript"><span class="hljs-comment">// on the server, pick a code unique to this error</span>
 <span class="hljs-comment">// the reason field should be a useful debug message</span>
 <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">&quot;logged-out&quot;</span>, 
@@ -2227,8 +2197,7 @@ Meteor.call(<span class="hljs-string">&quot;methodName&quot;</span>, <span class
     <span class="hljs-comment">// show a nice error message</span>
     Session.set(<span class="hljs-string">&quot;errorMessage&quot;</span>, <span class="hljs-string">&quot;Please log in to post a comment.&quot;</span>);
   }
-});</code></pre><p>For legacy reasons, some built-in Meteor functions such as <code>check</code> throw
-errors with a number in this field.</p>
+});</code></pre><p>&#x30EC;&#x30AC;&#x30B7;&#x30FC;&#x306A;&#x7406;&#x7531;&#x306E;&#x305F;&#x3081;&#x3001;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x306A;Meteor&#x306F;&#x30A8;&#x30E9;&#x30FC;&#x51E6;&#x7406;&#x306E;&#x9806;&#x756A;&#x78BA;&#x8A8D;&#x306E;&#x3088;&#x3046;&#x306B;&#x6A5F;&#x80FD;&#x3057;&#x307E;&#x3059;&#x3002;</p>
         </dd>
       
         <dt>
@@ -2236,8 +2205,7 @@ errors with a number in this field.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p>Optional.  A short human-readable summary of the
-error, like &apos;Not Found&apos;.</p>
+          <p>&#x4EFB;&#x610F;&#x3002;&#x4EBA;&#x9593;&#x304C;&#x8AAD;&#x3093;&#x3067;&#x7406;&#x89E3;&#x3067;&#x304D;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x8981;&#x7D04;&#x3002;</p>
         </dd>
       
         <dt>
@@ -2245,8 +2213,7 @@ error, like &apos;Not Found&apos;.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p>Optional.  Additional information about the error,
-like a textual stack trace.</p>
+          <p>&#x4EFB;&#x610F;&#x3002;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x8FFD;&#x52A0;&#x60C5;&#x5831;&#x3002;</p>
         </dd>
       
     </dl>
@@ -2258,10 +2225,7 @@ like a textual stack trace.</p>
 </div>
 
 
-<p>If you want to return an error from a method, throw an exception.  Methods can
-throw any kind of exception, but <code>Meteor.Error</code> is the only kind of error that
-will be sent to the client. If a method function throws a different exception,
-the client gets <code>Meteor.Error(500, &apos;Internal server error&apos;)</code>.</p>
+<p>&#x3082;&#x3057;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304B;&#x3089;&#x4F55;&#x304B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8FD4;&#x3057;&#x3066;&#x307B;&#x3057;&#x3044;&#x306A;&#x3089;&#x3070;&#x3001;&#x4F8B;&#x5916;&#x3092;&#x6295;&#x3052;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x6295;&#x3052;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x304C;&#x3001;<code>Meteor.Error</code>&#x306F;&#x552F;&#x4E00;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x7A2E;&#x985E;&#x3067;&#x3059;&#x3002;&#x3082;&#x3057;&#x4F55;&#x304B;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x95A2;&#x6570;&#x304C;&#x7570;&#x306A;&#x308B;&#x4F8B;&#x5916;&#x3092;&#x6295;&#x3052;&#x308B;&#x5834;&#x5408;&#x3001;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306F;<code>Meteor.Error(500, &apos;Internal server error&apos;)</code>&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 <h2 id="/basic/pubsub"><span>Publish and subscribe</span></h2>
 
 <p>Meteor servers can publish sets of documents with <code>Meteor.publish</code>, and
