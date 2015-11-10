@@ -1,3 +1,8 @@
+This is a community project to translate Meteor docs into Japanese.
+This project is not affiliated with MDG.
+
+----
+
 ## Meteor公式ドキュメント日本語化
 
 ### 手順
@@ -11,9 +16,6 @@
 
 ### コミュニケーション
 
-細かい調整などが必要であれば、[Slack](https://meteor-fan.herokuapp.com/)の#docs-jaチャンネルで。
-
-
-----
-以上は暫定案です。今後必要に応じて見直します。
-
+役割分担や進捗報告などは、
+[Slack](https://meteor-fan.herokuapp.com/)の#docs-jaチャンネル
+で行いますので、協力していただける方はご参加ください。
