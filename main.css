@@ -66,3 +66,7 @@ body .documents ul li {
 body .documents ul li a button {
   width: 145px;
 }
+body .footer p {
+  font-weight: bold;
+  text-shadow: #000 2px 2px 0px, #000 -2px 2px 0px, #000 2px -2px 0px, #000 -2px -2px 0px;
+}
