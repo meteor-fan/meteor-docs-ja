@@ -1,0 +1,6 @@
+{
+  "All of Meteor&apos;s functionality is implemented in modular packages. In addition to the core packages documented above, there are many others that you can add to your app to enable useful functionality.":"Meteorの機能のすべては、モジュラーパッケージとして実装されています。上記で説明したコアパッケージに加え、他の多くのパッケージを便利な機能を有効にするために追加することができます。",
+  "From the command line, you can add and remove packages with <code>meteor add</code> and <code>meteor remove</code>:":"コマンドラインで、<code>meteor add</code>や<code>meteor remove</code>を実行するとパッケージの追加や削除ができます:",
+  "Your app will restart itself automatically when you add or remove a package.  An app&apos;s package dependencies are tracked in <code>.meteor/packages</code>, so your collaborators will be automatically updated to the same set of installed packages as you after they pull your source code, because they have the same <code>.meteor/packages</code> file as you.":"パッケージを追加または削除すると、自動的にアプリがリロードされます。アプリのパッケージは<code>.meteor/packages</code>の中で追跡されており、あなたと同じ<code>.meteor/packages</code>ファイルを使用しているコラボレーターは、ソースコードをプルした後に自動的にあなたがインストールしたパッケージと同じセットに更新されます。",
+  "You can see which packages are used by your app by running <code>meteor list</code> in the app&apos;s directory.":"アプリディレクトリ内で<code>meteor list</code>コマンドを実行すると、あなたのアプリがどのパッケージを使用しているか確認できます。"
+}
