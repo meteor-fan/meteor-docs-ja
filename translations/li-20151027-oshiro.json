@@ -1,0 +1,5 @@
+{
+  "HTML templates are compiled and sent to the client. See <a href=\"#/basic/templates\">the templates section</a> for more details.":"HTMLテンプレートはコンパイルされクライアントに送られます。詳細は<a href=\"#/basic/templates\">テンプレート</a>をご確認ください。" ,
+  "CSS files are sent to the client. In production mode they are automatically concatenated and minified.":"CSSファイルはクライアントに送られます。プロダクションモードでは、それらは自動的に結合されミニファイされます。",
+  "JavaScript is loaded on the client and the server. You can use <code>Meteor.isClient</code> and <code>Meteor.isServer</code> to control where certain blocks of code run.":"JavaScriptはクライアントとサーバーの両方で読み込まれます。<code>Meteor.isClient</code>と<code>Meteor.isServer</code>を使うと、クライアントまたはサーバーでのみコードを実行できます。"
+}

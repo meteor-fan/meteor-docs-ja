@@ -67,10 +67,10 @@ function translate(file) {
   if (!/\.html$/.test(file)) return;
   var content = fs.readFileSync(path.join('sources', file), 'utf8');
   var $ = cheerio.load(content);
-  var tags = ['p', 'strong', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4'];
+  var tags = ['p:not(:has(p))', 'strong', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'em', 'li'];
   tags.forEach(function(tag) {
     $(tag).each(function() {
-      $(this).html(getTranslatedText(tag, $(this).html()));
+      $(this).html(getTranslatedText(tag.split(':')[0], $(this).html()));
     });
   });
   fs.writeFileSync(file, $.html(), 'utf8');
