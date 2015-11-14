@@ -1,8 +1,8 @@
 {
-  "Meteor supports <a href=\"https://github.com/meteor/meteor/wiki/Supported-Platforms\">OS X, Windows, and Linux</a>.": "Meteorは<a href=\"https://github.com/meteor/meteor/wiki/Supported-Platforms\">OSX、Windows、Linux</a>をサポートしています。",
+  "Meteor supports <a href=\"https://github.com/meteor/meteor/wiki/Supported-Platforms\">OS X, Windows, and Linux</a>.": "Meteorは<a href=\"https://github.com/meteor/meteor/wiki/Supported-Platforms\">OS X、Windows、Linux</a>をサポートしています。",
   "On Windows?  <a href=\"https://install.meteor.com/windows\">Download the official Meteor installer here</a>.": "Windows用のMeteorインストーラは<a href=\"https://install.meteor.com/windows\">ここからダウンロードできます。</a>",
   "On OS X or Linux?  Install the latest official Meteor release from your terminal:": "OS XまたはLinuxならMeteor最新版をターミナルからインストールできます。",
-  "The Windows installer supports Windows 7, Windows 8.1, Windows Server 2008, and Windows Server 2012.  The command line installer supports Mac OS X 10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.": "WindowsインストーラはWindows 7、Windows 8.1、Windows Server 2008、Windows Server 2012をサポートしています。コマンドインストーラはMac OS X 10.7 (Lion)以上、それからx86とx86_64アーキテクチャ上で動くLinuxをサポートしています。",
+  "The Windows installer supports Windows 7, Windows 8.1, Windows Server 2008, and Windows Server 2012.  The command line installer supports Mac OS X 10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.": "WindowsインストーラはWindows 7、Windows 8.1、Windows Server 2008、Windows Server 2012をサポートしています。コマンドインストーラはMac OS X 10.7 (Lion)以上、またx86とx86_64アーキテクチャ上で動くLinuxをサポートしています。",
   "Once you&apos;ve installed Meteor, create a project:": "Meteorをインストールしたら、プロジェクトを作成しましょう。",
   "Run it locally:": "ローカルで動かします:",
   "Then, open a new terminal tab and unleash it on the world (on a free server we provide):": "さらに、新しいターミナルタブを開き、以下のコマンドを実行して世界中に公開しましょう(Meteorが提供している無料のサーバー上で動きます):"
