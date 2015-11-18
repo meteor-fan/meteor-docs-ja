@@ -34,6 +34,7 @@ var Nightmare = require('nightmare');
 var cheerio = require('cheerio');
 
 function processResult(type, result) {
+  //result = result.replace(/>\n\n([^<]{20,300})\n\n</, '>\n\n<p>\n$1\n</p>\n\n<', 'm');
   var $ = cheerio.load(result);
   var version = /\d\.(?:\d\.){1,2}\d/.exec($('h1').text());
   $('link').each(function() {
@@ -63,6 +64,7 @@ function processFullResult(result) {
 Nightmare()
   .goto('http://docs.meteor.com/')
   .wait(1000)
+  .select('.basic-or-full', 'basic')
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processBasicResult)
