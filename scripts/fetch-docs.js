@@ -34,7 +34,15 @@ var Nightmare = require('nightmare');
 var cheerio = require('cheerio');
 
 function processResult(type, result) {
-  //result = result.replace(/>\n\n([^<]{20,300})\n\n</, '>\n\n<p>\n$1\n</p>\n\n<', 'm');
+  // a dirty hack to fix bare text nodes
+  var bareTextNodes = [
+    'Whenever the indicated event happens on the selected element, the\ncorresponding event handler function will be called with the relevant DOM\nevent object and template instance. See the [Event Maps section](#eventmaps)\nfor details.',
+    'We\'ve written our fair share of single-page JavaScript applications by hand.\nWriting an entire application in one language (JavaScript) with one\ndata format (JSON) is a real joy.  Meteor is everything we wanted\nwhen writing those apps.'
+  ];
+  bareTextNodes.forEach(function(text) {
+    result = result.replace(text, '<p>' + text + '</p>');
+  });
+
   var $ = cheerio.load(result);
   var version = /\d\.(?:\d\.){1,2}\d/.exec($('h1').text());
   $('link').each(function() {
@@ -65,6 +73,7 @@ Nightmare()
   .goto('http://docs.meteor.com/')
   .wait(1000)
   .select('.basic-or-full', 'basic')
+  .wait(500)
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processBasicResult)
