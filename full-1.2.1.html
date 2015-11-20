@@ -4269,7 +4269,7 @@
   
   
     <h3>
-        <a href="https://atmospherejs.com/meteor/spiderable?__hstc=256467284.43066bb3ba9519f69b556b6e718ba6b1.1447860264988.1447860264988.1447860264988.1&amp;__hssc=256467284.1.1447860264988&amp;__hsfp=1614345591" class="">
+        <a href="https://atmospherejs.com/meteor/spiderable?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591" class="">
           spiderable
         </a>
       </h3>
@@ -4767,10 +4767,10 @@ with the project!</p>
 </div>
   <h1 id="concepts">&#x30B3;&#x30F3;&#x30BB;&#x30D7;&#x30C8;</h1>
 
-<p>We&apos;ve written our fair share of single-page JavaScript applications by hand.
+We&apos;ve written our fair share of single-page JavaScript applications by hand.
 Writing an entire application in one language (JavaScript) with one
 data format (JSON) is a real joy.  Meteor is everything we wanted
-when writing those apps.</p>
+when writing those apps.
 
 <h2 id="/full/whatismeteor">Meteor&#x3068;&#x306F;&#x4F55;&#x304B;&#xFF1F;</h2>
 
@@ -4787,9 +4787,9 @@ lets your app send emails, or the Meteor Accounts series (<code>accounts-passwor
 <code>accounts-facebook</code>, <code>accounts-ui</code>, and others) which provide a full-featured
 user account system that you can drop right into your app. In addition to
 these &quot;core&quot; packages, there are thousands of community-written packages in
-<a href="https://atmospherejs.com/?__hstc=256467284.43066bb3ba9519f69b556b6e718ba6b1.1447860264988.1447860264988.1447860264988.1&amp;__hssc=256467284.1.1447860264988&amp;__hsfp=1614345591">Atmosphere</a>, one of which might do just what you
+<a href="https://atmospherejs.com/?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Atmosphere</a>, one of which might do just what you
 need.</p></li>
-<li><p>A <em>command-line tool</em> called <code>meteor</code>.</p>
+<li><p><code>Meteor</code> <em>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x30C4;&#x30FC;&#x30EB;</em></p>
 
 <p><code>meteor</code> is a build tool analogous to <code>make</code>, <code>rake</code>, or the non-visual parts
 of Visual Studio. It gathers up all of the source files and assets in your
@@ -4807,22 +4807,13 @@ identically in the browser and on the server</em> (wherever it makes sense, of
 course: browsers can&apos;t send email and servers can&apos;t capture mouse events). Our
 whole ecosystem has been built from the ground up to support this.</p></li>
 </ul>
-<h2 id="/full/structuringyourapp">Structuring your application</h2>
+<h2 id="/full/structuringyourapp">&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x69CB;&#x9020;&#x5316;&#x3059;&#x308B;</h2>
 
-<p>A Meteor application is a mix of client-side JavaScript that runs inside a web
-browser or PhoneGap mobile app, server-side JavaScript that runs on the Meteor
-server inside a <a href="http://nodejs.org/">Node.js</a> container, and all the supporting
-HTML templates, CSS rules, and static assets.  Meteor automates the packaging
-and transmission of these different components, and it is quite flexible about
-how you choose to structure those components in your file tree.</p>
+<p>Meteor&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;&#x306F;&#x30A6;&#x30A7;&#x30D6;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3084;&#x30E2;&#x30D0;&#x30A4;&#x30EB;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x52D5;&#x304F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x30FB;&#x30B5;&#x30A4;&#x30C9;JavaScript&#x3068;&#x3001;Node.js&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;Meteor&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3067;&#x52D5;&#x304F;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30B5;&#x30A4;&#x30C9;JavaScript&#x3001;&#x305D;&#x3057;&#x3066;HTML&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3001;CSS&#x3001;&#x9759;&#x7684;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306A;&#x3069;&#x304B;&#x3089;&#x3067;&#x304D;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Meteor&#x306F;&#x3053;&#x308C;&#x3089;&#x306E;&#x69D8;&#x3005;&#x306A;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x3001;&#x9001;&#x4FE1;&#x3092;&#x884C;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x305D;&#x3057;&#x3066;&#x305D;&#x308C;&#x3089;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3080;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30FB;&#x30C4;&#x30EA;&#x30FC;&#x5185;&#x3067;&#x3001;&#x3069;&#x3046;&#x69CB;&#x9020;&#x5316;&#x3059;&#x308B;&#x304B;&#x306F;&#x975E;&#x5E38;&#x306B;&#x81EA;&#x7531;&#x5EA6;&#x304C;&#x9AD8;&#x3044;&#x3082;&#x306E;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 
-<h3 id="/full/specialdirectories">Special Directories</h3>
+<h3 id="/full/specialdirectories">&#x7279;&#x5225;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</h3>
 
-<p>By default, any JavaScript files in your Meteor folder are bundled and sent to
-the client and the server. However, the names of the files and directories
-inside your project can affect their load order, where they are loaded, and some
-other characteristics. Here is a list of file and directory names that are
-treated specially by Meteor:</p>
+<p>&#x521D;&#x671F;&#x72B6;&#x614B;&#x3067;&#x306F;&#x3001;Meteor&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x30FC;&#x5185;&#x306B;&#x3042;&#x308B;JavaScript&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x3072;&#x3068;&#x56FA;&#x307E;&#x308A;&#x3067;&#x3042;&#x308A;&#x3001;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3068;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x53CC;&#x65B9;&#x306B;&#x9001;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x3057;&#x304B;&#x3057;&#x306A;&#x304C;&#x3089;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x540D;&#x524D;&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30ED;&#x30FC;&#x30C9;&#x306E;&#x3055;&#x308C;&#x65B9;&#x3092;&#x5909;&#x3048;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x3042;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x306B;&#x30ED;&#x30FC;&#x30C9;&#x3055;&#x308C;&#x3001;&#x4ED6;&#x306E;&#x306F;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x56FA;&#x6709;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;Meteor&#x306B;&#x304A;&#x3044;&#x3066;&#x7279;&#x5225;&#x306B;&#x6271;&#x308F;&#x308C;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3068;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;&#x306F;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x306B;&#x3042;&#x308B;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;</p>
 
 <ul>
 <li><p><strong>client</strong></p>
@@ -5289,7 +5280,7 @@ Meteor templates when compiled.</p>
 <div class="note">
   <p>Today, the only templating system that ships with Meteor is Spacebars, though
   our community has created packages for other languages such as
-  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.43066bb3ba9519f69b556b6e718ba6b1.1447860264988.1447860264988.1447860264988.1&amp;__hssc=256467284.1.1447860264988&amp;__hsfp=1614345591">Jade</a>.</p>
+  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Jade</a>.</p>
 </div>
 
 <p>To define templates, create a file in your project with the <code>.html</code>
@@ -5433,7 +5424,7 @@ HTML templates).</p>
 
 <p>Anyone can publish a Meteor package, and thousands of community-written packages
 have been published to date. The easiest way to browse these packages is
-<a href="http://www.atmospherejs.com/?__hstc=256467284.43066bb3ba9519f69b556b6e718ba6b1.1447860264988.1447860264988.1447860264988.1&amp;__hssc=256467284.1.1447860264988&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
+<a href="http://www.atmospherejs.com/?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
 You can also use the <a href="#meteorsearch"><code>meteor search</code></a> and
 <a href="#meteorshow"><code>meteor show</code></a> commands.</p>
 
@@ -12257,28 +12248,6 @@ being logged in.</li>
 
 
 
-<div class="api new-api-box">
-  <h3 id="/full/Accounts-emailTemplates" class="api-title">
-    <div class="locus">
-      Server
-    </div>
-
-    <a class="name selflink" href="#/full/accounts_emailtemplates">Accounts.emailTemplates</a>
-
-    
-  </h3>
-
-  <div class="desc">
-    <p>Options to customize emails sent from the Accounts system.</p>
-  </div>
-
-  
-
-  
-
-  
-</div>
-
 
 <p>This is an <code>Object</code> with several fields that are used to generate text/html
 for the emails sent by <code>sendResetPasswordEmail</code>, <code>sendEnrollmentEmail</code>,
@@ -12448,7 +12417,7 @@ with <code>&lt;template name=&quot;myTemplate&quot;&gt;</code>.</p>
 <pre><code class="hljs javascript">{{displayName <span class="hljs-string">&quot;John&quot;</span> <span class="hljs-string">&quot;Doe&quot;</span> title=<span class="hljs-string">&quot;President&quot;</span>}}
 </code></pre>
 
-<p>You can learn more about arguments to helpers in <a href="https://atmospherejs.com/meteor/spacebars?__hstc=256467284.43066bb3ba9519f69b556b6e718ba6b1.1447860264988.1447860264988.1447860264988.1&amp;__hssc=256467284.1.1447860264988&amp;__hsfp=1614345591">Spacebars
+<p>You can learn more about arguments to helpers in <a href="https://atmospherejs.com/meteor/spacebars?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Spacebars
 Readme</a>.</p>
 
 <p>Under the hood, each helper starts a new
