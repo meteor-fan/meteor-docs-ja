@@ -1,4 +1,5 @@
 {
+  "A <em>library of packages</em>: pre-written, self-contained modules that you might need in your app.": "<em>パッケージ化されたライブラリー</em>:すでに書かれていて、自己完結しているモジュールはあなたのアプリケーションに必須のものでしょう。",
+  "A <em>command-line tool</em> called <code>meteor</code>.": "<code>Meteor</code> <em>コマンドラインツール</em>",
   "A <em>library of packages</em>: pre-written, self-contained modules that you might need in your app.": "<em>パッケージ化されたライブラリー</em>:すでに書かれていて、自己完結しているモジュールはあなたのアプリケーションに必須のものでしょう。"
-
 }
