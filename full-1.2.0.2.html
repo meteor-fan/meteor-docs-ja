@@ -5693,7 +5693,7 @@ names.</p>
   </h3>
 
   <div class="desc">
-    <p>Boolean variable.  True if running in a Cordova mobile environment.</p>
+    <p>&#x771F;&#x507D;&#x5024;&#x3002;Cordova&#x30E2;&#x30D0;&#x30A4;&#x30EB;&#x74B0;&#x5883;&#x306E;&#x5834;&#x5408;True&#x306B;&#x306A;&#x308B;</p>
   </div>
 
   
@@ -5741,12 +5741,9 @@ names.</p>
 </div>
 
 
-<p>On a server, the function will run as soon as the server process is
-finished starting. On a client, the function will run as soon as the DOM
-is ready.</p>
+<p>&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x4E0A;&#x3067;&#x306F;&#x3001;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x958B;&#x59CB;&#x304C;&#x5B8C;&#x4E86;&#x3059;&#x308B;&#x3068;&#x540C;&#x6642;&#x306B;&#x95A2;&#x6570;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3002;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4E0A;&#x3067;&#x306F;&#x3001;DOM&#x304C;&#x5B8C;&#x4E86;&#x3059;&#x308B;&#x3068;&#x540C;&#x6642;&#x306B;&#x95A2;&#x6570;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 
-<p>The <code>startup</code> callbacks are called in the same order as the calls to
-<code>Meteor.startup</code> were made.</p>
+<p><code>startup</code>&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306F;<code>Meteor.startup</code>&#x306E;&#x547C;&#x3073;&#x3060;&#x3055;&#x308C;&#x305F;&#x9806;&#x756A;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 
 <p>On a client, <code>startup</code> callbacks from packages will be called
 first, followed by <code>&lt;body&gt;</code> templates from your <code>.html</code> files,
@@ -5775,7 +5772,7 @@ followed by your application code.</p>
   </h3>
 
   <div class="desc">
-    <p>Wrap a function that takes a callback function as its final parameter. The signature of the callback of the wrapped function should be <code>function(error, result){}</code>. On the server, the wrapped function can be used either synchronously (without passing a callback) or asynchronously (when a callback is passed). On the client, a callback is always required; errors will be logged if there is no callback. If a callback is provided, the environment captured when the original function was called will be restored in the callback.</p>
+    <p>&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x5F15;&#x6570;&#x306E;&#x6700;&#x5F8C;&#x306B;&#x53D7;&#x3051;&#x53D6;&#x308B;&#x95A2;&#x6570;&#x3092;&#x30E9;&#x30C3;&#x30D7;&#x3057;&#x307E;&#x3059;&#x3002;&#x30E9;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x305F;&#x95A2;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x308B;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306B;&#x7279;&#x5FB4;&#x7684;&#x306A;&#x66F8;&#x304D;&#x65B9;&#x306F;<code>function(error, result){}</code>&#x3067;&#x3059;&#x3002;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x4E0A;&#x3067;&#x306F;&#x3001;&#x30E9;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x305F;&#x95A2;&#x6570;&#x306F;&#x540C;&#x671F;&#x7684;&#xFF08;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;&#xFF09;&#x306B;&#x3082;&#x975E;&#x540C;&#x671F;&#x7684;&#xFF08;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF09;&#x306B;&#x3082;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x3002;</p>
   </div>
 
   
@@ -5787,7 +5784,7 @@ followed by your application code.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>A function that takes a callback as its final parameter</p>
+          <p>&#x5F15;&#x6570;&#x306E;&#x6700;&#x5F8C;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308B;&#x95A2;&#x6570;</p>
         </dd>
       
         <dt>
@@ -5795,7 +5792,7 @@ followed by your application code.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p>Optional <code>this</code> object against which the original function will be invoked</p>
+          <p>&#x30E9;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x308B;&#x524D;&#x306E;&#x95A2;&#x6570;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x308B;<code>this</code></p>
         </dd>
       
     </dl>
