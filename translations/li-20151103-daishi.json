@@ -1,5 +1,0 @@
-{
-    "The value of <code>this</code> in the <code>created</code>, <code>rendered</code>, and <code>destroyed</code> template callbacks": "<code>created</code>や<code>rendered</code>や<code>destroyed</code>のコールバック内の<code>this</code>の値",
-    "The second argument to event handlers": "イベントハンドラの第二引数",
-    "As <a href=\"#template_instance\"><code>Template.instance()</code></a> inside helpers": "ヘルパー関数内での<a href=\"#template_instance\"><code>Template.instance()</code></a>"
-}

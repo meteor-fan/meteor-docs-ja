@@ -1,3 +1,0 @@
-{
-    "Whenever the indicated event happens on the selected element, the corresponding event handler function will be called with the relevant DOM event object and template instance. See the [Event Maps section](#eventmaps) for details.": "対象とした要素に指定したイベントが発生すると、対応するイベントハンドラが呼び出されます。第一引数がDOMイベントオブジェクトで、第二引数がテンプレートインスタンスです。詳しくは、Event Mapsセクションを参照してください。"
-}
