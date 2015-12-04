@@ -1,0 +1,17 @@
+{
+  "Quick start!": "クイックスタート！",
+  "<a href=\"#/basic/quickstart\" class=\"\">Quick Start </a>": "<a href=\"#/basic/quickstart\" class=\"\">クイックスタート</a>",
+  "File Structure": "ファイル構造",
+  "<a href=\"#/basic/filestructure\" class=\"\">File Structure </a>": "<a href=\"#/basic/filestructure\" class=\"\">ファイル構造</a>",
+  "Building Mobile Apps": "モバイルアプリのビルド",
+  "<a href=\"#/basic/buildingmobileapps\" class=\"\">Building Mobile Apps </a>": "<a href=\"#/basic/buildingmobileapps\" class=\"\">モバイルアプリのビルド</a>",
+  "<a href=\"#/basic/sevenprinciples\" class=\"\">Principles </a>": "<a href=\"#/basic/sevenprinciples\" class=\"\">Meteorの特徴</a>",
+  "Principles of Meteor": "Meteorの特徴",
+  "<a href=\"#/basic/learning-resources\" class=\"\">Learning Resources </a>": "<a href=\"#/basic/learning-resources\" class=\"\">学習リソース</a>",
+  "Learning Resources": "学習リソース",
+  "<a href=\"#/basic/command-line\" class=\"\">Command Line Tool </a>": "<a href=\"#/basic/command-line\" class=\"\">コマンドラインツール</a>",
+  "Command Line Tool": "コマンドラインツール",
+  "What is Meteor?": "Meteorとは何か？",
+  "Concepts": "コンセプト",
+  "Structuring your application": "アプリケーションを構造化する"
+}
