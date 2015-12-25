@@ -55,12 +55,13 @@ var translations = loadTranslations();
 
 function getTranslatedText(tag, text) {
   var targetKey = normalize(text);
+  var translatedText = null;
   Object.keys(translations[tag] || {}).forEach(function(key) {
     if (targetKey === key) {
-      text = translations[tag][key];
+      translatedText = translations[tag][key];
     }
   });
-  return text;
+  return translatedText;
 }
 
 function translate(file) {
@@ -70,9 +71,18 @@ function translate(file) {
   var tags = ['p:not(:has(p))', 'strong', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'em', 'li', 'pre'];
   tags.forEach(function(tag) {
     $(tag).each(function() {
-      $(this).html(getTranslatedText(tag.split(':')[0], $(this).html()));
+      var tagName = tag.split(':')[0];
+      var translatedText = getTranslatedText(tagName, $(this).html());
+      if (translatedText) {
+        var element = $(this).clone();
+        element.addClass('translation').html(translatedText);
+        $(this).after(element);
+        $(this).addClass('original');
+      }
     });
   });
+  $('head').append('<style>.original{display:none}</style>');
+  $('body').append('<script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script>');
   fs.writeFileSync(file, $.html(), 'utf8');
 }
 
