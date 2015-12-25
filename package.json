@@ -2,6 +2,7 @@
   "scripts": {
     "fetch": "node scripts/fetch-docs.js",
     "translate": "node scripts/translate-docs.js",
+    "generate": "node scripts/generate-json.js",
     "watch-jade": "jade -w templates -o ./",
     "watch-stylus": "stylus stylesheets -w -o ./",
     "watch-t10s": "watch 'npm run translate' translations",
@@ -19,5 +20,9 @@
     "stylus": "0.52.4",
     "watchify": "3.4.0",
     "watch": "0.16.0"
+  },
+  "dependencies": {
+    "he": "^0.5.0",
+    "moment": "^2.10.6"
   }
 }

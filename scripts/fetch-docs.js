@@ -28,6 +28,8 @@
 /* jshint quotmark: single, eqeqeq: true */
 /* jshint node: true */
 
+/* global document */
+
 var fs = require('fs');
 var path = require('path');
 var Nightmare = require('nightmare');
