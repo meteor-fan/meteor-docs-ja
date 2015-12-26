@@ -5496,16 +5496,32 @@ packages outside of your app&apos;s folder structure, set the environment variab
 <code>PACKAGE_DIRS</code> to a colon-delimited list of paths.</p><p class="translation">&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306B;&#x4F7F;&#x308F;&#x308C;&#x3066;&#x3044;&#x308B;&#x30AA;&#x30D5;&#x30A3;&#x30B7;&#x30E3;&#x30EB;&#x306A;Meteor&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306B;&#x542B;&#x307E;&#x308C;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306B;&#x52A0;&#x3048;&#x3066;&#x3001;<code>meteor list</code> &#x3068; <code>meteor add</code> &#x306F;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x76F4;&#x4E0B;&#x306B;&#x304A;&#x304B;&#x308C;&#x305F;<code>packages</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3082;&#x540C;&#x69D8;&#x306B;&#x691C;&#x7D22;&#x3057;&#x307E;&#x3059;&#x3002; <code>packages</code> &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306F;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x30B5;&#x30D6;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306B;&#x5206;&#x89E3;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x4FBF;&#x5229;&#x306A;&#x65B9;&#x6CD5;&#x3067;&#x3059;&#x3002;&#x516C;&#x958B;&#x3057;&#x305F;&#x3044;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3082;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002; <a href="#writingpackages">Writing Packages</a>&#x3092;&#x53C2;&#x8003;&#x306B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002; &#x3082;&#x3057;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x69CB;&#x6210;&#x306E;&#x5916;&#x5074;&#x3067;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x3044;&#x306E;&#x3067;&#x3042;&#x308C;&#x3070;&#x3001;&#x30B3;&#x30ED;&#x30F3;&#x533A;&#x5207;&#x308A;&#x306E;&#x30D1;&#x30B9;&#x306E;&#x30EA;&#x30B9;&#x30C8;&#x3092;&#x74B0;&#x5883;&#x5909;&#x6570;<code>PACKAGE_DIRS</code>&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
 <p></p><h2 id="/full/namespacing">Namespacing</h2><p></p>
 
-<p>Meteor&apos;s namespacing support makes it easy to write large applications
+<p class="original">Meteor&apos;s namespacing support makes it easy to write large applications
 in JavaScript. Each package that you use in your app exists in its own
 separate namespace, meaning that it sees only its own global variables
 and any variables provided by the packages that it specifically
-uses. Here&apos;s how it works.</p>
+uses. Here&apos;s how it works.</p><p class="original translation">Meteor&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x306F;JavaScript&#x3067;&#x306E;&#x5927;&#x898F;&#x6A21;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x3092;&#x5BB9;&#x6613;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
+&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x3001;&#x305D;&#x308C;&#x305E;&#x308C;&#x72EC;&#x81EA;&#x306B;&#x5206;&#x3051;&#x3089;&#x308C;&#x305F;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x4E2D;&#x306B;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
+&#x3064;&#x307E;&#x308A;&#x3001;&#x5404;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x81EA;&#x5206;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3068;&#x3001;&#x305D;&#x3053;&#x304B;&#x3089;&#x660E;&#x793A;&#x7684;&#x306B;&#x5229;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x5909;&#x6570;&#x306E;&#x307F;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x3067;&#x3059;&#x3002;
+&#x4EE5;&#x4E0B;&#x3001;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x52D5;&#x304F;&#x304B;&#x3068;&#x3044;&#x3046;&#x8AAC;&#x660E;&#x3067;&#x3059;&#x3002;</p>
 
-<p>When you declare a top-level variable, you have a choice. You can make
-the variable File Scope or Package Scope.</p>
+<p class="translation original">Meteor&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x306F;JavaScript&#x3067;&#x306E;&#x5927;&#x898F;&#x6A21;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x3092;&#x5BB9;&#x6613;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
+&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x3001;&#x305D;&#x308C;&#x305E;&#x308C;&#x72EC;&#x81EA;&#x306B;&#x5206;&#x3051;&#x3089;&#x308C;&#x305F;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x4E2D;&#x306B;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
+&#x3064;&#x307E;&#x308A;&#x3001;&#x5404;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x81EA;&#x5206;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3068;&#x3001;&#x305D;&#x3053;&#x304B;&#x3089;&#x660E;&#x793A;&#x7684;&#x306B;&#x5229;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x5909;&#x6570;&#x306E;&#x307F;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x3067;&#x3059;&#x3002;
+&#x4EE5;&#x4E0B;&#x3001;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x52D5;&#x304F;&#x304B;&#x3068;&#x3044;&#x3046;&#x8AAC;&#x660E;&#x3067;&#x3059;&#x3002;</p><p class="translation">Meteor&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x306F;JavaScript&#x3067;&#x306E;&#x5927;&#x898F;&#x6A21;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x3092;&#x5BB9;&#x6613;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
+&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x3001;&#x305D;&#x308C;&#x305E;&#x308C;&#x72EC;&#x81EA;&#x306B;&#x5206;&#x3051;&#x3089;&#x308C;&#x305F;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x4E2D;&#x306B;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
+&#x3064;&#x307E;&#x308A;&#x3001;&#x5404;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x81EA;&#x5206;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3068;&#x3001;&#x305D;&#x3053;&#x304B;&#x3089;&#x660E;&#x793A;&#x7684;&#x306B;&#x5229;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x5909;&#x6570;&#x306E;&#x307F;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x3067;&#x3059;&#x3002;
+&#x4EE5;&#x4E0B;&#x3001;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x52D5;&#x304F;&#x304B;&#x3068;&#x3044;&#x3046;&#x8AAC;&#x660E;&#x3067;&#x3059;&#x3002;</p>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">// File Scope. This variable will be visible only inside this</span>
+<p class="original">When you declare a top-level variable, you have a choice. You can make
+the variable File Scope or Package Scope.</p><p class="original translation">&#x30C8;&#x30C3;&#x30D7;&#x30EC;&#x30D9;&#x30EB;&#x306E;&#x5909;&#x6570;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x3042;&#x306A;&#x305F;&#x306B;&#x306F;&#x9078;&#x629E;&#x80A2;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
+&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30FB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306B;&#x3059;&#x308B;&#x304B;&#x3001;&#x307E;&#x305F;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30FB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306B;&#x3059;&#x308B;&#x304B;&#x3092;&#x9078;&#x3079;&#x307E;&#x3059;&#x3002;</p>
+
+
+<p class="translation">&#x30C8;&#x30C3;&#x30D7;&#x30EC;&#x30D9;&#x30EB;&#x306E;&#x5909;&#x6570;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x3042;&#x306A;&#x305F;&#x306B;&#x306F;&#x9078;&#x629E;&#x80A2;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
+&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30FB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306B;&#x3059;&#x308B;&#x304B;&#x3001;&#x307E;&#x305F;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30FB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306B;&#x3059;&#x308B;&#x304B;&#x3092;&#x9078;&#x3079;&#x307E;&#x3059;&#x3002;</p>
+
+<pre class="original"><code class="hljs javascript"><span class="hljs-comment">// File Scope. This variable will be visible only inside this</span>
 <span class="hljs-comment">// one file. Other files in this app or package won&apos;t see it.</span>
 <span class="hljs-keyword">var</span> alicePerson = {name: <span class="hljs-string">&quot;alice&quot;</span>};
 
@@ -5513,14 +5529,39 @@ the variable File Scope or Package Scope.</p>
 <span class="hljs-comment">// of this package or app. The difference is that &apos;var&apos; is</span>
 <span class="hljs-comment">// omitted.</span>
 bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
+</code></pre><pre class="original translation"><code class="hljs javascript">
+<span class="hljs-comment">// &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3002;&#x3053;&#x306E;&#x5909;&#x6570;&#x306F;&#x3001;&#x3053;&#x306E;&#xFF11;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E2D;&#x3067;&#x306E;&#x307F;&#x53C2;&#x7167;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// &#x3053;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x4ED6;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x306F;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;</span>
+<span class="hljs-keyword">var</span> alicePerson = {name: <span class="hljs-string">&quot;alice&quot;</span>};
+
+<span class="hljs-comment">// &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3002; &#x3053;&#x306E;&#x5909;&#x6570;&#x306F;&#x3001;&#x3053;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x307E;&#x305F;&#x306F;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x3069;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x3082;&#x53C2;&#x7167;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// &#x9055;&#x3044;&#x306F;&#x3001;&apos;var&apos; &#x304C;&#x7701;&#x7565;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x70B9;&#x3067;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// </span>
+bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
 </code></pre>
 
-<p>Notice that this is just the normal JavaScript syntax for declaring a
+<pre class="translation"><code class="hljs javascript">
+<span class="hljs-comment">// &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3002;&#x3053;&#x306E;&#x5909;&#x6570;&#x306F;&#x3001;&#x3053;&#x306E;&#xFF11;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E2D;&#x3067;&#x306E;&#x307F;&#x53C2;&#x7167;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// &#x3053;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x4ED6;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x306F;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;</span>
+<span class="hljs-keyword">var</span> alicePerson = {name: <span class="hljs-string">&quot;alice&quot;</span>};
+
+<span class="hljs-comment">// &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3002; &#x3053;&#x306E;&#x5909;&#x6570;&#x306F;&#x3001;&#x3053;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x307E;&#x305F;&#x306F;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x3069;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x3082;&#x53C2;&#x7167;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// &#x9055;&#x3044;&#x306F;&#x3001;&apos;var&apos; &#x304C;&#x7701;&#x7565;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x70B9;&#x3067;&#x3059;&#x3002;</span>
+bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
+</code></pre>
+
+
+<p class="original">Notice that this is just the normal JavaScript syntax for declaring a
 variable that is local or global. Meteor scans your source code for
 global variable assignments and generates a wrapper that makes sure
 that your globals don&apos;t escape their appropriate namespace.</p>
 
-<p>In addition to File Scope and Package Scope, there are also
+
+<p class="translation">&#x3053;&#x308C;&#x306F;JavaScript&#x306E;&#x901A;&#x5E38;&#x306E;&#x3001;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x307E;&#x305F;&#x306F;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x30B7;&#x30F3;&#x30BF;&#x30C3;&#x30AF;&#x30B9;&#x3067;&#x3042;&#x308B;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3092;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
+Meteor&#x306F;&#x3042;&#x306A;&#x305F;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x30B9;&#x30AD;&#x30E3;&#x30F3;&#x3057;&#x3066;&#x3001;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x306E;&#x5272;&#x5F53;&#x3066;&#x3092;&#x63A2;&#x3057;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x304C;&#x6B63;&#x3057;&#x3044;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x304B;&#x3089;&#x6F0F;&#x308C;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E9;&#x30C3;&#x30D1;&#x30FC;&#x3092;&#x751F;&#x6210;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+
+
+<p class="original">In addition to File Scope and Package Scope, there are also
 Exports. An export is a variable that a package makes available to you
 when you use it. For example, the <code>email</code> package exports the <code>Email</code>
 variable. If your app uses the <code>email</code> package (and <em>only</em> if it uses
@@ -5529,14 +5570,30 @@ the <code>email</code> package!) then your app can see <code>Email</code> and yo
 might have two or three (for example, a package that provides several
 classes that work together).</p>
 
-<p>You see only the exports of the packages that you use directly. If you
+<p class="translation">
+&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3068;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306B;&#x52A0;&#x3048;&#x3066;&#x3001;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3082;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
+&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x306F;&#x3001;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#x3042;&#x306A;&#x305F;&#x304C;&#x3064;&#x304B;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x3001;&#x3042;&#x308B;&#x5909;&#x6570;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x4ED5;&#x7D44;&#x307F;&#x3067;&#x3059;&#x3002;
+&#x305F;&#x3068;&#x3048;&#x3070;&#x3001;email&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;Email&#x5909;&#x6570;&#x3092;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3057;&#x307E;&#x3059;&#x3002;
+&#x3082;&#x3057;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x304C;email&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x3046;(&#x305D;&#x3057;&#x3066;&#x3001;&#x3042;&#x306A;&#x305F;&#x304C;email&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;<em>&#x3060;&#x3051;</em>&#x3092;&#x4F7F;&#x3046;!)&#x306E;&#x306A;&#x3089;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306F;Email&#x3092;&#x53C2;&#x7167;&#x3067;&#x304D;&#x3001;Email.send&#x3092;&#x547C;&#x3076;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x307B;&#x3068;&#x3093;&#x3069;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#xFF11;&#x3064;&#x3060;&#x3051;&#x6301;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x304C;&#x3001;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#xFF12;&#x3064;&#x304B;&#xFF13;&#x3064;&#x3082;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x3082;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x4E92;&#x3044;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x5E7E;&#x3064;&#x304B;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306A;&#x3069;&#xFF09;
+</p>
+
+<p class="original">You see only the exports of the packages that you use directly. If you
 use package A, and package A uses package B, then you only see package
 A&apos;s exports. Package B&apos;s exports don&apos;t &quot;leak&quot; into your namespace just
 because you used package A. This keeps each namespace nice and
 tidy. Each app or package only sees their own globals plus the APIs of
 the packages that they specifically asked for.</p>
 
-<p>When debugging your app, your browser&apos;s JavaScript console behaves as
+<p class="translation">
+&#x3042;&#x306A;&#x305F;&#x306F;&#x3001;&#x76F4;&#x63A5;&#x3064;&#x304B;&#x3046;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3060;&#x3051;&#x898B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x3082;&#x3057;&#x3042;&#x306A;&#x305F;&#x304C;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;A&#x3092;&#x4F7F;&#x3044;&#x3001;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;A&#x304C;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;B&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x3001;
+&#x898B;&#x3048;&#x308B;&#x306E;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;A&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;B&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x306F;&#x3042;&#x306A;&#x305F;&#x304C;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;A&#x3092;&#x3064;&#x304B;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x3089;&#x3068;&#x3044;&#x3063;&#x3066;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306B;&quot;&#x6F0F;&#x308C;&quot;&#x305F;&#x308A;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;
+&#x3053;&#x3046;&#x3057;&#x3066;&#x3001;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306F;&#x304D;&#x308C;&#x3044;&#x306B;&#x4FDD;&#x305F;&#x308C;&#x307E;&#x3059;&#x3002;
+&#x5404;&#x30A2;&#x30D7;&#x30EA;&#x307E;&#x305F;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x3001;&#x305D;&#x308C;&#x305E;&#x308C;&#x5404;&#x81EA;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3068;&#x3001;&#x660E;&#x793A;&#x7684;&#x306B;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;API&#x306E;&#x307F;&#x3001;&#x898B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x306E;&#x3067;&#x3059;&#x3002;
+</p>
+
+<p class="original">When debugging your app, your browser&apos;s JavaScript console behaves as
 if it were attached to your app&apos;s namespace. You see your app&apos;s
 globals and the exports of the packages that your app uses
 directly. You don&apos;t see the variables from inside those packages, and
@@ -5544,10 +5601,20 @@ you don&apos;t see the exports of your transitive dependencies (packages
 that aren&apos;t used directly by your app, but that are used by packages
 that are used by your app).</p>
 
-<p>If you want to look inside packages from inside your in-browser
+<p class="translation">
+&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x3092;&#x30C7;&#x30D0;&#x30C3;&#x30B0;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306E;JavaScript&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x306F;&#x3001;&#x3042;&#x305F;&#x304B;&#x3082;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306B;&#x63A5;&#x7D9A;&#x3055;&#x308C;&#x305F;&#x304B;&#x306E;&#x3088;&#x3046;&#x306B;&#x632F;&#x308B;&#x821E;&#x3044;&#x307E;&#x3059;&#x3002;
+&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3068;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x304C;&#x76F4;&#x63A5;&#x4F7F;&#x3046;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x5909;&#x6570;&#x3092;&#x898B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x3053;&#x308C;&#x3089;&#x76F4;&#x63A5;&#x5229;&#x7528;&#x3059;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x5185;&#x5074;&#x306E;&#x5909;&#x6570;&#x3084;&#x3001;&#x9593;&#x63A5;&#x7684;&#x306A;&#x4F9D;&#x5B58;&#x6027;&#xFF08;&#x76F4;&#x63A5;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x304B;&#x3089;&#x5229;&#x7528;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x304C;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x304C;&#x4F7F;&#x3046;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#x3064;&#x304B;&#x3063;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#xFF09;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x5909;&#x6570;&#x306F;&#x898B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;
+</p>
+
+
+<p class="original">If you want to look inside packages from inside your in-browser
 debugger, you&apos;ve got two options:</p>
 
-<ul>
+<p class="translation">
+&#x3082;&#x3057;&#x3001;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306E;&#x4E2D;&#x306E;&#x30C7;&#x30D0;&#x30C3;&#x30AC;&#x304B;&#x3089;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x4E2D;&#x8EAB;&#x304C;&#x898B;&#x305F;&#x3044;&#x306E;&#x306A;&#x3089;&#x3001;&#xFF12;&#x3064;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;:</p>
+
+<ul class="original">
 <li><p>Set a breakpoint inside package code. While stopped on that
 breakpoint, the console will be in the package&apos;s namespace. You&apos;ll
 see the package&apos;s package-scope variables, imports, and also any
@@ -5559,11 +5626,27 @@ you can access <code>Package.email.Email.send</code> even from namespaces that
 don&apos;t use the <code>email</code> package directly.</p></li>
 </ul>
 
-<p>When declaring functions, keep in mind that <code>function x () {}</code> is just
+
+<ul class="translation">
+<li><p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x30D6;&#x30EC;&#x30FC;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#x3002;&#x30D6;&#x30EC;&#x30FC;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3067;&#x6B62;&#x307E;&#x3063;&#x3066;&#x3044;&#x308B;&#x9593;&#x306F;&#x3001;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306B;&#x3044;&#x307E;&#x3059;&#x3002;
+&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;&#x5909;&#x6570;&#x3001;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3001;&#x305D;&#x308C;&#x306B;&#x6B62;&#x3081;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5185;&#x306E;&#x5168;&#x3066;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x5909;&#x6570;&#x3092;&#x898B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+</p></li>
+<li><p>
+&#x3082;&#x3057;&#x3001;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;<code>foo</code>&#x304C;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x306B;&#x5165;&#x3063;&#x3066;&#x3044;&#x305F;&#x3089;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x304C;&#x305D;&#x308C;&#x3092;&#x76F4;&#x63A5;&#x3064;&#x304B;&#x3046;&#x304B;&#x3069;&#x3046;&#x304B;&#x306B;&#x95A2;&#x308F;&#x3089;&#x305A;&#x3001;
+&#x305D;&#x308C;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x306F;<code>Package.foo</code>&#x306E;&#x4E2D;&#x3067;&#x5229;&#x7528;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;<code>email</code> &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x3089;&#x3001;
+&#x305F;&#x3068;&#x3048;&#x3001;<code>email</code>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x76F4;&#x63A5;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x304B;&#x3089;&#x3067;&#x3082;&#x3001;<code>Package.email.Email.send</code> &#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;
+</p></li></ul>
+
+<p class="original">When declaring functions, keep in mind that <code>function x () {}</code> is just
 shorthand for <code>var x = function x () {}</code> in JavaScript. Consider these
 examples:</p>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">// This is the same as &apos;var x = function x () ...&apos;. So x() is</span>
+<p class="translation">
+function&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x6642;&#x3001;JavaScript&#x3067;&#x306F;&#x3001;<code>function x () {}</code>&#x306F;&#x3001;&#x5358;&#x306B;<code>var x = function x () {}</code>&#x306E;&#x7701;&#x7565;&#x5F62;&#x3067;&#x3042;&#x308B;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
+&#x3053;&#x308C;&#x3089;&#x306E;&#x4F8B;&#x3092;&#x8003;&#x3048;&#x3066;&#x307F;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
+</p>
+
+<pre class="original"><code class="hljs javascript"><span class="hljs-comment">// This is the same as &apos;var x = function x () ...&apos;. So x() is</span>
 <span class="hljs-comment">// file-scope and can be called only from within this one file.</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span> <span class="hljs-params">()</span> </span>{ ... }
 
@@ -5572,7 +5655,18 @@ examples:</p>
 x = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ ... }
 </code></pre>
 
-<div class="note">
+
+<pre class="translation"><code class="hljs javascript"><span class="hljs-comment">// &#x3053;&#x308C;&#x306F; &apos;var x = function x () ...&apos; &#x3068;&#x540C;&#x3058;&#x3002;&#x3064;&#x307E;&#x308A;&#x3001;x() &#x306F;</span>
+<span class="hljs-comment">// &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3067;&#x3042;&#x308A;&#x3001;&#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E2D;&#x3060;&#x3051;&#x3067;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span> <span class="hljs-params">()</span> </span>{ ... }
+
+<span class="hljs-comment">// &apos;var&apos; &#x304C;&#x3064;&#x3044;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;, &#x3064;&#x307E;&#x308A; x() &#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3067;&#x3001;</span>
+<span class="hljs-comment">// &#x3053;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x307E;&#x305F;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x3069;&#x3053;&#x304B;&#x3089;&#x3067;&#x3082;&#x547C;&#x3073;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</span>
+x = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ ... }
+</code></pre>
+
+
+<div class="note original">
   <p>Technically speaking, globals in an app (as opposed to in a package)
 are actually true globals. They can&apos;t be captured in a scope that is
 private to the app code, because that would mean that they wouldn&apos;t be
@@ -5583,6 +5677,19 @@ still be properly shadowed by declarations in the packages). You
 certainly shouldn&apos;t depend on this quirk, and in the future Meteor may
 check for it and throw an error if you do.</p>
 </div>
+
+<div class="note translation">
+  <p>Technically speaking, globals in an app (as opposed to in a package)
+are actually true globals. They can&apos;t be captured in a scope that is
+private to the app code, because that would mean that they wouldn&apos;t be
+visible in the console during debugging! This means that app globals
+actually end up being visible in packages. That should never be a
+problem for properly written package code (since the app globals will
+still be properly shadowed by declarations in the packages). You
+certainly shouldn&apos;t depend on this quirk, and in the future Meteor may
+check for it and throw an error if you do.</p>
+</div>
+
 <h2 id="/full/deploying">Deploying</h2>
 
 <p>Meteor is a full application server.  We include everything you need
