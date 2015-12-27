@@ -63,7 +63,7 @@ function saveJsonFiles() {
 
 function generate(file) {
   if (!/\.html$/.test(file)) return;
-  var content = fs.readFileSync(file, 'utf8');
+  var content = fs.readFileSync(path.join('work', file), 'utf8');
   var $ = cheerio.load(content);
   $('.translation').each(function() {
     var element = $(this);
@@ -77,5 +77,5 @@ function generate(file) {
   });
 }
 
-fs.readdirSync('sources').forEach(generate);
+fs.readdirSync('work').forEach(generate);
 saveJsonFiles();
