@@ -4270,7 +4270,7 @@
   
   
     <h3>
-        <a href="https://atmospherejs.com/meteor/spiderable?__hstc=256467284.7d274332f02b5fab499c8456746106ba.1451205636621.1451205636621.1451205636621.1&amp;__hssc=256467284.1.1451205636622&amp;__hsfp=1614345591" class="">
+        <a href="https://atmospherejs.com/meteor/spiderable?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591" class="">
           spiderable
         </a>
       </h3>
@@ -4796,10 +4796,10 @@ with the project!</p>
 </div>
   <h1 id="concepts">Concepts</h1>
 
-<p>We&apos;ve written our fair share of single-page JavaScript applications by hand.
+We&apos;ve written our fair share of single-page JavaScript applications by hand.
 Writing an entire application in one language (JavaScript) with one
 data format (JSON) is a real joy.  Meteor is everything we wanted
-when writing those apps.</p>
+when writing those apps.
 
 <h2 id="/full/whatismeteor">What is Meteor?</h2>
 
@@ -4817,7 +4817,7 @@ lets your app send emails, or the Meteor Accounts series (<code>accounts-passwor
 <code>accounts-facebook</code>, <code>accounts-ui</code>, and others) which provide a full-featured
 user account system that you can drop right into your app. In addition to
 these &quot;core&quot; packages, there are thousands of community-written packages in
-<a href="https://atmospherejs.com/?__hstc=256467284.7d274332f02b5fab499c8456746106ba.1451205636621.1451205636621.1451205636621.1&amp;__hssc=256467284.1.1451205636622&amp;__hsfp=1614345591">Atmosphere</a>, one of which might do just what you
+<a href="https://atmospherejs.com/?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Atmosphere</a>, one of which might do just what you
 need.</p></li>
 <li><p>A <em>command-line tool</em> called <code>meteor</code>.</p>
 
@@ -5319,7 +5319,7 @@ Meteor templates when compiled.</p>
 <div class="note">
   <p>Today, the only templating system that ships with Meteor is Spacebars, though
   our community has created packages for other languages such as
-  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.7d274332f02b5fab499c8456746106ba.1451205636621.1451205636621.1451205636621.1&amp;__hssc=256467284.1.1451205636622&amp;__hsfp=1614345591">Jade</a>.</p>
+  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Jade</a>.</p>
 </div>
 
 <p>To define templates, create a file in your project with the <code>.html</code>
@@ -5463,7 +5463,7 @@ HTML templates).</p>
 
 <p>Anyone can publish a Meteor package, and thousands of community-written packages
 have been published to date. The easiest way to browse these packages is
-<a href="http://www.atmospherejs.com/?__hstc=256467284.7d274332f02b5fab499c8456746106ba.1451205636621.1451205636621.1451205636621.1&amp;__hssc=256467284.1.1451205636622&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
+<a href="http://www.atmospherejs.com/?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
 You can also use the <a href="#meteorsearch"><code>meteor search</code></a> and
 <a href="#meteorshow"><code>meteor show</code></a> commands.</p>
 
@@ -5497,16 +5497,25 @@ packages outside of your app&apos;s folder structure, set the environment variab
 <code>PACKAGE_DIRS</code> to a colon-delimited list of paths.</p>
 <p></p><h2 id="/full/namespacing">Namespacing</h2><p></p>
 
-<p>Meteor&apos;s namespacing support makes it easy to write large applications
+<p class="original">Meteor&apos;s namespacing support makes it easy to write large applications
 in JavaScript. Each package that you use in your app exists in its own
 separate namespace, meaning that it sees only its own global variables
 and any variables provided by the packages that it specifically
 uses. Here&apos;s how it works.</p>
 
-<p>When you declare a top-level variable, you have a choice. You can make
+<p class="translation">Meteorの名前空間サポートはJavaScriptでの大規模アプリケーションの作成を容易にします。
+あなたのアプリで利用するそれぞれのパッケージは、それぞれ独自に分けられた名前空間の中に存在しています。
+つまり、各パッケージは自分のグローバル変数と、そこから明示的に利用しているパッケージの変数のみを参照するということです。
+以下、どのように動くかという説明です。</p>
+
+<p class="original">When you declare a top-level variable, you have a choice. You can make
 the variable File Scope or Package Scope.</p>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">// File Scope. This variable will be visible only inside this</span>
+
+<p class="translation">トップレベルの変数を宣言するとき、あなたには選択肢があります。
+ファイル・スコープにするか、またはパッケージ・スコープにするかです。</p>
+
+<pre class="original"><code class="hljs javascript"><span class="hljs-comment">// File Scope. This variable will be visible only inside this</span>
 <span class="hljs-comment">// one file. Other files in this app or package won&apos;t see it.</span>
 <span class="hljs-keyword">var</span> alicePerson = {name: <span class="hljs-string">&quot;alice&quot;</span>};
 
@@ -5516,12 +5525,30 @@ the variable File Scope or Package Scope.</p>
 bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
 </code></pre>
 
-<p>Notice that this is just the normal JavaScript syntax for declaring a
+<pre class="translation"><code class="hljs javascript">
+<span class="hljs-comment">// ファイルスコープ。この変数は、この１ファイルの中でのみ参照可能です。</span>
+<span class="hljs-comment">// このアプリの他のファイルやパッケージからは参照するとができません。</span>
+<span class="hljs-keyword">var</span> alicePerson = {name: <span class="hljs-string">&quot;alice&quot;</span>};
+
+<span class="hljs-comment">// パッケージスコープ。 この変数は、このパッケージまたはアプリのどのファイルからも参照できます。</span>
+<span class="hljs-comment">// 違いは、&apos;var&apos; が省略されている点です。</span>
+bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
+</code></pre>
+
+
+<p class="original">Notice that this is just the normal JavaScript syntax for declaring a
 variable that is local or global. Meteor scans your source code for
 global variable assignments and generates a wrapper that makes sure
 that your globals don&apos;t escape their appropriate namespace.</p>
 
-<p>In addition to File Scope and Package Scope, there are also
+
+<p class="translation">これはJavaScriptの通常の、ローカルまたは
+グローバル変数を宣言するシンタックスであるということに注意をしてください。
+Meteorはあなたのソースコードをスキャンして、グローバル変数の割当てを探し、
+あなたのグローバル変数が正しい名前空間から漏れないようにするためのラッパーを生成します。</p>
+
+
+<p class="original">In addition to File Scope and Package Scope, there are also
 Exports. An export is a variable that a package makes available to you
 when you use it. For example, the <code>email</code> package exports the <code>Email</code>
 variable. If your app uses the <code>email</code> package (and <em>only</em> if it uses
@@ -5530,14 +5557,36 @@ the <code>email</code> package!) then your app can see <code>Email</code> and yo
 might have two or three (for example, a package that provides several
 classes that work together).</p>
 
-<p>You see only the exports of the packages that you use directly. If you
+<p class="translation">
+ファイルスコープとパッケージスコープに加えて、エクスポートもあります。
+エクスポートとは、パッケージがあなたがつかえるように、ある変数を提供するための仕組みです。
+たとえば、<code>email</code>パッケージは<code>Email</code>変数をエクスポートします。
+もしあなたのアプリが<code>email</code>パッケージを使う(そして、
+あなたが<code>email</code>パッケージ<em>だけ</em>を使う!)のなら、
+あなたのアプリは<code>Email</code>を参照でき、<code>Email.send</code>を呼ぶことができます。
+ほとんどのパッケージはエクスポートを１つだけ持っていますが、
+いくつかのパッケージはエクスポートを２つか３つもっていることもあります。
+（例えば、互いに動作する幾つかのクラスを提供するパッケージなど）
+</p>
+
+<p class="original">You see only the exports of the packages that you use directly. If you
 use package A, and package A uses package B, then you only see package
 A&apos;s exports. Package B&apos;s exports don&apos;t &quot;leak&quot; into your namespace just
 because you used package A. This keeps each namespace nice and
 tidy. Each app or package only sees their own globals plus the APIs of
 the packages that they specifically asked for.</p>
 
-<p>When debugging your app, your browser&apos;s JavaScript console behaves as
+<p class="translation">
+あなたは、直接つかうパッケージのエクスポートだけ見ることができます。
+もしあなたがパッケージAを使い、パッケージAがパッケージBを使っているとき、
+見えるのはパッケージAのエクスポートだけです。
+パッケージBのエクスポートはあなたがパッケージAをつかっているからといって、
+あなたの名前空間に&quot;漏れ&quot;たりしません。
+こうして、それぞれの名前空間はきれいに保たれます。
+各アプリまたはパッケージは、それぞれ各自のグローバル変数と、明示的に指定したパッケージのAPIのみ、見ることができるのです。
+</p>
+
+<p class="original">When debugging your app, your browser&apos;s JavaScript console behaves as
 if it were attached to your app&apos;s namespace. You see your app&apos;s
 globals and the exports of the packages that your app uses
 directly. You don&apos;t see the variables from inside those packages, and
@@ -5545,10 +5594,21 @@ you don&apos;t see the exports of your transitive dependencies (packages
 that aren&apos;t used directly by your app, but that are used by packages
 that are used by your app).</p>
 
-<p>If you want to look inside packages from inside your in-browser
+<p class="translation">
+あなたのアプリをデバッグするとき、ブラウザのJavaScriptコンソールは、あたかもあなたのアプリの名前空間に接続されたかのように振る舞います。
+あなたのアプリのグローバル変数とあなたのアプリが直接使うパッケージのエクスポート変数を見ることができます。
+これら直接利用するパッケージの内側の変数や、間接的な依存性
+（直接あなたのアプリから利用していないが、あなたのアプリが使うパッケージがつかっているパッケージ）のエクスポート変数は見ることができません。
+</p>
+
+
+<p class="original">If you want to look inside packages from inside your in-browser
 debugger, you&apos;ve got two options:</p>
 
-<ul>
+<p class="translation">
+もし、ブラウザの中のデバッガからパッケージの中身が見たいのなら、２つのオプションがあります:</p>
+
+<ul class="original">
 <li><p>Set a breakpoint inside package code. While stopped on that
 breakpoint, the console will be in the package&apos;s namespace. You&apos;ll
 see the package&apos;s package-scope variables, imports, and also any
@@ -5560,11 +5620,28 @@ you can access <code>Package.email.Email.send</code> even from namespaces that
 don&apos;t use the <code>email</code> package directly.</p></li>
 </ul>
 
-<p>When declaring functions, keep in mind that <code>function x () {}</code> is just
+
+<ul class="translation">
+<li><p>パッケージのコードにブレークポイントをセットする。ブレークポイントで止まっている間は、コンソールはパッケージの名前空間にいます。
+パッケージスコープの変数、インポート、それに止めたファイル内の全てのファイルスコープ変数を見ることができます。
+</p></li>
+<li><p>
+もし、パッケージ<code>foo</code>があなたのアプリに入っていたら、あなたのアプリがそれを直接つかうかどうかに関わらず、
+それのエクスポートは<code>Package.foo</code>の中で利用可能です。例えば、<code>email</code> パッケージが読み込まれたら、
+たとえ、<code>email</code>パッケージを直接使わない名前空間からでも、<code>Package.email.Email.send</code> にアクセス可能です。
+</ul>
+
+<p class="original">When declaring functions, keep in mind that <code>function x () {}</code> is just
 shorthand for <code>var x = function x () {}</code> in JavaScript. Consider these
 examples:</p>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">// This is the same as &apos;var x = function x () ...&apos;. So x() is</span>
+<p class="translation">
+functionを宣言する時、JavaScriptでは、<code>function x () {}</code>は、
+単に<code>var x = function x () {}</code>の省略形であるということに注意してください。
+これらの例を考えてみてください。
+</p>
+
+<pre class="original"><code class="hljs javascript"><span class="hljs-comment">// This is the same as &apos;var x = function x () ...&apos;. So x() is</span>
 <span class="hljs-comment">// file-scope and can be called only from within this one file.</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span> <span class="hljs-params">()</span> </span>{ ... }
 
@@ -5573,8 +5650,19 @@ examples:</p>
 x = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ ... }
 </code></pre>
 
+
+<pre class="translation"><code class="hljs javascript"><span class="hljs-comment">// これは &apos;var x = function x () ...&apos; と同じ。つまり、x() は</span>
+<span class="hljs-comment">// ファイルスコープであり、このファイルの中だけで呼び出すことができます。</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span> <span class="hljs-params">()</span> </span>{ ... }
+
+<span class="hljs-comment">// &apos;var&apos; がついていません, つまり x() はパッケージスコープで、</span>
+<span class="hljs-comment">// このアプリまたはパッケージのどこからでも呼び出すことができます。</span>
+x = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ ... }
+</code></pre>
+
+
 <div class="note">
-  <p>Technically speaking, globals in an app (as opposed to in a package)
+  <p class="original">Technically speaking, globals in an app (as opposed to in a package)
 are actually true globals. They can&apos;t be captured in a scope that is
 private to the app code, because that would mean that they wouldn&apos;t be
 visible in the console during debugging! This means that app globals
@@ -5583,7 +5671,19 @@ problem for properly written package code (since the app globals will
 still be properly shadowed by declarations in the packages). You
 certainly shouldn&apos;t depend on this quirk, and in the future Meteor may
 check for it and throw an error if you do.</p>
+
+<p class="translation">厳密にいうと、アプリの中（パッケージとは違い）のグローバル変数は、実際のところ、本当にグローバル変数です。
+これらの変数をアプリのコードに対してプライベートなスコープに閉じ込めることができません。
+なぜなら、デバッグするときにコンソールから見えなくなってしまうからです。
+これはつまり、アプリのグローバル変数は他のパッケージに見えてしまうということです。
+このことは正しく書かれたパッケージのコードには、決して問題になるようなことはありません。
+（なぜなら、アプリのグローバル変数は、パッケージの中の変数宣言によって正しくシャドーイングされるからです）
+当然のことながら、この変わった挙動に依存するべきではありません。
+Meteorは将来、チェックをしてもしあなたがそんなことをしていたらエラーを投げるかも知れません。
+</p>
+
 </div>
+
 <h2 id="/full/deploying">Deploying</h2>
 
 <p>Meteor is a full application server.  We include everything you need
@@ -12343,28 +12443,6 @@ being logged in.</li>
 
 
 
-<div class="api new-api-box">
-  <h3 id="/full/Accounts-emailTemplates" class="api-title">
-    <div class="locus">
-      Server
-    </div>
-
-    <a class="name selflink" href="#/full/accounts_emailtemplates">Accounts.emailTemplates</a>
-
-    
-  </h3>
-
-  <div class="desc">
-    <p>Options to customize emails sent from the Accounts system.</p>
-  </div>
-
-  
-
-  
-
-  
-</div>
-
 
 <p>This is an <code>Object</code> with several fields that are used to generate text/html
 for the emails sent by <code>sendResetPasswordEmail</code>, <code>sendEnrollmentEmail</code>,
@@ -12534,7 +12612,7 @@ with <code>&lt;template name=&quot;myTemplate&quot;&gt;</code>.</p>
 <pre><code class="hljs javascript">{{displayName <span class="hljs-string">&quot;John&quot;</span> <span class="hljs-string">&quot;Doe&quot;</span> title=<span class="hljs-string">&quot;President&quot;</span>}}
 </code></pre>
 
-<p>You can learn more about arguments to helpers in <a href="https://atmospherejs.com/meteor/spacebars?__hstc=256467284.7d274332f02b5fab499c8456746106ba.1451205636621.1451205636621.1451205636621.1&amp;__hssc=256467284.1.1451205636622&amp;__hsfp=1614345591">Spacebars
+<p>You can learn more about arguments to helpers in <a href="https://atmospherejs.com/meteor/spacebars?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591">Spacebars
 Readme</a>.</p>
 
 <p>Under the hood, each helper starts a new
