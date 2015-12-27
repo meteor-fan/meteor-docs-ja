@@ -31,6 +31,7 @@
 var fs = require('fs');
 var path = require('path');
 var cheerio = require('cheerio');
+var he = require('he');
 
 function normalize(str) {
   return str.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
@@ -83,7 +84,11 @@ function translate(file) {
   });
   $('head').append('<style>.original{display:none}</style>');
   $('body').append('<script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script>');
-  fs.writeFileSync(file, $.html(), 'utf8');
+  var fullhtml = $.html();
+  fullhtml = fullhtml.replace(/&#x\w{4};/g, function(match) {
+    return he.decode(match);
+  });
+  fs.writeFileSync(file, fullhtml, 'utf8');
 }
 
 fs.readdirSync('sources').forEach(translate);
