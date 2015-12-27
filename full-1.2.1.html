@@ -5651,60 +5651,77 @@ Meteorは将来、チェックをしてもしあなたがそんなことをし�
 </div>
 <h2 id="/full/deploying">Deploying</h2>
 
-<p>Meteor is a full application server.  We include everything you need
+<p class="original">Meteor is a full application server.  We include everything you need
 to deploy your application on the internet: you just provide the JavaScript,
-HTML, and CSS.</p>
+HTML, and CSS.</p><p class="translation">Meteorはフル・アプリケーションサーバーです。
+あなたのアプリケーションをインターネット上にデプロイするために必要な全てのものが既に入っています。
+あなたは単に、JavaScript、HTML、CSSを入れればいいのです。</p>
 
-<h3 class="nosection">Running on Meteor&apos;s infrastructure</h3>
+<h3 class="nosection original">Running on Meteor&apos;s infrastructure</h3><h3 class="nosection translation">Meteorのインフラで走らせる</h3>
 
-<p>The easiest way to deploy your application is to use <code>meteor
+<p class="original">The easiest way to deploy your application is to use <code>meteor
 deploy</code>.  We provide it because it&apos;s what, personally, we&apos;ve always
 wanted: an easy way to take an app idea, flesh it out over a weekend,
 and put it out there for the world to use, with nothing getting in the
-way of creativity.</p>
+way of creativity.</p><p class="translation">あなたのアプリケーションをデプロイするための最も簡単な方法は、<code>meteor deploy</code> コマンドを使うことです。
+私達がこれを提供するのは、個人的に、ずっと欲しいとおもってたものだからです。
+それは、アイディアが浮かんだら、週末で形にして、創造性を妨げずに世界中でつかってもらうようにするということです。</p>
 
 <pre><code class="hljs bash">meteor deploy myapp.meteor.com
 </code></pre>
 
-<p>Your application is now available at myapp.meteor.com.  If
+<p class="original">Your application is now available at myapp.meteor.com.  If
 this is the first time deploying to this hostname, Meteor creates a
 fresh empty database for your application.  If you want to deploy an
 update, Meteor will preserve the existing data and just refresh the
-code.</p>
+code.</p><p class="translation">あなたのアプリケーションは、myapp.meteor.comで使えるようになりました。
+もし、これがこのホスト名にデプロイする初回であれば、Meteorあなたのアプリケーションに新しい空のデータベースを作ります。
+もし、変更をデプロイしたいのであれば、Meteorは既存のデータを保存して、単にコードをリフレッシュします。
+</p>
 
-<p>You can also deploy to your own domain.  Just set up the hostname you
-want to use as a CNAME to <code>origin.meteor.com</code>, then deploy to that name.</p>
+<p class="original">You can also deploy to your own domain.  Just set up the hostname you
+want to use as a CNAME to <code>origin.meteor.com</code>, then deploy to that name.</p><p class="translation">自分のドメインへもデプロイすることができます。
+使いたいホスト名のCNAMEを、<code>origin.meteor.com</code>にセットし、その名前でdeployしてください。</p>
 
 <pre><code class="hljs bash">meteor deploy www.myapp.com
 </code></pre>
 
-<p>We provide this as a free service so you can try Meteor.  It is also
+<p class="original">We provide this as a free service so you can try Meteor.  It is also
 helpful for quickly putting up internal betas, demos, and so on. For
-more information, see <a href="#meteordeploy">meteor deploy</a>.</p>
+more information, see <a href="#meteordeploy">meteor deploy</a>.</p><p class="translation">あなたがMeteorを試せるように、我々はこれを無料のサービスとして提供しています。
+これは内部ベータや、デモなどを簡単に立ち上げるのにも役に立ちます。
+詳細は<a href="#meteordeploy">meteor deploy</a>を見てください。</p>
 
-<h3 class="nosection">Running on your own infrastructure</h3>
+<h3 class="nosection original">Running on your own infrastructure</h3><h3 class="nosection translation">あなたの自分のインフラ上で走らせる</h3>
 
-<p>You can also run your application on your own infrastructure or any
-hosting provider that can run Node.js apps.</p>
+<p class="original">You can also run your application on your own infrastructure or any
+hosting provider that can run Node.js apps.</p><p class="translation">あなたのアプリケーションをあなた自身のインフラの上で走らせることができます。
+また、Node.jsアプリを実行できるどんなホスティングサービスの上でも走らせることができます。</p>
 
-<p>To get started, run</p>
+<p class="original">To get started, run</p><p class="translation">開始するために、以下を実行してください</p>
 
 <pre><code class="hljs bash">meteor build my_directory
 </code></pre>
 
-<p>This command will generate a fully-contained Node.js application in the form of
+<p class="original">This command will generate a fully-contained Node.js application in the form of
 a tarball.  To run this application, you need to provide Node.js 0.10 and a
 MongoDB server.  (The current release of Meteor has been tested with Node
 0.10.40.) You can then run the application by invoking node, specifying the
-HTTP port for the application to listen on, and the MongoDB endpoint.</p>
+HTTP port for the application to listen on, and the MongoDB endpoint.</p><p class="translation">
+このコマンドは、全てを含んだNode.jsアプリケーションをtarアーカイブ形式で生成します。
+このアプリケーションを走らせるには、Node.js 0.10とMongoDBサーバーが必要です。
+(最新リリースのMeteorは、Node 0.10.40でテストされています。)
+nodeを起動し、アプリケーションのHTTPポートとMongoDBのエンドポイントを指定することでこのアプリケーションを実行することができます。</p>
 
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> my_directory
 (<span class="hljs-built_in">cd</span> programs/server &amp;&amp; npm install)
 env PORT=<span class="hljs-number">3000</span> MONGO_URL=mongodb://localhost:<span class="hljs-number">27017</span>/myapp node main.js
 </code></pre>
 
-<p>Some packages might require other environment variables. For example,
-the <code>email</code> package requires a <code>MAIL_URL</code> environment variable.</p>
+<p class="original">Some packages might require other environment variables. For example,
+the <code>email</code> package requires a <code>MAIL_URL</code> environment variable.</p><p class="translation">
+いくつかのパッケージは他の環境変数を必要とするかもしれません。
+例えば、<code>email</code> パッケージは、環境変数<code>MAIL_URL</code> を必要とします。</p>
 <p></p><h2 id="/full/writingpackages">Writing packages</h2><p></p>
 
 <p>Writing Meteor packages is easy. To initialize a meteor package, run

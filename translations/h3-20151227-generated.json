@@ -6,5 +6,7 @@
   "Running on a simulator": "シミュレータで動作確認",
   "Running on a device": "実機で動作確認",
   "Configuring app icons and metadata": "アプリのアイコンとメタデータの設定",
-  "Special Directories": "特別なディレクトリ"
+  "Special Directories": "特別なディレクトリ",
+  "Running on Meteor&apos;s infrastructure": "Meteorのインフラで走らせる",
+  "Running on your own infrastructure": "あなたの自分のインフラ上で走らせる"
 }
