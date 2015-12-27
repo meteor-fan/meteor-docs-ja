@@ -5513,7 +5513,7 @@ the variable File Scope or Package Scope.</p>
 
 
 <p class="translation">トップレベルの変数を宣言するとき、あなたには選択肢があります。
-ファイル・スコープにするか、またはパッケージ・スコープにするかを選べます。</p>
+ファイル・スコープにするか、またはパッケージ・スコープにするかです。</p>
 
 <pre class="original"><code class="hljs javascript"><span class="hljs-comment">// File Scope. This variable will be visible only inside this</span>
 <span class="hljs-comment">// one file. Other files in this app or package won&apos;t see it.</span>
@@ -5542,8 +5542,10 @@ global variable assignments and generates a wrapper that makes sure
 that your globals don&apos;t escape their appropriate namespace.</p>
 
 
-<p class="translation">これはJavaScriptの通常の、ローカルまたはグローバル変数を宣言するシンタックスであるということに注意をしてください。
-Meteorはあなたのソースコードをスキャンして、グローバル変数の割当てを探し、あなたのグローバル変数が正しい名前空間から漏れないようにするためのラッパーを生成します。</p>
+<p class="translation">これはJavaScriptの通常の、ローカルまたは
+グローバル変数を宣言するシンタックスであるということに注意をしてください。
+Meteorはあなたのソースコードをスキャンして、グローバル変数の割当てを探し、
+あなたのグローバル変数が正しい名前空間から漏れないようにするためのラッパーを生成します。</p>
 
 
 <p class="original">In addition to File Scope and Package Scope, there are also
@@ -5558,9 +5560,13 @@ classes that work together).</p>
 <p class="translation">
 ファイルスコープとパッケージスコープに加えて、エクスポートもあります。
 エクスポートとは、パッケージがあなたがつかえるように、ある変数を提供するための仕組みです。
-たとえば、emailパッケージはEmail変数をエクスポートします。
-もしあなたのアプリがemailパッケージを使う(そして、あなたがemailパッケージ<em>だけ</em>を使う!)のなら、あなたのアプリはEmailを参照でき、Email.sendを呼ぶことができます。
-ほとんどのパッケージはエクスポートを１つだけ持っていますが、いくつかのパッケージはエクスポートを２つか３つもっていることもあります。（例えば、互いに動作する幾つかのクラスを提供するパッケージなど）
+たとえば、<code>email</code>パッケージは<code>Email</code>変数をエクスポートします。
+もしあなたのアプリが<code>email</code>パッケージを使う(そして、
+あなたが<code>email</code>パッケージ<em>だけ</em>を使う!)のなら、
+あなたのアプリは<code>Email</code>を参照でき、<code>Email.send</code>を呼ぶことができます。
+ほとんどのパッケージはエクスポートを１つだけ持っていますが、
+いくつかのパッケージはエクスポートを２つか３つもっていることもあります。
+（例えば、互いに動作する幾つかのクラスを提供するパッケージなど）
 </p>
 
 <p class="original">You see only the exports of the packages that you use directly. If you
@@ -5573,7 +5579,9 @@ the packages that they specifically asked for.</p>
 <p class="translation">
 あなたは、直接つかうパッケージのエクスポートだけ見ることができます。
 もしあなたがパッケージAを使い、パッケージAがパッケージBを使っているとき、
-見えるのはパッケージAのエクスポートだけです。パッケージBのエクスポートはあなたがパッケージAをつかっているからといって、あなたの名前空間に&quot;漏れ&quot;たりしません。
+見えるのはパッケージAのエクスポートだけです。
+パッケージBのエクスポートはあなたがパッケージAをつかっているからといって、
+あなたの名前空間に&quot;漏れ&quot;たりしません。
 こうして、それぞれの名前空間はきれいに保たれます。
 各アプリまたはパッケージは、それぞれ各自のグローバル変数と、明示的に指定したパッケージのAPIのみ、見ることができるのです。
 </p>
@@ -5589,7 +5597,8 @@ that are used by your app).</p>
 <p class="translation">
 あなたのアプリをデバッグするとき、ブラウザのJavaScriptコンソールは、あたかもあなたのアプリの名前空間に接続されたかのように振る舞います。
 あなたのアプリのグローバル変数とあなたのアプリが直接使うパッケージのエクスポート変数を見ることができます。
-これら直接利用するパッケージの内側の変数や、間接的な依存性（直接あなたのアプリから利用していないが、あなたのアプリが使うパッケージがつかっているパッケージ）のエクスポート変数は見ることができません。
+これら直接利用するパッケージの内側の変数や、間接的な依存性
+（直接あなたのアプリから利用していないが、あなたのアプリが使うパッケージがつかっているパッケージ）のエクスポート変数は見ることができません。
 </p>
 
 
@@ -5627,7 +5636,8 @@ shorthand for <code>var x = function x () {}</code> in JavaScript. Consider thes
 examples:</p>
 
 <p class="translation">
-functionを宣言する時、JavaScriptでは、<code>function x () {}</code>は、単に<code>var x = function x () {}</code>の省略形であるということに注意してください。
+functionを宣言する時、JavaScriptでは、<code>function x () {}</code>は、
+単に<code>var x = function x () {}</code>の省略形であるということに注意してください。
 これらの例を考えてみてください。
 </p>
 
@@ -5651,8 +5661,8 @@ x = <span class="hljs-function"><span class="hljs-keyword">function</span> <span
 </code></pre>
 
 
-<div class="note original">
-  <p>Technically speaking, globals in an app (as opposed to in a package)
+<div class="note">
+  <p class="original">Technically speaking, globals in an app (as opposed to in a package)
 are actually true globals. They can&apos;t be captured in a scope that is
 private to the app code, because that would mean that they wouldn&apos;t be
 visible in the console during debugging! This means that app globals
@@ -5661,18 +5671,17 @@ problem for properly written package code (since the app globals will
 still be properly shadowed by declarations in the packages). You
 certainly shouldn&apos;t depend on this quirk, and in the future Meteor may
 check for it and throw an error if you do.</p>
-</div>
 
-<div class="note translation">
-  <p>Technically speaking, globals in an app (as opposed to in a package)
-are actually true globals. They can&apos;t be captured in a scope that is
-private to the app code, because that would mean that they wouldn&apos;t be
-visible in the console during debugging! This means that app globals
-actually end up being visible in packages. That should never be a
-problem for properly written package code (since the app globals will
-still be properly shadowed by declarations in the packages). You
-certainly shouldn&apos;t depend on this quirk, and in the future Meteor may
-check for it and throw an error if you do.</p>
+<p class="translation">厳密にいうと、アプリの中（パッケージとは違い）のグローバル変数は、実際のところ、本当にグローバル変数です。
+これらの変数をアプリのコードに対してプライベートなスコープに閉じ込めることができません。
+なぜなら、デバッグするときにコンソールから見えなくなってしまうからです。
+これはつまり、アプリのグローバル変数は他のパッケージに見えてしまうということです。
+このことは正しく書かれたパッケージのコードには、決して問題になるようなことはありません。
+（なぜなら、アプリのグローバル変数は、パッケージの中の変数宣言によって正しくシャドーイングされるからです）
+当然のことながら、この変わった挙動に依存するべきではありません。
+Meteorは将来、チェックをしてもしあなたがそんなことをしていたらエラーを投げるかも知れません。
+</p>
+
 </div>
 
 <h2 id="/full/deploying">Deploying</h2>
