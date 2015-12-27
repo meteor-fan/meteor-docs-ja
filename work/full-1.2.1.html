@@ -5608,27 +5608,25 @@ debugger, you&apos;ve got two options:</p>
 <p class="translation">
 もし、ブラウザの中のデバッガからパッケージの中身が見たいのなら、２つのオプションがあります:</p>
 
-<ul class="original">
-<li><p>Set a breakpoint inside package code. While stopped on that
+<ul>
+<li><p class="original">Set a breakpoint inside package code. While stopped on that
 breakpoint, the console will be in the package&apos;s namespace. You&apos;ll
 see the package&apos;s package-scope variables, imports, and also any
-file-scope variables for the file you&apos;re stopped in.</p></li>
-<li><p>If a package <code>foo</code> is included in your app, regardless of whether
+file-scope variables for the file you&apos;re stopped in.</p>
+<p class="translation">パッケージのコードにブレークポイントをセットする。ブレークポイントで止まっている間は、コンソールはパッケージの名前空間にいます。
+パッケージスコープの変数、インポート、それに止めたファイル内の全てのファイルスコープ変数を見ることができます。
+</p></li>
+<li>
+<p class="original">If a package <code>foo</code> is included in your app, regardless of whether
 your app uses it directly, its exports are available in
 <code>Package.foo</code>. For example, if the <code>email</code> package is loaded, then
 you can access <code>Package.email.Email.send</code> even from namespaces that
-don&apos;t use the <code>email</code> package directly.</p></li>
-</ul>
-
-
-<ul class="translation">
-<li><p>パッケージのコードにブレークポイントをセットする。ブレークポイントで止まっている間は、コンソールはパッケージの名前空間にいます。
-パッケージスコープの変数、インポート、それに止めたファイル内の全てのファイルスコープ変数を見ることができます。
-</p></li>
-<li><p>
-もし、パッケージ<code>foo</code>があなたのアプリに入っていたら、あなたのアプリがそれを直接つかうかどうかに関わらず、
+don&apos;t use the <code>email</code> package directly.</p>
+<p class="translation">もし、パッケージ<code>foo</code>があなたのアプリに入っていたら、あなたのアプリがそれを直接つかうかどうかに関わらず、
 それのエクスポートは<code>Package.foo</code>の中で利用可能です。例えば、<code>email</code> パッケージが読み込まれたら、
 たとえ、<code>email</code>パッケージを直接使わない名前空間からでも、<code>Package.email.Email.send</code> にアクセス可能です。
+</p>
+</li>
 </ul>
 
 <p class="original">When declaring functions, keep in mind that <code>function x () {}</code> is just
