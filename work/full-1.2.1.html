@@ -5755,6 +5755,15 @@ will take the package name from the name of the directory that contains the
 package.js file. Don&apos;t forget to run <code>meteor add [packagename]</code>, even if the
 package is internal to the app, in order to use it.</p>
 
+<p class="translation">
+Meteorのパッケージを書くのは簡単です。
+meteorパッケージを初期化するには、<code>meteor create --package username:packagename</code>を実行してください。
+<code>username</code> は、あなたのMeteor Developer usernameです。
+これはパッケージをスクラッチで作成し、ディレクトリーに、package.jsコントロールファイルといくつかのJavaScriptを生成します。
+デフォルトでは、Meteorはpackage.jsファイルが入っているディレクトリーの名前をパッケージ名として使います。
+パッケージを使うためには、仮にそのパッケージがアプリに内部的なものであっても、
+利用するためには<code>meteor add [packagename]</code>を実行するのをわすれないでください。</p>
+
 <p>Meteor promises repeatable builds for both packages and applications. This means
 that, if you built your package on a machine, then checked the code into a
 repository and checked it out elsewhere, you should get the same result. In your
@@ -5762,6 +5771,13 @@ package directory, you will find an automatically generated <code>.versions</cod
 file. This file specifies the versions of all packages used to build your
 package and is part of the source. Check it into version control to ensure
 repeatable builds across machines.</p>
+
+<p class="translation">
+Meteorはパッケージとアプリケーションの両方に繰り返し実行可能なビルドを保証します。 
+これはつまり、あなたがパッケージをあるコンピューターでつくり、リポジトリに入れ、そしてどこかでチェックアウトしたとして、同じ結果になるということです。
+あなたのパッケージ・ディレクトリに自動生成された<code>.versions</code>ファイルがつくられます。
+このファイルはソースの一部であり、あなたのパッケージをビルドするために使われるパッケージを指定します。
+コンピューターをまたいで繰り返し可能なビルドが出来るよう、このファイルをバージョン管理システムにチェックインしてください。</p>
 
 <div class="note">
   <p>Sometimes, packages do not just stand on their own, but function in the context
@@ -5771,6 +5787,11 @@ case, the app&apos;s context will take precedence. Rather than using the
 dependencies as used by the app (we think that, in practice, it would be
 confusing to find your local packages built with different versions of
 things).</p>
+
+  <p class="translation">
+パッケージは、時としてそれ自体では成立せず、アプリのコンテキストの中で機能します。（具体的には、アプリのpackagesディレクトリ内のパッケージ）
+この場合、アプリのコンテキストが優先されます。<code>.versions</code> ファイルをガイドとして使うのではなく、アプリに使われるのと同じ依存性をつかってパッケージをビルドします。
+（異なったバージョンをつかってビルドされたパッケージがローカルパッケージにあったら、実際問題として、混乱を招くと思います。）</p>
 </div>
 
 <p>Meteor uses extended semver versioning for its packages: that means that the version
@@ -5780,25 +5801,53 @@ number has three parts separated by dots: major version, minor version and patch
 Additionally, because some meteor packages wrap external libraries,
 Meteor supports the convention of using <code>_</code> to denote a wrap number.</p>
 
+<p class="translation">
+Meteorは、拡張されたsemverバージョニングをMeteorのパッケージに対して使います。
+これは、バージョン番号にドットで句切られた３つの部分があるということです。
+メジャーバジョン、マイナーバージョン、パッチバージョン（例えば、1.2.3）と、オプションでプレリリースバージョンが付きます。
+詳細は<a href="http://www.semver.org">semver.org</a>を読んで下さい。
+さらに、いくつかのmeteorパッケージは外部ライブラリを包含しているので、Meteorは、ラップバージョンを示すため、 <code>_</code> をつかうという規約をサポートしています。</p>
+
 <p>You can read more about <a href="#packagejs"><code>package.js</code></a> files in the API
 section.</p>
+<p class="translation"><a href="#packagejs"><code>package.js</code></a>ファイルについて、APIのセクションで詳細を確認してください。</p>
 
 <p>A word on testing: since testing is an important part of the development process,
 there are two common ways to test a package:</p>
 
+<p class="translation">テストは開発プロセスのなかの重要な部分なため、テストについて一言いっておきます。
+パッケージをテストするのに、二つの一般的な方法があります：</p>
+
+
 <ul>
-<li><p>Integration tests (putting a package directly into an application, and writing
+<li>
+<p>Integration tests (putting a package directly into an application, and writing
 tests against the application) is the most common way to test a package. After
 creating your package, add it to your app&apos;s /packages directory and run <code>meteor add</code>.
 This will add your package to your app as a local package. You can then
 test and run your app as usual. Meteor will detect and respond to changes to
-your local package, just as it does to your app files.</p></li>
-<li><p>Unit tests are run with the command <a href="#meteortestpackages"><code>meteor test-packages package-name</code></a>.
+your local package, just as it does to your app files.</p>
+
+<p class="translation">インテグレーションテスト（パッケージ・ディレクトリをアプリケーションに入れ、テストをアプリケーションに対して書く）は最も一般的な、パッケージをテストする方法です。
+あなたのパッケージを作った後、それをあなたのアプリの/packagesディレクトリに加え、<code>meteor add</code>を実行してください。
+この操作はパッケージをアプリのローカルパッケージに追加します。その後あなたのアプリのテストや実行をいつものようにすることができます。
+Meteorはあなたのローカルパッケージへの変更を、アプリのファイルに対して行われたのと同じように、検出し、応答します。
+</p>
+</li>
+<li>
+<p>Unit tests are run with the command <a href="#meteortestpackages"><code>meteor test-packages package-name</code></a>.
 As described in the <a href="#packagejs"><code>package.js</code></a>
 section, you can use the <code>package.js</code> file to specify where your unit tests are
 located. If you have a repository that contains only the package source, you can
 test your package by specifying the path to the package directory (which must
-contain a slash), such as <code>meteor test-packages ./</code>.</p></li>
+contain a slash), such as <code>meteor test-packages ./</code>.</p>
+
+<p class="translation">ユニットテストは、<a href="#meteortestpackages"><code>meteor test-packages package-name</code></a>コマンドで実行されます。
+<a href="#packagejs"><code>package.js</code></a>セクションで説明されているように、<code>package.js</code>ファイルはあなたのユニットテストの場所を指定するために使えます。
+もし、パッケージのソースだけを含むリポジトリがあるなら、パッケージのディレクトリ（スラッシュを含んでいなければいけません）を指定することでパッケージをテストすることができます。
+たとえば、<code>meteor test-packages ./</code>のようにしてください。</p>
+
+</li>
 </ul>
 
 <p>To publish a package, run <a href="#meteorpublish"><code>meteor publish</code></a> from the package
@@ -5808,6 +5857,11 @@ strict <a href="http://www.semver.org">semver</a> versioning) and their names
 must be prefixed with the username of the author and a colon, like so:
 <code>iron:router</code>. This namespacing allows for more descriptive and on-topic package
 names.</p>
+
+<p class="translation">パッケージを公開するためには、パッケージディレクトリから、<a href="#meteorpublish"><code>meteor publish</code></a> を実行してください。
+パッケージを公開するためにはいくつか追加の制限があります。それは、パッケージはバージョン (Meteorパッケージは<a href="http://www.semver.org">semver</a> バージョニングを使って厳格にバージョニングされています) を持っていなければいけません。また、<code>iron:router</code>のように、作者のユーザー名とコロンがパッケージ名の前についていなければいけません。
+この名前付けルールににより、より描写的でまとまりのあるパッケージ名にすることができます。</p>
+
   <h1 id="api">The Meteor API</h1>
 
 <p class="original">Your JavaScript code can run in two environments: the <em>client</em> (browser), and
