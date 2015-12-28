@@ -1,0 +1,12 @@
+{
+  "Default file loading": "デフォルトのファイル読み込み",
+  "Special directories": "特別なディレクトリ",
+  "Installing mobile SDKs": "モバイルSDKのインストール",
+  "Adding platforms": "プラットフォームの追加",
+  "Running on a simulator": "シミュレータで動作確認",
+  "Running on a device": "実機で動作確認",
+  "Configuring app icons and metadata": "アプリのアイコンとメタデータの設定",
+  "Special Directories": "特別なディレクトリ",
+  "Running on Meteor&apos;s infrastructure": "Meteorのインフラで走らせる",
+  "Running on your own infrastructure": "あなたの自分のインフラ上で走らせる"
+}
