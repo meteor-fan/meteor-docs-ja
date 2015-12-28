@@ -5291,20 +5291,27 @@ is a package called <a href="#tracker"><code>Tracker</code></a> that is fairly s
 You can use it yourself to implement new reactive data sources.</p>
 <h2 id="/full/livehtmltemplates">Live HTML templates</h2>
 
-<p>HTML templating is central to web applications. With Blaze, Meteor&apos;s live
+<p class="original">HTML templating is central to web applications. With Blaze, Meteor&apos;s live
 page update technology, you can render your HTML <em>reactively</em>, meaning
 that it will update automatically to track changes in the data used to
-generate it.</p>
+generate it.</p><p class="translation">HTMLテンプレートは、ウェブアプリケーションにとって中心的な存在です。
+Blazeを用いると、Meteorのライブページアップデート技術により、リアクティブにあなたのHTMLを描画できます。
+これは、描画するのに使ったデータの変更を追跡し、自動的に更新するということです。</p>
 
-<p>Meteor makes it easy to use your favorite HTML templating language along with
+<p class="original">Meteor makes it easy to use your favorite HTML templating language along with
 Meteor&apos;s live page update technology. Just write your template as you normally
-would, and Meteor will take care of making it update in realtime.</p>
+would, and Meteor will take care of making it update in realtime.</p><p class="translation">
+Meteorではあなたのお気に入りのHTMLテンプレート言語と一緒にMeteorのライブページアップデート技術を簡単に使えるようにしています。
+いつものようにあなたのテンプレートを書いてください。Meteorがリアルタイムに更新する作業を引き受けます。</p>
 
-<p>Meteor ships with a templating language called
+<p class="original">Meteor ships with a templating language called
 <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>,
 inspired by <a href="http://handlebarsjs.com/">Handlebars</a>.  It shares some of the
 spirit and syntax of Handlebars, but it has been tailored to produce reactive
-Meteor templates when compiled.</p>
+Meteor templates when compiled.</p><p class="translation">
+Meteorは<a href="http://handlebarsjs.com/">Handlebars</a>にインスパイアされた、
+<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>というテンプレート言語を提供しています。
+これはある程度、Handlebarsの考え方とシンタックスを共有したものですが、コンパイル時にリアクティブなMeteorテンプレートを生成するために改造されています。</p>
 
 <div class="note">
   <p>Today, the only templating system that ships with Meteor is Spacebars, though
@@ -5312,20 +5319,28 @@ Meteor templates when compiled.</p>
   <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.06c0d3fa064611691d66d2c578e27182.1445920650574.1445920650574.1445920650574.1&amp;__hssc=256467284.1.1445920650574&amp;__hsfp=1614345591">Jade</a>.</p>
 </div>
 
-<p>To define templates, create a file in your project with the <code>.html</code>
+<p class="original">To define templates, create a file in your project with the <code>.html</code>
 extension. In the file, make a <code>&lt;template&gt;</code> tag and give it a
 <code>name</code> attribute. Put the template contents inside the tag. Meteor
 will precompile the template, ship it down to the client, and make it
-available as on the global <code>Template</code> object.</p>
+available as on the global <code>Template</code> object.</p><p class="translation">
+テンプレートを定義するには、あなたのプロジェクトに拡張子<code>.html</code>のファイルを作ってください。
+そのファイルの中に、<code>&lt;template&gt;</code>タグを作り、<code>name</code>アトリビュートを付けてください。
+そのタグのなかにコンテンツを入れてください。
+Meteorはプリコンパイルして、クライアント側に送り、グローバルな<code>Template</code> オブジェクト上で利用可能にします。</p>
 
-<p>When your app is loaded, it automatically renders the special template called
+<p class="original">When your app is loaded, it automatically renders the special template called
 <code>&lt;body&gt;</code>, which is written using the <code>&lt;body&gt;</code> element instead of a
 <code>&lt;template&gt;</code>. You insert a template inside another template by using the
-<code>{{&gt; inclusion}}</code> operator.</p>
+<code>{{&gt; inclusion}}</code> operator.</p><p class="translation">あなたのアプリが読み込まれるとき、<code>&lt;body&gt;</code>という特別なテンプレートを描画します。
+これは、<code>&lt;template&gt;</code>の代わりに、<code>&lt;body&gt;</code> 要素を使って書かれたテンプレートです。
+あなたは、<code>{{&gt; inclusion}}</code>オペレーターを使って、あるテンプレートを別のテンプレートの中に挿入できます。</p>
 
-<p>The easiest way to get data into templates is by defining helper
+<p class="original">The easiest way to get data into templates is by defining helper
 functions in JavaScript. Define helpers with the
-<code>Template.templateName.helpers({ ... })</code> function. Putting it all together:</p>
+<code>Template.templateName.helpers({ ... })</code> function. Putting it all together:</p><p class="translation">テンプレートの中にデータを取り込む最も簡単な方法は、JavaScriptにhelper functionを定義することです。
+ヘルパーは<code>Template.templateName.helpers({ ... })</code>関数をつかって定義します。
+全て並べると:</p>
 
 <pre><code class="hljs html"><span class="hljs-comment">&lt;!-- in myapp.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
@@ -5356,7 +5371,7 @@ Template.forecast.helpers({
  =&gt; <span class="hljs-string">&quot;&lt;h1&gt;Today&apos;s weather!&lt;/h1&gt; &lt;div&gt;It&apos;ll be cool and dry tonight&lt;/div&gt;&quot;</span>
 </code></pre>
 
-<p>To iterate over an array or database cursor, use <code>{{#each}}</code>:</p>
+<p class="original">To iterate over an array or database cursor, use <code>{{#each}}</code>:</p><p class="translation">配列またはデータベースのカーソルをイテレートするには、<code>{{#each}}</code> をつかいます:</p>
 
 <pre><code class="hljs html"><span class="hljs-comment">&lt;!-- in myapp.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;players&quot;</span>&gt;</span>
@@ -5374,14 +5389,16 @@ Template.players.helpers({
 });
 </code></pre>
 
-<p>In this case, the data is coming from a database query. When the
+<p class="original">In this case, the data is coming from a database query. When the
 database cursor is passed to <code>{{#each}}</code>, it will wire up all of the
 machinery to efficiently add and move DOM nodes as new results enter
-the query.</p>
+the query.</p><p class="translation">この場合、データはデータベースのクエリーからやってきます。
+データベースのカーソルが<code>{{#each}}</code>に渡されると、全ての仕掛けが連動し、新しい結果がクエリに入るたびに、効果的にDOMノードを追加、移動させます。</p>
 
-<p>Helpers can take arguments, and they receive the current template context data
+<p class="original">Helpers can take arguments, and they receive the current template context data
 in <code>this</code>. Note that some block helpers change the current context (notably
-<code>{{#each}}</code> and <code>{{#with}}</code>):</p>
+<code>{{#each}}</code> and <code>{{#with}}</code>):</p><p class="translation">ヘルパーは引数を取ることができます。また、現在のテンプレートのコンテキスト・データを<code>this</code>で受け取ります。
+いくつかのブロック・ヘルパーはカレント・コンテキストが変わります。（特に、<code>{{#each}}</code> と <code>{{#with}}</code>です）：</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// in a JavaScript file</span>
 Template.players.helpers({
@@ -5404,7 +5421,7 @@ Template.players.helpers({
 <span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
 </code></pre>
 
-<p>Helpers can also be used to pass in constant data.</p>
+<p class="original">Helpers can also be used to pass in constant data.</p><p class="translation">ヘルパーは、定数値を渡すためにも使われます。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// Works fine with {{#each sections}}</span>
 Template.report.helpers({
@@ -5412,10 +5429,12 @@ Template.report.helpers({
 });
 </code></pre>
 
-<p>Finally, you can use the <code>events</code> function on a template to attach
+<p class="original">Finally, you can use the <code>events</code> function on a template to attach
 event handlers. The object passed into <code>events</code> is documented at
 <a href="#eventmaps">Event Maps</a>. The <code>this</code> argument to the event handler will
-be the data context of the element that triggered the event.</p>
+be the data context of the element that triggered the event.</p><p class="translation">最後に、<code>events</code> 関数をつかって、テンプレートにイベントハンドラを取り付けることができます。
+<code>events</code>に渡されるオブジェクトは、<a href="#eventmaps">Event Maps</a>に記述されています。
+イベントハンドラの引数<code>this</code> はイベントを起動した要素のデータコンテキストになります。</p>
 
 <pre><code class="hljs html"><span class="hljs-comment">&lt;!-- myapp.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;scores&quot;</span>&gt;</span>
@@ -5439,8 +5458,9 @@ Template.playerScore.events({
 });
 </code></pre>
 
-<p>For more details about Spacebars, read <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
-README</a>.</p>
+<p class="original">For more details about Spacebars, read <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
+README</a>.</p><p class="translation">Spacebarsに関する詳細は、<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
+README</a>をよんでください。</p>
 <h2 id="/full/usingpackages">Using packages</h2>
 
 <p class="original">All of the functionality you&apos;ve read about so far is implemented in standard
