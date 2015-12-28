@@ -31,7 +31,6 @@
 var fs = require('fs');
 var path = require('path');
 var cheerio = require('cheerio');
-var moment = require('moment');
 var he = require('he');
 
 function normalize(str) {
@@ -53,9 +52,8 @@ var translations = {
 };
 
 function saveJsonFiles() {
-  var dateStr = moment().format('YYYYMMDD');
   Object.keys(translations).forEach(function(tagName) {
-    var file = tagName + '-' + dateStr + '-generated.json';
+    var file = tagName + '-generated.json';
     var content = JSON.stringify(translations[tagName], null, 2);
     fs.writeFileSync(path.join('translations', file), content, 'utf8');
   });
