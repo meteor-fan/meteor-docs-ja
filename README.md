@@ -15,8 +15,15 @@ This project is not affiliated with MDG.
 
 ### 手順（方法２：HTMLを変更していく方法。オススメ。）
 1. リポジトリを更新する
-2. work/以下のhtmlファイルを開く（このファイルを編集していく）
-3. 翻訳する最小の単位のタグを、直下にコピーし、classに"translation"を追加し、翻訳する。
+2. 新たに作業する場合は、ルートのhtmlファイルをwork以下にコピーする（既存の.translationが含まれているため）
+3. work/以下のhtmlファイルを開く（このファイルを編集していく）
+4. 翻訳する最小の単位のタグを、直下にコピーし、classに"translation"を追加し、翻訳する。（下記、HTMLの翻訳サンプルを参照）
+5. `npm run generate`を実行する。（この操作で、work/以下のhtmlから.translationのついたタグをもとに、translations/*.jsonが生成される。）
+6. `npm run translate`を実行する。（この操作で、translations/*.jsonから、表示用のhtmlがルートに作成される。）
+7. ローカルでサーバーを起動して確認するために、`npm start`を実行する（オプション）
+8. 問題なければ、commitしてpushする。（commitの対象は、work/のhtmlファイル、生成されたルートのhtmlファイル、translations/以下の生成されたjsonファイル)
+
+HTMLの翻訳サンプル
 ```
 <p>..english..</p>
 ↓
@@ -25,10 +32,6 @@ This project is not affiliated with MDG.
 
 注意：<ul><li><p>..</p></li></ul>の構造のとき、一番内側の<p>だけをコピーして翻訳する。
 ```
-4. `npm run generate`を実行する。この操作で、work/以下のhtmlから.translationのついたタグと、そのひとつ前のタグでmapを作り、translations/*.jsonを生成する。
-5. `npm run translate`を事項する。この操作で、translations/*.jsonから、表示用のhtmlを作成する。
-6. ローカルでサーバーを起動して確認するために、`npm start`を実行する（オプション）
-7. 問題なければ、commitしてpushする。commitは、
 
 ### コミュニケーション
 
