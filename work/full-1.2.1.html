@@ -5237,6 +5237,9 @@ programming</a>. This means that
 you can write your code in a simple imperative style, and the result will be
 automatically recalculated whenever data changes that your code depends on.</p>
 
+<p class="translation">Meteorは<a href="http://en.wikipedia.org/wiki/Reactive_programming">リアクティブプログラミング</a>のコンセプトを大切にしています。
+これは、シンプルな命令形(imperative)のスタイルで書けて、その結果はコードが依存しているデータに変更があった場合はいつでも自動的に再計算されるという意味です。</p>
+
 <pre><code class="hljs javascript">Tracker.autorun(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
   Meteor.subscribe(<span class="hljs-string">&quot;messages&quot;</span>, Session.get(<span class="hljs-string">&quot;currentRoomId&quot;</span>));
 });
@@ -5248,6 +5251,9 @@ If the value of <code>Session.get(&quot;currentRoomId&quot;)</code> changes for 
 function will be automatically re-run, setting up a new subscription that
 replaces the old one.</p>
 
+<p class="translation">この例（チャットルールクライアントからもってきました）はセッション変数<code>currentRoomId</code>をもとにデータのサブスクリプションを設定しています。
+どんな理由であれ、もし<code>Session.get(&quot;currentRoomId&quot;)</code>の値がかわると、この関数は自動的に再実行され、古いサブスクリプションの入れ替えになる新しいサブスクリプションを設定します。</p>
+
 <p>This automatic recomputation is achieved by a cooperation between
 <code>Session</code> and <code>Tracker.autorun</code>.  <code>Tracker.autorun</code> performs an arbitrary &quot;reactive
 computation&quot; inside of which data dependencies are tracked, and it
@@ -5256,6 +5262,10 @@ will re-run its function argument as necessary.  Data providers like
 called from and what data was requested, and they are prepared to send
 an invalidation signal to the computation when the data changes.</p>
 
+<p class="translation">この自動再計算は、<code>Session</code> と <code>Tracker.autorun</code>の連携で実現しています。
+<code>Tracker.autorun</code>は、内部でデータ依存性が追跡されている、任意の「リアクティブな計算」を実行します。また、必要に応じて、渡された関数引数を再実行します。
+<code>Session</code>のようなデータプロバイダーは、この他に、それが呼びだされた計算とどのようなデータが要求されたかということを記録し、データが変わった時、無効化のシグナルをその計算へ送り出す準備をします。</p>
+
 <p>This simple pattern (reactive computation + reactive data source) has wide
 applicability.  Above, the programmer is saved from writing
 unsubscribe/resubscribe calls and making sure they are called at the
@@ -5263,7 +5273,12 @@ right time.  In general, Meteor can eliminate whole classes of data
 propagation code which would otherwise clog up your application with
 error-prone logic.</p>
 
+<p class="translation">このシンプルなパターン（リアクティブ計算 + リアクティブデータソース）は、幅広い適用可能性を持っています。
+プログラマーは、サブスクライブの停止/再開の呼び出しを書くこと、それが正しいタイミングで実行されるようにすることから開放されます。
+通常、Meteorは、あなたのアプリケーションをエラーが起こりやすいロジックだらけにしてしまう、データの伝播（プロパゲーション）クラスを取り除くことができます。</p>
+
 <p>These Meteor functions run your code as a reactive computation:</p>
+<p class="translation">これらのMeteor関数はあなたのコードをリアクティブ計算として実行します：</p>
 
 <ul>
 <li><a href="#livehtmltemplates">Templates</a></li>
@@ -5273,6 +5288,7 @@ error-prone logic.</p>
 </ul>
 
 <p>And the reactive data sources that can trigger changes are:</p>
+<p class="translation">また、変更をトリガーできるリアクティブ・データソースは以下のものです：</p>
 
 <ul>
 <li><a href="#session"><code>Session</code></a> variables</li>
@@ -5288,6 +5304,8 @@ error-prone logic.</p>
 <code>stop</code> method, if called from a reactive computation, are stopped when
 the computation is rerun or stopped:</p>
 
+<p class="translation">加えて、<code>stop</code>メソッド付きでオブジェクトを返す以下の関数は、リアクティブ計算から呼ばれたとき、そのリアクティブ計算が再実行または停止された場合に、停止されます：</p>
+
 <ul>
 <li><a href="#tracker_autorun"><code>Tracker.autorun</code></a> (nested)</li>
 <li><a href="#meteor_subscribe"><code>Meteor.subscribe</code></a></li>
@@ -5298,6 +5316,11 @@ the computation is rerun or stopped:</p>
 <a href="https://github.com/meteor/meteor/blob/master/packages/tracker/tracker.js">implementation</a>
 is a package called <a href="#tracker"><code>Tracker</code></a> that is fairly short and straightforward.
 You can use it yourself to implement new reactive data sources.</p>
+
+<p class="translation">Meteorの<a href="https://github.com/meteor/meteor/blob/master/packages/tracker/tracker.js">実装</a>は、
+<a href="#tracker"><code>Tracker</code></a>という、かなり短くてわかりやすいパッケージです。
+これをつかって、あなた自身でリアクティブなデータソースを実装することができます。</p>
+
 
 <h2 id="/full/livehtmltemplates">Live HTML templates</h2>
 
