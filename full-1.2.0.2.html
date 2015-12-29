@@ -5311,7 +5311,7 @@ spirit and syntax of Handlebars, but it has been tailored to produce reactive
 Meteor templates when compiled.</p><p class="translation">
 Meteorは<a href="http://handlebarsjs.com/">Handlebars</a>にインスパイアされた、
 <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>というテンプレート言語を提供しています。
-これはある程度、Handlebarsの考え方とシンタックスを共有したものですが、コンパイル時にリアクティブなMeteorテンプレートを生成するために改造されています。</p>
+これはある程度、Handlebarsの考え方とシンタックスを共有したものですが、コンパイル時にリアクティブなMeteorテンプレートを生成するよう作りこまれています。</p>
 
 <div class="note">
   <p>Today, the only templating system that ships with Meteor is Spacebars, though
@@ -5327,7 +5327,7 @@ available as on the global <code>Template</code> object.</p><p class="translatio
 テンプレートを定義するには、あなたのプロジェクトに拡張子<code>.html</code>のファイルを作ってください。
 そのファイルの中に、<code>&lt;template&gt;</code>タグを作り、<code>name</code>アトリビュートを付けてください。
 そのタグのなかにコンテンツを入れてください。
-Meteorはプリコンパイルして、クライアント側に送り、グローバルな<code>Template</code> オブジェクト上で利用可能にします。</p>
+Meteorはプリコンパイルして、クライアント側に送り、グローバルな<code>Template</code> オブジェクトの中で使えるようにします。</p>
 
 <p class="original">When your app is loaded, it automatically renders the special template called
 <code>&lt;body&gt;</code>, which is written using the <code>&lt;body&gt;</code> element instead of a
@@ -5432,9 +5432,9 @@ Template.report.helpers({
 <p class="original">Finally, you can use the <code>events</code> function on a template to attach
 event handlers. The object passed into <code>events</code> is documented at
 <a href="#eventmaps">Event Maps</a>. The <code>this</code> argument to the event handler will
-be the data context of the element that triggered the event.</p><p class="translation">最後に、<code>events</code> 関数をつかって、テンプレートにイベントハンドラを取り付けることができます。
+be the data context of the element that triggered the event.</p><p class="translation">最後に、<code>events</code> 関数をつかって、テンプレートにイベントハンドラを設置することができます。
 <code>events</code>に渡されるオブジェクトは、<a href="#eventmaps">Event Maps</a>に記述されています。
-イベントハンドラの引数<code>this</code> はイベントを起動した要素のデータコンテキストになります。</p>
+イベントハンドラの変数<code>this</code> はイベントを起動した要素のデータコンテキストになります。</p>
 
 <pre><code class="hljs html"><span class="hljs-comment">&lt;!-- myapp.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;scores&quot;</span>&gt;</span>
