@@ -4687,18 +4687,21 @@ not here -->
 
 <p><b><em class="original">Meteor is an ultra-simple environment for building modern websites.
 What once took weeks, even with the best tools, now takes hours with
-Meteor.</em><em class="translation">MeteorはモダンなWebサイトを作るためのとてもシンプルな環境です。従来、優れたツールを使っても何週間もかかっていたものがMeteorでは数時間になります。</em></b></p>
+Meteor.</em>
+<em class="translation">MeteorはモダンなWebサイトを作るためのとてもシンプルな環境です。従来、優れたツールを使っても何週間もかかっていたものがMeteorでは数時間になります。</em></b></p>
 
 <p class="original">The web was originally designed to work in the same way that mainframes
 worked in the 70s.  The application server rendered a screen and sent it
 over the network to a dumb terminal. Whenever the user did anything,
 that server rerendered a whole new screen. This model served the Web
-well for over a decade. It gave rise to LAMP, Rails, Django, PHP.</p><p class="translation">Webはもともとは70年代のメインフレームと同じように動くように設計されました。アプリケーションサーバが描画した画面をネットワーク経由で端末に表示させます。ユーザが何かしたらサーバが画面全体を再描画します。このモデルは10年にわたってWebに残りました。そのため、LAMPやRailsやDjangoやPHPが伸びたのです。</p>
+well for over a decade. It gave rise to LAMP, Rails, Django, PHP.</p>
+<p class="translation">Webはもともとは70年代のメインフレームと同じように動くように設計されました。アプリケーションサーバが描画した画面をネットワーク経由で端末に表示させます。ユーザが何かしたらサーバが画面全体を再描画します。このモデルは10年にわたってWebに残りました。そのため、LAMPやRailsやDjangoやPHPが伸びたのです。</p>
 
 <p class="original">But the best teams, with the biggest budgets and the longest schedules,
 now build applications in JavaScript that run on the client.  These apps
 have stellar interfaces.  They don&apos;t reload pages.  They are reactive:
-changes from any client immediately appear on everyone&apos;s screen.</p><p class="translation">しかし、優れたチームが大きな予算と長い開発期間をかけて、今ではクライアントで動作するJavaScriptアプリケーションを開発するようになりました。そのアプリケーションはすばらしいインタフェースを備えました。ページをリロードする必要がないのです。それらはリアクティブであり、あるクライアントでの変更が瞬時にすべての人の画面に反映されます。</p>
+changes from any client immediately appear on everyone&apos;s screen.</p>
+<p class="translation">しかし、優れたチームが大きな予算と長い開発期間をかけて、今ではクライアントで動作するJavaScriptアプリケーションを開発するようになりました。そのアプリケーションはすばらしいインタフェースを備えました。ページをリロードする必要がないのです。それらはリアクティブであり、あるクライアントでの変更が瞬時にすべての人の画面に反映されます。</p>
 
 <p class="original">They&apos;ve built them the hard way.  Meteor makes it an order of
 magnitude simpler, and a lot more fun.  You can build a complete
@@ -4706,56 +4709,73 @@ application in a weekend, or a sufficiently caffeinated hackathon.  No
 longer do you need to provision server resources, or deploy API
 endpoints in the cloud, or manage a database, or wrangle an ORM layer,
 or swap back and forth between JavaScript and Ruby, or broadcast data
-invalidations to clients.</p><p class="translation">開発者はとても苦労して作りあげたことでしょう。Meteorはそれを桁違いに簡単にし、楽しくします。ひとつの完全なアプリケーションを一週間で作ることができるでしょう。もしくは、一回の充実したハッカソンでも可能でしょう。サーバの準備もすることなく、クラウドにAPIを用意することもなく、データベースを管理することもなく、ORMレイヤーの論争をすることもなく、JavaScriptとRubyをいったりきたりすることもなく、データ形式のエラーをクライアントに伝搬することもありません。</p>
+invalidations to clients.</p>
+<p class="translation">開発者はとても苦労して作りあげたことでしょう。Meteorはそれを桁違いに簡単にし、楽しくします。ひとつの完全なアプリケーションを一週間で作ることができるでしょう。もしくは、一回の充実したハッカソンでも可能でしょう。サーバの準備もすることなく、クラウドにAPIを用意することもなく、データベースを管理することもなく、ORMレイヤーの論争をすることもなく、JavaScriptとRubyをいったりきたりすることもなく、データ形式のエラーをクライアントに伝搬することもありません。</p>
 
-<h2 id="/full/quickstart" class="original">Quick start!</h2><h2 id="/full/quickstart" class="translation">クイックスタート！</h2>
+<h2 id="/full/quickstart" class="original">Quick start!</h2>
+<h2 id="/full/quickstart" class="translation">クイックスタート！</h2>
 
-<p class="original">Meteor supports <a href="https://github.com/meteor/meteor/wiki/Supported-Platforms">OS X, Windows, and Linux</a>.</p><p class="translation">Meteorは<a href="https://github.com/meteor/meteor/wiki/Supported-Platforms">OS X、Windows、Linux</a>をサポートしています。</p>
+<p class="original">Meteor supports <a href="https://github.com/meteor/meteor/wiki/Supported-Platforms">OS X, Windows, and Linux</a>.</p>
+<p class="translation">Meteorは<a href="https://github.com/meteor/meteor/wiki/Supported-Platforms">OS X、Windows、Linux</a>をサポートしています。</p>
 
-<p class="original">On Windows?  <a href="https://install.meteor.com/windows">Download the official Meteor installer here</a>.</p><p class="translation">Windows用のMeteorインストーラは<a href="https://install.meteor.com/windows">ここからダウンロードできます。</a></p>
+<p class="original">On Windows?  <a href="https://install.meteor.com/windows">Download the official Meteor installer here</a>.</p>
+<p class="translation">Windows用のMeteorインストーラは<a href="https://install.meteor.com/windows">ここからダウンロードできます。</a></p>
 
-<p class="original">On OS X or Linux?  Install the latest official Meteor release from your terminal:</p><p class="translation">OS XまたはLinuxならMeteor最新版をターミナルからインストールできます。</p>
+<p class="original">On OS X or Linux?  Install the latest official Meteor release from your terminal:</p>
+<p class="translation">OS XまたはLinuxならMeteor最新版をターミナルからインストールできます。</p>
 
 <pre><code class="hljs bash">$ curl https://install.meteor.com/ | sh
 </code></pre>
 
 <p class="original">The Windows installer supports Windows 7, Windows 8.1, Windows Server
 2008, and Windows Server 2012.  The command line installer supports Mac OS X
-10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.</p><p class="translation">WindowsインストーラはWindows 7、Windows 8.1、Windows Server 2008、Windows Server 2012をサポートしています。コマンドインストーラはMac OS X 10.7 (Lion)以上、またx86とx86_64アーキテクチャ上で動くLinuxをサポートしています。</p>
+10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.</p>
+<p class="translation">WindowsインストーラはWindows 7、Windows 8.1、Windows Server 2008、Windows Server 2012をサポートしています。コマンドインストーラはMac OS X 10.7 (Lion)以上、またx86とx86_64アーキテクチャ上で動くLinuxをサポートしています。</p>
 
-<p class="original">Once you&apos;ve installed Meteor, create a project:</p><p class="translation">Meteorをインストールしたら、プロジェクトを作成しましょう。</p>
+<p class="original">Once you&apos;ve installed Meteor, create a project:</p>
+<p class="translation">Meteorをインストールしたら、プロジェクトを作成しましょう。</p>
 
 <pre><code class="hljs bash">meteor create myapp
 </code></pre>
 
-<p class="original">Run it locally:</p><p class="translation">ローカルで動かします:</p>
+<p class="original">Run it locally:</p>
+<p class="translation">ローカルで動かします:</p>
 
 <pre><code class="hljs bash"><span class="hljs-built_in">cd</span> myapp
 meteor
 <span class="hljs-comment"># Meteor server running on: http://localhost:3000/</span>
 </code></pre>
 
-<p class="original">Then, open a new terminal tab and unleash it on the world (on a free server we provide):</p><p class="translation">さらに、新しいターミナルタブを開き、以下のコマンドを実行して世界中に公開しましょう(Meteorが提供している無料のサーバー上で動きます):</p>
+<p class="original">Then, open a new terminal tab and unleash it on the world (on a free server we provide):</p>
+<p class="translation">さらに、新しいターミナルタブを開き、以下のコマンドを実行して世界中に公開しましょう(Meteorが提供している無料のサーバー上で動きます):</p>
 
 <pre><code class="hljs bash">meteor deploy myapp.meteor.com
 </code></pre>
 
-<h2 id="/full/sevenprinciples" class="original">Principles of Meteor</h2><h2 id="/full/sevenprinciples" class="translation">Meteorの特徴</h2>
+<h2 id="/full/sevenprinciples" class="original">Principles of Meteor</h2>
+<h2 id="/full/sevenprinciples" class="translation">Meteorの特徴</h2>
 
 <ul>
 <li><p class="original"><em>Data on the Wire</em>. Meteor doesn&apos;t send HTML over the network. The server sends data and
-lets the client render it.</p><p class="translation"><em>ネットワークを流れるデータ</em>. MeteorはネットワークでHTMLを送りません。サーバはデータを送り、クライアントがそれを描画します。</p></li>
+lets the client render it.</p>
+<p class="translation"><em>ネットワークを流れるデータ</em>. MeteorはネットワークでHTMLを送りません。サーバはデータを送り、クライアントがそれを描画します。</p></li>
 <li><p class="original"><em>One Language.</em> Meteor lets you write both the client and the server parts of your
-application in JavaScript.</p><p class="translation"><em>単一の言語.</em> Meteorでは、アプリケーションのクライアントサイドもサーバサイドも両方JavaScriptで記述します。</p></li>
+application in JavaScript.</p>
+<p class="translation"><em>単一の言語.</em> Meteorでは、アプリケーションのクライアントサイドもサーバサイドも両方JavaScriptで記述します。</p></li>
 <li><p class="original"><em>Database Everywhere</em>. You can use the same methods to access your
-database from the client or the server.</p><p class="translation"><em>どこでもデータベース</em>. クライアントサイドでもサーバサイドでもデータベースにアクセスするのに同じメソッドを使うことができます。</p></li>
-<li><p class="original"><em>Latency Compensation</em>. On the client, Meteor prefetches data and simulates models to make it look like server method calls return instantly.</p><p class="translation"><em>遅延の補償</em>. クライアントサイドではデータを事前取得しモデル変化を追従することにより、サーバのメソッド呼び出しの応答が瞬時にあったかのように見せかけます。</p></li>
+database from the client or the server.</p>
+<p class="translation"><em>どこでもデータベース</em>. クライアントサイドでもサーバサイドでもデータベースにアクセスするのに同じメソッドを使うことができます。</p></li>
+<li><p class="original"><em>Latency Compensation</em>. On the client, Meteor prefetches data and simulates models to make it look like server method calls return instantly.</p>
+<p class="translation"><em>遅延の補償</em>. クライアントサイドではデータを事前取得しモデル変化を追従することにより、サーバのメソッド呼び出しの応答が瞬時にあったかのように見せかけます。</p></li>
 <li><p class="original"><em>Full Stack Reactivity</em>. In Meteor, realtime is the default. All layers, from
-database to template, update themselves automatically when necessary.</p><p class="translation"><em>フルスタックリアクティビティ</em>. Meteorでは、標準でリアルタイムです。データベースからテンプレートまでのすべてのレイヤーで必要に応じて自動で更新されます。</p></li>
-<li><p class="original"><em>Embrace the Ecosystem</em>. Meteor is open source and integrates with existing open source tools and frameworks.</p><p class="translation"><em>エコシステムの採用</em>. Meteorはオープンソースであり、既存のオープンソースのツールやフレームワークと統合します。</p></li>
+database to template, update themselves automatically when necessary.</p>
+<p class="translation"><em>フルスタックリアクティビティ</em>. Meteorでは、標準でリアルタイムです。データベースからテンプレートまでのすべてのレイヤーで必要に応じて自動で更新されます。</p></li>
+<li><p class="original"><em>Embrace the Ecosystem</em>. Meteor is open source and integrates with existing open source tools and frameworks.</p>
+<p class="translation"><em>エコシステムの採用</em>. Meteorはオープンソースであり、既存のオープンソースのツールやフレームワークと統合します。</p></li>
 <li><p class="original"><em>Simplicity Equals Productivity</em>. The best way to make something
 seem simple is to have it actually <em>be</em> simple. Meteor&apos;s main functionality has
-clean, classically beautiful APIs.</p><p class="translation"><em>単純さによる生産性</em>. 何かを簡単に見せるための一番の方法は「単純」にすることです。Meteorの中心機能はクリーンできれいなAPIになっています。</p></li>
+clean, classically beautiful APIs.</p>
+<p class="translation"><em>単純さによる生産性</em>. 何かを簡単に見せるための一番の方法は「単純」にすることです。Meteorの中心機能はクリーンできれいなAPIになっています。</p></li>
 </ul>
 
 <h2 id="/full/resources">Developer Resources</h2>
@@ -4768,17 +4788,22 @@ clean, classically beautiful APIs.</p><p class="translation"><em>単純さによ
 with the project!</p>
 
 <dl class="involved">
-<dt class="original"><span>Tutorial</span></dt><dt class="translation">チュートリアル</dt>
+<dt class="original"><span>Tutorial</span></dt>
+<dt class="translation">チュートリアル</dt>
 <dd class="original">Get started fast with the <a href="https://www.meteor.com/install">official Meteor tutorial</a>!
-</dd><dd class="translation"><a href="https://www.meteor.com/install">Meteor公式チュートリアル</a></dd>
+</dd>
+<dd class="translation"><a href="https://www.meteor.com/install">Meteor公式チュートリアル</a></dd>
 
-<dt class="original"><span>Stack Overflow</span></dt><dt class="translation">スタック・オーバーフロー</dt>
+<dt class="original"><span>Stack Overflow</span></dt>
+<dt class="translation">スタック・オーバーフロー</dt>
 <dd class="original">The best place to ask (and answer!) technical questions is on <a href="http://stackoverflow.com/questions/tagged/meteor">Stack
   Overflow</a>.  Be sure to add
   the <code>meteor</code> tag to your question.
-</dd><dd class="translation">技術的な質問と回答に最適な場所は<a href="http://stackoverflow.com/questions/tagged/meteor">Stack Overflow</a>です。質問の際はMeteorタグを追加してください。</dd>
+</dd>
+<dd class="translation">技術的な質問と回答に最適な場所は<a href="http://stackoverflow.com/questions/tagged/meteor">Stack Overflow</a>です。質問の際はMeteorタグを追加してください。</dd>
 
-<dt class="original"><span>Forums</span></dt><dt class="translation">フォーラム</dt>
+<dt class="original"><span>Forums</span></dt>
+<dt class="translation">フォーラム</dt>
 <dd>Visit the <a href="https://forums.meteor.com">Meteor discussion
     forums</a>to announce projects, get help, talk about the community,
   or discuss changes to core.
@@ -4786,27 +4811,32 @@ with the project!</p>
 
 <dt><span>GitHub</span></dt>
 <dd class="original">The core code is on <a href="http://github.com/meteor/meteor">GitHub</a>.  If you&apos;re able to write code or file issues, we&apos;d love to have your help.  Please read <a href="https://github.com/meteor/meteor/wiki/Contributing-to-Meteor">Contributing to Meteor</a> for how to get started.
-</dd><dd class="translation">コアコードは<a href="http://github.com/meteor/meteor">Github</a>上にあります。あなたの貢献をお待ちしています。貢献の際は、<a href="https://github.com/meteor/meteor/wiki/Contributing-to-Meteor">Contributing to Meteor</a>をお読みください。</dd>
+</dd>
+<dd class="translation">コアコードは<a href="http://github.com/meteor/meteor">Github</a>上にあります。あなたの貢献をお待ちしています。貢献の際は、<a href="https://github.com/meteor/meteor/wiki/Contributing-to-Meteor">Contributing to Meteor</a>をお読みください。</dd>
 
 <dt><span>The Meteor Manual</span></dt>
 <dd>In-depth articles about the core components of Meteor can be found on the <a href="http://manual.meteor.com/">Meteor Manual</a>. The first article is about <a href="http://manual.meteor.com/#tracker">Tracker</a>, our transparent reactivity framework. More articles (covering topics like Blaze, Unibuild, and DDP) are coming soon!
 </dd>
 </dl>
 </div>
-  <h1 id="concepts" class="original">Concepts</h1><h1 id="concepts" class="translation">コンセプト</h1>
+  <h1 id="concepts" class="original">Concepts</h1>
+<h1 id="concepts" class="translation">コンセプト</h1>
 
 <p>We&apos;ve written our fair share of single-page JavaScript applications by hand.
 Writing an entire application in one language (JavaScript) with one
 data format (JSON) is a real joy.  Meteor is everything we wanted
 when writing those apps.</p>
 
-<h2 id="/full/whatismeteor" class="original">What is Meteor?</h2><h2 id="/full/whatismeteor" class="translation">Meteorとは何か？</h2>
+<h2 id="/full/whatismeteor" class="original">What is Meteor?</h2>
+<h2 id="/full/whatismeteor" class="translation">Meteorとは何か？</h2>
 
-<p class="original">Meteor is two things:</p><p class="translation">Meteorにおける2つのもの</p>
+<p class="original">Meteor is two things:</p>
+<p class="translation">Meteorにおける2つのもの</p>
 
 <ul>
 <li><p class="original">A <em>library of packages</em>: pre-written, self-contained modules that
-you might need in your app.</p><p class="translation"><em>パッケージ化されたライブラリー</em>:すでに書かれていて、自己完結しているモジュールはあなたのアプリケーションに必須のものでしょう。</p>
+you might need in your app.</p>
+<p class="translation"><em>パッケージ化されたライブラリー</em>:すでに書かれていて、自己完結しているモジュールはあなたのアプリケーションに必須のものでしょう。</p>
 
 <p>There are about a dozen core Meteor packages that most any app will use. Two
 examples: <a href="#webapp"><code>webapp</code></a>, which handles incoming HTTP connections, and
@@ -4818,7 +4848,8 @@ user account system that you can drop right into your app. In addition to
 these &quot;core&quot; packages, there are thousands of community-written packages in
 <a href="https://atmospherejs.com/?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Atmosphere</a>, one of which might do just what you
 need.</p></li>
-<li><p class="original">A <em>command-line tool</em> called <code>meteor</code>.</p><p class="translation"><code>Meteor</code> <em>コマンドラインツール</em></p>
+<li><p class="original">A <em>command-line tool</em> called <code>meteor</code>.</p>
+<p class="translation"><code>Meteor</code> <em>コマンドラインツール</em></p>
 
 <p class="original"><code>meteor</code> is a build tool analogous to <code>make</code>, <code>rake</code>, or the non-visual parts
 of Visual Studio. It gathers up all of the source files and assets in your
@@ -4829,29 +4860,35 @@ packages used by your app, and outputs a standalone, ready-to-run application
 bundle. In development mode it can do all of this interactively, so that
 whenever you change a file you immediately see the changes in your browser. It&apos;s
 super easy to use out of the box, but it&apos;s also extensible: you can add support
-for new languages and compilers by adding build plugin packages to your app.</p><p class="translation"><code>meteor</code>は<code>make</code>,<code>rake</code>に似たビルドツールです。それかまた、GUIの無いVisual Studioです。<code>meteor</code>はアプリケーション内のソースファイルとアセットをまとめあげ、必要とされるビルドを行います（<a href="http://coffeescript.org">CoffeeScript</a>のコンパイル , minifying CSS, npm module の構築 <a href="https://npmjs.org/">npm</a> ,またsource mapの生成などです。)</p>
+for new languages and compilers by adding build plugin packages to your app.</p>
+<p class="translation"><code>meteor</code>は<code>make</code>,<code>rake</code>に似たビルドツールです。それかまた、GUIの無いVisual Studioです。<code>meteor</code>はアプリケーション内のソースファイルとアセットをまとめあげ、必要とされるビルドを行います（<a href="http://coffeescript.org">CoffeeScript</a>のコンパイル , minifying CSS, npm module の構築 <a href="https://npmjs.org/">npm</a> ,またsource mapの生成などです。)</p>
 
 <p class="original">The key idea in the Meteor package system is that <em>everything should work
 identically in the browser and on the server</em> (wherever it makes sense, of
 course: browsers can&apos;t send email and servers can&apos;t capture mouse events). Our
-whole ecosystem has been built from the ground up to support this.</p><p class="translation">Meteorのパッケージシステムの鍵となるアイデアは、パッケージは<em>ブラウザとサーバー上で全く同じように動くべきだ</em>というものですす。( ブラウザはE-mailをサーバーに送ることができ、サーバーはマウスのイベントを捕捉することができるのです。我々のエコシステムはこれを完全に実現するために作られました。)</p></li>
+whole ecosystem has been built from the ground up to support this.</p>
+<p class="translation">Meteorのパッケージシステムの鍵となるアイデアは、パッケージは<em>ブラウザとサーバー上で全く同じように動くべきだ</em>というものですす。( ブラウザはE-mailをサーバーに送ることができ、サーバーはマウスのイベントを捕捉することができるのです。我々のエコシステムはこれを完全に実現するために作られました。)</p></li>
 </ul>
-<h2 id="/full/structuringyourapp" class="original">Structuring your application</h2><h2 id="/full/structuringyourapp" class="translation">アプリケーションを構造化する</h2>
+<h2 id="/full/structuringyourapp" class="original">Structuring your application</h2>
+<h2 id="/full/structuringyourapp" class="translation">アプリケーションを構造化する</h2>
 
 <p class="original">A Meteor application is a mix of client-side JavaScript that runs inside a web
 browser or PhoneGap mobile app, server-side JavaScript that runs on the Meteor
 server inside a <a href="http://nodejs.org/">Node.js</a> container, and all the supporting
 HTML templates, CSS rules, and static assets.  Meteor automates the packaging
 and transmission of these different components, and it is quite flexible about
-how you choose to structure those components in your file tree.</p><p class="translation">Meteorのアプリケーションの構成要素はウェブブラウザやモバイルアプリで動くクライアント・サイドJavaScriptと、Node.jsコンテナ内のMeteorサーバーで動くサーバーサイドJavaScript、そしてHTMLテンプレート、CSS、静的アセットなどからできています。Meteorはこれらの様々なコンポーネントを自動的にパッケージング、送信を行っています。そしてそれらのコンポーネントを含むファイル・ツリー内で、どう構造化するかは非常に自由度が高いものになっています。</p>
+how you choose to structure those components in your file tree.</p>
+<p class="translation">Meteorのアプリケーションの構成要素はウェブブラウザやモバイルアプリで動くクライアント・サイドJavaScriptと、Node.jsコンテナ内のMeteorサーバーで動くサーバーサイドJavaScript、そしてHTMLテンプレート、CSS、静的アセットなどからできています。Meteorはこれらの様々なコンポーネントを自動的にパッケージング、送信を行っています。そしてそれらのコンポーネントを含むファイル・ツリー内で、どう構造化するかは非常に自由度が高いものになっています。</p>
 
-<h3 id="/full/specialdirectories" class="original">Special Directories</h3><h3 id="/full/specialdirectories" class="translation">特別なディレクトリ</h3>
+<h3 id="/full/specialdirectories" class="original">Special Directories</h3>
+<h3 id="/full/specialdirectories" class="translation">特別なディレクトリ</h3>
 
 <p class="original">By default, any JavaScript files in your Meteor folder are bundled and sent to
 the client and the server. However, the names of the files and directories
 inside your project can affect their load order, where they are loaded, and some
 other characteristics. Here is a list of file and directory names that are
-treated specially by Meteor:</p><p class="translation">初期状態では、Meteorフォルダー内にあるJavaScriptファイルはひと固まりであり、クライアントとサーバー双方に送られています。しかしながら、ファイルやディレクトリの名前によって、ファイルのロードのされ方を変えることができます。あるファイルはクライアント側にロードされ、他のはサーバー固有のファイルにできます。Meteorにおいて特別に扱われるファイル名とディレクトリ名は、以下のリストにあるものです。</p>
+treated specially by Meteor:</p>
+<p class="translation">初期状態では、Meteorフォルダー内にあるJavaScriptファイルはひと固まりであり、クライアントとサーバー双方に送られています。しかしながら、ファイルやディレクトリの名前によって、ファイルのロードのされ方を変えることができます。あるファイルはクライアント側にロードされ、他のはサーバー固有のファイルにできます。Meteorにおいて特別に扱われるファイル名とディレクトリ名は、以下のリストにあるものです。</p>
 
 <ul>
 <li><p><strong>client</strong></p>
@@ -4862,60 +4899,70 @@ the client are automatically concatenated and minified when in production
 mode. In development mode, JavaScript and CSS files are not minified, to
 make debugging easier.  (CSS files are still combined into a single file
 for consistency between production and development, because changing the
-CSS file&apos;s URL affects how URLs in it are processed.)</p><p class="translation"><code>client</code>ディレクトリはサーバー側には読み込まれません。<code>if(Meteor.isClient){ ... }</code>で囲んだ部分も同様です。クライアントに読み込まれたすべてのファイルは、production モードの時には自動的に結合、縮小化されます。developmentモードではJavaScriptとCSSファイルは、デバッグしやすくするために縮小化は行いません。（CSSファイルの場合は,URL変更がCSS読み込みに影響するので、productionとdevelopmentの双方で単一のファイルに結合されています。)</p>
+CSS file&apos;s URL affects how URLs in it are processed.)</p>
+<p class="translation"><code>client</code>ディレクトリはサーバー側には読み込まれません。<code>if(Meteor.isClient){ ... }</code>で囲んだ部分も同様です。クライアントに読み込まれたすべてのファイルは、production モードの時には自動的に結合、縮小化されます。developmentモードではJavaScriptとCSSファイルは、デバッグしやすくするために縮小化は行いません。（CSSファイルの場合は,URL変更がCSS読み込みに影響するので、productionとdevelopmentの双方で単一のファイルに結合されています。)</p>
 
 <p class="original">HTML files in a Meteor application are treated quite a bit differently
 from a server-side framework.  Meteor scans all the HTML files in your
 directory for three top-level elements: <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, and
 <code>&lt;template&gt;</code>.  The head and body sections are separately concatenated
 into a single head and body, which are transmitted to the client on
-initial page load.</p><p class="translation">MeteorアプリケーションにおけるHTMLファイルの扱いは、サーバーサイドフレームワークにおけるものと異なっています。Meteorはディレクトリ内のHTMLファイルにおいて、３つのトップレベル要素でスキャンします。:<code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;template&gt;</code>の３つです。headとbodyはそれぞれ分けられて、一つのheadと一つのbodyに結合されます。それらはページの最初のローディングの際にクライアントに転送されます。</p></li>
+initial page load.</p>
+<p class="translation">MeteorアプリケーションにおけるHTMLファイルの扱いは、サーバーサイドフレームワークにおけるものと異なっています。Meteorはディレクトリ内のHTMLファイルにおいて、３つのトップレベル要素でスキャンします。:<code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;template&gt;</code>の３つです。headとbodyはそれぞれ分けられて、一つのheadと一つのbodyに結合されます。それらはページの最初のローディングの際にクライアントに転送されます。</p></li>
 <li><p><strong>server</strong></p>
 
 <p class="original">Any directory named <code>server</code> is not loaded on the client. Similar to
 wrapping your code in <code>if (Meteor.isServer) { ... }</code>, except the client
 never even receives the code. Any sensitive code that you don&apos;t want served
 to the client, such as code containing passwords or authentication
-mechanisms, should be kept in the <code>server</code> directory.</p><p class="translation"><code>server</code>と名づけられているディレクトリはクライアントにロードされません。<code>if (Meteor.isServer) { ... }</code>で囲まれたコードも同様であり、クライアントが受け取ることがありません。パスワードや認証機能のように、クライアント側に送られたくないコードは<code>server</code>ディレクトリに入れて置かなければなりません。</p>
+mechanisms, should be kept in the <code>server</code> directory.</p>
+<p class="translation"><code>server</code>と名づけられているディレクトリはクライアントにロードされません。<code>if (Meteor.isServer) { ... }</code>で囲まれたコードも同様であり、クライアントが受け取ることがありません。パスワードや認証機能のように、クライアント側に送られたくないコードは<code>server</code>ディレクトリに入れて置かなければなりません。</p>
 
 <p class="original">Meteor gathers all your JavaScript files, excluding anything under the
 <code>client</code>, <code>public</code>, and <code>private</code> subdirectories, and loads them into a
 Node.js server instance.  In Meteor, your server code runs in a single
 thread per request, not in the asynchronous callback style typical of Node.
 We find the linear execution model a better fit for the typical server code
-in a Meteor application.</p><p class="translation">MeteorはすべてのJavaScriptファイルを、<code>client</code>, <code>public</code>, <code>private</code>のディレクトリの例外なくNode.jsサーバーのインスタンスにロードします。Meteorでは、サーバーのコードはNode.jsの非同期コールバック処理内ではなく、各リクエスト当たりに一つのスレッドを割り当てています。Meteorアプリケーションにおいては、典型的な直線的な実行モデルが適していると考えています。</p></li>
+in a Meteor application.</p>
+<p class="translation">MeteorはすべてのJavaScriptファイルを、<code>client</code>, <code>public</code>, <code>private</code>のディレクトリの例外なくNode.jsサーバーのインスタンスにロードします。Meteorでは、サーバーのコードはNode.jsの非同期コールバック処理内ではなく、各リクエスト当たりに一つのスレッドを割り当てています。Meteorアプリケーションにおいては、典型的な直線的な実行モデルが適していると考えています。</p></li>
 <li><p><strong>public</strong></p>
 
 <p class="original">All files inside a top-level directory called <code>public</code> are served as-is to
 the client. When referencing these assets, do not include <code>public/</code> in the
 URL, write the URL as if they were all in the top level. For example,
 reference <code>public/bg.png</code> as <code>&lt;img src=&apos;/bg.png&apos; /&gt;</code>. This is the best place
-for <code>favicon.ico</code>, <code>robots.txt</code>, and similar files.</p><p class="translation"><code>public</code>というディレクトリ名のトップレベルディレクトリの中にあるファイルは、クライアント側にあるかのように扱われます。それらのassetsを参照する場合は、URLに<code>public</code>含めないでください。すべてのファイルがトップレベルにあるものとして書きます。例えば、<code>public/bg.png</code>は<code>&lt;img src=&apos;/bg.png&apos; /&gt;</code>のように書きます。<code>favicon.ico</code> や<code>robots.txt</code>はここに置くのがよいでしょう。</p></li>
+for <code>favicon.ico</code>, <code>robots.txt</code>, and similar files.</p>
+<p class="translation"><code>public</code>というディレクトリ名のトップレベルディレクトリの中にあるファイルは、クライアント側にあるかのように扱われます。それらのassetsを参照する場合は、URLに<code>public</code>含めないでください。すべてのファイルがトップレベルにあるものとして書きます。例えば、<code>public/bg.png</code>は<code>&lt;img src=&apos;/bg.png&apos; /&gt;</code>のように書きます。<code>favicon.ico</code> や<code>robots.txt</code>はここに置くのがよいでしょう。</p></li>
 <li><p><strong>private</strong></p>
 
 <p class="original">All files inside a top-level directory called <code>private</code> are only accessible
 from server code and can be loaded via the <a href="#assets"><code>Assets</code></a> API. This can
 be used for private data files and any files that are in your project
-directory that you don&apos;t want to be accessible from the outside.</p><p class="translation"> <code>private</code>というディレクトリ名のトップレベルディレクトリは、サーバーからのみアクセスすることができ、<a href="#assets"><code>Assets</code></a> APIを通してロードできます。プライベートなデータファイルや外部からアクセスされたくないファイルの置き場所として使えます。</p></li>
+directory that you don&apos;t want to be accessible from the outside.</p>
+<p class="translation"> <code>private</code>というディレクトリ名のトップレベルディレクトリは、サーバーからのみアクセスすることができ、<a href="#assets"><code>Assets</code></a> APIを通してロードできます。プライベートなデータファイルや外部からアクセスされたくないファイルの置き場所として使えます。</p></li>
 <li><p><strong>client/compatibility</strong></p>
 
 <p class="original">This folder is for compatibility JavaScript libraries that rely on variables
 declared with var at the top level being exported as globals.  Files in this
 directory are executed without being wrapped in a new variable scope.  These
-files are executed before other client-side JavaScript files.</p><p class="translation">このフォルダーは互換性のあるJavaScriptライブラリーのファイルのためであり、global変数としてトップレベルでvar宣言している変数を信頼しています。この中のファイルは新しい変数スコープでラップされるることなく実行されます。また、ここにあるファイルは他のクライアント・サイトのJavascriptファイルより以前に実行されます。</p></li>
+files are executed before other client-side JavaScript files.</p>
+<p class="translation">このフォルダーは互換性のあるJavaScriptライブラリーのファイルのためであり、global変数としてトップレベルでvar宣言している変数を信頼しています。この中のファイルは新しい変数スコープでラップされるることなく実行されます。また、ここにあるファイルは他のクライアント・サイトのJavascriptファイルより以前に実行されます。</p></li>
 <li><p><strong>tests</strong></p>
 
 <p class="original">Any directory named <code>tests</code> is not loaded anywhere. Use this for any local
-test code.</p><p class="translation"><code>tests</code>という名前のディレクトリはロードされません。ローカル環境のテストコードとして使われます。</p></li>
+test code.</p>
+<p class="translation"><code>tests</code>という名前のディレクトリはロードされません。ローカル環境のテストコードとして使われます。</p></li>
 <li><p><strong>node_modules</strong></p>
 
 <p class="original">For compatibility with node.js tools used alongside Meteor, any directory named
 <code>node_modules</code> is not loaded anywhere. node.js packages installed into
 <code>node_modules</code> directories will not be available to your Meteor code. Use
-<code>Npm.depends</code> in your package <code>package.js</code> file for that.</p><p class="translation">Meteorと共に使われるnode.jsツールとの互換性のため、<code>node_modules</code>というディレクトリはどこにもロードされません。<code>node_modules</code>ディレクトリにインストールされたnode.jsパッケージはMeteorのコードからは直接使用できません。<code>package.js</code>のファイルの中で<code>Npm.depends</code>を使用してください。</p></li>
+<code>Npm.depends</code> in your package <code>package.js</code> file for that.</p>
+<p class="translation">Meteorと共に使われるnode.jsツールとの互換性のため、<code>node_modules</code>というディレクトリはどこにもロードされません。<code>node_modules</code>ディレクトリにインストールされたnode.jsパッケージはMeteorのコードからは直接使用できません。<code>package.js</code>のファイルの中で<code>Npm.depends</code>を使用してください。</p></li>
 </ul>
 
-<p class="original">The following directories are also not loaded as part of your app code:</p><p class="translation">以下のディレクトリもアプリケーションのコードとしてロードされません。</p>
+<p class="original">The following directories are also not loaded as part of your app code:</p>
+<p class="translation">以下のディレクトリもアプリケーションのコードとしてロードされません。</p>
 
 <ul>
 <li>Files/directories whose names start with a dot, like <code>.meteor</code> and <code>.git</code></li>
@@ -5303,13 +5350,15 @@ You can use it yourself to implement new reactive data sources.</p>
 <p class="original">HTML templating is central to web applications. With Blaze, Meteor&apos;s live
 page update technology, you can render your HTML <em>reactively</em>, meaning
 that it will update automatically to track changes in the data used to
-generate it.</p><p class="translation">HTMLテンプレートは、ウェブアプリケーションにとって中心的な存在です。
+generate it.</p>
+<p class="translation">HTMLテンプレートは、ウェブアプリケーションにとって中心的な存在です。
 Blazeを用いると、Meteorのライブページアップデート技術により、リアクティブにあなたのHTMLを描画できます。
 これは、描画するのに使ったデータの変更を追跡し、自動的に更新するということです。</p>
 
 <p class="original">Meteor makes it easy to use your favorite HTML templating language along with
 Meteor&apos;s live page update technology. Just write your template as you normally
-would, and Meteor will take care of making it update in realtime.</p><p class="translation">
+would, and Meteor will take care of making it update in realtime.</p>
+<p class="translation">
 Meteorではあなたのお気に入りのHTMLテンプレート言語と一緒にMeteorのライブページアップデート技術を簡単に使えるようにしています。
 いつものようにあなたのテンプレートを書いてください。Meteorがリアルタイムに更新する作業を引き受けます。</p>
 
@@ -5317,7 +5366,8 @@ Meteorではあなたのお気に入りのHTMLテンプレート言語と一緒�
 <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>,
 inspired by <a href="http://handlebarsjs.com/">Handlebars</a>.  It shares some of the
 spirit and syntax of Handlebars, but it has been tailored to produce reactive
-Meteor templates when compiled.</p><p class="translation">
+Meteor templates when compiled.</p>
+<p class="translation">
 Meteorは<a href="http://handlebarsjs.com/">Handlebars</a>にインスパイアされた、
 <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>というテンプレート言語を提供しています。
 これはある程度、Handlebarsの考え方とシンタックスを共有したものですが、コンパイル時にリアクティブなMeteorテンプレートを生成するよう作りこまれています。</p>
@@ -5325,7 +5375,8 @@ Meteorは<a href="http://handlebarsjs.com/">Handlebars</a>にインスパイア�
 <div class="note">
   <p class="original">Today, the only templating system that ships with Meteor is Spacebars, though
   our community has created packages for other languages such as
-  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Jade</a>.</p><p class="translation">
+  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Jade</a>.</p>
+<p class="translation">
 現在、Meteorと一緒に提供されている唯一のテンプレートシステムはSpacebarsですが、我々のコミュニティは他の言語に関してもパッケージを作っています。
 たとえば、<a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Jade</a>です。</p>
 </div>
@@ -5334,7 +5385,8 @@ Meteorは<a href="http://handlebarsjs.com/">Handlebars</a>にインスパイア�
 extension. In the file, make a <code>&lt;template&gt;</code> tag and give it a
 <code>name</code> attribute. Put the template contents inside the tag. Meteor
 will precompile the template, ship it down to the client, and make it
-available as on the global <code>Template</code> object.</p><p class="translation">
+available as on the global <code>Template</code> object.</p>
+<p class="translation">
 テンプレートを定義するには、あなたのプロジェクトに拡張子<code>.html</code>のファイルを作ってください。
 そのファイルの中に、<code>&lt;template&gt;</code>タグを作り、<code>name</code>アトリビュートを付けてください。
 そのタグのなかにコンテンツを入れてください。
@@ -5343,13 +5395,15 @@ Meteorはプリコンパイルして、クライアント側に送り、グロ�
 <p class="original">When your app is loaded, it automatically renders the special template called
 <code>&lt;body&gt;</code>, which is written using the <code>&lt;body&gt;</code> element instead of a
 <code>&lt;template&gt;</code>. You insert a template inside another template by using the
-<code>{{&gt; inclusion}}</code> operator.</p><p class="translation">あなたのアプリが読み込まれるとき、<code>&lt;body&gt;</code>という特別なテンプレートを描画します。
+<code>{{&gt; inclusion}}</code> operator.</p>
+<p class="translation">あなたのアプリが読み込まれるとき、<code>&lt;body&gt;</code>という特別なテンプレートを描画します。
 これは、<code>&lt;template&gt;</code>の代わりに、<code>&lt;body&gt;</code> 要素を使って書かれたテンプレートです。
 あなたは、<code>{{&gt; inclusion}}</code>オペレーターを使って、あるテンプレートを別のテンプレートの中に挿入できます。</p>
 
 <p class="original">The easiest way to get data into templates is by defining helper
 functions in JavaScript. Define helpers with the
-<code>Template.templateName.helpers({ ... })</code> function. Putting it all together:</p><p class="translation">テンプレートの中にデータを取り込む最も簡単な方法は、JavaScriptにhelper functionを定義することです。
+<code>Template.templateName.helpers({ ... })</code> function. Putting it all together:</p>
+<p class="translation">テンプレートの中にデータを取り込む最も簡単な方法は、JavaScriptにhelper functionを定義することです。
 ヘルパーは<code>Template.templateName.helpers({ ... })</code>関数をつかって定義します。
 全て並べると:</p>
 
@@ -5382,7 +5436,8 @@ Template.forecast.helpers({
  =&gt; <span class="hljs-string">&quot;&lt;h1&gt;Today&apos;s weather!&lt;/h1&gt; &lt;div&gt;It&apos;ll be cool and dry tonight&lt;/div&gt;&quot;</span>
 </code></pre>
 
-<p class="original">To iterate over an array or database cursor, use <code>{{#each}}</code>:</p><p class="translation">配列またはデータベースのカーソルをイテレートするには、<code>{{#each}}</code> をつかいます:</p>
+<p class="original">To iterate over an array or database cursor, use <code>{{#each}}</code>:</p>
+<p class="translation">配列またはデータベースのカーソルをイテレートするには、<code>{{#each}}</code> をつかいます:</p>
 
 <pre><code class="hljs html"><span class="hljs-comment">&lt;!-- in myapp.html --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;players&quot;</span>&gt;</span>
@@ -5403,12 +5458,14 @@ Template.players.helpers({
 <p class="original">In this case, the data is coming from a database query. When the
 database cursor is passed to <code>{{#each}}</code>, it will wire up all of the
 machinery to efficiently add and move DOM nodes as new results enter
-the query.</p><p class="translation">この場合、データはデータベースのクエリーからやってきます。
+the query.</p>
+<p class="translation">この場合、データはデータベースのクエリーからやってきます。
 データベースのカーソルが<code>{{#each}}</code>に渡されると、全ての仕掛けが連動し、新しい結果がクエリに入るたびに、効果的にDOMノードを追加、移動させます。</p>
 
 <p class="original">Helpers can take arguments, and they receive the current template context data
 in <code>this</code>. Note that some block helpers change the current context (notably
-<code>{{#each}}</code> and <code>{{#with}}</code>):</p><p class="translation">ヘルパーは引数を取ることができます。また、現在のテンプレートのコンテキスト・データを<code>this</code>で受け取ります。
+<code>{{#each}}</code> and <code>{{#with}}</code>):</p>
+<p class="translation">ヘルパーは引数を取ることができます。また、現在のテンプレートのコンテキスト・データを<code>this</code>で受け取ります。
 いくつかのブロック・ヘルパーはカレント・コンテキストが変わります。（特に、<code>{{#each}}</code> と <code>{{#with}}</code>です）：</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// in a JavaScript file</span>
@@ -5432,7 +5489,8 @@ Template.players.helpers({
 <span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
 </code></pre>
 
-<p class="original">Helpers can also be used to pass in constant data.</p><p class="translation">ヘルパーは、定数値を渡すためにも使われます。</p>
+<p class="original">Helpers can also be used to pass in constant data.</p>
+<p class="translation">ヘルパーは、定数値を渡すためにも使われます。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// Works fine with {{#each sections}}</span>
 Template.report.helpers({
@@ -5443,7 +5501,8 @@ Template.report.helpers({
 <p class="original">Finally, you can use the <code>events</code> function on a template to attach
 event handlers. The object passed into <code>events</code> is documented at
 <a href="#eventmaps">Event Maps</a>. The <code>this</code> argument to the event handler will
-be the data context of the element that triggered the event.</p><p class="translation">最後に、<code>events</code> 関数をつかって、テンプレートにイベントハンドラを設置することができます。
+be the data context of the element that triggered the event.</p>
+<p class="translation">最後に、<code>events</code> 関数をつかって、テンプレートにイベントハンドラを設置することができます。
 <code>events</code>に渡されるオブジェクトは、<a href="#eventmaps">Event Maps</a>に記述されています。
 イベントハンドラの変数<code>this</code> はイベントを起動した要素のデータコンテキストになります。</p>
 
@@ -5470,7 +5529,8 @@ Template.playerScore.events({
 </code></pre>
 
 <p class="original">For more details about Spacebars, read <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
-README</a>.</p><p class="translation">Spacebarsに関する詳細は、<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
+README</a>.</p>
+<p class="translation">Spacebarsに関する詳細は、<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
 README</a>をよんでください。</p>
 <h2 id="/full/usingpackages">Using packages</h2>
 
@@ -5480,13 +5540,15 @@ isomorphic package and build system. Isomorphic means the same packages work in
 the web browser, in mobile apps, and on the server. Packages can also contain
 plugins that extend the build process, such as <code>coffeescript</code>
 (<a href="http://coffeescript.org">CoffeeScript</a> compilation) or <code>templating</code> (compiling
-HTML templates).</p><p class="translation">ここまでところ、あたなが読んだ全ての機能は、標準のMeteorパッケージで実装されています。 ここまでできるのは、Meteorの非常にパワフルでisomorphicなパッケージとビルドシステムのおかげです。 isomorphicとは、同じパッケージが、Webブラウザ、モバイルアプリ、サーバーで動くということです。 パッケージは、<code>coffeescript</code>(<a href="http://coffeescript.org">CoffeeScript</a>のコンパイル)や、 <code>templating</code> ( HTMLテンプレートのコンパイル)のようなビルド・プロセスを拡張するプラグインを含むこともできます</p>
+HTML templates).</p>
+<p class="translation">ここまでところ、あたなが読んだ全ての機能は、標準のMeteorパッケージで実装されています。 ここまでできるのは、Meteorの非常にパワフルでisomorphicなパッケージとビルドシステムのおかげです。 isomorphicとは、同じパッケージが、Webブラウザ、モバイルアプリ、サーバーで動くということです。 パッケージは、<code>coffeescript</code>(<a href="http://coffeescript.org">CoffeeScript</a>のコンパイル)や、 <code>templating</code> ( HTMLテンプレートのコンパイル)のようなビルド・プロセスを拡張するプラグインを含むこともできます</p>
 
 <p class="original">Anyone can publish a Meteor package, and thousands of community-written packages
 have been published to date. The easiest way to browse these packages is
 <a href="http://www.atmospherejs.com/?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
 You can also use the <a href="#meteorsearch"><code>meteor search</code></a> and
-<a href="#meteorshow"><code>meteor show</code></a> commands.</p><p class="translation">Meteorパッケージはだれでも公開することができ、今日まで何千ものコミュニティによって書かれたパッケージが公開されています。 
+<a href="#meteorshow"><code>meteor show</code></a> commands.</p>
+<p class="translation">Meteorパッケージはだれでも公開することができ、今日まで何千ものコミュニティによって書かれたパッケージが公開されています。 
 これらのパッケージを閲覧する最も簡単な方法は、Percolate Studioによって運営されている、<a href="\&quot;http://www.atmospherejs.com/?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591\&quot;">Atmosphere</a>です。 
 <a href="\&quot;#meteorsearch\&quot;"><code>meteor search</code></a>と<a href="\&quot;#meteorshow\&quot;"><code>meteor show</code></a>コマンドを使うこともできます。
 </p>
@@ -5495,22 +5557,26 @@ You can also use the <a href="#meteorsearch"><code>meteor search</code></a> and
 them with <a href="#meteorremove"><code>meteor remove</code></a>.
 Additionally, <a href="#meteorlist"><code>meteor list</code></a> will tell you what
 packages your project is using, and <a href="#meteorupdate"><code>meteor update</code></a>
-will update them to the newest versions when possible.</p><p class="translation">あなたのプロジェクトには、<a href="#meteoradd"><code>meteor add</code></a>を利用してパッケージを追加することができます。 また、<a href="#meteorremove"><code>meteor remove</code></a>をつかって削除することもできます。 さらに、<a href="#meteorlist"><code>meteor list</code></a>で、あなたのプロジェクトがどのパッケージを利用しているか確認することができます。 <a href="#meteorupdate"><code>meteor update</code></a>をつかうと、利用可能な場合パッケージを最新バージョンに更新することもできます。</p>
+will update them to the newest versions when possible.</p>
+<p class="translation">あなたのプロジェクトには、<a href="#meteoradd"><code>meteor add</code></a>を利用してパッケージを追加することができます。 また、<a href="#meteorremove"><code>meteor remove</code></a>をつかって削除することもできます。 さらに、<a href="#meteorlist"><code>meteor list</code></a>で、あなたのプロジェクトがどのパッケージを利用しているか確認することができます。 <a href="#meteorupdate"><code>meteor update</code></a>をつかうと、利用可能な場合パッケージを最新バージョンに更新することもできます。</p>
 
 <p class="original">By default all apps include the <code>meteor-base</code> package. This pulls in the
 packages that make up the core of the Meteor stack. Most apps will have this
-package.</p><p class="translation">デフォルトでは、全てのアプリには<code>meteor-base</code>パッケージが含まれています。 これによりMeteorスタックの中核を成すパッケージ群を取り込みます。 ほとんどのアプリをこのパッケージを使うことになるでしょう。</p>
+package.</p>
+<p class="translation">デフォルトでは、全てのアプリには<code>meteor-base</code>パッケージが含まれています。 これによりMeteorスタックの中核を成すパッケージ群を取り込みます。 ほとんどのアプリをこのパッケージを使うことになるでしょう。</p>
 
 <p class="original">All new apps also start with a set of packages that allow a friendly development
 experience. For more information about these packages, check out the comments in
-the <a href="https://github.com/meteor/meteor/blob/master/tools/skel/.meteor/packages">packages file</a>.</p><p class="translation">全ての新しいアプリの作成は、心地よいディベロップメント・エクスペリエンスを提供するための一揃いのパッケージと共に開始されます。 これらのパッケージについては、<a href="https://github.com/meteor/meteor/blob/master/tools/skel/.meteor/packages">packages file</a>のコメントを確認してください。</p>
+the <a href="https://github.com/meteor/meteor/blob/master/tools/skel/.meteor/packages">packages file</a>.</p>
+<p class="translation">全ての新しいアプリの作成は、心地よいディベロップメント・エクスペリエンスを提供するための一揃いのパッケージと共に開始されます。 これらのパッケージについては、<a href="https://github.com/meteor/meteor/blob/master/tools/skel/.meteor/packages">packages file</a>のコメントを確認してください。</p>
 
 <p class="original">Meteor uses a single-loading packaging system, meaning that it loads just one
 version of every package. Before adding or upgrading to a particular version of
 a package, Meteor uses a constraint solver to check if doing so will cause
 other packages to break. By default, Meteor will choose conservatively. When
 adding transitive dependencies (packages that other packages, but not the
-application itself) depend on, Meteor will try to choose the earlier version.</p><p class="translation">Meteorは、シングル・ローディング パッケージングシステムを使っています。これは、それぞれのパッケージに対して、唯一のバージョンをロードするという意味です。 特定のバージョンのパッケージを追加や更新する前に、Meteorはconstraint solverをつかって、その操作が他のパッケージを壊さないか確認します。 Meteorはデフォルトでは保守的な選択をします。 間接的な依存パッケージ（そのアプリケーション自身ではなく、そこから他のパッケージを依存パッケージとして取り込む間接的なパッケージ）を追加する時、Meteorは最も古いバージョンを選択します。</p>
+application itself) depend on, Meteor will try to choose the earlier version.</p>
+<p class="translation">Meteorは、シングル・ローディング パッケージングシステムを使っています。これは、それぞれのパッケージに対して、唯一のバージョンをロードするという意味です。 特定のバージョンのパッケージを追加や更新する前に、Meteorはconstraint solverをつかって、その操作が他のパッケージを壊さないか確認します。 Meteorはデフォルトでは保守的な選択をします。 間接的な依存パッケージ（そのアプリケーション自身ではなく、そこから他のパッケージを依存パッケージとして取り込む間接的なパッケージ）を追加する時、Meteorは最も古いバージョンを選択します。</p>
 
 <p class="original">In addition to the packages in the official Meteor release being used by your
 app, <code>meteor list</code> and <code>meteor add</code> also search the <code>packages</code> directory at the
@@ -5518,20 +5584,23 @@ top of your app. You can also use the <code>packages</code> directory to break y
 into subpackages for your convenience, or to test packages that you might want
 to publish. See <a href="#writingpackages">Writing Packages</a>. If you wish to add
 packages outside of your app&apos;s folder structure, set the environment variable
-<code>PACKAGE_DIRS</code> to a colon-delimited list of paths.</p><p class="translation">あなたのアプリに使われているオフィシャルなMeteorリリースに含まれるパッケージに加えて、<code>meteor list</code> と <code>meteor add</code> は、あなたのアプリの直下におかれた<code>packages</code>ディレクトリも同様に検索します。 <code>packages</code> ディレクトリはあなたのアプリをサブパッケージに分解するための便利な方法です。公開したいパッケージをテストするためにも使うことができます。 <a href="#writingpackages">Writing Packages</a>を参考にしてください。 もしパッケージをあなたのアプリのフォルダ構成の外側で追加したいのであれば、コロン区切りのパスのリストを環境変数<code>PACKAGE_DIRS</code>に設定してください。</p>
+<code>PACKAGE_DIRS</code> to a colon-delimited list of paths.</p>
+<p class="translation">あなたのアプリに使われているオフィシャルなMeteorリリースに含まれるパッケージに加えて、<code>meteor list</code> と <code>meteor add</code> は、あなたのアプリの直下におかれた<code>packages</code>ディレクトリも同様に検索します。 <code>packages</code> ディレクトリはあなたのアプリをサブパッケージに分解するための便利な方法です。公開したいパッケージをテストするためにも使うことができます。 <a href="#writingpackages">Writing Packages</a>を参考にしてください。 もしパッケージをあなたのアプリのフォルダ構成の外側で追加したいのであれば、コロン区切りのパスのリストを環境変数<code>PACKAGE_DIRS</code>に設定してください。</p>
 <p></p><h2 id="/full/namespacing">Namespacing</h2><p></p>
 
 <p class="original">Meteor&apos;s namespacing support makes it easy to write large applications
 in JavaScript. Each package that you use in your app exists in its own
 separate namespace, meaning that it sees only its own global variables
 and any variables provided by the packages that it specifically
-uses. Here&apos;s how it works.</p><p class="translation">Meteorの名前空間サポートはJavaScriptでの大規模アプリケーションの作成を容易にします。
+uses. Here&apos;s how it works.</p>
+<p class="translation">Meteorの名前空間サポートはJavaScriptでの大規模アプリケーションの作成を容易にします。
 あなたのアプリで利用するそれぞれのパッケージは、それぞれ独自に分けられた名前空間の中に存在しています。
 つまり、各パッケージは自分のグローバル変数と、そこから明示的に利用しているパッケージの変数のみを参照するということです。
 以下、どのように動くかという説明です。</p>
 
 <p class="original">When you declare a top-level variable, you have a choice. You can make
-the variable File Scope or Package Scope.</p><p class="translation">トップレベルの変数を宣言するとき、あなたには選択肢があります。
+the variable File Scope or Package Scope.</p>
+<p class="translation">トップレベルの変数を宣言するとき、あなたには選択肢があります。
 ファイル・スコープにするか、またはパッケージ・スコープにするかです。</p>
 
 <pre class="original"><code class="hljs javascript"><span class="hljs-comment">// File Scope. This variable will be visible only inside this</span>
@@ -5542,7 +5611,8 @@ the variable File Scope or Package Scope.</p><p class="translation">トップレ
 <span class="hljs-comment">// of this package or app. The difference is that &apos;var&apos; is</span>
 <span class="hljs-comment">// omitted.</span>
 bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
-</code></pre><pre class="translation"><code class="hljs javascript">
+</code></pre>
+<pre class="translation"><code class="hljs javascript">
 <span class="hljs-comment">// ファイルスコープ。この変数は、この１ファイルの中でのみ参照可能です。</span>
 <span class="hljs-comment">// このアプリの他のファイルやパッケージからは参照するとができません。</span>
 <span class="hljs-keyword">var</span> alicePerson = {name: <span class="hljs-string">&quot;alice&quot;</span>};
@@ -5555,7 +5625,8 @@ bobPerson = {name: <span class="hljs-string">&quot;bob&quot;</span>};
 <p class="original">Notice that this is just the normal JavaScript syntax for declaring a
 variable that is local or global. Meteor scans your source code for
 global variable assignments and generates a wrapper that makes sure
-that your globals don&apos;t escape their appropriate namespace.</p><p class="translation">これはJavaScriptの通常の、ローカルまたは
+that your globals don&apos;t escape their appropriate namespace.</p>
+<p class="translation">これはJavaScriptの通常の、ローカルまたは
 グローバル変数を宣言するシンタックスであるということに注意をしてください。
 Meteorはあなたのソースコードをスキャンして、グローバル変数の割当てを探し、
 あなたのグローバル変数が正しい名前空間から漏れないようにするためのラッパーを生成します。</p>
@@ -5567,7 +5638,8 @@ variable. If your app uses the <code>email</code> package (and <em>only</em> if 
 the <code>email</code> package!) then your app can see <code>Email</code> and you can call
 <code>Email.send</code>. Most packages have only one export, but some packages
 might have two or three (for example, a package that provides several
-classes that work together).</p><p class="translation">
+classes that work together).</p>
+<p class="translation">
 ファイルスコープとパッケージスコープに加えて、エクスポートもあります。
 エクスポートとは、パッケージがあなたがつかえるように、ある変数を提供するための仕組みです。
 たとえば、<code>email</code>パッケージは<code>Email</code>変数をエクスポートします。
@@ -5584,7 +5656,8 @@ use package A, and package A uses package B, then you only see package
 A&apos;s exports. Package B&apos;s exports don&apos;t &quot;leak&quot; into your namespace just
 because you used package A. This keeps each namespace nice and
 tidy. Each app or package only sees their own globals plus the APIs of
-the packages that they specifically asked for.</p><p class="translation">
+the packages that they specifically asked for.</p>
+<p class="translation">
 あなたは、直接つかうパッケージのエクスポートだけ見ることができます。
 もしあなたがパッケージAを使い、パッケージAがパッケージBを使っているとき、
 見えるのはパッケージAのエクスポートだけです。
@@ -5600,7 +5673,8 @@ globals and the exports of the packages that your app uses
 directly. You don&apos;t see the variables from inside those packages, and
 you don&apos;t see the exports of your transitive dependencies (packages
 that aren&apos;t used directly by your app, but that are used by packages
-that are used by your app).</p><p class="translation">
+that are used by your app).</p>
+<p class="translation">
 あなたのアプリをデバッグするとき、ブラウザのJavaScriptコンソールは、あたかもあなたのアプリの名前空間に接続されたかのように振る舞います。
 あなたのアプリのグローバル変数とあなたのアプリが直接使うパッケージのエクスポート変数を見ることができます。
 これら直接利用するパッケージの内側の変数や、間接的な依存性
@@ -5608,21 +5682,24 @@ that are used by your app).</p><p class="translation">
 </p>
 
 <p class="original">If you want to look inside packages from inside your in-browser
-debugger, you&apos;ve got two options:</p><p class="translation">
+debugger, you&apos;ve got two options:</p>
+<p class="translation">
 もし、ブラウザの中のデバッガからパッケージの中身が見たいのなら、２つのオプションがあります:</p>
 
 <ul>
 <li><p class="original">Set a breakpoint inside package code. While stopped on that
 breakpoint, the console will be in the package&apos;s namespace. You&apos;ll
 see the package&apos;s package-scope variables, imports, and also any
-file-scope variables for the file you&apos;re stopped in.</p><p class="translation">パッケージのコードにブレークポイントをセットする。ブレークポイントで止まっている間は、コンソールはパッケージの名前空間にいます。
+file-scope variables for the file you&apos;re stopped in.</p>
+<p class="translation">パッケージのコードにブレークポイントをセットする。ブレークポイントで止まっている間は、コンソールはパッケージの名前空間にいます。
 パッケージスコープの変数、インポート、それに止めたファイル内の全てのファイルスコープ変数を見ることができます。
 </p></li>
 <li><p class="original">If a package <code>foo</code> is included in your app, regardless of whether
 your app uses it directly, its exports are available in
 <code>Package.foo</code>. For example, if the <code>email</code> package is loaded, then
 you can access <code>Package.email.Email.send</code> even from namespaces that
-don&apos;t use the <code>email</code> package directly.</p><p class="translation">もし、パッケージ<code>foo</code>があなたのアプリに入っていたら、あなたのアプリがそれを直接つかうかどうかに関わらず、
+don&apos;t use the <code>email</code> package directly.</p>
+<p class="translation">もし、パッケージ<code>foo</code>があなたのアプリに入っていたら、あなたのアプリがそれを直接つかうかどうかに関わらず、
 それのエクスポートは<code>Package.foo</code>の中で利用可能です。例えば、<code>email</code> パッケージが読み込まれたら、
 たとえ、<code>email</code>パッケージを直接使わない名前空間からでも、<code>Package.email.Email.send</code> にアクセス可能です。
 </p></li>
@@ -5630,7 +5707,8 @@ don&apos;t use the <code>email</code> package directly.</p><p class="translation
 
 <p class="original">When declaring functions, keep in mind that <code>function x () {}</code> is just
 shorthand for <code>var x = function x () {}</code> in JavaScript. Consider these
-examples:</p><p class="translation">
+examples:</p>
+<p class="translation">
 functionを宣言する時、JavaScriptでは、<code>function x () {}</code>は、
 単に<code>var x = function x () {}</code>の省略形であるということに注意してください。
 これらの例を考えてみてください。
@@ -5643,7 +5721,8 @@ functionを宣言する時、JavaScriptでは、<code>function x () {}</code>は
 <span class="hljs-comment">// No &apos;var&apos;, so x() is package-scope and can be called from</span>
 <span class="hljs-comment">// any file inside this app or package.</span>
 x = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ ... }
-</code></pre><pre class="translation"><code class="hljs javascript"><span class="hljs-comment">// これは &apos;var x = function x () ...&apos; と同じ。つまり、x() は</span>
+</code></pre>
+<pre class="translation"><code class="hljs javascript"><span class="hljs-comment">// これは &apos;var x = function x () ...&apos; と同じ。つまり、x() は</span>
 <span class="hljs-comment">// ファイルスコープであり、このファイルの中だけで呼び出すことができます。</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span> <span class="hljs-params">()</span> </span>{ ... }
 
@@ -5661,7 +5740,8 @@ actually end up being visible in packages. That should never be a
 problem for properly written package code (since the app globals will
 still be properly shadowed by declarations in the packages). You
 certainly shouldn&apos;t depend on this quirk, and in the future Meteor may
-check for it and throw an error if you do.</p><p class="translation">厳密にいうと、アプリの中（パッケージとは違い）のグローバル変数は、実際のところ、本当にグローバル変数です。
+check for it and throw an error if you do.</p>
+<p class="translation">厳密にいうと、アプリの中（パッケージとは違い）のグローバル変数は、実際のところ、本当にグローバル変数です。
 これらの変数をアプリのコードに対してプライベートなスコープに閉じ込めることができません。
 なぜなら、デバッグするときにコンソールから見えなくなってしまうからです。
 これはつまり、アプリのグローバル変数は他のパッケージに見えてしまうということです。
@@ -5675,17 +5755,20 @@ Meteorは将来、チェックをしてもしあなたがそんなことをし�
 
 <p class="original">Meteor is a full application server.  We include everything you need
 to deploy your application on the internet: you just provide the JavaScript,
-HTML, and CSS.</p><p class="translation">Meteorはフル・アプリケーションサーバーです。
+HTML, and CSS.</p>
+<p class="translation">Meteorはフル・アプリケーションサーバーです。
 あなたのアプリケーションをインターネット上にデプロイするために必要な全てのものが既に入っています。
 あなたは単に、JavaScript、HTML、CSSを入れればいいのです。</p>
 
-<h3 class="nosection original">Running on Meteor&apos;s infrastructure</h3><h3 class="nosection translation">Meteorのインフラで走らせる</h3>
+<h3 class="nosection original">Running on Meteor&apos;s infrastructure</h3>
+<h3 class="nosection translation">Meteorのインフラで走らせる</h3>
 
 <p class="original">The easiest way to deploy your application is to use <code>meteor
 deploy</code>.  We provide it because it&apos;s what, personally, we&apos;ve always
 wanted: an easy way to take an app idea, flesh it out over a weekend,
 and put it out there for the world to use, with nothing getting in the
-way of creativity.</p><p class="translation">あなたのアプリケーションをデプロイするための最も簡単な方法は、<code>meteor deploy</code> コマンドを使うことです。
+way of creativity.</p>
+<p class="translation">あなたのアプリケーションをデプロイするための最も簡単な方法は、<code>meteor deploy</code> コマンドを使うことです。
 私達がこれを提供するのは、個人的に、ずっと欲しいとおもってたものだからです。
 それは、アイディアが浮かんだら、週末で形にして、創造性を妨げずに世界中でつかってもらうようにするということです。</p>
 
@@ -5696,13 +5779,15 @@ way of creativity.</p><p class="translation">あなたのアプリケーショ�
 this is the first time deploying to this hostname, Meteor creates a
 fresh empty database for your application.  If you want to deploy an
 update, Meteor will preserve the existing data and just refresh the
-code.</p><p class="translation">あなたのアプリケーションは、myapp.meteor.comで使えるようになりました。
+code.</p>
+<p class="translation">あなたのアプリケーションは、myapp.meteor.comで使えるようになりました。
 もし、これがこのホスト名にデプロイする初回であれば、Meteorあなたのアプリケーションに新しい空のデータベースを作ります。
 もし、変更をデプロイしたいのであれば、Meteorは既存のデータを保存して、単にコードをリフレッシュします。
 </p>
 
 <p class="original">You can also deploy to your own domain.  Just set up the hostname you
-want to use as a CNAME to <code>origin.meteor.com</code>, then deploy to that name.</p><p class="translation">自分のドメインへもデプロイすることができます。
+want to use as a CNAME to <code>origin.meteor.com</code>, then deploy to that name.</p>
+<p class="translation">自分のドメインへもデプロイすることができます。
 使いたいホスト名のCNAMEを、<code>origin.meteor.com</code>にセットし、その名前でdeployしてください。</p>
 
 <pre><code class="hljs bash">meteor deploy www.myapp.com
@@ -5710,17 +5795,21 @@ want to use as a CNAME to <code>origin.meteor.com</code>, then deploy to that na
 
 <p class="original">We provide this as a free service so you can try Meteor.  It is also
 helpful for quickly putting up internal betas, demos, and so on. For
-more information, see <a href="#meteordeploy">meteor deploy</a>.</p><p class="translation">あなたがMeteorを試せるように、我々はこれを無料のサービスとして提供しています。
+more information, see <a href="#meteordeploy">meteor deploy</a>.</p>
+<p class="translation">あなたがMeteorを試せるように、我々はこれを無料のサービスとして提供しています。
 これは内部ベータや、デモなどを簡単に立ち上げるのにも役に立ちます。
 詳細は<a href="#meteordeploy">meteor deploy</a>を見てください。</p>
 
-<h3 class="nosection original">Running on your own infrastructure</h3><h3 class="nosection translation">あなたの自分のインフラ上で走らせる</h3>
+<h3 class="nosection original">Running on your own infrastructure</h3>
+<h3 class="nosection translation">あなたの自分のインフラ上で走らせる</h3>
 
 <p class="original">You can also run your application on your own infrastructure or any
-hosting provider that can run Node.js apps.</p><p class="translation">あなたのアプリケーションをあなた自身のインフラの上で走らせることができます。
+hosting provider that can run Node.js apps.</p>
+<p class="translation">あなたのアプリケーションをあなた自身のインフラの上で走らせることができます。
 また、Node.jsアプリを実行できるどんなホスティングサービスの上でも走らせることができます。</p>
 
-<p class="original">To get started, run</p><p class="translation">開始するために、以下を実行してください</p>
+<p class="original">To get started, run</p>
+<p class="translation">開始するために、以下を実行してください</p>
 
 <pre><code class="hljs bash">meteor build my_directory
 </code></pre>
@@ -5729,7 +5818,8 @@ hosting provider that can run Node.js apps.</p><p class="translation">あなた�
 a tarball.  To run this application, you need to provide Node.js 0.10 and a
 MongoDB server.  (The current release of Meteor has been tested with Node
 0.10.40.) You can then run the application by invoking node, specifying the
-HTTP port for the application to listen on, and the MongoDB endpoint.</p><p class="translation">
+HTTP port for the application to listen on, and the MongoDB endpoint.</p>
+<p class="translation">
 このコマンドは、全てを含んだNode.jsアプリケーションをtarアーカイブ形式で生成します。
 このアプリケーションを走らせるには、Node.js 0.10とMongoDBサーバーが必要です。
 (最新リリースのMeteorは、Node 0.10.40でテストされています。)
@@ -5741,7 +5831,8 @@ env PORT=<span class="hljs-number">3000</span> MONGO_URL=mongodb://localhost:<sp
 </code></pre>
 
 <p class="original">Some packages might require other environment variables. For example,
-the <code>email</code> package requires a <code>MAIL_URL</code> environment variable.</p><p class="translation">
+the <code>email</code> package requires a <code>MAIL_URL</code> environment variable.</p>
+<p class="translation">
 いくつかのパッケージは他の環境変数を必要とするかもしれません。
 例えば、<code>email</code> パッケージは、環境変数<code>MAIL_URL</code> を必要とします。</p>
 <p></p><h2 id="/full/writingpackages">Writing packages</h2><p></p>
@@ -5752,7 +5843,8 @@ Developer username. This will create a package from scratch and prefill the
 directory with a package.js control file and some javascript. By default, Meteor
 will take the package name from the name of the directory that contains the
 package.js file. Don&apos;t forget to run <code>meteor add [packagename]</code>, even if the
-package is internal to the app, in order to use it.</p><p class="translation">
+package is internal to the app, in order to use it.</p>
+<p class="translation">
 Meteorのパッケージを書くのは簡単です。
 meteorパッケージを初期化するには、<code>meteor create --package username:packagename</code>を実行してください。
 <code>username</code> は、あなたのMeteor Developer usernameです。
@@ -5767,7 +5859,8 @@ repository and checked it out elsewhere, you should get the same result. In your
 package directory, you will find an automatically generated <code>.versions</code>
 file. This file specifies the versions of all packages used to build your
 package and is part of the source. Check it into version control to ensure
-repeatable builds across machines.</p><p class="translation">
+repeatable builds across machines.</p>
+<p class="translation">
 Meteorはパッケージとアプリケーションの両方に繰り返し実行可能なビルドを保証します。 
 これはつまり、あなたがパッケージをあるコンピューターでつくり、リポジトリに入れ、そしてどこかでチェックアウトしたとして、同じ結果になるということです。
 あなたのパッケージ・ディレクトリに自動生成された<code>.versions</code>ファイルがつくられます。
@@ -5781,7 +5874,8 @@ case, the app&apos;s context will take precedence. Rather than using the
 <code>.versions</code> file as a guide, we will build the package with the same
 dependencies as used by the app (we think that, in practice, it would be
 confusing to find your local packages built with different versions of
-things).</p><p class="translation">
+things).</p>
+<p class="translation">
 パッケージは、時としてそれ自体では成立せず、アプリのコンテキストの中で機能します。（具体的には、アプリのpackagesディレクトリ内のパッケージ）
 この場合、アプリのコンテキストが優先されます。<code>.versions</code> ファイルをガイドとして使うのではなく、アプリに使われるのと同じ依存性をつかってパッケージをビルドします。
 （異なったバージョンをつかってビルドされたパッケージがローカルパッケージにあったら、実際問題として、混乱を招くと思います。）</p>
@@ -5792,7 +5886,8 @@ number has three parts separated by dots: major version, minor version and patch
 (for example: 1.2.3) with an optional pre-release version. You can read more about it on
 <a href="http://www.semver.org">semver.org</a>.
 Additionally, because some meteor packages wrap external libraries,
-Meteor supports the convention of using <code>_</code> to denote a wrap number.</p><p class="translation">
+Meteor supports the convention of using <code>_</code> to denote a wrap number.</p>
+<p class="translation">
 Meteorは、拡張されたsemverバージョニングをMeteorのパッケージに対して使います。
 これは、バージョン番号にドットで句切られた３つの部分があるということです。
 メジャーバジョン、マイナーバージョン、パッチバージョン（例えば、1.2.3）と、オプションでプレリリースバージョンが付きます。
@@ -5800,10 +5895,12 @@ Meteorは、拡張されたsemverバージョニングをMeteorのパッケー�
 さらに、いくつかのmeteorパッケージは外部ライブラリを包含しているので、Meteorは、ラップバージョンを示すため、 <code>_</code> をつかうという規約をサポートしています。</p>
 
 <p class="original">You can read more about <a href="#packagejs"><code>package.js</code></a> files in the API
-section.</p><p class="translation"><a href="#packagejs"><code>package.js</code></a>ファイルについて、APIのセクションで詳細を確認してください。</p>
+section.</p>
+<p class="translation"><a href="#packagejs"><code>package.js</code></a>ファイルについて、APIのセクションで詳細を確認してください。</p>
 
 <p class="original">A word on testing: since testing is an important part of the development process,
-there are two common ways to test a package:</p><p class="translation">テストは開発プロセスのなかの重要な部分なため、テストについて一言いっておきます。
+there are two common ways to test a package:</p>
+<p class="translation">テストは開発プロセスのなかの重要な部分なため、テストについて一言いっておきます。
 パッケージをテストするのに、二つの一般的な方法があります：</p>
 
 <ul>
@@ -5812,7 +5909,8 @@ tests against the application) is the most common way to test a package. After
 creating your package, add it to your app&apos;s /packages directory and run <code>meteor add</code>.
 This will add your package to your app as a local package. You can then
 test and run your app as usual. Meteor will detect and respond to changes to
-your local package, just as it does to your app files.</p><p class="translation">インテグレーションテスト（パッケージ・ディレクトリをアプリケーションに入れ、テストをアプリケーションに対して書く）は最も一般的な、パッケージをテストする方法です。
+your local package, just as it does to your app files.</p>
+<p class="translation">インテグレーションテスト（パッケージ・ディレクトリをアプリケーションに入れ、テストをアプリケーションに対して書く）は最も一般的な、パッケージをテストする方法です。
 あなたのパッケージを作った後、それをあなたのアプリの/packagesディレクトリに加え、<code>meteor add</code>を実行してください。
 この操作はパッケージをアプリのローカルパッケージに追加します。その後あなたのアプリのテストや実行をいつものようにすることができます。
 Meteorはあなたのローカルパッケージへの変更を、アプリのファイルに対して行われたのと同じように、検出し、応答します。
@@ -5822,7 +5920,8 @@ As described in the <a href="#packagejs"><code>package.js</code></a>
 section, you can use the <code>package.js</code> file to specify where your unit tests are
 located. If you have a repository that contains only the package source, you can
 test your package by specifying the path to the package directory (which must
-contain a slash), such as <code>meteor test-packages ./</code>.</p><p class="translation">ユニットテストは、<a href="#meteortestpackages"><code>meteor test-packages package-name</code></a>コマンドで実行されます。
+contain a slash), such as <code>meteor test-packages ./</code>.</p>
+<p class="translation">ユニットテストは、<a href="#meteortestpackages"><code>meteor test-packages package-name</code></a>コマンドで実行されます。
 <a href="#packagejs"><code>package.js</code></a>セクションで説明されているように、<code>package.js</code>ファイルはあなたのユニットテストの場所を指定するために使えます。
 もし、パッケージのソースだけを含むリポジトリがあるなら、パッケージのディレクトリ（スラッシュを含んでいなければいけません）を指定することでパッケージをテストすることができます。
 たとえば、<code>meteor test-packages ./</code>のようにしてください。</p></li>
@@ -5834,7 +5933,8 @@ contain a version (Meteor packages are versioned using
 strict <a href="http://www.semver.org">semver</a> versioning) and their names
 must be prefixed with the username of the author and a colon, like so:
 <code>iron:router</code>. This namespacing allows for more descriptive and on-topic package
-names.</p><p class="translation">パッケージを公開するためには、パッケージディレクトリから、<a href="#meteorpublish"><code>meteor publish</code></a> を実行してください。
+names.</p>
+<p class="translation">パッケージを公開するためには、パッケージディレクトリから、<a href="#meteorpublish"><code>meteor publish</code></a> を実行してください。
 パッケージを公開するためにはいくつか追加の制限があります。それは、パッケージはバージョン (Meteorパッケージは<a href="http://www.semver.org">semver</a> バージョニングを使って厳格にバージョニングされています) を持っていなければいけません。また、<code>iron:router</code>のように、作者のユーザー名とコロンがパッケージ名の前についていなければいけません。
 この名前付けルールににより、より描写的でまとまりのあるパッケージ名にすることができます。</p>
   <h1 id="api">The Meteor API</h1>
@@ -5842,7 +5942,8 @@ names.</p><p class="translation">パッケージを公開するためには、�
 <p class="original">Your JavaScript code can run in two environments: the <em>client</em> (browser), and
 the <em>server</em> (a <a href="http://nodejs.org/">Node.js</a> container on a server).  For each
 function in this API reference, we&apos;ll indicate if the function is available just
-on the client, just on the server, or <em>Anywhere</em>.</p><p class="translation">JavaScriptコードは2つの環境で動きます。一つは<em>client</em>すなわちブラウザです。もう一つは、<em>server</em>すなわちサーバ上の<a href="http://nodejs.org/">Node.js</a>の中です。このAPI仕様書ではそれぞれの関数がどちらで動くものか明記されます。クライアントとサーバの両方で動く場合は<em>Anywhere</em>と示されます。</p>
+on the client, just on the server, or <em>Anywhere</em>.</p>
+<p class="translation">JavaScriptコードは2つの環境で動きます。一つは<em>client</em>すなわちブラウザです。もう一つは、<em>server</em>すなわちサーバ上の<a href="http://nodejs.org/">Node.js</a>の中です。このAPI仕様書ではそれぞれの関数がどちらで動くものか明記されます。クライアントとサーバの両方で動く場合は<em>Anywhere</em>と示されます。</p>
 
 <p></p><h2 id="/full/core"><span>Meteor Core</span></h2>
 
@@ -5859,7 +5960,8 @@ on the client, just on the server, or <em>Anywhere</em>.</p><p class="translatio
   </h3>
 
   <div class="desc">
-    <p class="original">Boolean variable.  True if running in client environment.</p><p class="translation">真偽値。クライアント環境の場合Trueになる。</p>
+    <p class="original">Boolean variable.  True if running in client environment.</p>
+<p class="translation">真偽値。クライアント環境の場合Trueになる。</p>
   </div>
 
   
@@ -5882,7 +5984,8 @@ on the client, just on the server, or <em>Anywhere</em>.</p><p class="translatio
   </h3>
 
   <div class="desc">
-    <p class="original">Boolean variable.  True if running in server environment.</p><p class="translation">真偽値。サーバ環境の場合Trueになる。</p>
+    <p class="original">Boolean variable.  True if running in server environment.</p>
+<p class="translation">真偽値。サーバ環境の場合Trueになる。</p>
   </div>
 
   
@@ -5899,7 +6002,8 @@ on the client, just on the server, or <em>Anywhere</em>.</p><p class="translatio
 prevent code from being sent to the client. Any sensitive code that you
 don&apos;t want served to the client, such as code containing passwords or
 authentication mechanisms, should be kept in the <code>server</code> directory.
-</p><p class="translation"><code>Meteor.isServer</code>はそのコードがどこで動くかを制限することには使えますが、そのコードがクライアント側に送られることは阻止しません。クライアントに送りたくない秘密のコード<code>server</code>に格納すべきです。例えば、パスワードや認証のメカニズムが含まれているコードなどが該当します。</p>
+</p>
+<p class="translation"><code>Meteor.isServer</code>はそのコードがどこで動くかを制限することには使えますが、そのコードがクライアント側に送られることは阻止しません。クライアントに送りたくない秘密のコード<code>server</code>に格納すべきです。例えば、パスワードや認証のメカニズムが含まれているコードなどが該当します。</p>
 </div>
 
 
@@ -5915,7 +6019,8 @@ authentication mechanisms, should be kept in the <code>server</code> directory.
   </h3>
 
   <div class="desc">
-    <p class="original">Boolean variable.  True if running in a Cordova mobile environment.</p><p class="translation">真偽値。Cordovaモバイル環境の場合Trueになる</p>
+    <p class="original">Boolean variable.  True if running in a Cordova mobile environment.</p>
+<p class="translation">真偽値。Cordovaモバイル環境の場合Trueになる</p>
   </div>
 
   
@@ -5939,7 +6044,8 @@ authentication mechanisms, should be kept in the <code>server</code> directory.
   </h3>
 
   <div class="desc">
-    <p class="original">Run code when a client or a server starts.</p><p class="translation">クライアントやサーバが起動したときにコードを実行する。</p>
+    <p class="original">Run code when a client or a server starts.</p>
+<p class="translation">クライアントやサーバが起動したときにコードを実行する。</p>
   </div>
 
   
@@ -5951,7 +6057,8 @@ authentication mechanisms, should be kept in the <code>server</code> directory.
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">A function to run on startup.</p><p class="translation">起動時に実行する関数</p>
+          <p class="original">A function to run on startup.</p>
+<p class="translation">起動時に実行する関数</p>
         </dd>
       
     </dl>
@@ -5965,10 +6072,12 @@ authentication mechanisms, should be kept in the <code>server</code> directory.
 
 <p class="original">On a server, the function will run as soon as the server process is
 finished starting. On a client, the function will run as soon as the DOM
-is ready.</p><p class="translation">サーバー上では、サーバーの開始が完了すると同時に関数が実行される。クライアント上では、DOMが完了すると同時に関数が実行される。</p>
+is ready.</p>
+<p class="translation">サーバー上では、サーバーの開始が完了すると同時に関数が実行される。クライアント上では、DOMが完了すると同時に関数が実行される。</p>
 
 <p class="original">The <code>startup</code> callbacks are called in the same order as the calls to
-<code>Meteor.startup</code> were made.</p><p class="translation"><code>startup</code>のコールバック関数は<code>Meteor.startup</code>の呼びだされた順番によって実行される。</p>
+<code>Meteor.startup</code> were made.</p>
+<p class="translation"><code>startup</code>のコールバック関数は<code>Meteor.startup</code>の呼びだされた順番によって実行される。</p>
 
 <p>On a client, <code>startup</code> callbacks from packages will be called
 first, followed by <code>&lt;body&gt;</code> templates from your <code>.html</code> files,
@@ -5997,7 +6106,8 @@ followed by your application code.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Wrap a function that takes a callback function as its final parameter. The signature of the callback of the wrapped function should be <code>function(error, result){}</code>. On the server, the wrapped function can be used either synchronously (without passing a callback) or asynchronously (when a callback is passed). On the client, a callback is always required; errors will be logged if there is no callback. If a callback is provided, the environment captured when the original function was called will be restored in the callback.</p><p class="translation">コールバック関数を引数の最後に受け取る関数をラップします。ラップされた関数に代入されるコールバック関数に特徴的な書き方は<code>function(error, result){}</code>です。サーバー上では、ラップされた関数は同期的（コールバック関数を設定しない）にも非同期的（コールバック関数を設定する）にも使えます。</p>
+    <p class="original">Wrap a function that takes a callback function as its final parameter. The signature of the callback of the wrapped function should be <code>function(error, result){}</code>. On the server, the wrapped function can be used either synchronously (without passing a callback) or asynchronously (when a callback is passed). On the client, a callback is always required; errors will be logged if there is no callback. If a callback is provided, the environment captured when the original function was called will be restored in the callback.</p>
+<p class="translation">コールバック関数を引数の最後に受け取る関数をラップします。ラップされた関数に代入されるコールバック関数に特徴的な書き方は<code>function(error, result){}</code>です。サーバー上では、ラップされた関数は同期的（コールバック関数を設定しない）にも非同期的（コールバック関数を設定する）にも使えます。</p>
   </div>
 
   
@@ -6009,7 +6119,8 @@ followed by your application code.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">A function that takes a callback as its final parameter</p><p class="translation">引数の最後にコールバック関数を受け取る関数</p>
+          <p class="original">A function that takes a callback as its final parameter</p>
+<p class="translation">引数の最後にコールバック関数を受け取る関数</p>
         </dd>
       
         <dt>
@@ -6017,7 +6128,8 @@ followed by your application code.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p class="original">Optional <code>this</code> object against which the original function will be invoked</p><p class="translation">ラップされる前の関数オブジェクトが代入される<code>this</code></p>
+          <p class="original">Optional <code>this</code> object against which the original function will be invoked</p>
+<p class="translation">ラップされる前の関数オブジェクトが代入される<code>this</code></p>
         </dd>
       
     </dl>
@@ -6160,7 +6272,8 @@ how clients can subscribe to those sets.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Publish a record set.</p><p class="translation">レコードのセットを配信します。</p>
+    <p class="original">Publish a record set.</p>
+<p class="translation">レコードのセットを配信します。</p>
   </div>
 
   
@@ -6172,7 +6285,8 @@ how clients can subscribe to those sets.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">Name of the record set.  If <code>null</code>, the set has no name, and the record set is automatically sent to all connected clients.</p><p class="translation">配信するデータの名称。<code>null</code>がセットされた場合、配信されるデータには名称が設定されず、自動的に接続している全てのクライアントに配信されます。</p>
+          <p class="original">Name of the record set.  If <code>null</code>, the set has no name, and the record set is automatically sent to all connected clients.</p>
+<p class="translation">配信するデータの名称。<code>null</code>がセットされた場合、配信されるデータには名称が設定されず、自動的に接続している全てのクライアントに配信されます。</p>
         </dd>
       
         <dt>
@@ -6180,7 +6294,8 @@ how clients can subscribe to those sets.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Function called on the server each time a client subscribes.  Inside the function, <code>this</code> is the publish handler object, described below.  If the client passed arguments to <code>subscribe</code>, the function is called with the same arguments.</p><p class="translation">クライアントから購読されるたびにサーバで実行される関数。関数の処理中で<code>this</code>は、後述する配信を制御するオブジェクトを指し示します。クライアント側で<code>subscribe</code>メソッドの同引数を省略すると、サーバ側と同じ関数が実行されます。</p>
+          <p class="original">Function called on the server each time a client subscribes.  Inside the function, <code>this</code> is the publish handler object, described below.  If the client passed arguments to <code>subscribe</code>, the function is called with the same arguments.</p>
+<p class="translation">クライアントから購読されるたびにサーバで実行される関数。関数の処理中で<code>this</code>は、後述する配信を制御するオブジェクトを指し示します。クライアント側で<code>subscribe</code>メソッドの同引数を省略すると、サーバ側と同じ関数が実行されます。</p>
         </dd>
       
     </dl>
@@ -6658,7 +6773,8 @@ publish handler, this is the place to stop the observes.</p>
 
   <div class="desc">
     <p class="original">Subscribe to a record set.  Returns a handle that provides
-<code>stop()</code> and <code>ready()</code> methods.</p><p class="translation">データの購読登録を行います。返却されるオブジェクトは、<code>stop()</code>メソッドと<code>ready()</code>メソッドを提供します。</p>
+<code>stop()</code> and <code>ready()</code> methods.</p>
+<p class="translation">データの購読登録を行います。返却されるオブジェクトは、<code>stop()</code>メソッドと<code>ready()</code>メソッドを提供します。</p>
   </div>
 
   
@@ -6671,7 +6787,8 @@ publish handler, this is the place to stop the observes.</p>
         </dt>
         <dd>
           <p class="original">Name of the subscription.  Matches the name of the
-server&apos;s <code>publish()</code> call.</p><p class="translation">購読するデータの名称。サーバ側で同じ名称が設定された<code>publish()</code>メソッドが呼び出されます。</p>
+server&apos;s <code>publish()</code> call.</p>
+<p class="translation">購読するデータの名称。サーバ側で同じ名称が設定された<code>publish()</code>メソッドが呼び出されます。</p>
         </dd>
       
         <dt>
@@ -6680,7 +6797,8 @@ server&apos;s <code>publish()</code> call.</p><p class="translation">購読す�
         </dt>
         <dd>
           <p class="original">Optional arguments passed to publisher
-function on server.</p><p class="translation">サーバ側の配信関数へ受け渡される引数を任意で設定する。</p>
+function on server.</p>
+<p class="translation">サーバ側の配信関数へ受け渡される引数を任意で設定する。</p>
         </dd>
       
         <dt>
@@ -6691,7 +6809,8 @@ function on server.</p><p class="translation">サーバ側の配信関数へ受�
           <p class="original">Optional. May include <code>onStop</code>
 and <code>onReady</code> callbacks. If there is an error, it is passed as an
 argument to <code>onStop</code>. If a function is passed instead of an object, it
-is interpreted as an <code>onReady</code> callback.</p><p class="translation">任意で設定可能。<code>onStop</code>メソッドと<code>onReady</code>メソッドを含めることができます。エラーが発生した場合は<code>onStop</code>メソッドの引数となります。オブジェクトの代わりに関数が渡された場合、<code>onReady</code>メソッドのコールバック関数として解釈されます。</p>
+is interpreted as an <code>onReady</code> callback.</p>
+<p class="translation">任意で設定可能。<code>onStop</code>メソッドと<code>onReady</code>メソッドを含めることができます。エラーが発生した場合は<code>onStop</code>メソッドの引数となります。オブジェクトの代わりに関数が渡された場合、<code>onReady</code>メソッドのコールバック関数として解釈されます。</p>
         </dd>
       
     </dl>
@@ -6741,7 +6860,8 @@ following properties:</p>
     <dt><span class="name">stop()</span></dt>
   
   <dd><p class="original">Cancel the subscription. This will typically result in the server directing the
-client to remove the subscription&apos;s data from the client&apos;s cache.</p><p class="translation">購読を中止します。通常 購読を中止すると、キャッシュから購読のためのデータを削除するよう、サーバからクライアントへ命令が出されます。</p></dd>
+client to remove the subscription&apos;s data from the client&apos;s cache.</p>
+<p class="translation">購読を中止します。通常 購読を中止すると、キャッシュから購読のためのデータを削除するよう、サーバからクライアントへ命令が出されます。</p></dd>
 
 
 
@@ -6804,7 +6924,8 @@ be one of the published values, chosen arbitrarily.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Defines functions that can be invoked over the network by clients.</p><p class="translation">クライアントによってネットワーク越しに呼び出される関数を定義します。</p>
+    <p class="original">Defines functions that can be invoked over the network by clients.</p>
+<p class="translation">クライアントによってネットワーク越しに呼び出される関数を定義します。</p>
   </div>
 
   
@@ -6816,7 +6937,8 @@ be one of the published values, chosen arbitrarily.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p class="original">Dictionary whose keys are method names and values are functions.</p><p class="translation">辞書のキーはメソッド名で、バリューは関数です。</p>
+          <p class="original">Dictionary whose keys are method names and values are functions.</p>
+<p class="translation">辞書のキーはメソッド名で、バリューは関数です。</p>
         </dd>
       
     </dl>
@@ -6886,7 +7008,8 @@ request to the server. When the server responds, the client updates the local
 cache with the writes that actually occurred on the server.</p>
 
 <p class="original">You don&apos;t have to put all your method definitions into a single <code>Meteor.methods</code>
-call; you may call it multiple times, as long as each method has a unique name.</p><p class="translation">ひとつの<code>Meteor.methods</code>呼び出しにメソッド定義全てを置く必要はありません。ユニークな名前を各メソッドが持つ限り、あなたはこれを複数回呼び出すでしょう。</p>
+call; you may call it multiple times, as long as each method has a unique name.</p>
+<p class="translation">ひとつの<code>Meteor.methods</code>呼び出しにメソッド定義全てを置く必要はありません。ユニークな名前を各メソッドが持つ限り、あなたはこれを複数回呼び出すでしょう。</p>
 
 <p>Since methods usually expect particular types as arguments,
 use <a href="#check"><code>check</code></a> liberally to ensure your method arguments have
@@ -7068,7 +7191,8 @@ will allow the N+1th invocation to start running in a new fiber.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">This class represents a symbolic error thrown by a method.</p><p class="translation">このクラスは、何かのメソッドによって投げられたシンボリックエラーを表します。</p>
+    <p class="original">This class represents a symbolic error thrown by a method.</p>
+<p class="translation">このクラスは、何かのメソッドによって投げられたシンボリックエラーを表します。</p>
   </div>
 
   
@@ -7083,7 +7207,8 @@ will allow the N+1th invocation to start running in a new fiber.</p>
           <p class="original">A string code uniquely identifying this kind of error.
 This string should be used by callers of the method to determine the
 appropriate action to take, instead of attempting to parse the reason
-or details fields. For example:</p><p class="translation">文字列はエラーを特定するユニークなものとして表現します。この文字列は、reasonやdetailsをパースしようとする代わりに適切なアクションを決定するためのメソッドの呼び出し元によって使われるべきです。例えば:</p>
+or details fields. For example:</p>
+<p class="translation">文字列はエラーを特定するユニークなものとして表現します。この文字列は、reasonやdetailsをパースしようとする代わりに適切なアクションを決定するためのメソッドの呼び出し元によって使われるべきです。例えば:</p>
 <pre class="prettyprint source"><code class="hljs javascript"><span class="hljs-comment">// on the server, pick a code unique to this error</span>
 <span class="hljs-comment">// the reason field should be a useful debug message</span>
 <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Meteor.Error(<span class="hljs-string">&quot;logged-out&quot;</span>, 
@@ -7097,7 +7222,8 @@ Meteor.call(<span class="hljs-string">&quot;methodName&quot;</span>, <span class
     Session.set(<span class="hljs-string">&quot;errorMessage&quot;</span>, <span class="hljs-string">&quot;Please log in to post a comment.&quot;</span>);
   }
 });</code></pre><p class="original">For legacy reasons, some built-in Meteor functions such as <code>check</code> throw
-errors with a number in this field.</p><p class="translation">レガシーな理由のため、いくつかのビルトインなMeteorはエラー処理の順番確認のように機能します。</p>
+errors with a number in this field.</p>
+<p class="translation">レガシーな理由のため、いくつかのビルトインなMeteorはエラー処理の順番確認のように機能します。</p>
         </dd>
       
         <dt>
@@ -7106,7 +7232,8 @@ errors with a number in this field.</p><p class="translation">レガシーな理
         </dt>
         <dd>
           <p class="original">Optional.  A short human-readable summary of the
-error, like &apos;Not Found&apos;.</p><p class="translation">任意。人間が読んで理解できるエラーの要約。</p>
+error, like &apos;Not Found&apos;.</p>
+<p class="translation">任意。人間が読んで理解できるエラーの要約。</p>
         </dd>
       
         <dt>
@@ -7115,7 +7242,8 @@ error, like &apos;Not Found&apos;.</p><p class="translation">任意。人間が�
         </dt>
         <dd>
           <p class="original">Optional.  Additional information about the error,
-like a textual stack trace.</p><p class="translation">任意。エラーの追加情報。</p>
+like a textual stack trace.</p>
+<p class="translation">任意。エラーの追加情報。</p>
         </dd>
       
     </dl>
@@ -7149,7 +7277,8 @@ sanitized version is available, the client gets
   </h3>
 
   <div class="desc">
-    <p class="original">Invokes a method passing any number of arguments.</p><p class="translation">複数の引数を通して呼び出されます。</p>
+    <p class="original">Invokes a method passing any number of arguments.</p>
+<p class="translation">複数の引数を通して呼び出されます。</p>
   </div>
 
   
@@ -7161,7 +7290,8 @@ sanitized version is available, the client gets
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">Name of method to invoke</p><p class="translation">呼び出すためのメソッド名</p>
+          <p class="original">Name of method to invoke</p>
+<p class="translation">呼び出すためのメソッド名</p>
         </dd>
       
         <dt>
@@ -7169,7 +7299,8 @@ sanitized version is available, the client gets
           <span class="type"><a href="#ejson">EJSON-able Object</a></span>
         </dt>
         <dd>
-          <p class="original">Optional method arguments</p><p class="translation">任意のメソッド引数</p>
+          <p class="original">Optional method arguments</p>
+<p class="translation">任意のメソッド引数</p>
         </dd>
       
         <dt>
@@ -7177,7 +7308,8 @@ sanitized version is available, the client gets
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Optional callback, which is called asynchronously with the error or result after the method is complete. If not provided, the method runs synchronously if possible (see below).</p><p class="translation">任意のコールバック（このメソッド完了後に結果やエラーと非同期的に呼ばれる）。もし引数が設定されてない場合、このメソッドは可能であれば同期的に実行される。（以下参照）</p>
+          <p class="original">Optional callback, which is called asynchronously with the error or result after the method is complete. If not provided, the method runs synchronously if possible (see below).</p>
+<p class="translation">任意のコールバック（このメソッド完了後に結果やエラーと非同期的に呼ばれる）。もし引数が設定されてない場合、このメソッドは可能であれば同期的に実行される。（以下参照）</p>
         </dd>
       
     </dl>
@@ -7268,7 +7400,8 @@ even if the method&apos;s writes are not available yet, you can specify an
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">Name of method to invoke</p><p class="translation">呼び出すためのメソッド名</p>
+          <p class="original">Name of method to invoke</p>
+<p class="translation">呼び出すためのメソッド名</p>
         </dd>
       
         <dt>
@@ -8145,7 +8278,8 @@ collection with <code>new Mongo.Collection</code>.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Constructor for a Collection</p><p class="translation">コレクションのコンストラクタ</p>
+    <p class="original">Constructor for a Collection</p>
+<p class="translation">コレクションのコンストラクタ</p>
   </div>
 
   
@@ -8157,7 +8291,8 @@ collection with <code>new Mongo.Collection</code>.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The name of the collection.  If null, creates an unmanaged (unsynchronized) local collection.</p><p class="translation">コレクション名。もしnullを指定した場合、管理されない(同期されない)ローカルコレクションを作ります。</p>
+          <p class="original">The name of the collection.  If null, creates an unmanaged (unsynchronized) local collection.</p>
+<p class="translation">コレクション名。もしnullを指定した場合、管理されない(同期されない)ローカルコレクションを作ります。</p>
         </dd>
       
     </dl>
@@ -8382,7 +8517,8 @@ index is worthwhile.
   </h3>
 
   <div class="desc">
-    <p class="original">Find the documents in a collection that match the selector.</p><p class="translation">コレクションの中からselectorにマッチしたドキュメントを検索します。</p>
+    <p class="original">Find the documents in a collection that match the selector.</p>
+<p class="translation">コレクションの中からselectorにマッチしたドキュメントを検索します。</p>
   </div>
 
   
@@ -8394,7 +8530,8 @@ index is worthwhile.
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p class="original">A query describing the documents to find</p><p class="translation">ドキュメントを検索するためのクエリ</p>
+          <p class="original">A query describing the documents to find</p>
+<p class="translation">ドキュメントを検索するためのクエリ</p>
         </dd>
       
     </dl>
@@ -8409,7 +8546,8 @@ index is worthwhile.
           <span class="type"><a href="#sortspecifiers">Mongo Sort Specifier</a></span>
         </dt>
         <dd>
-          <p class="original">Sort order (default: natural order)</p><p class="translation">ソート順 (デフォルト: 自然な順序)</p>
+          <p class="original">Sort order (default: natural order)</p>
+<p class="translation">ソート順 (デフォルト: 自然な順序)</p>
         </dd>
       
         <dt>
@@ -8417,7 +8555,8 @@ index is worthwhile.
           <span class="type">Number</span>
         </dt>
         <dd>
-          <p class="original">Number of results to skip at the beginning</p><p class="translation">結果の先頭からスキップする数</p>
+          <p class="original">Number of results to skip at the beginning</p>
+<p class="translation">結果の先頭からスキップする数</p>
         </dd>
       
         <dt>
@@ -8425,7 +8564,8 @@ index is worthwhile.
           <span class="type">Number</span>
         </dt>
         <dd>
-          <p class="original">Maximum number of results to return</p><p class="translation">結果の最大数</p>
+          <p class="original">Maximum number of results to return</p>
+<p class="translation">結果の最大数</p>
         </dd>
       
         <dt>
@@ -8433,7 +8573,8 @@ index is worthwhile.
           <span class="type"><a href="#fieldspecifiers">Mongo Field Specifier</a></span>
         </dt>
         <dd>
-          <p class="original">Dictionary of fields to return or exclude.</p><p class="translation">取得する or 除外するフィールド</p>
+          <p class="original">Dictionary of fields to return or exclude.</p>
+<p class="translation">取得する or 除外するフィールド</p>
         </dd>
       
         <dt>
@@ -8502,7 +8643,8 @@ that don&apos;t depend on an entire document.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Finds the first document that matches the selector, as ordered by sort and skip options.</p><p class="translation">selectorにマッチする初めのドキュメントを検索します。sortやskipオプションで順序を指定できます。</p>
+    <p class="original">Finds the first document that matches the selector, as ordered by sort and skip options.</p>
+<p class="translation">selectorにマッチする初めのドキュメントを検索します。sortやskipオプションで順序を指定できます。</p>
   </div>
 
   
@@ -8514,7 +8656,8 @@ that don&apos;t depend on an entire document.</p>
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p class="original">A query describing the documents to find</p><p class="translation">ドキュメントを検索するためのクエリ</p>
+          <p class="original">A query describing the documents to find</p>
+<p class="translation">ドキュメントを検索するためのクエリ</p>
         </dd>
       
     </dl>
@@ -8529,7 +8672,8 @@ that don&apos;t depend on an entire document.</p>
           <span class="type"><a href="#sortspecifiers">Mongo Sort Specifier</a></span>
         </dt>
         <dd>
-          <p class="original">Sort order (default: natural order)</p><p class="translation">ソート順 (デフォルト: 自然な順序)</p>
+          <p class="original">Sort order (default: natural order)</p>
+<p class="translation">ソート順 (デフォルト: 自然な順序)</p>
         </dd>
       
         <dt>
@@ -8537,7 +8681,8 @@ that don&apos;t depend on an entire document.</p>
           <span class="type">Number</span>
         </dt>
         <dd>
-          <p class="original">Number of results to skip at the beginning</p><p class="translation">結果の先頭からスキップする数</p>
+          <p class="original">Number of results to skip at the beginning</p>
+<p class="translation">結果の先頭からスキップする数</p>
         </dd>
       
         <dt>
@@ -8545,7 +8690,8 @@ that don&apos;t depend on an entire document.</p>
           <span class="type"><a href="#fieldspecifiers">Mongo Field Specifier</a></span>
         </dt>
         <dd>
-          <p class="original">Dictionary of fields to return or exclude.</p><p class="translation">取得する or 除外するフィールド</p>
+          <p class="original">Dictionary of fields to return or exclude.</p>
+<p class="translation">取得する or 除外するフィールド</p>
         </dd>
       
         <dt>
@@ -8587,7 +8733,8 @@ that don&apos;t depend on an entire document.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Insert a document in the collection.  Returns its unique _id.</p><p class="translation">コレクションにドキュメントを挿入します。そして一意の_idを返します。</p>
+    <p class="original">Insert a document in the collection.  Returns its unique _id.</p>
+<p class="translation">コレクションにドキュメントを挿入します。そして一意の_idを返します。</p>
   </div>
 
   
@@ -8599,7 +8746,8 @@ that don&apos;t depend on an entire document.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p class="original">The document to insert. May not yet have an _id attribute, in which case Meteor will generate one for you.</p><p class="translation">挿入するドキュメント。_id属性が持っていない場合、Meteorは_idを生成します。</p>
+          <p class="original">The document to insert. May not yet have an _id attribute, in which case Meteor will generate one for you.</p>
+<p class="translation">挿入するドキュメント。_id属性が持っていない場合、Meteorは_idを生成します。</p>
         </dd>
       
         <dt>
@@ -8607,7 +8755,8 @@ that don&apos;t depend on an entire document.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Optional.  If present, called with an error object as the first argument and, if no error, the _id as the second.</p><p class="translation">オプション。存在した場合、コールバック関数の第１引数にエラーオブジェクトを渡します。もしエラーがなければ、_idを第２引数に渡します。</p>
+          <p class="original">Optional.  If present, called with an error object as the first argument and, if no error, the _id as the second.</p>
+<p class="translation">オプション。存在した場合、コールバック関数の第１引数にエラーオブジェクトを渡します。もしエラーがなければ、_idを第２引数に渡します。</p>
         </dd>
       
     </dl>
@@ -8663,7 +8812,8 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
   </h3>
 
   <div class="desc">
-    <p class="original">Modify one or more documents in the collection. Returns the number of affected documents.</p><p class="translation">コレクション内の1つまたは複数のドキュメントを修正します。影響を与えたドキュメントの数を返します。</p>
+    <p class="original">Modify one or more documents in the collection. Returns the number of affected documents.</p>
+<p class="translation">コレクション内の1つまたは複数のドキュメントを修正します。影響を与えたドキュメントの数を返します。</p>
   </div>
 
   
@@ -8675,7 +8825,8 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p class="original">Specifies which documents to modify</p><p class="translation">修正したいドキュメントの指定します</p>
+          <p class="original">Specifies which documents to modify</p>
+<p class="translation">修正したいドキュメントの指定します</p>
         </dd>
       
         <dt>
@@ -8683,7 +8834,8 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type"><a href="#modifiers">Mongo Modifier</a></span>
         </dt>
         <dd>
-          <p class="original">Specifies how to modify the documents</p><p class="translation">ドキュメントをどのように修正するかを指定します</p>
+          <p class="original">Specifies how to modify the documents</p>
+<p class="translation">ドキュメントをどのように修正するかを指定します</p>
         </dd>
       
         <dt>
@@ -8691,7 +8843,8 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p><p class="translation">オプション。存在する場合、コールバック関数の第１引数にエラーオブジェクトが渡されます。もしエラーがなければ、影響を与えたドキュメントの数を第２引数に渡します。</p>
+          <p class="original">Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p>
+<p class="translation">オプション。存在する場合、コールバック関数の第１引数にエラーオブジェクトが渡されます。もしエラーがなければ、影響を与えたドキュメントの数を第２引数に渡します。</p>
         </dd>
       
     </dl>
@@ -8706,7 +8859,8 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p class="original">True to modify all matching documents; false to only modify one of the matching documents (the default).</p><p class="translation">trueならselectorマッチするドキュメントをすべて修正します。falseならマッチするドキュメントの一つを修正します(デフォルト)。</p>
+          <p class="original">True to modify all matching documents; false to only modify one of the matching documents (the default).</p>
+<p class="translation">trueならselectorマッチするドキュメントをすべて修正します。falseならマッチするドキュメントの一つを修正します(デフォルト)。</p>
         </dd>
       
         <dt>
@@ -8714,7 +8868,8 @@ Items.insert({<span class="hljs-keyword">list</span>: groceriesId, name: <span c
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p class="original">True to insert a document if no matching documents are found.</p><p class="translation">trueならマッチするドキュメントが見つからなかった場合にドキュメントを新たに挿入します。</p>
+          <p class="original">True to insert a document if no matching documents are found.</p>
+<p class="translation">trueならマッチするドキュメントが見つからなかった場合にドキュメントを新たに挿入します。</p>
         </dd>
       
     </dl>
@@ -8815,7 +8970,8 @@ in addition to the number of affected documents.</p>
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p class="original">Specifies which documents to modify</p><p class="translation">修正したいドキュメントの指定します</p>
+          <p class="original">Specifies which documents to modify</p>
+<p class="translation">修正したいドキュメントの指定します</p>
         </dd>
       
         <dt>
@@ -8823,7 +8979,8 @@ in addition to the number of affected documents.</p>
           <span class="type"><a href="#modifiers">Mongo Modifier</a></span>
         </dt>
         <dd>
-          <p class="original">Specifies how to modify the documents</p><p class="translation">ドキュメントをどのように修正するかを指定します</p>
+          <p class="original">Specifies how to modify the documents</p>
+<p class="translation">ドキュメントをどのように修正するかを指定します</p>
         </dd>
       
         <dt>
@@ -8831,7 +8988,8 @@ in addition to the number of affected documents.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p><p class="translation">オプション。存在する場合、コールバック関数の第１引数にエラーオブジェクトが渡されます。もしエラーがなければ、影響を与えたドキュメントの数を第２引数に渡します。</p>
+          <p class="original">Optional.  If present, called with an error object as the first argument and, if no error, the number of affected documents as the second.</p>
+<p class="translation">オプション。存在する場合、コールバック関数の第１引数にエラーオブジェクトが渡されます。もしエラーがなければ、影響を与えたドキュメントの数を第２引数に渡します。</p>
         </dd>
       
     </dl>
@@ -8846,7 +9004,8 @@ in addition to the number of affected documents.</p>
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p class="original">True to modify all matching documents; false to only modify one of the matching documents (the default).</p><p class="translation">trueならselectorマッチするドキュメントをすべて修正します。falseならマッチするドキュメントの一つを修正します(デフォルト)。</p>
+          <p class="original">True to modify all matching documents; false to only modify one of the matching documents (the default).</p>
+<p class="translation">trueならselectorマッチするドキュメントをすべて修正します。falseならマッチするドキュメントの一つを修正します(デフォルト)。</p>
         </dd>
       
     </dl>
@@ -8875,7 +9034,8 @@ and <code>insertedId</code>. (<code>update</code> returns only the number of aff
   </h3>
 
   <div class="desc">
-    <p class="original">Remove documents from the collection</p><p class="translation">コレクションからドキュメントを削除します</p>
+    <p class="original">Remove documents from the collection</p>
+<p class="translation">コレクションからドキュメントを削除します</p>
   </div>
 
   
@@ -8887,7 +9047,8 @@ and <code>insertedId</code>. (<code>update</code> returns only the number of aff
           <span class="type"><a href="#selectors">Mongo Selector</a>, <a href="#mongo_object_id">Object ID</a>, or String</span>
         </dt>
         <dd>
-          <p class="original">Specifies which documents to remove</p><p class="translation">削除するドキュメントを指定します</p>
+          <p class="original">Specifies which documents to remove</p>
+<p class="translation">削除するドキュメントを指定します</p>
         </dd>
       
         <dt>
@@ -8895,7 +9056,8 @@ and <code>insertedId</code>. (<code>update</code> returns only the number of aff
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Optional.  If present, called with an error object as its argument.</p><p class="translation">オプション。もし存在する場合、引数にエラーオブジェクトが渡されたコールバック関数が呼ばれます。</p>
+          <p class="original">Optional.  If present, called with an error object as its argument.</p>
+<p class="translation">オプション。もし存在する場合、引数にエラーオブジェクトが渡されたコールバック関数が呼ばれます。</p>
         </dd>
       
     </dl>
@@ -8982,7 +9144,8 @@ Meteor.startup(<span class="hljs-function"><span class="hljs-keyword">function</
   </h3>
 
   <div class="desc">
-    <p class="original">Allow users to write directly to this collection from client code, subject to limitations you define.</p><p class="translation">クライアントコードからこのコレクションに直接書き込みできるユーザの制限を定義します。</p>
+    <p class="original">Allow users to write directly to this collection from client code, subject to limitations you define.</p>
+<p class="translation">クライアントコードからこのコレクションに直接書き込みできるユーザの制限を定義します。</p>
   </div>
 
   
@@ -8996,7 +9159,8 @@ Meteor.startup(<span class="hljs-function"><span class="hljs-keyword">function</
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Functions that look at a proposed modification to the database and return true if it should be allowed.</p><p class="translation">データベースへの変更の提案を見て、許可すべきなら、trueを返す関数です。</p>
+          <p class="original">Functions that look at a proposed modification to the database and return true if it should be allowed.</p>
+<p class="translation">データベースへの変更の提案を見て、許可すべきなら、trueを返す関数です。</p>
         </dd>
       
         <dt>
@@ -9167,7 +9331,8 @@ mode by default.</strong> To turn it off just run in your terminal:</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Override <code>allow</code> rules.</p><p class="translation"><code>allow</code>ルールを上書きします。</p>
+    <p class="original">Override <code>allow</code> rules.</p>
+<p class="translation"><code>allow</code>ルールを上書きします。</p>
   </div>
 
   
@@ -9181,7 +9346,8 @@ mode by default.</strong> To turn it off just run in your terminal:</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">Functions that look at a proposed modification to the database and return true if it should be denied, even if an <a href="#allow">allow</a> rule says otherwise.</p><p class="translation">データベースへの変更の提案を見て、拒否すべきなら、trueを返す関数です。<a href="#allow">allow</a>ルールで許可していても、denyルールで上書きされます</p>
+          <p class="original">Functions that look at a proposed modification to the database and return true if it should be denied, even if an <a href="#allow">allow</a> rule says otherwise.</p>
+<p class="translation">データベースへの変更の提案を見て、拒否すべきなら、trueを返す関数です。<a href="#allow">allow</a>ルールで許可していても、denyルールで上書きされます</p>
         </dd>
       
         <dt>
@@ -9870,7 +10036,8 @@ the MongoDB docs</a> for details of the nested field rules and array behavior.</
 
 <p class="original"><code>Session</code> provides a global object on the client that you can use to
 store an arbitrary set of key-value pairs. Use it to store things like
-the currently selected item in a list.</p><p class="translation">Session(セッション)はクライアント上のグローバルオブジェクトとして提供され、キーと値のペアのセットを格納するために使用できます。それは、リストで現在選択している項目のようなものを一時的に保持するのに使用します。</p>
+the currently selected item in a list.</p>
+<p class="translation">Session(セッション)はクライアント上のグローバルオブジェクトとして提供され、キーと値のペアのセットを格納するために使用できます。それは、リストで現在選択している項目のようなものを一時的に保持するのに使用します。</p>
 
 <p>What&apos;s special about <code>Session</code> is that it&apos;s reactive. If
 you call <a href="#session_get"><code>Session.get</code></a><code>(&quot;currentList&quot;)</code>
@@ -9893,7 +10060,8 @@ whenever <a href="#session_set"><code>Session.set</code></a><code>(&quot;current
     <p class="original">Set a variable in the session. Notify any listeners that the value
 has changed (eg: redraw templates, and rerun any
 <a href="#tracker_autorun"><code>Tracker.autorun</code></a> computations, that called
-<a href="#session_get"><code>Session.get</code></a> on this <code>key</code>.)</p><p class="translation">セッションに変数をセットします。また、リスナーに値が変更されたことが通知されます(例: <code>Session.get</code>でこのキーを呼び出しているテンプレートを再描画したり、<a href="#tracker_autorun"><code>Tracker.autorun</code></a>処理を再実行します。</p>
+<a href="#session_get"><code>Session.get</code></a> on this <code>key</code>.)</p>
+<p class="translation">セッションに変数をセットします。また、リスナーに値が変更されたことが通知されます(例: <code>Session.get</code>でこのキーを呼び出しているテンプレートを再描画したり、<a href="#tracker_autorun"><code>Tracker.autorun</code></a>処理を再実行します。</p>
   </div>
 
   
@@ -9905,7 +10073,8 @@ has changed (eg: redraw templates, and rerun any
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The key to set, eg, <code>selectedItem</code></p><p class="translation">セッションのキー、例: <code>selectedItem</code></p>
+          <p class="original">The key to set, eg, <code>selectedItem</code></p>
+<p class="translation">セッションのキー、例: <code>selectedItem</code></p>
         </dd>
       
         <dt>
@@ -9913,7 +10082,8 @@ has changed (eg: redraw templates, and rerun any
           <span class="type"><a href="#ejson">EJSON-able Object</a> or undefined</span>
         </dt>
         <dd>
-          <p class="original">The new value for <code>key</code></p><p class="translation"><code>key</code>の新しい値</p>
+          <p class="original">The new value for <code>key</code></p>
+<p class="translation"><code>key</code>の新しい値</p>
         </dd>
       
     </dl>
@@ -9971,7 +10141,8 @@ Otherwise works exactly the same as <a href="#session_set"><code>Session.set</co
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The key to set, eg, <code>selectedItem</code></p><p class="translation">セッションのキー、例: <code>selectedItem</code></p>
+          <p class="original">The key to set, eg, <code>selectedItem</code></p>
+<p class="translation">セッションのキー、例: <code>selectedItem</code></p>
         </dd>
       
         <dt>
@@ -9979,7 +10150,8 @@ Otherwise works exactly the same as <a href="#session_set"><code>Session.set</co
           <span class="type"><a href="#ejson">EJSON-able Object</a> or undefined</span>
         </dt>
         <dd>
-          <p class="original">The new value for <code>key</code></p><p class="translation"><code>key</code>の新しい値</p>
+          <p class="original">The new value for <code>key</code></p>
+<p class="translation"><code>key</code>の新しい値</p>
         </dd>
       
     </dl>
@@ -10012,7 +10184,8 @@ computation</a>, invalidate the computation the next time the
 value of the variable is changed by <a href="#session_set"><code>Session.set</code></a>. This
 returns a clone of the session value, so if it&apos;s an object or an array,
 mutating the returned value has no effect on the value stored in the
-session.</p><p class="translation">セッション変数の値を取得します。もしリアクティブ処理の中では、Session.setにより変数の値が変更になった場合に処理が無効化（再計算）されます。これはセッション値のクローンを返します。そのため、それがオブジェクトまたは配列の場合、返された値を変更したとしても、セッションに格納されている値には影響を与えません。</p>
+session.</p>
+<p class="translation">セッション変数の値を取得します。もしリアクティブ処理の中では、Session.setにより変数の値が変更になった場合に処理が無効化（再計算）されます。これはセッション値のクローンを返します。そのため、それがオブジェクトまたは配列の場合、返された値を変更したとしても、セッションに格納されている値には影響を与えません。</p>
   </div>
 
   
@@ -10024,7 +10197,8 @@ session.</p><p class="translation">セッション変数の値を取得します
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The name of the session variable to return</p><p class="translation">値を取得したいセッション変数名</p>
+          <p class="original">The name of the session variable to return</p>
+<p class="translation">値を取得したいセッション変数名</p>
         </dd>
       
     </dl>
@@ -10192,7 +10366,8 @@ login provider packages: <code>accounts-password</code>, <code>accounts-facebook
   </h3>
 
   <div class="desc">
-    <p class="original">Get the current user record, or <code>null</code> if no user is logged in. A reactive data source.</p><p class="translation">現在ログイン中のユーザデータを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
+    <p class="original">Get the current user record, or <code>null</code> if no user is logged in. A reactive data source.</p>
+<p class="translation">現在ログイン中のユーザデータを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
   </div>
 
   
@@ -10225,7 +10400,8 @@ the fields used in user documents.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Get the current user id, or <code>null</code> if no user is logged in. A reactive data source.</p><p class="translation">現在ログイン中のユーザIDを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
+    <p class="original">Get the current user id, or <code>null</code> if no user is logged in. A reactive data source.</p>
+<p class="translation">現在ログイン中のユーザIDを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
   </div>
 
   
@@ -10249,7 +10425,8 @@ the fields used in user documents.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">A <a href="#collections">Mongo.Collection</a> containing user documents.</p><p class="translation">すべてのユーザデータを含む<a href="#collections">Mongo.Collection</a>です。</p>
+    <p class="original">A <a href="#collections">Mongo.Collection</a> containing user documents.</p>
+<p class="translation">すべてのユーザデータを含む<a href="#collections">Mongo.Collection</a>です。</p>
   </div>
 
   
@@ -10261,7 +10438,8 @@ the fields used in user documents.</p>
 
 
 <p class="original">This collection contains one document per registered user. Here&apos;s an example
-user document:</p><p class="translation">このコレクションは一人のユーザにつき一つのドキュメント(データ)を持ちます。下記がユーザドキュメントの一例です:</p>
+user document:</p>
+<p class="translation">このコレクションは一人のユーザにつき一つのドキュメント(データ)を持ちます。下記がユーザドキュメントの一例です:</p>
 
 <pre><code class="hljs objectivec">{
   _<span class="hljs-keyword">id</span>: <span class="hljs-string">&quot;bbca5d6a-2156-41c4-89da-0329e8c99a4f&quot;</span>,  <span class="hljs-comment">// Meteor.userId()</span>
@@ -10292,15 +10470,19 @@ user document:</p><p class="translation">このコレクションは一人のユ
 </code></pre>
 
 <p class="original">A user document can contain any data you want to store about a user. Meteor
-treats the following fields specially:</p><p class="translation">ユーザドキュメントには開発者が任意のデータを格納することができます。Meteorは下記のフィールドを特殊フィールドとして扱います。:</p>
+treats the following fields specially:</p>
+<p class="translation">ユーザドキュメントには開発者が任意のデータを格納することができます。Meteorは下記のフィールドを特殊フィールドとして扱います。:</p>
 
 <ul>
-<li class="original"><code>username</code>: a unique String identifying the user.</li><li class="translation"><code>username</code>: ユーザを識別するユニークな文字列。</li>
+<li class="original"><code>username</code>: a unique String identifying the user.</li>
+<li class="translation"><code>username</code>: ユーザを識別するユニークな文字列。</li>
 <li class="original"><code>emails</code>: an Array of Objects with keys <code>address</code> and <code>verified</code>;
 an email address may belong to at most one user. <code>verified</code> is
 a Boolean which is true if the user has <a href="#accounts_verifyemail">verified the
-address</a> with a token sent over email.</li><li class="translation"><code>emails</code>: オブジェクトの配列で、オブジェクトは<code>address</code>と<code>verified</code>というプロパティを持つ。emailアドレスは一人のユーザに固有である必要がある。<code>verified</code>はBooleanで、ユーザがメールで遅られたトークンで認証して<a href="#accounts_verifyemail">verified the address</a>となった場合にtrueとなる。</li>
-<li class="original"><code>createdAt</code>: the Date at which the user document was created.</li><li class="translation"><code>createdAt</code>: ユーザドキュメントが作成された日時。</li>
+address</a> with a token sent over email.</li>
+<li class="translation"><code>emails</code>: オブジェクトの配列で、オブジェクトは<code>address</code>と<code>verified</code>というプロパティを持つ。emailアドレスは一人のユーザに固有である必要がある。<code>verified</code>はBooleanで、ユーザがメールで遅られたトークンで認証して<a href="#accounts_verifyemail">verified the address</a>となった場合にtrueとなる。</li>
+<li class="original"><code>createdAt</code>: the Date at which the user document was created.</li>
+<li class="translation"><code>createdAt</code>: ユーザドキュメントが作成された日時。</li>
 <li><code>profile</code>: an Object which the user can create and update with any data.
 Do not store anything on <code>profile</code> that you wouldn&apos;t want the user to edit
 unless you have a deny rule on the <code>Meteor.users</code> collection.</li>
@@ -10308,16 +10490,19 @@ unless you have a deny rule on the <code>Meteor.users</code> collection.</li>
 login services. For example, its <code>reset</code> field contains
 tokens used by <a href="#accounts_forgotpassword">forgot password</a> links,
 and its <code>resume</code> field contains tokens used to keep you
-logged in between sessions.</li><li class="translation"><code>services</code>: 個別のログインサービスがデータを格納するオブジェクト。例えば、その<code>reset</code>フィールドは<a href="#accounts_forgotpassword">forgot password</a>のリンクで使われるトークンを保持する、また、<code>resume</code>フィールドはセッションを横断してログイン状態を維持するためのトークンを保持する。</li>
+logged in between sessions.</li>
+<li class="translation"><code>services</code>: 個別のログインサービスがデータを格納するオブジェクト。例えば、その<code>reset</code>フィールドは<a href="#accounts_forgotpassword">forgot password</a>のリンクで使われるトークンを保持する、また、<code>resume</code>フィールドはセッションを横断してログイン状態を維持するためのトークンを保持する。</li>
 </ul>
 
 <p class="original">Like all <a href="#collections">Mongo.Collection</a>s, you can access all
 documents on the server, but only those specifically published by the server are
-available on the client.</p><p class="translation">他のすべての<a href="#collections">Mongo.Collection</a>と同じように、サーバにおいてはすべてのドキュメントにアクセスできる。しかし、クライアントにおいては明示的にpublishされたものしかアクセスできない。</p>
+available on the client.</p>
+<p class="translation">他のすべての<a href="#collections">Mongo.Collection</a>と同じように、サーバにおいてはすべてのドキュメントにアクセスできる。しかし、クライアントにおいては明示的にpublishされたものしかアクセスできない。</p>
 
 <p class="original">By default, the current user&apos;s <code>username</code>, <code>emails</code> and <code>profile</code> are
 published to the client. You can publish additional fields for the
-current user with:</p><p class="translation">デフォルトでは、現在のユーザの<code>username</code>と<code>emails</code>と<code>profile</code>はpublishされクライアントからアクセスできる。それ以外のフィールドを現在のユーザにpublishするには次のようにする:</p>
+current user with:</p>
+<p class="translation">デフォルトでは、現在のユーザの<code>username</code>と<code>emails</code>と<code>profile</code>はpublishされクライアントからアクセスできる。それ以外のフィールドを現在のユーザにpublishするには次のようにする:</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// server</span>
 Meteor.publish(<span class="hljs-string">&quot;userData&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
@@ -10340,13 +10525,15 @@ on the system is published to all clients. This includes <code>username</code>,
 <code>services.twitter.screenName</code>). Additionally, when using autopublish
 more information is published for the currently logged in user,
 including access tokens. This allows making API calls directly from
-the client for services that allow this.</p><p class="translation">autopublishパッケージがインストールされている状態ではシステム上のすべてのユーザの情報がすべてのクライアントにpublishされる。これは、<code>username</code>と<code>profile</code>と<code>services</code>内の公開フィールド(例:<code>services.facebook.id</code>と<code>services.twitter.screenName</code>)が含まれる。これに加えて、autopublishパッケージを使った場合は、現在ログインしているユーザにはアクセストークンなどさらに情報がpublishされる。これにより、許可されていれば、クライアントからサービスに直接API呼び出しができるようになる。</p>
+the client for services that allow this.</p>
+<p class="translation">autopublishパッケージがインストールされている状態ではシステム上のすべてのユーザの情報がすべてのクライアントにpublishされる。これは、<code>username</code>と<code>profile</code>と<code>services</code>内の公開フィールド(例:<code>services.facebook.id</code>と<code>services.twitter.screenName</code>)が含まれる。これに加えて、autopublishパッケージを使った場合は、現在ログインしているユーザにはアクセストークンなどさらに情報がpublishされる。これにより、許可されていれば、クライアントからサービスに直接API呼び出しができるようになる。</p>
 
 <p class="original">Users are by default allowed to specify their own <code>profile</code> field with
 <a href="#accounts_createuser"><code>Accounts.createUser</code></a> and modify it with
 <code>Meteor.users.update</code>. To allow users to edit additional fields, use
 <a href="#allow"><code>Meteor.users.allow</code></a>. To forbid users from making any modifications to
-their user document:</p><p class="translation">デフォルトではユーザは自分で<code>profile</code>フィールドを設定したり修正したりするこができる。設定は<a href="#accounts_createuser"><code>Accounts.createUser</code></a>を使い、修正は<code>Meteor.users.update</code>を使う。ユーザに他のフィールドも追加で編集させるには、<a href="#allow"><code>Meteor.users.allow</code></a>を使う。逆にユーザにドキュメントをまったく修正させないようにするには、次のようにする:</p>
+their user document:</p>
+<p class="translation">デフォルトではユーザは自分で<code>profile</code>フィールドを設定したり修正したりするこができる。設定は<a href="#accounts_createuser"><code>Accounts.createUser</code></a>を使い、修正は<code>Meteor.users.update</code>を使う。ユーザに他のフィールドも追加で編集させるには、<a href="#allow"><code>Meteor.users.allow</code></a>を使う。逆にユーザにドキュメントをまったく修正させないようにするには、次のようにする:</p>
 
 <pre><code class="hljs javascript">Meteor.users.deny({update: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; }});
 </code></pre>
@@ -10714,7 +10901,8 @@ the externally-accessible URL, not the URL inside your proxy).</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Calls <a href="#meteor_user">Meteor.user()</a>. Use <code>{{#if currentUser}}</code> to check whether the user is logged in.</p><p class="translation"><a href="#meteor_user">Meteor.user()</a>を呼び出す。ユーザがログインしていがかだけをチェックする場合は、<code>{{#if currentUser}}</code>を使う。</p>
+    <p class="original">Calls <a href="#meteor_user">Meteor.user()</a>. Use <code>{{#if currentUser}}</code> to check whether the user is logged in.</p>
+<p class="translation"><a href="#meteor_user">Meteor.user()</a>を呼び出す。ユーザがログインしていがかだけをチェックする場合は、<code>{{#if currentUser}}</code>を使う。</p>
   </div>
 
   
@@ -10954,7 +11142,8 @@ server, via the predefined <code>Accounts</code> object (most common) or any cus
   </h3>
 
   <div class="desc">
-    <p class="original">Get the current user id, or <code>null</code> if no user is logged in. A reactive data source.</p><p class="translation">現在ログイン中のユーザIDを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
+    <p class="original">Get the current user id, or <code>null</code> if no user is logged in. A reactive data source.</p>
+<p class="translation">現在ログイン中のユーザIDを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
   </div>
 
   
@@ -10978,7 +11167,8 @@ server, via the predefined <code>Accounts</code> object (most common) or any cus
   </h3>
 
   <div class="desc">
-    <p class="original">Get the current user record, or <code>null</code> if no user is logged in. A reactive data source.</p><p class="translation">現在ログイン中のユーザデータを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
+    <p class="original">Get the current user record, or <code>null</code> if no user is logged in. A reactive data source.</p>
+<p class="translation">現在ログイン中のユーザデータを返します。ログインしていない場合は、<code>null</code>が返ります。これはリアクティブデータです。</p>
   </div>
 
   
@@ -12571,7 +12761,8 @@ document.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Specify event handlers for this template.</p><p class="translation">テンプレートのイベントハンドラを指定する</p>
+    <p class="original">Specify event handlers for this template.</p>
+<p class="translation">テンプレートのイベントハンドラを指定する</p>
   </div>
 
   
@@ -12583,7 +12774,8 @@ document.</p>
           <span class="type"><a href="#eventmaps">Event Map</a></span>
         </dt>
         <dd>
-          <p class="original">Event handlers to associate with this template.</p><p class="translation">テンプレートに関係づけるイベントハンドラ</p>
+          <p class="original">Event handlers to associate with this template.</p>
+<p class="translation">テンプレートに関係づけるイベントハンドラ</p>
         </dd>
       
     </dl>
@@ -12614,7 +12806,8 @@ map format and how event handling works in Meteor.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Specify template helpers available to this template.</p><p class="translation">このテンプレート用のテンプレートヘルパーを指定する。</p>
+    <p class="original">Specify template helpers available to this template.</p>
+<p class="translation">このテンプレート用のテンプレートヘルパーを指定する。</p>
   </div>
 
   
@@ -12626,7 +12819,8 @@ map format and how event handling works in Meteor.</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p class="original">Dictionary of helper functions by name.</p><p class="translation">名前とヘルパー関数の辞書</p>
+          <p class="original">Dictionary of helper functions by name.</p>
+<p class="translation">名前とヘルパー関数の辞書</p>
         </dd>
       
     </dl>
@@ -12693,7 +12887,8 @@ execution.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Register a function to be called when an instance of this template is inserted into the DOM.</p><p class="translation">テンプレートがDOMに追加されたときに呼び出される関数を登録する。</p>
+    <p class="original">Register a function to be called when an instance of this template is inserted into the DOM.</p>
+<p class="translation">テンプレートがDOMに追加されたときに呼び出される関数を登録する。</p>
   </div>
 
   
@@ -12705,7 +12900,8 @@ execution.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">A function to be added as a callback.</p><p class="translation">コールバック関数</p>
+          <p class="original">A function to be added as a callback.</p>
+<p class="translation">コールバック関数</p>
         </dd>
       
     </dl>
@@ -12773,7 +12969,8 @@ template is rendered for the first time.</p>
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">A function to be added as a callback.</p><p class="translation">コールバック関数</p>
+          <p class="original">A function to be added as a callback.</p>
+<p class="translation">コールバック関数</p>
         </dd>
       
     </dl>
@@ -12829,7 +13026,8 @@ instance that are read from template helpers using <code>Template.instance()</co
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p class="original">A function to be added as a callback.</p><p class="translation">コールバック関数</p>
+          <p class="original">A function to be added as a callback.</p>
+<p class="translation">コールバック関数</p>
         </dd>
       
     </dl>
@@ -12891,7 +13089,8 @@ methods to add callbacks performing initialization or clean-up on the object.</p
   </h3>
 
   <div class="desc">
-    <p class="original">Find all elements matching <code>selector</code> in this template instance.</p><p class="translation">テンプレート内で<code>selector</code>にマッチする要素をすべて見つける</p>
+    <p class="original">Find all elements matching <code>selector</code> in this template instance.</p>
+<p class="translation">テンプレート内で<code>selector</code>にマッチする要素をすべて見つける</p>
   </div>
 
   
@@ -12903,7 +13102,8 @@ methods to add callbacks performing initialization or clean-up on the object.</p
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The CSS selector to match, scoped to the template contents.</p><p class="translation">マッチするCSSセレクタ。テンプレート内に限定される。</p>
+          <p class="original">The CSS selector to match, scoped to the template contents.</p>
+<p class="translation">マッチするCSSセレクタ。テンプレート内に限定される。</p>
         </dd>
       
     </dl>
@@ -12942,7 +13142,8 @@ methods to add callbacks performing initialization or clean-up on the object.</p
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The CSS selector to match, scoped to the template contents.</p><p class="translation">マッチするCSSセレクタ。テンプレート内に限定される。</p>
+          <p class="original">The CSS selector to match, scoped to the template contents.</p>
+<p class="translation">マッチするCSSセレクタ。テンプレート内に限定される。</p>
         </dd>
       
     </dl>
@@ -12975,7 +13176,8 @@ the selector.</p>
   </h3>
 
   <div class="desc">
-    <p class="original">Find one element matching <code>selector</code> in this template instance.</p><p class="translation">テンプレート内で<code>selector</code>にマッチする要素をひとつ見つける</p>
+    <p class="original">Find one element matching <code>selector</code> in this template instance.</p>
+<p class="translation">テンプレート内で<code>selector</code>にマッチする要素をひとつ見つける</p>
   </div>
 
   
@@ -12987,7 +13189,8 @@ the selector.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p class="original">The CSS selector to match, scoped to the template contents.</p><p class="translation">マッチするCSSセレクタ。テンプレート内に限定される。</p>
+          <p class="original">The CSS selector to match, scoped to the template contents.</p>
+<p class="translation">マッチするCSSセレクタ。テンプレート内に限定される。</p>
         </dd>
       
     </dl>
@@ -13160,7 +13363,8 @@ when the template is destroyed.</p>
         </dt>
         <dd>
           <p class="original">Name of the subscription.  Matches the name of the
-server&apos;s <code>publish()</code> call.</p><p class="translation">購読するデータの名称。サーバ側で同じ名称が設定された<code>publish()</code>メソッドが呼び出されます。</p>
+server&apos;s <code>publish()</code> call.</p>
+<p class="translation">購読するデータの名称。サーバ側で同じ名称が設定された<code>publish()</code>メソッドが呼び出されます。</p>
         </dd>
       
         <dt>
@@ -13169,7 +13373,8 @@ server&apos;s <code>publish()</code> call.</p><p class="translation">購読す�
         </dt>
         <dd>
           <p class="original">Optional arguments passed to publisher function
-on server.</p><p class="translation">サーバ側の配信関数へ受け渡される引数を任意で設定する。</p>
+on server.</p>
+<p class="translation">サーバ側の配信関数へ受け渡される引数を任意で設定する。</p>
         </dd>
       
     </dl>
@@ -15080,7 +15285,8 @@ reactive data sources.</p>
   <div class="desc">
     <p class="original">Run a function now and rerun it later whenever its dependencies
 change. Returns a Computation object that can be used to stop or observe the
-rerunning.</p><p class="translation">関数を直ちに実行し、また依存関係にあるものが変更されるたびに、後でそれを実行します。停止または再実行を観察するために使用することができる演算オブジェクトを返します。</p>
+rerunning.</p>
+<p class="translation">関数を直ちに実行し、また依存関係にあるものが変更されるたびに、後でそれを実行します。停止または再実行を観察するために使用することができる演算オブジェクトを返します。</p>
   </div>
 
   
@@ -15093,7 +15299,8 @@ rerunning.</p><p class="translation">関数を直ちに実行し、また依存�
         </dt>
         <dd>
           <p class="original">The function to run. It receives
-one argument: the Computation object that will be returned.</p><p class="translation">実行する関数。1つの引数を取る: 演算オブジェクトを返します。</p>
+one argument: the Computation object that will be returned.</p>
+<p class="translation">実行する関数。1つの引数を取る: 演算オブジェクトを返します。</p>
         </dd>
       
     </dl>
@@ -15110,7 +15317,8 @@ one argument: the Computation object that will be returned.</p><p class="transla
         <dd>
           <p class="original">Optional. The function to run when an error
 happens in the Computation. The only argument it recieves is the Error
-thrown. Defaults to the error being logged to the console.</p><p class="translation">オプション。runFuncでエラーが発生した時にこの関数を実行します。この関数は1つの引数を取り、発生したエラーを受け取ります。省略した場合、デフォルトではコンソールにエラーを出力します。</p>
+thrown. Defaults to the error being logged to the console.</p>
+<p class="translation">オプション。runFuncでエラーが発生した時にこの関数を実行します。この関数は1つの引数を取り、発生したエラーを受け取ります。省略した場合、デフォルトではコンソールにエラーを出力します。</p>
         </dd>
       
     </dl>
@@ -15168,7 +15376,8 @@ computation that is rerun, allowing new ones to be established.  See
 subscriptions and reactivity.</p>
 
 <p class="original">If the initial run of an autorun throws an exception, the computation
-is automatically stopped and won&apos;t be rerun.</p><p class="translation">もし、autorunの初期実行で例外が発生すると、自動的に処理は停止し、再実行されることはありません。</p>
+is automatically stopped and won&apos;t be rerun.</p>
+<p class="translation">もし、autorunの初期実行で例外が発生すると、自動的に処理は停止し、再実行されることはありません。</p>
 
 
 <div class="api new-api-box">

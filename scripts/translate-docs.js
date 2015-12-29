@@ -77,7 +77,7 @@ function translate(file) {
       if (translatedText) {
         var element = $(this).clone();
         element.addClass('translation').html(translatedText);
-        $(this).after(element);
+        $(this).after('\n', element);
         $(this).addClass('original');
       }
     });
