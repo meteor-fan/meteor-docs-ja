@@ -5103,38 +5103,58 @@ packages/oranges/&lt;anything&gt;.js <span class="hljs-comment"># file loading i
 </code></pre>
 <h2 id="/full/dataandsecurity">Data and security</h2>
 
-<p>Meteor makes writing distributed client code as simple as talking to a
+<p class="original">Meteor makes writing distributed client code as simple as talking to a
 local database.  It&apos;s a clean, simple, and secure approach that removes
 the need to implement individual RPC endpoints, manually cache data on
 the client to avoid slow roundtrips to the server, and carefully
 orchestrate invalidation messages to every client as data changes.</p>
+<p class="translation">Meteorでは分散クライアントのコードを書くは、ローカルデータベースと話すくらい簡単です。
+クリーンで、シンプルで、セキュアなアプローチで、個別のRPCエンドポイントを実装する必要がありません。
+また、サーバーとのラウンドトリップに時間がかかるのを避けるためにクライアントに手動でデータをキャッシュしたり、
+全てのクライアントに、データが変更される度に注意深く無効化メッセージを配信したりする必要がありません。</p>
 
-<p>In Meteor, the client and server share the same database API.  The same
+<p class="original">In Meteor, the client and server share the same database API.  The same
 exact application code — like validators and computed properties — can
 often run in both places.  But while code running on the server has
 direct access to the database, code running on the client does <em>not</em>.
 This distinction is the basis for Meteor&apos;s data security model.</p>
+<p class="translation">Meteorではクライアントとサーバーは同じデータベースAPIを共有します。
+ほとんどの場合、同一のアプリケーションコード（バリデータや計算されたプロパティなど）を両方の場所で実行できます。
+ただし、コードがサーバーで走っている時は、データベースに直接アクセスしますが、コードがクライアントで走っている時はデータベースに直接アクセス<em>しません</em>。
+この相違がMeteorのデータセキュリティモデルの根幹です。</p>
 
 <div class="note">
-  <p>By default, a new Meteor app includes the <code>autopublish</code> and <code>insecure</code>
+  <p class="original">By default, a new Meteor app includes the <code>autopublish</code> and <code>insecure</code>
 packages, which together mimic the effect of each client having full
 read/write access to the server&apos;s database.  These are useful
 prototyping tools, but typically not appropriate for production
 applications.  When you&apos;re ready, just remove the packages.</p>
+<p class="translation">新しく作ったMeteorのアプリにはデフォルトで、<code>autopublish</code>と、<code>insecure</code>パッケージが入っています。
+これらのパッケージは、各クライアントがあたかもフルで読み出し/書き込み権限をサーバーのデータベースに対してもっているように振る舞います。
+これらは有用なプロトタイピングツールですが、プロダクション用としてはほとんどの場合適切ではありません。
+準備がととのったら、これらのパッケージを取り除いてください。</p>
 </div>
 
-<p>Every Meteor client includes an in-memory database cache.  To manage the
+<p class="original">Every Meteor client includes an in-memory database cache.  To manage the
 client cache, the server <em>publishes</em> sets of JSON documents, and the
 client <em>subscribes</em> to those sets.  As documents in a set change, the
 server patches each client&apos;s cache.</p>
+<p class="translation">それぞれのMeteorクライアントは、インメモリ データベースキャッシュを持っています。
+クライアントキャッシュを管理するため、サーバーはJSONドキュメントのセットを<em>publish</em>し、
+クライアントはそのセットを<em>subscribe</em>します。
+セット内のドキュメントが変わるたび、サーバーはクライアントキャッシュにパッチを送ります。</p>
 
-<p>Today most Meteor apps use MongoDB as their database because it is the
+<p class="original">Today most Meteor apps use MongoDB as their database because it is the
 best supported, though support for other databases is coming in the
 future. The
 <a href="#mongo_collection"><code>Mongo.Collection</code></a> class
 is used to declare Mongo collections and to manipulate them. Thanks to
 <code>minimongo</code>, Meteor&apos;s client-side Mongo emulator, <code>Mongo.Collection</code>
 can be used from both client and server code.</p>
+<p class="translation">現在、ほとんどのMeteorアプリはMongoDBをデータベースとして使います。
+なぜならそれが一番サポートされているからです。とはいえ、他のデータベースのサポートも将来提供される予定です。
+<a href="#mongo_collection"><code>Mongo.Collection</code></a> クラスはMongoコレクションを宣言し、操作するために使われます。
+MeteorのクライアントサイドのMongoエミュレーターである<code>minimongo</code>のおかげで、<code>Mongo.Collection</code>はクライアントとサーバーの両方から使うことができます。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// declare collections</span>
 <span class="hljs-comment">// this code should be included in both the client and the server</span>
@@ -5149,10 +5169,13 @@ Messages.insert({text: <span class="hljs-string">&quot;Hello world&quot;</span>,
 Parties.insert({name: <span class="hljs-string">&quot;Super Bowl Party&quot;</span>});
 </code></pre>
 
-<p>Each document set is defined by a publish function on the server.  The
+<p class="original">Each document set is defined by a publish function on the server.  The
 publish function runs each time a new client subscribes to a document
 set.  The data in a document set can come from anywhere, but the common
 case is to publish a database query.</p>
+<p class="translation">各ドキュメントセットはサーバーのpublish関数により定義されます。
+publish関数は新たなクライアントがドキュメントセットをsubscribする度に実行されます。
+ドキュメントセットのデータはどこからでも持ってこれますが、データベースのクエリをpublishすることが通常のケースです。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// server: publish all room documents</span>
 Meteor.publish(<span class="hljs-string">&quot;all-rooms&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
@@ -5173,15 +5196,22 @@ Meteor.publish(<span class="hljs-string">&quot;parties&quot;</span>, <span class
 });
 </code></pre>
 
-<p>Publish functions can provide different results to each client.  In the
+<p class="original">Publish functions can provide different results to each client.  In the
 last example, a logged in user can only see <code>Party</code> documents that
 are public, that the user owns, or that the user has been invited to.</p>
+<p class="translation">publish関数は各クライアントに異なる結果を提供することができます。
+上の最後の例では、ログインしたユーザーが参照できるのは、publicであり、そのユーザーが所有(owner)するか招待(invited)されている、<code>Party</code>ドキュメントのみです。</p>
 
-<p>Once subscribed, the client uses its cache as a fast local database,
+<p class="original">Once subscribed, the client uses its cache as a fast local database,
 dramatically simplifying client code.  Reads never require a costly
 round trip to the server.  And they&apos;re limited to the contents of the
 cache: a query for every document in a collection on a client will only
 return documents the server is publishing to that client.</p>
+<p class="translation">
+一旦subscribeすると、クライアントは自身のキャッシュを高速なローカルデータベースとして利用し、クライアントコードを劇的にシンプルにします。
+読み出しは決してコストのかかるサーバーへのラウンドトリップを必要としません。
+また読み出し処理は、キャッシュ内のコンテンツに限定されています。
+つまり、クライアントにあるコレクション内の全てのドキュメントへのクエリは、サーバーがクライアントにpublishしたドキュメントだけを返します。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// client: start a parties subscription</span>
 Meteor.subscribe(<span class="hljs-string">&quot;parties&quot;</span>);
@@ -5190,16 +5220,21 @@ Meteor.subscribe(<span class="hljs-string">&quot;parties&quot;</span>);
 <span class="hljs-keyword">return</span> Parties.find().fetch(); <span class="hljs-comment">// synchronous!</span>
 </code></pre>
 
-<p>Sophisticated clients can turn subscriptions on and off to control how
+<p class="original">Sophisticated clients can turn subscriptions on and off to control how
 much data is kept in the cache and manage network traffic.  When a
 subscription is turned off, all its documents are removed from the cache
 unless the same document is also provided by another active
 subscription.</p>
+<p class="translation">洗練されたクライアントは、キャッシュへのデータ保持量とネットワーク上のトラフィックを制御するため、サブスクリプションのオンとオフを切り替えられます。
+サブスクリプションがオフにされた場合、同じドキュメントが別のアクティブなサブスクリプションから提供されない限り、全てのドキュメントがキャッシュから取り除かれます。</p>
 
-<p>When the client <em>changes</em> one or more documents, it sends a message to
+<p class="original">When the client <em>changes</em> one or more documents, it sends a message to
 the server requesting the change.  The server checks the proposed change
 against a set of allow/deny rules you write as JavaScript functions.
 The server only accepts the change if all the rules pass.</p>
+<p class="translation">クライアントが1つまたは複数のドキュメントを<em>変更</em>すると、サーバーへ変更要求のメッセージを1回送ります。
+サーバーは提案された変更を、あなたがJavaScript関数として書いた、allow/denyルールのセットに対してチェックをします。
+サーバーは全てのルールをパスした変更のみを受け入れます。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// server: don&apos;t allow client to insert a party</span>
 Parties.allow({
@@ -5213,12 +5248,14 @@ Parties.allow({
 Parties.insert(party);
 </code></pre>
 
-<p>If the server accepts the change, it applies the change to the database
+<p class="original">If the server accepts the change, it applies the change to the database
 and automatically propagates the change to other clients subscribed to
 the affected documents.  If not, the update fails, the server&apos;s database
 remains untouched, and no other client sees the update.</p>
+<p class="translation">もしサーバーが変更を受け入れると、サーバーはその変更をデータベースに適用し、自動的にそのドキュメントをsubscribeしている他のクライアントに変更を伝播します。
+もしサーバーが変更を受け入れないと、その更新は失敗し、サーバーのデータベースは変更されないままとなり、他のどのクライアントもその変更を見ることはありません</p>
 
-<p>Meteor has a cute trick, though.  When a client issues a write to the
+<p class="original">Meteor has a cute trick, though.  When a client issues a write to the
 server, it also updates its local cache immediately, without waiting for
 the server&apos;s response.  This means the screen will redraw right away.
 If the server accepted the update — what ought to happen most of the
@@ -5226,57 +5263,95 @@ time in a properly behaving client — then the client got a jump on the
 change and didn&apos;t have to wait for the round trip to update its own
 screen.  If the server rejects the change, Meteor patches up the
 client&apos;s cache with the server&apos;s result.</p>
+<p class="translation">
+ただ、Meteorはちょっとした技を持っています。
+クライアントがサーバーに書き込みをする行うとき、クライアントはサーバーからの応答を待たず、ローカルキャッシュを瞬時に更新します。
+これは、画面が即座に書き換わるということです。
+もしサーバーがその変更を受け入れたら、（これは正しく振る舞うクライアントでほとんどの場合にそうなるはずですが）
+クライアントはすでに変更を取り込んでしまっていて、画面を書き換えるためにサーバーとのラウンドトリップを待つ必要がないのです。
+もしサーバーが変更を拒否したら、Meteorはクライアントのキャッシュにサーバーからの結果を反映させて直します。
+</p>
 
-<p>Putting it all together, these techniques accomplish latency
+<p class="original">Putting it all together, these techniques accomplish latency
 compensation.  Clients hold a fresh copy of the data they need, and
 never need to wait for a roundtrip to the server. And when clients
 modify data, those modifications can run locally without waiting for the
 confirmation from the server, while still giving the server final say
 over the requested change.</p>
+<p class="translation">
+まとめると、これらの技術は遅延補正（レイテンシー・コンペンセイション）を果たします。
+クライアントは必要とする最新データを保持し、決してサーバーへのラウンドトリップを待つ必要がありません。
+また、クライアントがデータを変更する時、その変更操作はサーバーからの確認を待たずにローカルで実施可能です。
+一方で、サーバーには依然として、要求した変更に関しての最終的な発言権を与えています。
+</p>
 
 <div class="note">
-  <p>The current release of Meteor supports MongoDB, the popular document
+  <p class="original">The current release of Meteor supports MongoDB, the popular document
 database, and the examples in this section use the
         <a href="http://www.mongodb.org/display/DOCS/Manual">MongoDB API</a>.  Future
 releases will include support for other databases.</p>
+<p class="translation">現在リリースされているのMeteorは人気のドキュメント型データベースであるMongoDBをサポートしています。
+また、このセクションの例は<a href="http://www.mongodb.org/display/DOCS/Manual">MongoDB API</a>をつかっています。
+将来のリリースでは、他のデータベースのサポートも含まれる予定です。</p>
 </div>
 
-<h3 id="/full/dataandsecurity-authentication">Authentication and user accounts</h3>
+<h3 id="/full/dataandsecurity-authentication" class="original">Authentication and user accounts</h3>
+<h3 id="/full/dataandsecurity-authentication" class="translation">認証とユーザーアカウント</h3>
 
-<p>Meteor includes <a href="#accounts_api">Meteor Accounts</a>, a state-of-the-art
+<p class="original">Meteor includes <a href="#accounts_api">Meteor Accounts</a>, a state-of-the-art
 authentication system. It features secure password login using the
 <a href="http://en.wikipedia.org/wiki/Bcrypt">bcrypt</a> algorithm,
 and integration with external services including Facebook, GitHub,
 Google, Meetup, Twitter, and Weibo. Meteor Accounts defines a
 <a href="#meteor_users"><code>Meteor.users</code></a> collection where developers can store
 application-specific user data.</p>
+<p class="translation">Meteorは<a href="#accounts_api">Meteor Accounts</a>を持っています。
+これは最新の認証システムです。
+<a href="http://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>アルゴリズムをつかったセキュアなパスワードログインと、
+Facebook、GitHub、Google、Meetup、Twitter、Weiboなど外部サービスとの連携を機能として備えています。
+Meteor Accountsは<a href="#meteor_users"><code>Meteor.users</code></a>コレクションを定義します。 
+ここには開発者がアプリケーションに特有のユーザーデータを保存することができます。</p>
 
-<p>Meteor also includes pre-built forms for common tasks like login, signup,
+<p class="original">Meteor also includes pre-built forms for common tasks like login, signup,
 password change, and password reset emails. You can add <a href="#accountsui">Accounts
 UI</a> to your app with just one line of code. The <code>accounts-ui</code> package even provides a configuration wizard that walks you through the steps to
 set up the external login services you&apos;re using in your app.</p>
+<p class="translation">Meteorは、ログイン、サインアップ、パスワード変更、パスワードリセットのemailなど、共通のタスクにために、ビルド済みのフォームも持っています。
+<a href="#accountsui">Accounts UI</a>をたったの一行のコードであなたのアプリに追加することができます。
+<code>accounts-ui</code>パッケージはあなたのアプリで使っている外部ログインサービスのセットアップを順番に手助けしてくれる設定ウィザードまで提供しています。</p>
 
-<h3 id="/full/dataandsecurity-validation">Input validation</h3>
+<h3 id="/full/dataandsecurity-validation" class="original">Input validation</h3>
+<h3 id="/full/dataandsecurity-validation" class="translation">入力バリデーション</h3>
 
-<p>Meteor allows your methods and publish functions to take arguments of any
+<p class="original">Meteor allows your methods and publish functions to take arguments of any
 <a href="http://json.org/">JSON</a> type. (In fact, Meteor&apos;s wire protocol supports
 <a href="#ejson">EJSON</a>, an extension of JSON which also supports other common types
 like dates and binary buffers.) JavaScript&apos;s dynamic typing means you don&apos;t need
 to declare precise types of every variable in your app, but it&apos;s usually helpful
 to ensure that the arguments that clients are passing to your methods and
 publish functions are of the type that you expect.</p>
+<p class="translation">Meteorはあなたのメソッドとpublish関数に任意の<a href="http://json.org/">JSON</a> 型の引数を受け取れるようにします。
+（じっさいのところ、Meteorの伝送プロトコルは、JSONの拡張で日付やバイナリバッファなども利用可能な<a href="#ejson">EJSON</a>をサポートしています。）
+JavaScriptの動的型付けでは、あなたはアプリで全ての変数に正確な型を宣言する必要がありません、
+しかしクライアントがあなたのメソッドとpublish関数に渡す引数が、あなたが想定している型のものか確認するのは大抵の場合において有用です。</p>
 
-<p>Meteor provides a <a href="#check_package">lightweight library</a> for checking that arguments and
+<p class="original">Meteor provides a <a href="#check_package">lightweight library</a> for checking that arguments and
 other values are the type you expect them to be. Simply start your functions
 with statements like <code>check(username, String)</code> or
 <code>check(office, {building: String, room: Number})</code>. The <code>check</code> call will
 throw an error if its argument is of an unexpected type.</p>
+<p class="translation">Meteorは、引数とそのほかの変数の型があなたが想定しているものかチェックするための<a href="#check_package">軽量ライブラリ</a>を提供しています。
+単に、あなたの関数の冒頭に<code>check(username, String)</code> または、<code>check(office, {building: String, room: Number})</code>のように書いてください。
+<code>check</code>の呼び出しは、引数の型が予想と異なっていた場合エラーを投げます。</p>
 
-<p>Meteor also provides an easy way to make sure that all of your methods
+<p class="original">Meteor also provides an easy way to make sure that all of your methods
 and publish functions validate all of their arguments. Just run
 <code>meteor add <a href="#auditargumentchecks">audit-argument-checks</a></code> and any
 method or publish function which skips <code>check</code>ing any of its arguments will fail
 with an exception.</p>
+<p class="translation">Meteorはあなたの全てのメソッドとpublish関数がその引数を検証することを確実にする簡単な方法も提供しています。
+<code>meteor add <a href="#auditargumentchecks">audit-argument-checks</a></code>を実行するだけです。
+これで全てのメソッドとpublish関数が引数に対して<code>check</code>をし忘れると、例外が発生して失敗します。</p>
 <h2 id="/full/reactivity">Reactivity</h2>
 
 <p class="original">Meteor embraces the concept of <a href="http://en.wikipedia.org/wiki/Reactive_programming">reactive

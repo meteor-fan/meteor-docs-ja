@@ -8,5 +8,7 @@
   "Configuring app icons and metadata": "アプリのアイコンとメタデータの設定",
   "Special Directories": "特別なディレクトリ",
   "Running on Meteor&apos;s infrastructure": "Meteorのインフラで走らせる",
-  "Running on your own infrastructure": "あなたの自分のインフラ上で走らせる"
+  "Running on your own infrastructure": "あなたの自分のインフラ上で走らせる",
+  "Authentication and user accounts": "認証とユーザーアカウント",
+  "Input validation": "入力バリデーション"
 }
