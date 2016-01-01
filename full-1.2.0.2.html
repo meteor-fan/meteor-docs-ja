@@ -7720,9 +7720,11 @@ of the error message.</p>
 </p>
 <h2 id="/full/check_package"><span>Check</span></h2>
 
-<p>The <code>check</code> package includes pattern checking functions useful for checking
+<p class="original">The <code>check</code> package includes pattern checking functions useful for checking
 the types and structure of variables and an <a href="#matchpatterns">extensible
 library of patterns</a> to specify which types you are expecting.</p>
+<p class="translation"><code>check</code>パッケージは、簡単に変数の型や構造をチェックすることができるパターンチェック関数と、
+その型や構造を指定する<a href="#matchpatterns">拡張ライブラリ</a>を提供します。</p>
 
 
 <div class="api new-api-box">
@@ -7737,11 +7739,14 @@ library of patterns</a> to specify which types you are expecting.</p>
   </h3>
 
   <div class="desc">
-    <p>Check that a value matches a <a href="#matchpatterns">pattern</a>.
+    <p class="original">Check that a value matches a <a href="#matchpatterns">pattern</a>.
 If the value does not match the pattern, throw a <code>Match.Error</code>.</p>
+<p class="translation">値が<a href="#matchpatterns">パターン</a>にマッチするかをチェックする。
+もしパターンにマッチしない場合、<code>Match.Error</code>をスローする。</p>
 
-<p>Particularly useful to assert that arguments to a function have the right
+<p class="original">Particularly useful to assert that arguments to a function have the right
 types and structure.</p>
+<p class="translation">特に、関数の引数が正しい型や構造をしているか確認するのに役立つ。</p>
   </div>
 
   
@@ -7753,7 +7758,8 @@ types and structure.</p>
           <span class="type">Any</span>
         </dt>
         <dd>
-          <p>The value to check</p>
+          <p class="original">The value to check</p>
+<p class="translation">確認する値</p>
         </dd>
       
         <dt>
@@ -7761,8 +7767,9 @@ types and structure.</p>
           <span class="type"><a href="#matchpatterns">Match Pattern</a></span>
         </dt>
         <dd>
-          <p>The pattern to match
+          <p class="original">The pattern to match
 <code>value</code> against</p>
+<p class="translation"><code>value</code>に対するパターン</p>
         </dd>
       
     </dl>
@@ -7774,10 +7781,14 @@ types and structure.</p>
 </div>
 
 
-<p>Meteor methods and publish functions take arbitrary <a href="#ejson">EJSON</a> types as
+<p class="original">Meteor methods and publish functions take arbitrary <a href="#ejson">EJSON</a> types as
 arguments, but most arguments are expected to be of a particular type. <code>check</code>
 is a lightweight function for checking that arguments and other
 values are of the expected type. For example:</p>
+<p class="translation">Meteorメソッドとpublish関数は任意の<a href="#ejson">EJSON</a>型を引数としてとるが、
+多くの引数は特定の型を期待します。<code>check</code>
+は、関数の引数やその他の値をチェックするための軽量の関数です。
+例えば:</p>
 
 <pre><code class="hljs javascript">Meteor.publish(<span class="hljs-string">&quot;chats-in-room&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(roomId)</span> </span>{
   <span class="hljs-comment">// Make sure roomId is a string, not an arbitrary mongo selector object.</span>
@@ -7798,10 +7809,13 @@ Meteor.methods({addChat: <span class="hljs-function"><span class="hljs-keyword">
 }});
 </code></pre>
 
-<p>If the match fails, <code>check</code> throws a <code>Match.Error</code> describing how it failed. If
+<p class="original">If the match fails, <code>check</code> throws a <code>Match.Error</code> describing how it failed. If
 this error gets sent over the wire to the client, it will appear only as
 <code>Meteor.Error(400, &quot;Match Failed&quot;)</code>. The failure details will be written to the
 server logs but not revealed to the client.</p>
+<p class="translation">マッチしない場合、<code>check</code>は失敗の原因を記述した<code>Match.Error</code>の例外をスローします。もし
+このエラーがクライアント側に送られた場合、単に
+<code>Meteor.Error(400, &quot;Match Failed&quot;)</code>となります。失敗の原因はサーバのログに書かれクライアントには開示されません。</p>
 
 
 <div class="api new-api-box">
@@ -7816,7 +7830,8 @@ server logs but not revealed to the client.</p>
   </h3>
 
   <div class="desc">
-    <p>Returns true if the value matches the pattern.</p>
+    <p class="original">Returns true if the value matches the pattern.</p>
+<p class="translation">パターンにマッチした場合、trueを返す。</p>
   </div>
 
   
@@ -7828,7 +7843,8 @@ server logs but not revealed to the client.</p>
           <span class="type">Any</span>
         </dt>
         <dd>
-          <p>The value to check</p>
+          <p class="original">The value to check</p>
+<p class="translation">確認する値</p>
         </dd>
       
         <dt>
@@ -7836,7 +7852,8 @@ server logs but not revealed to the client.</p>
           <span class="type"><a href="#matchpatterns">Match Pattern</a></span>
         </dt>
         <dd>
-          <p>The pattern to match <code>value</code> against</p>
+          <p class="original">The pattern to match <code>value</code> against</p>
+<p class="translation"><code>value</code>に対するパターン</p>
         </dd>
       
     </dl>
@@ -7848,7 +7865,8 @@ server logs but not revealed to the client.</p>
 </div>
 
 
-<p><code>Match.test</code> can be used to identify if a variable has a certain structure.</p>
+<p class="original"><code>Match.test</code> can be used to identify if a variable has a certain structure.</p>
+<p class="translation"><code>Match.test</code>は値の構造を判定するのに使います。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// will return true for {foo: 1, bar: &quot;hello&quot;} or similar</span>
 Match.test(value, {foo: Match.Integer, bar: <span class="hljs-built_in">String</span>});
@@ -7860,8 +7878,9 @@ Match.test(value, <span class="hljs-built_in">String</span>);
 Match.test(value, Match.OneOf(<span class="hljs-built_in">String</span>, [<span class="hljs-built_in">Number</span>]));
 </code></pre>
 
-<p>This can be useful if you have a function that accepts several different kinds
+<p class="original">This can be useful if you have a function that accepts several different kinds
 of objects, and you want to determine which was passed in.</p>
+<p class="translation">これは、関数が複数の種類のオブジェクトを受け取る場合にどれが渡されたかを確認するのに使えます。</p>
 
 <h3 id="/full/matchpatterns" class="api-title">
     <div class="locus">
@@ -7873,8 +7892,10 @@ of objects, and you want to determine which was passed in.</p>
     
   </h3>
 
-<p>The following patterns can be used as pattern arguments to
+<p class="original">The following patterns can be used as pattern arguments to
 <a href="#check"><code>check</code></a> and <code>Match.test</code>:</p>
+<p class="translation">下記は
+<a href="#check"><code>check</code></a>と<code>Match.test</code>の引数に使えるパターンです:</p>
 
 <dl>
 
@@ -7882,65 +7903,76 @@ of objects, and you want to determine which was passed in.</p>
   
     <dt><span class="name"><code>Match.Any</code></span></dt>
   
-  <dd><p>Matches any value.</p></dd>
+  <dd><p class="original">Matches any value.</p>
+<p class="translation">任意の値にマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>undefined</code>, <code>null</code></span></dt>
   
-  <dd><p>Matches a primitive of the given type.</p></dd>
+  <dd><p class="original">Matches a primitive of the given type.</p>
+<p class="translation">与えられたプリミティブタイプにマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Match.Integer</code></span></dt>
   
-  <dd><p>Matches a signed 32-bit integer. Doesn&apos;t match <code>Infinity</code>, <code>-Infinity</code>, or <code>NaN</code>.</p></dd>
+  <dd><p class="original">Matches a signed 32-bit integer. Doesn&apos;t match <code>Infinity</code>, <code>-Infinity</code>, or <code>NaN</code>.</p>
+<p class="translation">符号付32bit整数にマッチします。<code>Infinity</code>や<code>-Infinity</code>や<code>NaN</code>にはマッチしません。</p></dd>
 
 
 
   
     <dt><span class="name"><code>[<em>pattern</em>]</code></span></dt>
   
-  <dd><p>A one-element array matches an array of elements, each of which match
+  <dd><p class="original">A one-element array matches an array of elements, each of which match
 <em>pattern</em>. For example, <code>[Number]</code> matches a (possibly empty) array of numbers;
-<code>[Match.Any]</code> matches any array.</p></dd>
+<code>[Match.Any]</code> matches any array.</p>
+<p class="translation">要素が一つの配列はすべての要素が<em>pattern</em>にマッチする配列にマッチします。例えば、<code>[Number]</code>は数値の配列(もしくは空の配列)にマッチします。また、<code>[Match.Any]</code>は任意の配列にマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>{<em>key1</em>: <em>pattern1</em>, <em>key2</em>: <em>pattern2</em>, ...}</code></span></dt>
   
-  <dd><p>Matches an Object with the given keys, with values matching the given patterns.
+  <dd><p class="original">Matches an Object with the given keys, with values matching the given patterns.
 If any <em>pattern</em> is a <code>Match.Optional</code>, that key does not need to exist
 in the object. The value may not contain any keys not listed in the pattern.
-The value must be a plain Object with no special prototype.</p></dd>
+The value must be a plain Object with no special prototype.</p>
+<p class="translation">与えられたキーとそのパターンのオブジェクトにマッチします。
+もし<em>pattern</em>が<code>Match.Optional</code>の場合、そのキーはオブジェクトに存在する必要がはありません。
+対象の値はパターン載っていないキーを含むことはできません。
+対象の値はプロトタイプを持たない単純なオブジェクトである必要があります。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Match.ObjectIncluding({<em>key1</em>: <em>pattern1</em>, <em>key2</em>: <em>pattern2</em>, ...})</code></span></dt>
   
-  <dd><p>Matches an Object with the given keys; the value may also have other keys
-with arbitrary values.</p></dd>
+  <dd><p class="original">Matches an Object with the given keys; the value may also have other keys
+with arbitrary values.</p>
+<p class="translation">与えられたキーを含むオブジェクトにマッチします。対象の値は他の任意の値をもつキーを持つことができます。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Object</code></span></dt>
   
-  <dd><p>Matches any plain Object with any keys; equivalent to
-<code>Match.ObjectIncluding({})</code>.</p></dd>
+  <dd><p class="original">Matches any plain Object with any keys; equivalent to
+<code>Match.ObjectIncluding({})</code>.</p>
+<p class="translation">与えられたキーを含むオブジェクトにマッチします。<code>Match.ObjectIncluding({})</code>と同等です。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Match.Optional(<em>pattern</em>)</code></span></dt>
   
-  <dd><p>Matches either
+  <dd><p class="original">Matches either
 <code>undefined</code> or something that matches pattern. If used in an object this matches
 only if the key is not set as opposed to the value being set to <code>undefined</code>.</p>
+<p class="translation"><code>undefined</code>もしくはパターンにマッチする何かにマッチします。もしオブジェクトの中で使われる場合は、キーが存在しない場合のみマッチし、値が<code>undefined</code>の場合は該当しません。</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// In an object</span>
 <span class="hljs-keyword">var</span> pat = { name: Match.Optional(<span class="hljs-built_in">String</span>) };
@@ -7957,24 +7989,27 @@ check(<span class="hljs-literal">undefined</span>, Match.Optional(<span class="h
   
     <dt><span class="name"><code>Match.OneOf(<em>pattern1</em>, <em>pattern2</em>, ...)</code></span></dt>
   
-  <dd><p>Matches any value that matches at least one of the provided patterns.</p></dd>
+  <dd><p class="original">Matches any value that matches at least one of the provided patterns.</p>
+<p class="translation">複数のパターンのいずれか一つにマッチする任意の値にマッチします。</p></dd>
 
 
 
   
     <dt><span class="name">Any constructor function (eg, <code>Date</code>)</span></dt>
   
-  <dd><p>Matches any element that is an instance of that type.</p></dd>
+  <dd><p class="original">Matches any element that is an instance of that type.</p>
+<p class="translation">コンストラクタのインスタンスにマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Match.Where(<em>condition</em>)</code></span></dt>
   
-  <dd><p>Calls the function <em>condition</em> with the value as the argument. If <em>condition</em>
+  <dd><p class="original">Calls the function <em>condition</em> with the value as the argument. If <em>condition</em>
 returns true, this matches. If <em>condition</em> throws a <code>Match.Error</code> or returns
 false, this fails. If <em>condition</em> throws any other error, that error is thrown
 from the call to <code>check</code> or <code>Match.test</code>. Examples:</p>
+<p class="translation"><em>condition</em>関数を対象の値を引数として呼び出し、もしtrueが返されればマッチします。もし<em>condition</em>関数が<code>Match.Error</code>をスローしたりfalseを返す場合はマッチしません。もし<em>condition</em>関数がそれ以外の例外をスローする場合はその例外がは<code>check</code>や<code>Match.test</code>にスローされます。例えば:</p>
 
 <pre><code class="hljs javascript">check(buffer, Match.Where(EJSON.isBinary));
 
