@@ -6320,6 +6320,15 @@ followed by your application code.</p>
 
   <div class="desc">
     <p><code>Meteor.settings</code> contains deployment-specific configuration options. You can initialize settings by passing the <code>--settings</code> option (which takes the name of a file containing JSON data) to <code>meteor run</code> or <code>meteor deploy</code>. When running your server directly (e.g. from a bundle), you instead specify settings by putting the JSON directly into the <code>METEOR_SETTINGS</code> environment variable. If the settings object contains a key named <code>public</code>, then <code>Meteor.settings.public</code> will be available on the client as well as the server.  All other properties of <code>Meteor.settings</code> are only defined on the server.  You can rely on <code>Meteor.settings</code> and <code>Meteor.settings.public</code> being defined objects (not undefined) on both client and server even if there are no settings specified.  Changes to <code>Meteor.settings.public</code> at runtime will be picked up by new client connections.</p>
+    
+<p class="translation">
+<code>Meteor.settings</code>は、デプロイメント固有の設定オプションが入っています。
+settingsは<code>meteor run</code>または<code>meteor deploy</code>に<code>--settings</code>オプション（JSONデータを含んだファイルの名前をセットします）で渡して初期化することができます。
+あなたのサーバーを直接実行するとき（たとえば bundleからの実行時）、代わりに環境変数<code>METEOR_SETTINGS</code>に直接JSONをセットすることで、settingsを設定します。
+settingsオブジェクトに<code>public</code>という名前のキーが含まれている場合は、<code>Meteor.settings.public</code>がサーバーだけでなくクライアントでも利用可能になります。
+その他全ての<code>Meteor.settings</code>のプロパティは、サーバーでのみ利用可能です。
+例えsettingsを指定しなくても、クライアントとサーバーの両方に<code>Meteor.settings</code>と<code>Meteor.settings.public</code>が（undefinedにならず）オブジェクトとして利用可能であるということに依存して大丈夫です。
+<code>Meteor.settings.public</code>への実行時の変更は、新たなクライアントの接続時に拾われます。</p>
   </div>
 
   
