@@ -15370,12 +15370,14 @@ code must always run within a Fiber, and advising to use
 </p>
 <h2 id="/full/tracker"><span>Tracker</span></h2>
 
-<p>Meteor has a simple dependency tracking system which allows it to
+<p class="original">Meteor has a simple dependency tracking system which allows it to
 automatically rerun templates and other computations whenever
 <a href="#session"><code>Session</code></a> variables, database queries, and other data
 sources change.</p>
+<p class="translation">
+Meteorは、<a href="#session"><code>Session</code></a>変数、データベースクエリ、またその他のデータソースが変化した時はいつでもテンプレートとその他のコンポーネントを自動的に再実行させるための、シンプルな依存性トラッキングシステムを持っています。</p>
 
-<p>Unlike most other systems, you don&apos;t have to manually declare these
+<p class="original">Unlike most other systems, you don&apos;t have to manually declare these
 dependencies — it &quot;just works&quot;. The mechanism is simple and
 efficient. When you call a function that supports reactive updates
 (such as a database query), it automatically saves the current
@@ -15383,11 +15385,22 @@ Computation object, if any (representing, for example, the current
 template being rendered).  Later, when the data changes, the function
 can &quot;invalidate&quot; the Computation, causing it to rerun (rerendering the
 template).</p>
+<p class="translation">
+多くの他のシステムとは違い、これらの依存性を手動で宣言する必要はありません。
+なにもしなくてもちゃんと動くのです。
+メカニズムはシンプルで効果的です。
+あなたがリアクティブな更新をサポートする関数（たとえばデータベースクエリなどです）を呼び出す時、
+現在の演算（コンピュテーション）オブジェクト（たとえば、レンダリングされている現在のテンプレートなどを表すものです）があれば、それを自動的に保存します。
+あとになってデータに変更があった時、その関数は、コンピューテーションを &quot;インバリデート（無効化）&quot; することができ、それはコンピューテーションを再実行させます（テンプレートのレンダリング）</p>
 
-<p>Applications will find <a href="#tracker_autorun"><code>Tracker.autorun</code></a> useful, while more
+<p class="original">Applications will find <a href="#tracker_autorun"><code>Tracker.autorun</code></a> useful, while more
 advanced facilities such as <code>Tracker.Dependency</code> and <code>onInvalidate</code>
 callbacks are intended primarily for package authors implementing new
 reactive data sources.</p>
+<p class="translation">
+アプリケーションから見ると、<a href="#tracker_autorun"><code>Tracker.autorun</code></a>が有用です。
+一方、より高度な<code>Tracker.Dependency</code> や <code>onInvalidate</code>コールバックなどの機能は、
+主に新たなリアクティブ・データソースを実装するパッケージの作者達に使われることを意図しています。</p>
 
 
 <div class="api new-api-box">
@@ -15447,12 +15460,17 @@ thrown. Defaults to the error being logged to the console.</p>
 </div>
 
 
-<p><code>Tracker.autorun</code> allows you to run a function that depends on reactive data
+<p class="original"><code>Tracker.autorun</code> allows you to run a function that depends on reactive data
 sources, in such a way that if there are changes to the data later,
 the function will be rerun.</p>
+<p class="translation">
+<code>Tracker.autorun</code>はリアクティブ・データソースに依存する関数を実行できます。
+この方法をつかうと、データに後で変化があると、関数は再実行されます。</p>
 
-<p>For example, you can monitor a cursor (which is a reactive data
+<p class="original">For example, you can monitor a cursor (which is a reactive data
 source) and aggregate it into a session variable:</p>
+<p class="translation">
+例えば、カーソル（リアクティブ・データソースです）をモニターし、Session変数の中に集計結果を入れる事ができます：</p>
 
 <pre><code class="hljs javascript">Tracker.autorun(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">var</span> oldest = _.max(Monkeys.find().fetch(), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(monkey)</span> </span>{
@@ -15463,9 +15481,11 @@ source) and aggregate it into a session variable:</p>
 });
 </code></pre>
 
-<p>Or you can wait for a session variable to have a certain value, and do
+<p class="original">Or you can wait for a session variable to have a certain value, and do
 something the first time it does, calling <code>stop</code> on the computation to
 prevent further rerunning:</p>
+<p class="translation">または、session変数がある値になるのを待ち、最初にその値になったとき何かをし、
+演算オブジェクト（コンピューテーション）の<code>stop</code>を呼び、将来の再実行を防ぐことができます：</p>
 
 <pre><code class="hljs javascript">Tracker.autorun(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(c)</span> </span>{
   <span class="hljs-keyword">if</span> (! Session.equals(<span class="hljs-string">&quot;shouldAlert&quot;</span>, <span class="hljs-literal">true</span>))
@@ -15476,23 +15496,37 @@ prevent further rerunning:</p>
 });
 </code></pre>
 
-<p>The function is invoked immediately, at which point it may alert and
+<p class="original">The function is invoked immediately, at which point it may alert and
 stop right away if <code>shouldAlert</code> is already true.  If not, the
 function is run again when <code>shouldAlert</code> becomes true.</p>
+<p class="translation">
+関数はすぐに実行され、その時点で、もし<code>shouldAlert</code>がtrueであれば、alertとstopをその場で呼び出すかも知れません。
+もしtrueでなければ、<code>shouldAlert</code>がtrueになった時、この関数はもう一度実行されます。</p>
 
-<p>A change to a data dependency does not cause an immediate rerun, but
+<p class="original">A change to a data dependency does not cause an immediate rerun, but
 rather &quot;invalidates&quot; the computation, causing it to rerun the next
 time a flush occurs.  A flush will occur automatically as soon as
 the system is idle if there are invalidated computations.  You can
 also use <a href="#tracker_flush"><code>Tracker.flush</code></a> to cause an immediate flush of
 all pending reruns.</p>
+<p class="translation">
+データ依存性への変更は即座に再実行を引き起こしません。
+そうではなく、コンピューテーション（演算）を&quot;無効化&quot; します。
+すると、次回フラッシュが起きた時に、コンピューテーションを再実行させます。
+フラッシュは、無効化されたコンピューテーションが有れば、システムがアイドル状態になるとすぐ自動的に発生します。
+<a href="#tracker_flush"><code>Tracker.flush</code></a>をつかって即座にフラッシュを引き起こして、全ての未実施の再実行をフラッシュさせることもできます。</p>
 
-<p>If you nest calls to <code>Tracker.autorun</code>, then when the outer call stops or
+<p class="original">If you nest calls to <code>Tracker.autorun</code>, then when the outer call stops or
 reruns, the inner call will stop automatically.  Subscriptions and
 observers are also automatically stopped when used as part of a
 computation that is rerun, allowing new ones to be established.  See
 <a href="#meteor_subscribe"><code>Meteor.subscribe</code></a> for more information about
 subscriptions and reactivity.</p>
+<p class="translation">
+もし<code>Tracker.autorun</code>をネストして呼び出して、外側の実行が停止、または再実行する時、
+内側の実行は自動的に停止します。
+サブスクリプションとオブザーバーも、再実行するコンピューテーションの一部として使われた場合、新しいものを確立できるように、同様に自動的に停止します。
+サブスクリプションとリアクティビティに関しての詳細は、<a href="#meteor_subscribe"><code>Meteor.subscribe</code></a>を御覧ください。</p>
 
 <p class="original">If the initial run of an autorun throws an exception, the computation
 is automatically stopped and won&apos;t be rerun.</p>
