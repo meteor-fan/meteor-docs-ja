@@ -6245,11 +6245,9 @@ followed by your application code.</p>
   </h3>
 
   <div class="desc">
-    <p>Generate an absolute URL pointing to the application. The server reads from the <code>ROOT_URL</code> environment variable to determine where it is running. This is taken care of automatically for apps deployed with <code>meteor deploy</code>, but must be provided when using <code>meteor build</code>.</p>
-    
+    <p class="original">Generate an absolute URL pointing to the application. The server reads from the <code>ROOT_URL</code> environment variable to determine where it is running. This is taken care of automatically for apps deployed with <code>meteor deploy</code>, but must be provided when using <code>meteor build</code>.</p>
 <p class="translation">アプリケーションを指す絶対URLを生成します。サーバーは実行されている場所を特定するために環境変数<code>ROOT_URL</code>を参照します。
 これは、<code>meteor deploy</code>をつかってデプロイされたアプリには自動的に設定されますが、<code>meteor build</code>を使う時は設定しなければなりません。</p>
-        
   </div>
 
   
@@ -6261,8 +6259,8 @@ followed by your application code.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p>A path to append to the root URL. Do not include a leading &quot;<code>/</code>&quot;.</p>
-          <p class="translation">ルートURLにつなげるパス。先頭に&quot;<code>/</code>&quot;を付けないでください。</p>
+          <p class="original">A path to append to the root URL. Do not include a leading &quot;<code>/</code>&quot;.</p>
+<p class="translation">ルートURLにつなげるパス。先頭に&quot;<code>/</code>&quot;を付けないでください。</p>
         </dd>
       
     </dl>
@@ -6277,8 +6275,8 @@ followed by your application code.</p>
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>Create an HTTPS URL.</p>
-          <p class="translation">HTTPS URLを作ります。</p>
+          <p class="original">Create an HTTPS URL.</p>
+<p class="translation">HTTPS URLを作ります。</p>
         </dd>
       
         <dt>
@@ -6286,8 +6284,8 @@ followed by your application code.</p>
           <span class="type">Boolean</span>
         </dt>
         <dd>
-          <p>Replace localhost with 127.0.0.1. Useful for services that don&apos;t recognize localhost as a domain name.</p>
-          <p class="translation">localhostを127.0.0.1に置き換えます。localhostをドメイン名として認識しないサービスに便利です。</p>
+          <p class="original">Replace localhost with 127.0.0.1. Useful for services that don&apos;t recognize localhost as a domain name.</p>
+<p class="translation">localhostを127.0.0.1に置き換えます。localhostをドメイン名として認識しないサービスに便利です。</p>
         </dd>
       
         <dt>
@@ -6295,8 +6293,8 @@ followed by your application code.</p>
           <span class="type">String</span>
         </dt>
         <dd>
-          <p>Override the default ROOT_URL from the server environment. For example: &quot;<code>http://foo.example.com</code>&quot;</p>
-          <p class="translation">サーバーの環境変数のROOT_URLを上書きします。例: &quot;<code>http://foo.example.com</code>&quot;</p>
+          <p class="original">Override the default ROOT_URL from the server environment. For example: &quot;<code>http://foo.example.com</code>&quot;</p>
+<p class="translation">サーバーの環境変数のROOT_URLを上書きします。例: &quot;<code>http://foo.example.com</code>&quot;</p>
         </dd>
       
     </dl>
@@ -6319,8 +6317,7 @@ followed by your application code.</p>
   </h3>
 
   <div class="desc">
-    <p><code>Meteor.settings</code> contains deployment-specific configuration options. You can initialize settings by passing the <code>--settings</code> option (which takes the name of a file containing JSON data) to <code>meteor run</code> or <code>meteor deploy</code>. When running your server directly (e.g. from a bundle), you instead specify settings by putting the JSON directly into the <code>METEOR_SETTINGS</code> environment variable. If the settings object contains a key named <code>public</code>, then <code>Meteor.settings.public</code> will be available on the client as well as the server.  All other properties of <code>Meteor.settings</code> are only defined on the server.  You can rely on <code>Meteor.settings</code> and <code>Meteor.settings.public</code> being defined objects (not undefined) on both client and server even if there are no settings specified.  Changes to <code>Meteor.settings.public</code> at runtime will be picked up by new client connections.</p>
-    
+    <p class="original"><code>Meteor.settings</code> contains deployment-specific configuration options. You can initialize settings by passing the <code>--settings</code> option (which takes the name of a file containing JSON data) to <code>meteor run</code> or <code>meteor deploy</code>. When running your server directly (e.g. from a bundle), you instead specify settings by putting the JSON directly into the <code>METEOR_SETTINGS</code> environment variable. If the settings object contains a key named <code>public</code>, then <code>Meteor.settings.public</code> will be available on the client as well as the server.  All other properties of <code>Meteor.settings</code> are only defined on the server.  You can rely on <code>Meteor.settings</code> and <code>Meteor.settings.public</code> being defined objects (not undefined) on both client and server even if there are no settings specified.  Changes to <code>Meteor.settings.public</code> at runtime will be picked up by new client connections.</p>
 <p class="translation">
 <code>Meteor.settings</code>は、デプロイメント固有の設定オプションが入っています。
 settingsは<code>meteor run</code>または<code>meteor deploy</code>に<code>--settings</code>オプション（JSONデータを含んだファイルの名前をセットします）で渡して初期化することができます。
@@ -6352,8 +6349,7 @@ settingsオブジェクトに<code>public</code>という名前のキーが含�
   </h3>
 
   <div class="desc">
-    <p><code>Meteor.release</code> is a string containing the name of the <a href="#meteorupdate">release</a> with which the project was built (for example, <code>&quot;1.2.3&quot;</code>). It is <code>undefined</code> if the project was built using a git checkout of Meteor.</p>
-    
+    <p class="original"><code>Meteor.release</code> is a string containing the name of the <a href="#meteorupdate">release</a> with which the project was built (for example, <code>&quot;1.2.3&quot;</code>). It is <code>undefined</code> if the project was built using a git checkout of Meteor.</p>
 <p class="translation">
 <code>Meteor.release</code>は、プロジェクトがビルドにつかった<a href="#meteorupdate">リリース</a>名を含んだ文字列です。(例えば、<code>&quot;1.2.3&quot;</code>)
  これは、もしプロジェクトがMeteorをgitからチェックアウトしてビルドすると<code>undefined</code>になります。</p>
@@ -7569,11 +7565,15 @@ options about how the client executes the method.</p>
 <h2 id="/full/ddpratelimiter"><span>DDPRateLimiter</span></h2>
 
 <p>Customize rate limiting for methods and subscriptions.</p>
+<p class="translation">メソッドとsubscriptionのレートリミットをカスタマイズします。</p>
 
 <p>By default, <code>DDPRateLimiter</code> is configured with a single rule. This rule
 limits login attempts, new user creation, and password resets to 5 attempts
 every 10 seconds per connection. It can be removed by calling
 <code>Accounts.removeDefaultRateLimit()</code>.</p>
+<p class="translation">デフォルトでは、<code>DDPRateLimiter</code>には1つのルールが設定されています。そのルールは
+ログイン、ユーザ作成、パスワードリセットをコネクションあたり10秒間に5回に制限します。
+そのルールは<code>Accounts.removeDefaultRateLimit()</code>で削除することができます。</p>
 
 
 <div class="api new-api-box">
@@ -7591,16 +7591,23 @@ every 10 seconds per connection. It can be removed by calling
     <p>Add a rule that matches against a stream of events describing method or
 subscription attempts. Each event is an object with the following
 properties:</p>
+    <p class="translation">メソッドやsubscriptionの試行を記述するイベントにマッチするルールを追加する。それぞれのイベンなは次のプロパティを持つイベントである:</p>
 
 <ul>
 <li><code>type</code>: Either &quot;method&quot; or &quot;subscription&quot;</li>
+<li class="translation"><code>type</code>: &quot;method&quot;もしくは&quot;subscription&quot;</li>
 <li><code>name</code>: The name of the method or subscription being called</li>
+<li class="translation"><code>name</code>: 呼び出されるメソッドやsubscriptionの名前</li>
 <li><code>userId</code>: The user ID attempting the method or subscription</li>
+<li class="translation"><code>userId</code>: メソッドやsubscriptionを呼び出そうとしているユーザID</li>
 <li><code>connectionId</code>: A string representing the user&apos;s DDP connection</li>
+<li class="translation"><code>connectionId</code>: ユーザのDDPコネクションの文字列表現</li>
 <li><code>clientAddress</code>: The IP address of the user</li>
+<li class="translation"><code>clientAddress</code>: ユーザのIPアドレス</li>
 </ul>
 
 <p>Returns unique <code>ruleId</code> that can be passed to <code>removeRule</code>.</p>
+<p class="translation"><code>removeRule</code>に渡すことのできるユニークな<code>ruleId</code>を返す。</p>
   </div>
 
   
@@ -7615,19 +7622,23 @@ properties:</p>
           <p>Matchers specify which events are counted towards a rate limit. A matcher
   is an object that has a subset of the same properties as the event objects
   described above. Each value in a matcher object is one of the following:</p>
+          <p class="translation">matchersはどのイベントがレートリミットの対象となるか特定するものである。matcherはオブジェクトで、上記イベントオブジェクトのプロパティのサブセットとなる。matcherオブジェクトのそれぞれの値は次のいずれかである。:</p>
 <ul>
 <li><p>a string: for the event to satisfy the matcher, this value must be equal
-to the value of the same property in the event object</p>
+    to the value of the same property in the event object</p>
+  <p class="translation">文字列: matcherに合うにはイベントオブジェクとは同じプロパティで同じ値を持つ必要がある。</p>
 </li>
 <li><p>a function: for the event to satisfy the matcher, the function must
 evaluate to true when passed the value of the same property
-in the event object</p>
+    in the event object</p>
+  <p class="translation">関数: matcherに合うにはこの関数に同じプロパティの値を与えてtrueを返す必要がある。</p>
 </li>
 </ul>
 <p>Here&apos;s how events are counted: Each event that satisfies the matcher&apos;s
 filter is mapped to a bucket. Buckets are uniquely determined by the
 event object&apos;s values for all properties present in both the matcher and
 event objects.</p>
+<p class="translation">イベントのカウント方法: それぞれのイベントがmatcherのフィルタに合うと1つのバケットに入る。バケットはイベントオブジェクトとmatcherに共通のプロパティのイベントオブジェクトの値で決まる。</p>
         </dd>
       
         <dt>
@@ -7637,6 +7648,7 @@ event objects.</p>
         <dd>
           <p>number of requests allowed per time interval.
 Default = 10.</p>
+          <p class="translation">timeInterval毎に許可されるリクエスト数。デフォルトは10。</p>
         </dd>
       
         <dt>
@@ -7646,6 +7658,7 @@ Default = 10.</p>
         <dd>
           <p>time interval in milliseconds after which
 rule&apos;s counters are reset. Default = 1000.</p>
+          <p class="translation">カウンターがリセットされる時間間隔(ミリ秒)。デフォルトは1000。</p>
         </dd>
       
     </dl>
@@ -7659,13 +7672,16 @@ rule&apos;s counters are reset. Default = 1000.</p>
 
 <p>Custom rules can be added by calling <code>DDPRateLimiter.addRule</code>. The rate
 limiter is called on every method and subscription invocation.</p>
+<p class="translation"><code>DDPRateLimiter.addRule</code>を呼び出すことで独自のルールを追加できます。レートリミットはメソッドやsubscriptionが実行されるたびに確認されます。</p>
 
 <p>A rate limit is reached when a bucket has surpassed the rule&apos;s predefined
 capactiy, at which point errors will be returned for that input until the
 buckets are reset. Buckets are regularly reset after the end of a time
 interval.</p>
+<p class="translation">ルールが定めた量をバケットが越えるとレートリミットが働き、バケットがリセットされるまでエラーが返されます。バケットはtimeIntervalが経過する毎にリセットされます。</p>
 
 <p>Here&apos;s example of defining a rule and adding it into the <code>DDPRateLimiter</code>:</p>
+<p class="translation">下記はルールを定義して<code>DDPRateLimiter</code>に追加する例です:</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// Define a rule that matches login attempts by non-admin users</span>
 <span class="hljs-keyword">var</span> loginRule = {
@@ -7694,6 +7710,7 @@ DDPRateLimiter.addRule(loginRule, <span class="hljs-number">5</span>, <span clas
   <div class="desc">
     <p>Removes the specified rule from the rate limiter. If rule had
 hit a rate limit, that limit is removed as well.</p>
+    <p class="translation">レートリミットからルールを削除する。ルールによってレートリミットの上限に到達している場合はその上限も削除される。</p>
   </div>
 
   
@@ -7706,6 +7723,7 @@ hit a rate limit, that limit is removed as well.</p>
         </dt>
         <dd>
           <p>&apos;ruleId&apos; returned from <code>addRule</code></p>
+          <p class="translation">&apos;ruleId&apos; <code>addRule</code>から返されたもの</p>
         </dd>
       
     </dl>
@@ -7731,6 +7749,7 @@ hit a rate limit, that limit is removed as well.</p>
   <div class="desc">
     <p>Set error message text when method or subscription rate limit
 exceeded.</p>
+    <p class="translation">メソッドやsubscriptionのレートリミットが働いたときのエラーメッセージを指定する。</p>
   </div>
 
   
@@ -7746,6 +7765,7 @@ exceeded.</p>
 <code>timeToReset</code> field that specifies the number of milliseconds until the next
 method or subscription is allowed to run. The function must return a string
 of the error message.</p>
+          <p class="translation">関数を指定した場合は、<code>timeToReset</code>というプロパティを持つオブェクトが引数となり、メソッドやsubscriptionが次に許可されるまでの時間をミリ秒で渡される。関数は文字列を返す必要がある。</p>
         </dd>
       
     </dl>
@@ -7758,7 +7778,7 @@ of the error message.</p>
 </p>
 <h2 id="/full/check_package"><span>Check</span></h2>
 
-<p>The <code>check</code> package includes pattern checking functions useful for checking
+<p class="original">The <code>check</code> package includes pattern checking functions useful for checking
 the types and structure of variables and an <a href="#matchpatterns">extensible
 library of patterns</a> to specify which types you are expecting.</p>
 <p class="translation"><code>check</code>パッケージは、簡単に変数の型や構造をチェックすることができるパターンチェック関数と、
@@ -7777,12 +7797,12 @@ library of patterns</a> to specify which types you are expecting.</p>
   </h3>
 
   <div class="desc">
-    <p>Check that a value matches a <a href="#matchpatterns">pattern</a>.
+    <p class="original">Check that a value matches a <a href="#matchpatterns">pattern</a>.
 If the value does not match the pattern, throw a <code>Match.Error</code>.</p>
-    <p class="translation">値が<a href="#matchpatterns">パターン</a>にマッチするかをチェックする。
+<p class="translation">値が<a href="#matchpatterns">パターン</a>にマッチするかをチェックする。
 もしパターンにマッチしない場合、<code>Match.Error</code>をスローする。</p>
 
-<p>Particularly useful to assert that arguments to a function have the right
+<p class="original">Particularly useful to assert that arguments to a function have the right
 types and structure.</p>
 <p class="translation">特に、関数の引数が正しい型や構造をしているか確認するのに役立つ。</p>
   </div>
@@ -7796,8 +7816,8 @@ types and structure.</p>
           <span class="type">Any</span>
         </dt>
         <dd>
-          <p>The value to check</p>
-          <p class="translation">確認する値</p>
+          <p class="original">The value to check</p>
+<p class="translation">確認する値</p>
         </dd>
       
         <dt>
@@ -7805,9 +7825,9 @@ types and structure.</p>
           <span class="type"><a href="#matchpatterns">Match Pattern</a></span>
         </dt>
         <dd>
-          <p>The pattern to match
+          <p class="original">The pattern to match
 <code>value</code> against</p>
-          <p class="translation"><code>value</code>に対するパターン</p>
+<p class="translation"><code>value</code>に対するパターン</p>
         </dd>
       
     </dl>
@@ -7819,7 +7839,7 @@ types and structure.</p>
 </div>
 
 
-<p>Meteor methods and publish functions take arbitrary <a href="#ejson">EJSON</a> types as
+<p class="original">Meteor methods and publish functions take arbitrary <a href="#ejson">EJSON</a> types as
 arguments, but most arguments are expected to be of a particular type. <code>check</code>
 is a lightweight function for checking that arguments and other
 values are of the expected type. For example:</p>
@@ -7847,7 +7867,7 @@ Meteor.methods({addChat: <span class="hljs-function"><span class="hljs-keyword">
 }});
 </code></pre>
 
-<p>If the match fails, <code>check</code> throws a <code>Match.Error</code> describing how it failed. If
+<p class="original">If the match fails, <code>check</code> throws a <code>Match.Error</code> describing how it failed. If
 this error gets sent over the wire to the client, it will appear only as
 <code>Meteor.Error(400, &quot;Match Failed&quot;)</code>. The failure details will be written to the
 server logs but not revealed to the client.</p>
@@ -7868,8 +7888,8 @@ server logs but not revealed to the client.</p>
   </h3>
 
   <div class="desc">
-    <p>Returns true if the value matches the pattern.</p>
-    <p class="translation">パターンにマッチした場合、trueを返す。</p>
+    <p class="original">Returns true if the value matches the pattern.</p>
+<p class="translation">パターンにマッチした場合、trueを返す。</p>
   </div>
 
   
@@ -7881,7 +7901,8 @@ server logs but not revealed to the client.</p>
           <span class="type">Any</span>
         </dt>
         <dd>
-          <p>The value to check</p>
+          <p class="original">The value to check</p>
+<p class="translation">確認する値</p>
         </dd>
       
         <dt>
@@ -7889,8 +7910,8 @@ server logs but not revealed to the client.</p>
           <span class="type"><a href="#matchpatterns">Match Pattern</a></span>
         </dt>
         <dd>
-          <p>The pattern to match <code>value</code> against</p>
-          <p class="translation"><code>value</code>に対するパターン</p>
+          <p class="original">The pattern to match <code>value</code> against</p>
+<p class="translation"><code>value</code>に対するパターン</p>
         </dd>
       
     </dl>
@@ -7902,7 +7923,7 @@ server logs but not revealed to the client.</p>
 </div>
 
 
-<p><code>Match.test</code> can be used to identify if a variable has a certain structure.</p>
+<p class="original"><code>Match.test</code> can be used to identify if a variable has a certain structure.</p>
 <p class="translation"><code>Match.test</code>は値の構造を判定するのに使います。</p>
 
 <pre><code class="hljs js"><span class="hljs-comment">// will return true for {foo: 1, bar: &quot;hello&quot;} or similar</span>
@@ -7915,7 +7936,7 @@ Match.test(value, <span class="hljs-built_in">String</span>);
 Match.test(value, Match.OneOf(<span class="hljs-built_in">String</span>, [<span class="hljs-built_in">Number</span>]));
 </code></pre>
 
-<p>This can be useful if you have a function that accepts several different kinds
+<p class="original">This can be useful if you have a function that accepts several different kinds
 of objects, and you want to determine which was passed in.</p>
 <p class="translation">これは、関数が複数の種類のオブジェクトを受け取る場合にどれが渡されたかを確認するのに使えます。</p>
 
@@ -7929,7 +7950,7 @@ of objects, and you want to determine which was passed in.</p>
     
   </h3>
 
-<p>The following patterns can be used as pattern arguments to
+<p class="original">The following patterns can be used as pattern arguments to
 <a href="#check"><code>check</code></a> and <code>Match.test</code>:</p>
 <p class="translation">下記は
 <a href="#check"><code>check</code></a>と<code>Match.test</code>の引数に使えるパターンです:</p>
@@ -7940,43 +7961,45 @@ of objects, and you want to determine which was passed in.</p>
   
     <dt><span class="name"><code>Match.Any</code></span></dt>
   
-  <dd><p>Matches any value.</p><p class="translation">任意の値にマッチします。</p></dd>
+  <dd><p class="original">Matches any value.</p>
+<p class="translation">任意の値にマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>undefined</code>, <code>null</code></span></dt>
   
-  <dd><p>Matches a primitive of the given type.</p><p class="translation">与えられたプリミティブタイプにマッチします。</p></dd>
+  <dd><p class="original">Matches a primitive of the given type.</p>
+<p class="translation">与えられたプリミティブタイプにマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Match.Integer</code></span></dt>
   
-    <dd><p>Matches a signed 32-bit integer. Doesn&apos;t match <code>Infinity</code>, <code>-Infinity</code>, or <code>NaN</code>.</p>
-    <p class="translation">符号付32bit整数にマッチします。<code>Infinity</code>や<code>-Infinity</code>や<code>NaN</code>にはマッチしません。</p></dd>
+  <dd><p class="original">Matches a signed 32-bit integer. Doesn&apos;t match <code>Infinity</code>, <code>-Infinity</code>, or <code>NaN</code>.</p>
+<p class="translation">符号付32bit整数にマッチします。<code>Infinity</code>や<code>-Infinity</code>や<code>NaN</code>にはマッチしません。</p></dd>
 
 
 
   
     <dt><span class="name"><code>[<em>pattern</em>]</code></span></dt>
   
-  <dd><p>A one-element array matches an array of elements, each of which match
+  <dd><p class="original">A one-element array matches an array of elements, each of which match
 <em>pattern</em>. For example, <code>[Number]</code> matches a (possibly empty) array of numbers;
 <code>[Match.Any]</code> matches any array.</p>
-    <p class="translation">要素が一つの配列はすべての要素が<em>pattern</em>にマッチする配列にマッチします。例えば、<code>[Number]</code>は数値の配列(もしくは空の配列)にマッチします。また、<code>[Match.Any]</code>は任意の配列にマッチします。</p></dd>
+<p class="translation">要素が一つの配列はすべての要素が<em>pattern</em>にマッチする配列にマッチします。例えば、<code>[Number]</code>は数値の配列(もしくは空の配列)にマッチします。また、<code>[Match.Any]</code>は任意の配列にマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>{<em>key1</em>: <em>pattern1</em>, <em>key2</em>: <em>pattern2</em>, ...}</code></span></dt>
   
-  <dd><p>Matches an Object with the given keys, with values matching the given patterns.
+  <dd><p class="original">Matches an Object with the given keys, with values matching the given patterns.
 If any <em>pattern</em> is a <code>Match.Optional</code>, that key does not need to exist
 in the object. The value may not contain any keys not listed in the pattern.
-      The value must be a plain Object with no special prototype.</p>
-  <p class="translation">与えられたキーとそのパターンのオブジェクトにマッチします。
+The value must be a plain Object with no special prototype.</p>
+<p class="translation">与えられたキーとそのパターンのオブジェクトにマッチします。
 もし<em>pattern</em>が<code>Match.Optional</code>の場合、そのキーはオブジェクトに存在する必要がはありません。
 対象の値はパターン載っていないキーを含むことはできません。
 対象の値はプロトタイプを持たない単純なオブジェクトである必要があります。</p></dd>
@@ -7986,28 +8009,28 @@ in the object. The value may not contain any keys not listed in the pattern.
   
     <dt><span class="name"><code>Match.ObjectIncluding({<em>key1</em>: <em>pattern1</em>, <em>key2</em>: <em>pattern2</em>, ...})</code></span></dt>
   
-  <dd><p>Matches an Object with the given keys; the value may also have other keys
-      with arbitrary values.</p>
-  <p class="translation">与えられたキーを含むオブジェクトにマッチします。対象の値は他の任意の値をもつキーを持つことができます。</p></dd>
+  <dd><p class="original">Matches an Object with the given keys; the value may also have other keys
+with arbitrary values.</p>
+<p class="translation">与えられたキーを含むオブジェクトにマッチします。対象の値は他の任意の値をもつキーを持つことができます。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Object</code></span></dt>
   
-  <dd><p>Matches any plain Object with any keys; equivalent to
-      <code>Match.ObjectIncluding({})</code>.</p>
+  <dd><p class="original">Matches any plain Object with any keys; equivalent to
+<code>Match.ObjectIncluding({})</code>.</p>
+<p class="translation">与えられたキーを含むオブジェクトにマッチします。<code>Match.ObjectIncluding({})</code>と同等です。</p></dd>
 
-  <p class="translation">与えられたキーを含むオブジェクトにマッチします。<code>Match.ObjectIncluding({})</code>と同等です。</p></dd>
 
 
   
     <dt><span class="name"><code>Match.Optional(<em>pattern</em>)</code></span></dt>
   
-  <dd><p>Matches either
+  <dd><p class="original">Matches either
 <code>undefined</code> or something that matches pattern. If used in an object this matches
 only if the key is not set as opposed to the value being set to <code>undefined</code>.</p>
-    <p class="translation"><code>undefined</code>もしくはパターンにマッチする何かにマッチします。もしオブジェクトの中で使われる場合は、キーが存在しない場合のみマッチし、値が<code>undefined</code>の場合は該当しません。</p>
+<p class="translation"><code>undefined</code>もしくはパターンにマッチする何かにマッチします。もしオブジェクトの中で使われる場合は、キーが存在しない場合のみマッチし、値が<code>undefined</code>の場合は該当しません。</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// In an object</span>
 <span class="hljs-keyword">var</span> pat = { name: Match.Optional(<span class="hljs-built_in">String</span>) };
@@ -8024,23 +8047,23 @@ check(<span class="hljs-literal">undefined</span>, Match.Optional(<span class="h
   
     <dt><span class="name"><code>Match.OneOf(<em>pattern1</em>, <em>pattern2</em>, ...)</code></span></dt>
   
-    <dd><p>Matches any value that matches at least one of the provided patterns.</p>
-    <p class="translation">複数のパターンのいずれか一つにマッチする任意の値にマッチします。</p></dd>
+  <dd><p class="original">Matches any value that matches at least one of the provided patterns.</p>
+<p class="translation">複数のパターンのいずれか一つにマッチする任意の値にマッチします。</p></dd>
 
 
 
   
     <dt><span class="name">Any constructor function (eg, <code>Date</code>)</span></dt>
   
-    <dd><p>Matches any element that is an instance of that type.</p>
-    <p class="translation">コンストラクタのインスタンスにマッチします。</p></dd>
+  <dd><p class="original">Matches any element that is an instance of that type.</p>
+<p class="translation">コンストラクタのインスタンスにマッチします。</p></dd>
 
 
 
   
     <dt><span class="name"><code>Match.Where(<em>condition</em>)</code></span></dt>
   
-  <dd><p>Calls the function <em>condition</em> with the value as the argument. If <em>condition</em>
+  <dd><p class="original">Calls the function <em>condition</em> with the value as the argument. If <em>condition</em>
 returns true, this matches. If <em>condition</em> throws a <code>Match.Error</code> or returns
 false, this fails. If <em>condition</em> throws any other error, that error is thrown
 from the call to <code>check</code> or <code>Match.test</code>. Examples:</p>
@@ -15395,15 +15418,14 @@ code must always run within a Fiber, and advising to use
 </p>
 <h2 id="/full/tracker"><span>Tracker</span></h2>
 
-<p>Meteor has a simple dependency tracking system which allows it to
+<p class="original">Meteor has a simple dependency tracking system which allows it to
 automatically rerun templates and other computations whenever
 <a href="#session"><code>Session</code></a> variables, database queries, and other data
 sources change.</p>
-
 <p class="translation">
 Meteorは、<a href="#session"><code>Session</code></a>変数、データベースクエリ、またその他のデータソースが変化した時はいつでもテンプレートとその他のコンポーネントを自動的に再実行させるための、シンプルな依存性トラッキングシステムを持っています。</p>
 
-<p>Unlike most other systems, you don&apos;t have to manually declare these
+<p class="original">Unlike most other systems, you don&apos;t have to manually declare these
 dependencies — it &quot;just works&quot;. The mechanism is simple and
 efficient. When you call a function that supports reactive updates
 (such as a database query), it automatically saves the current
@@ -15411,7 +15433,6 @@ Computation object, if any (representing, for example, the current
 template being rendered).  Later, when the data changes, the function
 can &quot;invalidate&quot; the Computation, causing it to rerun (rerendering the
 template).</p>
-
 <p class="translation">
 多くの他のシステムとは違い、これらの依存性を手動で宣言する必要はありません。
 なにもしなくてもちゃんと動くのです。
@@ -15420,11 +15441,10 @@ template).</p>
 現在の演算（コンピュテーション）オブジェクト（たとえば、レンダリングされている現在のテンプレートなどを表すものです）があれば、それを自動的に保存します。
 あとになってデータに変更があった時、その関数は、コンピューテーションを &quot;インバリデート（無効化）&quot; することができ、それはコンピューテーションを再実行させます（テンプレートのレンダリング）</p>
 
-<p>Applications will find <a href="#tracker_autorun"><code>Tracker.autorun</code></a> useful, while more
+<p class="original">Applications will find <a href="#tracker_autorun"><code>Tracker.autorun</code></a> useful, while more
 advanced facilities such as <code>Tracker.Dependency</code> and <code>onInvalidate</code>
 callbacks are intended primarily for package authors implementing new
 reactive data sources.</p>
-
 <p class="translation">
 アプリケーションから見ると、<a href="#tracker_autorun"><code>Tracker.autorun</code></a>が有用です。
 一方、より高度な<code>Tracker.Dependency</code> や <code>onInvalidate</code>コールバックなどの機能は、
@@ -15488,20 +15508,17 @@ thrown. Defaults to the error being logged to the console.</p>
 </div>
 
 
-<p><code>Tracker.autorun</code> allows you to run a function that depends on reactive data
+<p class="original"><code>Tracker.autorun</code> allows you to run a function that depends on reactive data
 sources, in such a way that if there are changes to the data later,
 the function will be rerun.</p>
-
 <p class="translation">
 <code>Tracker.autorun</code>はリアクティブ・データソースに依存する関数を実行できます。
 この方法をつかうと、データに後で変化があると、関数は再実行されます。</p>
 
-<p>For example, you can monitor a cursor (which is a reactive data
+<p class="original">For example, you can monitor a cursor (which is a reactive data
 source) and aggregate it into a session variable:</p>
-
 <p class="translation">
 例えば、カーソル（リアクティブ・データソースです）をモニターし、Session変数の中に集計結果を入れる事ができます：</p>
-
 
 <pre><code class="hljs javascript">Tracker.autorun(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">var</span> oldest = _.max(Monkeys.find().fetch(), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(monkey)</span> </span>{
@@ -15512,10 +15529,9 @@ source) and aggregate it into a session variable:</p>
 });
 </code></pre>
 
-<p>Or you can wait for a session variable to have a certain value, and do
+<p class="original">Or you can wait for a session variable to have a certain value, and do
 something the first time it does, calling <code>stop</code> on the computation to
 prevent further rerunning:</p>
-
 <p class="translation">または、session変数がある値になるのを待ち、最初にその値になったとき何かをし、
 演算オブジェクト（コンピューテーション）の<code>stop</code>を呼び、将来の再実行を防ぐことができます：</p>
 
@@ -15528,21 +15544,19 @@ prevent further rerunning:</p>
 });
 </code></pre>
 
-<p>The function is invoked immediately, at which point it may alert and
+<p class="original">The function is invoked immediately, at which point it may alert and
 stop right away if <code>shouldAlert</code> is already true.  If not, the
 function is run again when <code>shouldAlert</code> becomes true.</p>
-
 <p class="translation">
 関数はすぐに実行され、その時点で、もし<code>shouldAlert</code>がtrueであれば、alertとstopをその場で呼び出すかも知れません。
 もしtrueでなければ、<code>shouldAlert</code>がtrueになった時、この関数はもう一度実行されます。</p>
 
-<p>A change to a data dependency does not cause an immediate rerun, but
+<p class="original">A change to a data dependency does not cause an immediate rerun, but
 rather &quot;invalidates&quot; the computation, causing it to rerun the next
 time a flush occurs.  A flush will occur automatically as soon as
 the system is idle if there are invalidated computations.  You can
 also use <a href="#tracker_flush"><code>Tracker.flush</code></a> to cause an immediate flush of
 all pending reruns.</p>
-
 <p class="translation">
 データ依存性への変更は即座に再実行を引き起こしません。
 そうではなく、コンピューテーション（演算）を&quot;無効化&quot; します。
@@ -15550,13 +15564,12 @@ all pending reruns.</p>
 フラッシュは、無効化されたコンピューテーションが有れば、システムがアイドル状態になるとすぐ自動的に発生します。
 <a href="#tracker_flush"><code>Tracker.flush</code></a>をつかって即座にフラッシュを引き起こして、全ての未実施の再実行をフラッシュさせることもできます。</p>
 
-<p>If you nest calls to <code>Tracker.autorun</code>, then when the outer call stops or
+<p class="original">If you nest calls to <code>Tracker.autorun</code>, then when the outer call stops or
 reruns, the inner call will stop automatically.  Subscriptions and
 observers are also automatically stopped when used as part of a
 computation that is rerun, allowing new ones to be established.  See
 <a href="#meteor_subscribe"><code>Meteor.subscribe</code></a> for more information about
 subscriptions and reactivity.</p>
-
 <p class="translation">
 もし<code>Tracker.autorun</code>をネストして呼び出して、外側の実行が停止、または再実行する時、
 内側の実行は自動的に停止します。

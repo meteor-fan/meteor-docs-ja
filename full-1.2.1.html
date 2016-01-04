@@ -7564,12 +7564,16 @@ options about how the client executes the method.</p>
 
 <h2 id="/full/ddpratelimiter"><span>DDPRateLimiter</span></h2>
 
-<p>Customize rate limiting for methods and subscriptions.</p>
+<p class="original">Customize rate limiting for methods and subscriptions.</p>
+<p class="translation">メソッドとsubscriptionのレートリミットをカスタマイズします。</p>
 
-<p>By default, <code>DDPRateLimiter</code> is configured with a single rule. This rule
+<p class="original">By default, <code>DDPRateLimiter</code> is configured with a single rule. This rule
 limits login attempts, new user creation, and password resets to 5 attempts
 every 10 seconds per connection. It can be removed by calling
 <code>Accounts.removeDefaultRateLimit()</code>.</p>
+<p class="translation">デフォルトでは、<code>DDPRateLimiter</code>には1つのルールが設定されています。そのルールは
+ログイン、ユーザ作成、パスワードリセットをコネクションあたり10秒間に5回に制限します。
+そのルールは<code>Accounts.removeDefaultRateLimit()</code>で削除することができます。</p>
 
 
 <div class="api new-api-box">
@@ -7584,19 +7588,26 @@ every 10 seconds per connection. It can be removed by calling
   </h3>
 
   <div class="desc">
-    <p>Add a rule that matches against a stream of events describing method or
+    <p class="original">Add a rule that matches against a stream of events describing method or
 subscription attempts. Each event is an object with the following
 properties:</p>
+<p class="translation">メソッドやsubscriptionの試行を記述するイベントにマッチするルールを追加する。それぞれのイベンなは次のプロパティを持つイベントである:</p>
 
 <ul>
-<li><code>type</code>: Either &quot;method&quot; or &quot;subscription&quot;</li>
-<li><code>name</code>: The name of the method or subscription being called</li>
-<li><code>userId</code>: The user ID attempting the method or subscription</li>
-<li><code>connectionId</code>: A string representing the user&apos;s DDP connection</li>
-<li><code>clientAddress</code>: The IP address of the user</li>
+<li class="original"><code>type</code>: Either &quot;method&quot; or &quot;subscription&quot;</li>
+<li class="translation"><code>type</code>: &quot;method&quot;もしくは&quot;subscription&quot;</li>
+<li class="original"><code>name</code>: The name of the method or subscription being called</li>
+<li class="translation"><code>name</code>: 呼び出されるメソッドやsubscriptionの名前</li>
+<li class="original"><code>userId</code>: The user ID attempting the method or subscription</li>
+<li class="translation"><code>userId</code>: メソッドやsubscriptionを呼び出そうとしているユーザID</li>
+<li class="original"><code>connectionId</code>: A string representing the user&apos;s DDP connection</li>
+<li class="translation"><code>connectionId</code>: ユーザのDDPコネクションの文字列表現</li>
+<li class="original"><code>clientAddress</code>: The IP address of the user</li>
+<li class="translation"><code>clientAddress</code>: ユーザのIPアドレス</li>
 </ul>
 
-<p>Returns unique <code>ruleId</code> that can be passed to <code>removeRule</code>.</p>
+<p class="original">Returns unique <code>ruleId</code> that can be passed to <code>removeRule</code>.</p>
+<p class="translation"><code>removeRule</code>に渡すことのできるユニークな<code>ruleId</code>を返す。</p>
   </div>
 
   
@@ -7608,22 +7619,26 @@ properties:</p>
           <span class="type">Object</span>
         </dt>
         <dd>
-          <p>Matchers specify which events are counted towards a rate limit. A matcher
+          <p class="original">Matchers specify which events are counted towards a rate limit. A matcher
   is an object that has a subset of the same properties as the event objects
   described above. Each value in a matcher object is one of the following:</p>
+<p class="translation">matchersはどのイベントがレートリミットの対象となるか特定するものである。matcherはオブジェクトで、上記イベントオブジェクトのプロパティのサブセットとなる。matcherオブジェクトのそれぞれの値は次のいずれかである。:</p>
 <ul>
-<li><p>a string: for the event to satisfy the matcher, this value must be equal
+<li><p class="original">a string: for the event to satisfy the matcher, this value must be equal
 to the value of the same property in the event object</p>
+<p class="translation">文字列: matcherに合うにはイベントオブジェクとは同じプロパティで同じ値を持つ必要がある。</p>
 </li>
-<li><p>a function: for the event to satisfy the matcher, the function must
+<li><p class="original">a function: for the event to satisfy the matcher, the function must
 evaluate to true when passed the value of the same property
 in the event object</p>
+<p class="translation">関数: matcherに合うにはこの関数に同じプロパティの値を与えてtrueを返す必要がある。</p>
 </li>
 </ul>
-<p>Here&apos;s how events are counted: Each event that satisfies the matcher&apos;s
+<p class="original">Here&apos;s how events are counted: Each event that satisfies the matcher&apos;s
 filter is mapped to a bucket. Buckets are uniquely determined by the
 event object&apos;s values for all properties present in both the matcher and
 event objects.</p>
+<p class="translation">イベントのカウント方法: それぞれのイベントがmatcherのフィルタに合うと1つのバケットに入る。バケットはイベントオブジェクトとmatcherに共通のプロパティのイベントオブジェクトの値で決まる。</p>
         </dd>
       
         <dt>
@@ -7631,8 +7646,9 @@ event objects.</p>
           <span class="type">number</span>
         </dt>
         <dd>
-          <p>number of requests allowed per time interval.
+          <p class="original">number of requests allowed per time interval.
 Default = 10.</p>
+<p class="translation">timeInterval毎に許可されるリクエスト数。デフォルトは10。</p>
         </dd>
       
         <dt>
@@ -7640,8 +7656,9 @@ Default = 10.</p>
           <span class="type">number</span>
         </dt>
         <dd>
-          <p>time interval in milliseconds after which
+          <p class="original">time interval in milliseconds after which
 rule&apos;s counters are reset. Default = 1000.</p>
+<p class="translation">カウンターがリセットされる時間間隔(ミリ秒)。デフォルトは1000。</p>
         </dd>
       
     </dl>
@@ -7653,15 +7670,18 @@ rule&apos;s counters are reset. Default = 1000.</p>
 </div>
 
 
-<p>Custom rules can be added by calling <code>DDPRateLimiter.addRule</code>. The rate
+<p class="original">Custom rules can be added by calling <code>DDPRateLimiter.addRule</code>. The rate
 limiter is called on every method and subscription invocation.</p>
+<p class="translation"><code>DDPRateLimiter.addRule</code>を呼び出すことで独自のルールを追加できます。レートリミットはメソッドやsubscriptionが実行されるたびに確認されます。</p>
 
-<p>A rate limit is reached when a bucket has surpassed the rule&apos;s predefined
+<p class="original">A rate limit is reached when a bucket has surpassed the rule&apos;s predefined
 capactiy, at which point errors will be returned for that input until the
 buckets are reset. Buckets are regularly reset after the end of a time
 interval.</p>
+<p class="translation">ルールが定めた量をバケットが越えるとレートリミットが働き、バケットがリセットされるまでエラーが返されます。バケットはtimeIntervalが経過する毎にリセットされます。</p>
 
-<p>Here&apos;s example of defining a rule and adding it into the <code>DDPRateLimiter</code>:</p>
+<p class="original">Here&apos;s example of defining a rule and adding it into the <code>DDPRateLimiter</code>:</p>
+<p class="translation">下記はルールを定義して<code>DDPRateLimiter</code>に追加する例です:</p>
 
 <pre><code class="hljs javascript"><span class="hljs-comment">// Define a rule that matches login attempts by non-admin users</span>
 <span class="hljs-keyword">var</span> loginRule = {
@@ -7688,8 +7708,9 @@ DDPRateLimiter.addRule(loginRule, <span class="hljs-number">5</span>, <span clas
   </h3>
 
   <div class="desc">
-    <p>Removes the specified rule from the rate limiter. If rule had
+    <p class="original">Removes the specified rule from the rate limiter. If rule had
 hit a rate limit, that limit is removed as well.</p>
+<p class="translation">レートリミットからルールを削除する。ルールによってレートリミットの上限に到達している場合はその上限も削除される。</p>
   </div>
 
   
@@ -7701,7 +7722,8 @@ hit a rate limit, that limit is removed as well.</p>
           <span class="type">string</span>
         </dt>
         <dd>
-          <p>&apos;ruleId&apos; returned from <code>addRule</code></p>
+          <p class="original">&apos;ruleId&apos; returned from <code>addRule</code></p>
+<p class="translation">&apos;ruleId&apos; <code>addRule</code>から返されたもの</p>
         </dd>
       
     </dl>
@@ -7725,8 +7747,9 @@ hit a rate limit, that limit is removed as well.</p>
   </h3>
 
   <div class="desc">
-    <p>Set error message text when method or subscription rate limit
+    <p class="original">Set error message text when method or subscription rate limit
 exceeded.</p>
+<p class="translation">メソッドやsubscriptionのレートリミットが働いたときのエラーメッセージを指定する。</p>
   </div>
 
   
@@ -7738,10 +7761,11 @@ exceeded.</p>
           <span class="type">string or Function</span>
         </dt>
         <dd>
-          <p>Functions are passed in an object with a
+          <p class="original">Functions are passed in an object with a
 <code>timeToReset</code> field that specifies the number of milliseconds until the next
 method or subscription is allowed to run. The function must return a string
 of the error message.</p>
+<p class="translation">関数を指定した場合は、<code>timeToReset</code>というプロパティを持つオブェクトが引数となり、メソッドやsubscriptionが次に許可されるまでの時間をミリ秒で渡される。関数は文字列を返す必要がある。</p>
         </dd>
       
     </dl>
