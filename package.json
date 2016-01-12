@@ -19,9 +19,7 @@
     "live-server": "0.8.2",
     "stylus": "0.52.4",
     "watchify": "3.4.0",
-    "watch": "0.16.0"
-  },
-  "dependencies": {
-    "he": "^0.5.0"
+    "watch": "0.16.0",
+    "he": "0.5.0"
   }
 }
