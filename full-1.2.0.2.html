@@ -15569,7 +15569,8 @@ is automatically stopped and won&apos;t be rerun.</p>
   </h3>
 
   <div class="desc">
-    <p>Process all reactive updates immediately and ensure that all invalidated computations are rerun.</p>
+    <p class="original">Process all reactive updates immediately and ensure that all invalidated computations are rerun.</p>
+<p class="translation">全てのリアクティブな更新を即座に処理し、全ての無効化された演算（コンピューテーション）が確実に再実行されるようにする。</p>
   </div>
 
   
@@ -15580,32 +15581,49 @@ is automatically stopped and won&apos;t be rerun.</p>
 </div>
 
 
-<p>Normally, when you make changes (like writing to the database),
+<p class="original">Normally, when you make changes (like writing to the database),
 their impact (like updating the DOM) is delayed until the system is
 idle. This keeps things predictable — you can know that the DOM
 won&apos;t go changing out from under your code as it runs. It&apos;s also one
 of the things that makes Meteor fast.</p>
+<p class="translation">
+通常、あなたが変更（データベースへの書き込みなど）した場合、その影響（DOMの更新など）はシステムがアイドル状態になるまで遅延されます。
+このことは、物事を予測可能に保ちます。
+DOMが実行するにしたがって、あなたのコードから飛び出して変更しにいかないということを知ることができます。
+これはMeteorを早くしている事の一つです。</p>
 
-<p><code>Tracker.flush</code> forces all of the pending reactive updates to complete.
+<p class="original"><code>Tracker.flush</code> forces all of the pending reactive updates to complete.
 For example, if an event handler changes a Session
 variable that will cause part of the user interface to rerender, the
 handler can call <code>flush</code> to perform the rerender immediately and then
 access the resulting DOM.</p>
+<p class="translation">
+<code>Tracker.flush</code>は、全ての未実施のリアクティブな更新を強制的に完了させます。
+例えば、あるイベントハンドラが、ユーザーインターフェイスの一部の再描画を引き起こすsession変数を変更するとして、
+そのハンドラは、直ちに再描画をおこない、更新後のDOMにアクセスするために、<code>flush</code>を呼ぶことができます。</p>
 
-<p>An automatic flush occurs whenever the system is idle which performs
+<p class="original">An automatic flush occurs whenever the system is idle which performs
 exactly the same work as <code>Tracker.flush</code>.  The flushing process consists
 of rerunning any invalidated computations.  If additional
 invalidations happen while flushing, they are processed as part of the
 same flush until there is no more work to be done.  Callbacks
 registered with <a href="#tracker_afterflush"><code>Tracker.afterFlush</code></a> are called
 after processing outstanding invalidations.</p>
+<p class="translation">自動フラッシュは、システムがアイドル状態のときはいつでも発生し、<code>Tracker.flush</code>と全く同じ処理を実行します。
+フラッシュのプロセスは無効化された演算（コンピューテーション）を再実行することです。
+もしフラッシュしている間に追加の無効化が起こったら、同じフラッシュの一部として、これ以上の仕事がなくなるまで処理されます。
+<a href="#tracker_afterflush"><code>Tracker.afterFlush</code></a> によって登録されたコールバックは未解決の無効な演算を処理した後に呼び出されます。</p>
 
-<p>It is illegal to call <code>flush</code> from inside a <code>flush</code> or from a running
+<p class="original">It is illegal to call <code>flush</code> from inside a <code>flush</code> or from a running
 computation.</p>
+<p class="translation"><code>flush</code>を<code>flush</code>の内部または実行中の演算（コンピューテーション）から呼び出すのは許されません。</p>
 
-<p>The <a href="http://manual.meteor.com/#tracker-theflushcycle">Meteor Manual</a>
+<p class="original">The <a href="http://manual.meteor.com/#tracker-theflushcycle">Meteor Manual</a>
 describes the motivation for the flush cycle and the guarantees made by
 <code>Tracker.flush</code> and <code>Tracker.afterFlush</code>.</p>
+<p class="translation">
+<a href="http://manual.meteor.com/#tracker-theflushcycle">Meteor Manual</a>には、フラッシュサイクルと
+<code>Tracker.flush</code>と<code>Tracker.afterFlush</code>によってもたらされる保証について説明があります。</p>
 
 
 <div class="api new-api-box">
@@ -15620,7 +15638,8 @@ describes the motivation for the flush cycle and the guarantees made by
   </h3>
 
   <div class="desc">
-    <p>Run a function without tracking dependencies.</p>
+    <p class="original">Run a function without tracking dependencies.</p>
+<p class="translation">関数を依存性の追跡無しで実行する。</p>
   </div>
 
   
@@ -15632,7 +15651,8 @@ describes the motivation for the flush cycle and the guarantees made by
           <span class="type">Function</span>
         </dt>
         <dd>
-          <p>A function to call immediately.</p>
+          <p class="original">A function to call immediately.</p>
+<p class="translation">即座に実行される関数</p>
         </dd>
       
     </dl>
@@ -15644,10 +15664,14 @@ describes the motivation for the flush cycle and the guarantees made by
 </div>
 
 
-<p>Calls <code>func</code> with <code>Tracker.currentComputation</code> temporarily set to <code>null</code>
+<p class="original">Calls <code>func</code> with <code>Tracker.currentComputation</code> temporarily set to <code>null</code>
 and returns <code>func</code>&apos;s own return value.  If <code>func</code> accesses reactive data
 sources, these data sources will never cause a rerun of the enclosing
 computation.</p>
+<p class="translation">
+
+<code>Tracker.currentComputation</code>に一時的に<code>null</code>をセットして、<code>func</code>を呼び出し、<code>func</code>自体の戻り値を戻す。
+もし<code>func</code>が、リアクティブ・データソースにアクセスしている場合、これらのデータソースは決して内部の演算（コンピューテーション）を再実行しません。</p>
 
 
 <div class="api new-api-box">
@@ -15662,7 +15686,9 @@ computation.</p>
   </h3>
 
   <div class="desc">
-    <p>True if there is a current computation, meaning that dependencies on reactive data sources will be tracked and potentially cause the current computation to be rerun.</p>
+    <p class="original">True if there is a current computation, meaning that dependencies on reactive data sources will be tracked and potentially cause the current computation to be rerun.</p>
+<p class="translation">もし、現行の演算（current computation）が有ればTrue。
+    リアクティブ・データソースの依存性は追跡され、現行の演算（current computation）が再実行される可能性があることを意味しています。</p>
   </div>
 
   
@@ -15673,8 +15699,10 @@ computation.</p>
 </div>
 
 
-<p>This value is useful for data source implementations to determine
+<p class="original">This value is useful for data source implementations to determine
 whether they are being accessed reactively or not.</p>
+<p class="translation">
+この値はデータソースを実装するとき、リアクティブにアクセスされているかどうかを判定するために使えます。</p>
 
 
 <div class="api new-api-box">
