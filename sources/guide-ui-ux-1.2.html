@@ -1,0 +1,438 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="General tips for structuring your UI code, independent of your view rendering technology.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>User Interfaces | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    <li>
+      <a href="https://www.meteor.com">Meteor.com</a>
+    </li>
+    <li>
+      <a href="https://www.meteor.com/install">Install</a>
+    </li>
+    <li>
+      <a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a>
+    </li>
+    <li>
+      <a href="http://docs.meteor.com">Docs</a>
+    </li>
+    <li>
+      <a href="https://forums.meteor.com/">Forums</a>
+    </li>
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/">Meteor</a>
+  <span class="sub-title">The Official Guide</span>
+  <select class="version-select">
+    
+      <option value="v1.2">1.2</option>
+    
+  </select>
+  <!--
+    // Search doesn't seem to work well with this provider
+    <input class="search-box st-default-search-input">
+  -->
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+    // Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+<ul class="menu-root">
+  
+    <li>
+      <a href="guide-index-1.2.html" class="sidebar-link">
+        Introduction
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-collections-1.2.html" class="sidebar-link">
+        Collections and Schemas
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-data-loading-1.2.html" class="sidebar-link">
+        Publications and Data Loading
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-methods-1.2.html" class="sidebar-link">
+        Methods
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-routing-1.2.html" class="sidebar-link">
+        URLs and Routing
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-accounts-1.2.html" class="sidebar-link">
+        Users and Accounts
+      </a>
+    </li>
+  
+    <li>
+      <a href="" class="sidebar-link current">
+        User Interfaces
+      </a>
+    <ul class="sub-menu"><li><a href="#components" data-scroll="" class="H2">UI components</a><ul class="sub-menu"><li><a href="#reusable-components" data-scroll="" class="H3">Reusable components</a></li><li><a href="#global-stores" data-scroll="" class="H3">Global data stores</a></li><li><a href="#smart-components" data-scroll="" class="H3">Smart components</a></li></ul></li><li><a href="#styleguides" data-scroll="" class="H2">Visually testing reusable components</a><ul class="sub-menu"></ul></li><li><a href="#ui-patterns" data-scroll="" class="H2">User interface patterns</a><ul class="sub-menu"><li><a href="#i18n" data-scroll="" class="H3">Internationalization with tap:i18n</a></li><li><a href="#event-handling" data-scroll="" class="H3">Event handling</a></li></ul></li><li><a href="#ux-patterns" data-scroll="" class="H2">User experience patterns</a><ul class="sub-menu"><li><a href="#subscription-readiness" data-scroll="" class="H3">Subscription readiness</a></li><li><a href="#pagination" data-scroll="" class="H3">Pagination</a></li><li><a href="#optimistic-ui" data-scroll="" class="H3">Optimistic UI</a></li><li><a href="#writes-in-progress" data-scroll="" class="H3">Indicating when a write is in progress</a></li><li><a href="#unexpected-failures" data-scroll="" class="H3">Unexpected failures</a></li></ul></li><li><a href="#animation" data-scroll="" class="H2">Animation</a><ul class="sub-menu"><li><a href="#animating-visiblity" data-scroll="" class="H3">Animating changes in visiblity</a></li><li><a href="#animating-attributes" data-scroll="" class="H3">Animating changes to attributes</a></li><li><a href="#animating-page-changes" data-scroll="" class="H3">Animating page changes</a></li></ul></li></ul></li>
+  
+    <li>
+      <a href="guide-blaze-1.2.html" class="sidebar-link">
+        Blaze
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-security-1.2.html" class="sidebar-link">
+        Security
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-deployment-1.2.html" class="sidebar-link">
+        Deployment and Monitoring
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-build-tool-1.2.html" class="sidebar-link">
+        Build system
+      </a>
+    </li>
+  
+</ul>
+
+  </div>
+  <div id="content">
+    <h1>User Interfaces</h1>
+    <p>After reading this guide, you&#x2019;ll know:</p>
+<ol>
+<li>How to build reusable client side components in any user interface framework.</li>
+<li>How to build a style guide to allow you to visually test such reusable components.</li>
+<li>Patterns for building front end components in a performant way in Meteor.</li>
+<li>How to build user interfaces in a maintainable and extensible way.</li>
+<li>How to build components that can cope with a variety of different data sources.</li>
+<li>How to use animation to keep users informed of changes.</li>
+</ol>
+<h2 id="components"><a class="anchor" href="#components" aria-hidden="true" data-scroll="">&#x1F517;</a>UI components</h2>
+
+<p>In Meteor, we officially support three user interface (UI) rendering libraries, <a href="blaze.html">Blaze</a>, <a href="http://react-in-meteor.readthedocs.org/en/latest/?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.8.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">React</a> and <a href="http://www.angular-meteor.com/?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.8.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Angular</a>.</p>
+<p>Regardless of the rendering library that you are using, there are some patterns in how you build your User Interface (UI) that will help make your app&#x2019;s code easier to understand, test, and maintain. These patterns, much like general patterns of modularity, revolve around making the interfaces to your UI elements very clear, and avoiding using techniques that bypass these known interfaces.</p>
+<p>In this article, we&#x2019;ll refer to the elements in your user interface as &#x201C;components&#x201D;. Although in some systems, you may refer to them as &#x201C;templates&#x201D;, it can be a good idea to think of them as something more like a component which has an API and internal logic, rather than a template which is just a bit of HTML.</p>
+<p>To begin with, let&#x2019;s consider two categories of UI components that are useful to think about, &#x201C;smart&#x201D; and &#x201C;reusable&#x201D;:</p>
+<h3 id="reusable-components"><a class="anchor" href="#reusable-components" aria-hidden="true" data-scroll="">&#x1F517;</a>Reusable components</h3>
+
+<p>A &#x201C;reusable&#x201D; component is a component which doesn&#x2019;t rely on anything from the environment it renders in. It renders purely based on its direct inputs (its <em>template arguments</em> in Blaze, or <em>props</em> in React) and internal state.</p>
+<p>In Meteor specifically, this means a component which does not access data from any global sources&#x2014;Collections, Stores, routers, user data, or similar. For instance, in the Todos example app, the <code>Lists_show</code> template takes in the list it is rendering and the set of todos for that list, and does not ever look directly in the <code>Todos</code> or <code>Lists</code> collections.</p>
+<p>Reusable components have many advantages:</p>
+<ol>
+<li><p>They are easy to reason about&#x2014;you don&#x2019;t need to understand how the data in the global store changes, simply how the arguments to the component change.</p>
+</li>
+<li><p>They are easy to test&#x2014;you don&#x2019;t need to be careful about the environment you render them in, all you need to do is provide the right arguments.</p>
+</li>
+<li><p>They are easy to add to component style guides&#x2014;as we&#x2019;ll see in the section about <a href="#styleguides">component style guides</a>, when creating a style guide, a clean environment makes things much easier to work with.</p>
+</li>
+<li><p>You know exactly what dependencies you need to provide for them to work in different environments.</p>
+<p>There&#x2019;s also an even more restricted type of reusable component, a &#x201C;pure&#x201D; component, which does not have any internal state. For instance in the Todos app, the <code>Todos_item</code> template decides what to render solely based on its arguments. Pure components are even easier to reason about and test than reusable ones and so should be preferred wherever possible.</p>
+</li>
+</ol>
+<h3 id="global-stores"><a class="anchor" href="#global-stores" aria-hidden="true" data-scroll="">&#x1F517;</a>Global data stores</h3>
+
+<p>So which are the global data stores that you should be avoiding in reusable components? There are a few. Meteor is built to optimize speed of development, which means you can access a lot of things globally. Although this is convenient when building &#x201C;smart&#x201D; components (see below), you&#x2019;ll need to avoid these data sources in reusable components:</p>
+<ul>
+<li>Your collections, as well as the <code>Meteor.users</code> collection,</li>
+<li>Accounts information, like <code>Meteor.user()</code> and <code>Meteor.loggingIn()</code></li>
+<li>Current route information</li>
+<li>Any other client-side data stores (read more in the <a href="data-loading.html#stores">Data Loading article</a>)</li>
+</ul>
+<h3 id="smart-components"><a class="anchor" href="#smart-components" aria-hidden="true" data-scroll="">&#x1F517;</a>Smart components</h3>
+
+<p>While most of the components in your app should be reusable, they need to get their data passed in from somewhere. This is where &#x201C;smart&#x201D; components come in. Such components typically do the following things:</p>
+<ol>
+<li>Subscribe to data</li>
+<li>Fetch data from those subscriptions</li>
+<li>Fetch global client-side state from stores such as the Router, Accounts, and your own stores</li>
+</ol>
+<p>Ideally, once a smart component has assembled such a set of data, it passes it off to a reusable component child to render with. Smart components usually don&#x2019;t render anything apart from one or more reusable children. This makes it easy to separate rendering and data loading in your tests.</p>
+<p>A typical use case for a smart component is the &#x201C;page&#x201D; component that the router points you to when you access a URL. Such a component typically needs to do the three things above and then can pass the resulting arguments into child components. In the Todos example app, the <code>listShowPage</code> does exactly this, resulting in a template with very simple HTML:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">  {{#each listId in listIdArray}}</span><br><span class="line">    {{&gt; Lists_show (listArgs listId)}}</span><br><span class="line">  {{else}}</span><br><span class="line">    {{&gt; App_notFound}}</span><br><span class="line">  {{/each}}</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>The JavaScript of this component is responsible for subscribing and fetching the data that&#x2019;s used by the <code>Lists_show</code> template itself:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.getListId = () =&gt; FlowRouter.getParam(<span class="string">&apos;_id&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.autorun(() =&gt; {</span><br><span class="line">    <span class="keyword">this</span>.subscribe(<span class="string">&apos;Todos.inList&apos;</span>, <span class="keyword">this</span>.getListId());</span><br><span class="line">  });</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">Template.Lists_show_page.helpers({</span><br><span class="line">  <span class="comment">// We use #each on an array of one item so that the &quot;list&quot; template is</span></span><br><span class="line">  <span class="comment">// removed and a new copy is added when changing lists, which is</span></span><br><span class="line">  <span class="comment">// important for animation purposes.</span></span><br><span class="line">  listIdArray() {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">const</span> listId = instance.getListId();</span><br><span class="line">    <span class="keyword">return</span> Lists.findOne(listId) ? [listId] : [];</span><br><span class="line">  },</span><br><span class="line">  listArgs(listId) {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      todosReady: instance.subscriptionsReady(),</span><br><span class="line">      <span class="comment">// We pass `list` (which contains the full list, with all fields, as a function</span></span><br><span class="line">      <span class="comment">// because we want to control reactivity. When you check a todo item, the</span></span><br><span class="line">      <span class="comment">// `list.incompleteCount` changes. If we didn&apos;t do this the entire list would</span></span><br><span class="line">      <span class="comment">// re-render whenever you checked an item. By isolating the reactiviy on the list</span></span><br><span class="line">      <span class="comment">// to the area that cares about it, we stop it from happening.</span></span><br><span class="line">      list() {</span><br><span class="line">        <span class="keyword">return</span> Lists.findOne(listId);</span><br><span class="line">      },</span><br><span class="line">      <span class="comment">// By finding the list with only the `_id` field set, we don&apos;t create a dependency on the</span></span><br><span class="line">      <span class="comment">// `list.incompleteCount`, and avoid re-rendering the todos when it changes</span></span><br><span class="line">      todos: Lists.findOne(listId, {fields: {_id: <span class="literal">true</span>}}).todos()</span><br><span class="line">    };</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="styleguides"><a class="anchor" href="#styleguides" aria-hidden="true" data-scroll="">&#x1F517;</a>Visually testing reusable components</h2>
+
+<p>A useful property of reusable components is that you can render them anywhere because they don&#x2019;t rely on complicated environments. One very useful thing that this enables is a component <em>style guide</em> or harness.</p>
+<p>To use a style guide, you need to add two things to your app:</p>
+<ol>
+<li><p>A list of &#x201C;entries&#x201D;, where each entry is a component with a list of specifications. Each specification is a list of arguments which trigger different behavior when passed to the component.</p>
+</li>
+<li><p>A special route in the development version of the application that renders each of the components for each specification.</p>
+</li>
+</ol>
+<p>For instance, in Galaxy, we have a component style guide that renders each reusable component either one specification at a time, or with all specifications at once.</p>
+<p><img src="http://guide.meteor.com/images/galaxy-styleguide.png"></p>
+<p>Such rendering enables very quick development of visual aspects of the component in all possible states. Typically in a complex application, it can be quite difficult to achieve certain states of components purely by &#x201C;using&#x201D; the application. For example, in Galaxy, the component screen enters a very complex state if two deploys to the same application are happening simultaneously. It would be hard to test this component by using the application and trying to get it into that state.</p>
+<p>You can learn more about this technique from <a href="https://www.youtube.com/watch?v=bTQOvYy_Z3w&amp;app=desktop" target="_blank" rel="external">this talk</a> by Phil Cockfield from Respondly.</p>
+<h2 id="ui-patterns"><a class="anchor" href="#ui-patterns" aria-hidden="true" data-scroll="">&#x1F517;</a>User interface patterns</h2>
+
+<p>Here are some patterns that are useful to keep in mind when building the user interface of your Meteor application.</p>
+<h3 id="i18n"><a class="anchor" href="#i18n" aria-hidden="true" data-scroll="">&#x1F517;</a>Internationalization with tap:i18n</h3>
+
+<p>Internationalization (i18n) is the process of generalizing the UI of your app in such a way that it&#x2019;s easy to render all text in a different language. In Meteor, <a href="https://atmospherejs.com/tap/i18n?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.8.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">the excellent <code>tap:i18n</code> package</a> provides an API for building translations and using them in your components and frontend code.</p>
+<h4 id="places-to-i18n">Places to translate</h4>
+
+<p>It&#x2019;s useful to consider the various places in the system that user-readable strings exist and make sure that you are properly using the i18n system to generate those strings in each case. We&#x2019;ll go over the implementation for each case in the section about <a href="#tap-i18n"><code>tap:i18n</code></a> below.</p>
+<ol>
+<li><strong>HTML templates.</strong> This is the most obvious place&#x2014;in the content of UI components that the user sees.</li>
+<li><strong>Client JavaScript messages.</strong> Alerts or other messages that are generated on the client side are shown to the user, and should also be translated.</li>
+<li><strong>Server JavaScript messages and emails.</strong> Messages or errors generated by the server can often be user visible. An obvious place is emails and any other server generated messages, such as mobile push notifications, but more subtle places are return values and error messages on method calls. Errors should be sent over the wire in a generic form and translated on the client.</li>
+<li><strong>Data in the database.</strong> A final place where you may want to translate is actual user-generated data in your database. For example, if you are running a wiki, you might want to have a mechanism for the wiki pages to be translated to different languages. How you go about this will likely be unique to your application.</li>
+</ol>
+<h4 id="tap-i18n">Using <code>tap:i18n</code></h4>
+
+<p>XXX: We&#x2019;re going to leave out this section until there is more clarity around modules in Meteor 1.3. Right now i18n is a bit complicated in the all-packages approach we have taken for the Todos example app.</p>
+<h3 id="event-handling"><a class="anchor" href="#event-handling" aria-hidden="true" data-scroll="">&#x1F517;</a>Event handling</h3>
+
+<p>A large part of your UI involves responding to events initated by the user, and there are some steps that you should take to make sure your application performs well in the face of rapid input. An application lagging in response to user actions is one of the most noticeable performance problems.</p>
+<h4 id="throttling-method-calls">Throttling method calls on user action</h4>
+
+<p>It&#x2019;s typical to make some kind of change to the database when a user takes an action. However it&#x2019;s important to make sure you don&#x2019;t do this too rapidly. For instance, if you wish to save the user&#x2019;s text as they type in a text box, you should take steps to make sure that you don&#x2019;t send method calls to your server more than every few hundred milliseconds.</p>
+<p>If you do not, you&#x2019;ll see performance problems across the board: you&#x2019;ll be flooding the user&#x2019;s network connection with a lot of small changes, the UI will update on every keystroke, potentially causing poor performance, and your database will suffer with a lot of writes.</p>
+<p>To throttle writes, a typical approach is to use underscore&#x2019;s <a href="http://underscorejs.org/#throttle" target="_blank" rel="external"><code>.throttle()</code></a> or <a href="http://underscorejs.org/#debounce" target="_blank" rel="external"><code>.debounce()</code></a> functions. For instance, in the Todos example app, we throttle writes on user input to 300ms:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Template.Todos_item.events({</span><br><span class="line">  <span class="comment">// update the text of the item on keypress but throttle the event to ensure</span></span><br><span class="line">  <span class="comment">// we don&apos;t flood the server with updates (handles the event at most once</span></span><br><span class="line">  <span class="comment">// every 300ms)</span></span><br><span class="line">  <span class="string">&apos;keyup input[type=text]&apos;</span>: _.throttle(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>{</span><br><span class="line">    Todos.methods.updateText.call({</span><br><span class="line">      todoId: <span class="keyword">this</span>.todo._id,</span><br><span class="line">      newText: event.target.value</span><br><span class="line">    }, (err) =&gt; {</span><br><span class="line">      err &amp;&amp; alert(err.error);</span><br><span class="line">    });</span><br><span class="line">  }, <span class="number">300</span>)</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Typically, you use <code>.throttle()</code> if you are OK with the event happening during the user series of actions (i.e. you don&#x2019;t mind the multiple, throttled events happening over time, as in this case), whereas you use <code>.debounce()</code> if you want the events to happen whenever (in this example) the user stops typing for 300ms or longer.</p>
+<p><img src="http://guide.meteor.com/images/throttle-vs-debounce.png"></p>
+<h4 id="limiting-re-rendering">Limiting re-rendering</h4>
+
+<p>Even if you aren&#x2019;t saving data over the wire to the database on every user input, sometimes you still may wish to update in-memory data stores on every user change. If updating that data store triggers a lot of UI changes, you can see poor performance and missed keystrokes when you update it too often. In such cases you can limit re-rendering by throttling in a similar way how we throttled the method call above. You could also use <code>.debounce()</code> to ensure the changes happen only after the user has stopped typing.</p>
+<h2 id="ux-patterns"><a class="anchor" href="#ux-patterns" aria-hidden="true" data-scroll="">&#x1F517;</a>User experience patterns</h2>
+
+<p>User experience, or UX, describes the experience of a user as they interact with your application.  There are several UX patterns that are typical to most Meteor apps which are worth exploring here. Many of these patterns are tied to the way data is loaded as the user interacts with your app, so there are similar sections in the <a href="data-loading.html#patterns">data loading article</a> talking about how to implement these patterns using Meteor&#x2019;s publications and subscriptions.</p>
+<h3 id="subscription-readiness"><a class="anchor" href="#subscription-readiness" aria-hidden="true" data-scroll="">&#x1F517;</a>Subscription readiness</h3>
+
+<p>When you subscribe to data in Meteor, it does not become instantly available on the client. Typically the user will need to wait for a few hundred milliseconds, or as long as a few seconds (depending on the connection speed), for the data to arrive. This is especially noticeable when the app is first starting up or you move between screens that are displaying completely new data.</p>
+<p>There are a few UX techniques for dealing with this waiting period. The simplest is simply to switch out the page you are rendering with a generic &#x201C;loading&#x201D; page while you wait for all the data (typically a page may open several subscriptions) to load. As an example, in the Todos example app, we wait until all the public lists and the user&#x2019;s private lists have loaded before we try to render the actual page:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{{#if Template.subscriptionsReady}}</span><br><span class="line">  {{&gt; Template.dynamic template=main}}</span><br><span class="line">{{else}}</span><br><span class="line">  {{&gt; App_loading}}</span><br><span class="line">{{/if}}</span><br></pre></td></tr></tbody></table></figure>
+<p>We do this with Blaze&#x2019;s <code>Template.subscriptionsReady</code> which is perfect for this purpose, as it waits for all the subscriptions that the current component has asked for to become ready.</p>
+<h4 id="per-component-loading">Per-component loading state</h4>
+
+<p>Usually it makes for a better UX to show as much of the screen as possible as quickly as possible and to only show loading state for the parts of the screen that are still waiting on data. So a nice pattern to follow is &#x201C;per-component loading&#x201D;. We do this in the Todos app when you visit the list page&#x2014;we instantly render the list metadata, such as its title and privacy settings, and render a loading state for the list of todos while we wait for them to appear.</p>
+<p><img src="http://guide.meteor.com/images/todos-loading.png"></p>
+<p>We achieve this by passing the readiness of the todos list down from the smart component which is subscribing (the <code>listShowPage</code>) into the reusable component which renders the data:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{&gt; Lists_show todosReady=Template.subscriptionsReady list=list}}</span><br></pre></td></tr></tbody></table></figure>
+<p>And then we use that state to determine what to render in the reusable component (<code>listShow</code>):</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">{{#if todosReady}}</span><br><span class="line">  {{#with list._id}}</span><br><span class="line">    {{#each todo in (todos this)}}</span><br><span class="line">      {{&gt; Todos_item (todoArgs todo)}}</span><br><span class="line">    {{else}}</span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;wrapper-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;title-message&quot;</span>&gt;</span>No tasks here<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;subtitle-message&quot;</span>&gt;</span>Add new tasks using the field above<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    {{/each}}</span><br><span class="line">  {{/with}}</span><br><span class="line">{{else}}</span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;wrapper-message&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;title-message&quot;</span>&gt;</span>Loading tasks...<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">{{/if}}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="loading-placeholders">Showing placeholders</h4>
+
+<p>You can take the above UI a step further by showing placeholders whilst you wait for the data to load. This is a UX pattern that has been pioneered by Facebook which gives the user a more solid impression of what data is coming down the wire. It also prevents parts of the UI from moving around when data loads, if you can make the placeholder have the same dimensions as the final element.</p>
+<p>For example, in Galaxy, while you wait for your app&#x2019;s log to load, you see a loading state indicating what you might see:</p>
+<p><img src="http://guide.meteor.com/images/galaxy-placeholders.png"></p>
+<h4 id="styleguide-and-loading">Using the style guide to prototype loading state</h4>
+
+<p>Loading states are notoriously difficult to work on visually as they are by definition transient and often are barely noticeable in a development environment where subscriptions load almost instantly.</p>
+<p>This is one reason why being able to achieve any state at will in the <a href="#styleguides">component style guide</a> is so useful. As our reusable component <code>Lists_show</code> simply chooses to render based on its <code>todosReady</code> argument and does not concern itself with a subscription, it is trivial to render its loading state in a style guide.</p>
+<h3 id="pagination"><a class="anchor" href="#pagination" aria-hidden="true" data-scroll="">&#x1F517;</a>Pagination</h3>
+
+<p>In the <a href="data-loading.html#pagination">Data Loading article</a> we discuss a pattern of paging through an &#x201C;infinite scroll&#x201D; type subscription which loads one page of data at a time as a user scrolls down the page. It&#x2019;s interesting to consider UX patterns to consume that data and indicate what&#x2019;s happening to the user.</p>
+<h4 id="list-component">A list component</h4>
+
+<p>Let&#x2019;s consider any generic item-listing component. To focus on a concrete example, we could consider the todo list in the Todos example app. Although it does not in our current example app, in a future version it could paginate through the todos for a given list.</p>
+<p>There are a variety of states that such a list can be in:</p>
+<ol>
+<li>Initially loading, no data available yet.</li>
+<li>Showing a subset of the items with more available.</li>
+<li>Showing a subset of the items with more loading.</li>
+<li>Showing <em>all</em> the items - no more available.</li>
+<li>Showing <em>no</em> items because none exist.</li>
+</ol>
+<p>It&#x2019;s instructive to think about what arguments such a component would need to differentiate between those five states. Let&#x2019;s consider a generic pattern that would work in all cases where we provide the following information:</p>
+<ul>
+<li>A <code>count</code> of the total number of items.</li>
+<li>A <code>countReady</code> boolean that indicates if we know that count yet (remember we need to load even that information).</li>
+<li>A number of items that we have <code>requested</code>.</li>
+<li>A list of <code>items</code> that we currently know about.</li>
+</ul>
+<p>We can now distinguish between the 5 states above based on these conditions:</p>
+<ol>
+<li><code>countReady</code> is false, or <code>count &gt; 0</code> and <code>items</code> is still empty. (These are actually two different states, but it doesn&#x2019;t seem important to visually separate them).</li>
+<li><code>items.length === requested &amp;&amp; requested &lt; count</code></li>
+<li><code>0 &lt; items.length &lt; requested</code></li>
+<li><code>items.length === requested &amp;&amp; count &gt; 0</code></li>
+<li><code>count === 0</code></li>
+</ol>
+<p>You can see that although the situation is a little complex, it&#x2019;s also completely determined by the arguments and thus very much testable. A component style guide helps immeasurably in seeing all these states easily! In Galaxy we have each state in our style guide for each of the lists of our app and we can ensure all work as expected and appear correctly:</p>
+<img src="http://guide.meteor.com/images/galaxy-styleguide-list.png">
+
+<h4 id="pagination-controller">A pagination &#x201C;controller&#x201D; pattern</h4>
+
+<p>A list is also a good opportunity to understand the benefits of the smart vs reusable component split. We&#x2019;ve seen above that correctly rendering and visualizing all the possible states of a list is non-trivial and is made much easier by having a reusable list component that takes all the required information in as arguments.</p>
+<p>However, we still need to subscribe to the list of items and the count, and collect that data somewhere. To do this, it&#x2019;s sensible to use a smart wrapper component (analogous to an MVC &#x201C;controller&#x201D;) whose job it is to subscribe and fetch the relevant data.</p>
+<p>In the Todos example app, we already have a wrapping component for the list that talks to the router and sets up subscriptions. This component could easily be extended to understand pagination:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PAGE_SIZE = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">Template.Lists_show_page.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="comment">// We use internal state to store the number of items we&apos;ve requested</span></span><br><span class="line">  <span class="keyword">this</span>.state = <span class="keyword">new</span> ReactiveDict();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.getListId = () =&gt; FlowRouter.getParam(<span class="string">&apos;_id&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.autorun(() =&gt; {</span><br><span class="line">    <span class="comment">// As the `requested` state increases, we re-subscribe to a greater number of todos</span></span><br><span class="line">    <span class="keyword">this</span>.subscribe(<span class="string">&apos;List.todos&apos;</span>, <span class="keyword">this</span>.getListId(), <span class="keyword">this</span>.state.get(<span class="string">&apos;requested&apos;</span>));</span><br><span class="line">    <span class="keyword">this</span>.countSub = <span class="keyword">this</span>.subscribe(<span class="string">&apos;Lists.todoCount&apos;</span>, <span class="keyword">this</span>.getListId());</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The `onNextPage` function is used to increment the `requested` state variable. It&apos;s passed</span></span><br><span class="line">  <span class="comment">// into the listShow subcomponent to be triggered when the user reaches the end of the visible todos</span></span><br><span class="line">  <span class="keyword">this</span>.onNextPage = () =&gt; {</span><br><span class="line">    <span class="keyword">this</span>.state.set(<span class="string">&apos;requested&apos;</span>, <span class="keyword">this</span>.state.get(<span class="string">&apos;requested&apos;</span>) + PAGE_SIZE);</span><br><span class="line">  };</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">Template.Lists_show_page.helpers({</span><br><span class="line">  listArgs(listId) {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">const</span> list = Lists.findOne(listId);</span><br><span class="line">    <span class="keyword">const</span> requested = instance.state.get(<span class="string">&apos;requested&apos;</span>);</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      list,</span><br><span class="line">      todos: list.todos({}, {limit: requested}),</span><br><span class="line">      requested,</span><br><span class="line">      countReady: instance.countSub.ready(),</span><br><span class="line">      count: Counts.get(<span class="string">`list/todoCount<span class="subst">${listId}</span>`</span>),</span><br><span class="line">      onNextPage: instance.onNextPage</span><br><span class="line">    };</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="patterns-for-new-data">UX patterns for displaying new data</h4>
+
+<p>An interesting UX challenge in a realtime system like Meteor involves how to bring new information (like changing data in a list) to the user&#x2019;s attention. As <a href="http://blog.percolatestudio.com/design/design-for-realtime/" target="_blank" rel="external">Dominic</a> points out, it&#x2019;s not always a good idea to simply update the contents of a list as quickly as possible, as it&#x2019;s easy to miss changes or get confused about what&#x2019;s happened.</p>
+<p>One solution to this problem is to <em>animate</em> list changes (which we&#x2019;ll look at in the <a href="#animation">animation section</a>), but this isn&#x2019;t always the best approach. For instance, if a user is reading a list of comments, they may not want to see any changes until they are done with the current comment thread.</p>
+<p>An option in this case is to call out that there are changes to the data the user is looking at without actually making UI updates. In a system like Meteor which is reactive by default, it isn&#x2019;t necessarily easy to stop such changes from happening!</p>
+<p>However, it is possible to do this thanks to our split between smart and reusable components. The reusable component simply renders what it&#x2019;s given, so we use our smart component to control that information. We can use a <a href="collections.html#local-collections"><em>local collection</em></a> to store the rendered data, and then push data into it when the user requests an update:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// The visible todos are the todos that the user can actually see on the screen</span></span><br><span class="line">  <span class="comment">// (whereas Todos are the todos that actually exist)</span></span><br><span class="line">  <span class="keyword">this</span>.visibleTodos = <span class="keyword">new</span> Mongo.Collection();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.getTodos = () =&gt; {</span><br><span class="line">    <span class="keyword">const</span> list = Lists.findOne(<span class="keyword">this</span>.this.getListId());</span><br><span class="line">    <span class="keyword">return</span> list.todos({}, {limit: instance.state.get(<span class="string">&apos;requested&apos;</span>)});</span><br><span class="line">  };</span><br><span class="line">  <span class="comment">// When the user requests it, we should sync the visible todos to reflect the true state of the world</span></span><br><span class="line">  <span class="keyword">this</span>.syncTodos = (todos) =&gt; {</span><br><span class="line">    todos.forEach(todo =&gt; <span class="keyword">this</span>.visibleTodos.insert(todo));</span><br><span class="line">    <span class="keyword">this</span>.state.set(<span class="string">&apos;hasChanges&apos;</span>, <span class="literal">false</span>);</span><br><span class="line">  };</span><br><span class="line">  <span class="keyword">this</span>.onShowChanges = () =&gt; {</span><br><span class="line">    <span class="keyword">this</span>.syncTodos(<span class="keyword">this</span>.getTodos());</span><br><span class="line">  };</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.autorun((computation) =&gt; {</span><br><span class="line">    <span class="keyword">const</span> todos = <span class="keyword">this</span>.getTodos();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If this autorun re-runs, the list id or set of todos must have changed, so we should</span></span><br><span class="line">    <span class="comment">// flag it to the user so they know there are changes to be seen.</span></span><br><span class="line">    <span class="keyword">if</span> (!computation.firstRun) {</span><br><span class="line">      <span class="keyword">this</span>.state.set(<span class="string">&apos;hasChanges&apos;</span>, <span class="literal">true</span>);</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">      <span class="keyword">this</span>.syncTodos(todos);</span><br><span class="line">    }</span><br><span class="line">  });</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">Template.Lists_show_page.helpers({</span><br><span class="line">  listArgs(listId) {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">const</span> list = Lists.findOne(listId);</span><br><span class="line">    <span class="keyword">const</span> requested = instance.state.get(<span class="string">&apos;requested&apos;</span>);</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      list,</span><br><span class="line">      <span class="comment">// we pass the *visible* todos through here</span></span><br><span class="line">      todos: instance.visibleTodos.find({}, {limit: requested}),</span><br><span class="line">      requested,</span><br><span class="line">      countReady: instance.countSub.ready(),</span><br><span class="line">      count: Counts.get(<span class="string">`list/todoCount<span class="subst">${listId}</span>`</span>),</span><br><span class="line">      onNextPage: instance.onNextPage,</span><br><span class="line">      <span class="comment">// These two properties allow the user to know that there are changes to be viewed</span></span><br><span class="line">      <span class="comment">// and allow them to view them</span></span><br><span class="line">      hasChanges: instance.state.get(<span class="string">&apos;hasChanges&apos;</span>),</span><br><span class="line">      onShowChanges:instance.onShowChanges</span><br><span class="line">    };</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>The reusable sub-component can then use the <code>hasChanges</code> argument to determine if it show some kind of callout to the user to indicate changes are available, and then use the <code>onShowChanges</code> callback to trigger them to be shown.</p>
+<h3 id="optimistic-ui"><a class="anchor" href="#optimistic-ui" aria-hidden="true" data-scroll="">&#x1F517;</a>Optimistic UI</h3>
+
+<p>One nice UX pattern which Meteor makes much easier than other frameworks is Optimistic UI. Optimistic UI is the process of showing user-generated changes in the UI without waiting for the server to acknowledge that the change has succeeded, resulting in a user experience that seems faster than is physically possible, since you don&#x2019;t need to wait for any server roundtrips. Since most user actions in a well-designed app will be successful, it makes sense for almost all parts of an app to be optimistic in this way.</p>
+<p>However, it&#x2019;s not <em>always</em> necessarily a good idea to be optimistic. Sometimes we may actually want to wait for the server&#x2019;s response. For instance, when a user is logging in, you <em>have</em> to wait for the server to check the password is correct before you can start allowing them into the site.</p>
+<p>So when should you wait for the server and when not? It basically comes down to how optimistic you are; how likely it is that something will go wrong. In the case of a password, you really can&#x2019;t tell on the client, so you need to be conservative. In other cases, you can be pretty confident that the Method call will succeed, and so you can move on.</p>
+<p>For instance, in the Todos example app, when creating a new list, the list creation will basically always succeed, so we write:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Template.App_body.events({</span><br><span class="line">  <span class="string">&apos;click .js-new-list&apos;</span>() {</span><br><span class="line">    <span class="keyword">const</span> listId = Lists.methods.insert.call((err) =&gt; {</span><br><span class="line">      <span class="keyword">if</span> (err) {</span><br><span class="line">        <span class="comment">// At this point, we have already redirected to the new list page, but</span></span><br><span class="line">        <span class="comment">// for some reason the list didn&apos;t get created. This should almost never</span></span><br><span class="line">        <span class="comment">// happen, but it&apos;s good to handle it anyway.</span></span><br><span class="line">        FlowRouter.go(<span class="string">&apos;App.home&apos;</span>);</span><br><span class="line">        alert(<span class="string">&apos;Could not create list.&apos;</span>);</span><br><span class="line">      }</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    FlowRouter.go(<span class="string">&apos;Lists.show&apos;</span>, { _id: listId });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>We place the <code>FlowRouter.go(&apos;Lists.show&apos;)</code> outside of the callback of the Method call, so that it runs right away. First we <em>simulate</em> the method (which creates a list locally in Minimongo), then route to it. Eventually the server returns, usually creating the exact same list (which the user will not even notice). In the unlikely event that the server call fails, we show an error and redirect back to the homepage.</p>
+<p>Note that the <code>listId</code> returned by the list method (which is the one generated by the client stub) is guaranteed to be the same as the one generated on the server, due to <a href="methods.html#consistent-id-generation">the way that Meteor generates IDs</a> and ensures they are the same between client and server.</p>
+<h3 id="writes-in-progress"><a class="anchor" href="#writes-in-progress" aria-hidden="true" data-scroll="">&#x1F517;</a>Indicating when a write is in progress</h3>
+
+<p>Sometimes the user may be interested in knowing when the update has hit the server. For instance, in a chat application, it&#x2019;s a typical pattern to optimistically display the message in the chat log, but indicate that it is &#x201C;pending&#x201D; until the server has acknowledged the write. We can do this easily in Meteor by simply modifying the Method to act differently on the client:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Messages.methods.insert = <span class="keyword">new</span> Method({</span><br><span class="line">  name: <span class="string">&apos;Messages.methods.insert&apos;</span>,</span><br><span class="line">  schema: <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    text: {type: <span class="built_in">String</span>}</span><br><span class="line">  }),</span><br><span class="line">  run(message) {</span><br><span class="line">    <span class="comment">// In the simulation (on the client), we add an extra pending field.</span></span><br><span class="line">    <span class="comment">// It will be removed when the server comes back with the &quot;true&quot; data.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isSimulation) {</span><br><span class="line">      message.pending = <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Messages.insert(message);</span><br><span class="line">  }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>Of course in this scenario, you also need to be prepared for the server to fail, and again, indicate it to the user somehow.</p>
+<h3 id="unexpected-failures"><a class="anchor" href="#unexpected-failures" aria-hidden="true" data-scroll="">&#x1F517;</a>Unexpected failures</h3>
+
+<p>We&#x2019;ve seen examples above of failures which you don&#x2019;t really anticipate will happen. It&#x2019;s difficult and inefficient to defend against every possible error, however unlikely. However, there are some catch-all patterns that you can use for unexpected failures.</p>
+<p>Thanks to Meteor&#x2019;s automatic handling of optimistic UI, if a method unexpectedly fails the optimistic changes will roll back and the Minimongo database will end up in a consistent state. If you are rendering directly from Minimongo, the user will see something that is consistent, even if it&#x2019;s not what they anticipated of course. In some cases when you have state you are keeping outside of Minimongo, you may need to make changes to it manually to reflect this. You can see this in the example above where we had to update the router manually after an operation failed.</p>
+<p>However, it&#x2019;s terrible UX to simply jump the user to an unexpected state without explaining what&#x2019;s happened. We used a <code>alert()</code> above, which is a pretty poor option, but gets the job done. One better approach is to indicate changes via a &#x201C;flash notification&#x201D;, which is a UI element that&#x2019;s displayed &#x201C;out-of-band&#x201D;, typically in the top right of the screen, given the user <em>some</em> indication of what&#x2019;s happened. Here&#x2019;s an example of a flash notification in Galaxy, at the top right of the page:</p>
+<p><img src="http://guide.meteor.com/images/galaxy-flash-notification.png"></p>
+<h2 id="animation"><a class="anchor" href="#animation" aria-hidden="true" data-scroll="">&#x1F517;</a>Animation</h2>
+
+<p>Animation is the process of indicating changes in the UI smoothly <em>over time</em> rather than <em>instantly</em>. Although animation is often seen as &#x201C;window dressing&#x201D; or purely aesthetic, in fact it serves a very important purpose, highlighted by the example of the changing list above. In a connected-client world where changes in the UI aren&#x2019;t always initiated by user action (i.e. sometimes they happen as a result of the server pushing changes made by other users), instant changes can result in a user experience where it&#x2019;s difficult to understand what is happening.</p>
+<h3 id="animating-visiblity"><a class="anchor" href="#animating-visiblity" aria-hidden="true" data-scroll="">&#x1F517;</a>Animating changes in visiblity</h3>
+
+<p>Probably the most fundamental type of UI change that requires animation is when items appear or disappear. In Blaze, we can use the <a href="https://atmospherejs.com/percolate/momentum?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.8.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>percolate:momentum</code> package</a> to plug a standard set of animations from the <a href="http://julian.com/research/velocity/" target="_blank" rel="external"><code>velocity animation library</code></a> into such state changes.</p>
+<p>A good example of this is the editing state of the list from the Todos example app:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">{{#momentum plugin=&quot;fade&quot;}}</span><br><span class="line">  {{#if instance.state.get &apos;editing&apos;}}</span><br><span class="line">    <span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">&quot;js-edit-form list-edit-form&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line">  {{else}}</span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;nav-group&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  {{/if}}</span><br><span class="line">{{/momentum}}</span><br></pre></td></tr></tbody></table></figure>
+<p>Momentum works by overriding the way that child HTML elements appear and disappear. In this case, when the list component goes into the <code>editing</code> state, the <code>.nav-group</code> disappears, and the <code>form</code> appears. Momentum takes care of the job of making sure that both items fade, making the change a lot clearer.</p>
+<h3 id="animating-attributes"><a class="anchor" href="#animating-attributes" aria-hidden="true" data-scroll="">&#x1F517;</a>Animating changes to attributes</h3>
+
+<p>Another common type of animation is when an attribute of an element changes. For instance, a button may change color when you click on it. These type of animations are most easily achieved with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions" target="_blank" rel="external">CSS transitions</a>. For example, we use a CSS transition for the hover state of links in the Todos example app:</p>
+<figure class="highlight less"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">a</span> {</span><br><span class="line">  <span class="attribute">transition</span>: all <span class="number">200ms</span> ease-in;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">@color-secondary</span>;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">&amp;</span><span class="pseudo">:hover</span> { <span class="attribute">color</span>: <span class="function">darken</span>(<span class="variable">@color-primary</span>, <span class="number">10%</span>); }</span><br><span class="line">  <span class="keyword">&amp;</span><span class="pseudo">:active</span> { <span class="attribute">color</span>: <span class="variable">@color-well</span>; }</span><br><span class="line">  <span class="keyword">&amp;</span><span class="pseudo">:focus</span> { <span class="attribute">outline</span>:none; } <span class="comment">//removes FF dotted outline</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="animating-page-changes"><a class="anchor" href="#animating-page-changes" aria-hidden="true" data-scroll="">&#x1F517;</a>Animating page changes</h3>
+
+<p>Finally, it&#x2019;s common to animate when the user switches between routes of the application. Especially on mobile, this adds a sense of navigation to the app via positioning pages relative to each other. This can be done in a similar way to animating things appearing and disappearing (after all one page is appearing and other is disappearing), but there are some tricks that are worth being aware of.</p>
+<p>Let&#x2019;s consider the case of the Todos example app. Here we do a similar thing to achieve animation between pages, by using Momentum in the main layout template:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">{{#momentum plugin=&quot;fade&quot;}}</span><br><span class="line">  {{#if Template.subscriptionsReady}}</span><br><span class="line">    {{&gt; Template.dynamic template=main}}</span><br><span class="line">  {{else}}</span><br><span class="line">    {{&gt; App_loading}}</span><br><span class="line">  {{/if}}</span><br><span class="line">{{/momentum}}</span><br></pre></td></tr></tbody></table></figure>
+<p>This looks like it should just work, but there&#x2019;s one problem: Sometimes the rendering system will prefer to simply change an existing component rather than switching it out and triggering the animation system. For example in the Todos example app, when you navigate between lists, by default Blaze will try to simply re-render the <code>Lists_show</code> component with a new <code>listId</code> (a changed argument) rather than pull the old list out and put in a new one. This is an optimization that is nice in principle, but that we want to avoid here for animation purposes. More specifically, we want to make sure the animation <em>only</em> happens when the <code>listId</code> changes and not on other reactive changes.</p>
+<p>To do so in this case, we can use a little trick (that is specific to Blaze, although similar techniques apply to other rendering engines) of using the fact that the <code>{{#each}}</code> helper diffs arrays of strings, and completely re-renders elements when they change.</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">  {{#each listId in listIdArray}}</span><br><span class="line">    {{&gt; Lists_show (listArgs listId)}}</span><br><span class="line">  {{else}}</span><br><span class="line">    {{&gt; App_notFound}}</span><br><span class="line">  {{/each}}</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.helpers({</span><br><span class="line">  <span class="comment">// We use #each on an array of one item so that the &quot;list&quot; template is</span></span><br><span class="line">  <span class="comment">// removed and a new copy is added when changing lists, which is</span></span><br><span class="line">  <span class="comment">// important for animation purposes.</span></span><br><span class="line">  listIdArray() {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">const</span> listId = instance.getListId();</span><br><span class="line">    <span class="keyword">return</span> Lists.findOne(listId) ? [listId] : [];</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-accounts-1.2.html">Users and Accounts</a></span>
+      
+      
+        <span style="float:right"><a href="guide-blaze-1.2.html">Blaze</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/ui-ux.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/"></a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

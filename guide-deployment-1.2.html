@@ -1,0 +1,391 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to deploy, run, and monitor your Meteor app in production.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Deployment and Monitoring | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    <li>
+      <a href="https://www.meteor.com">Meteor.com</a>
+    </li>
+    <li>
+      <a href="https://www.meteor.com/install">Install</a>
+    </li>
+    <li>
+      <a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a>
+    </li>
+    <li>
+      <a href="http://docs.meteor.com">Docs</a>
+    </li>
+    <li>
+      <a href="https://forums.meteor.com/">Forums</a>
+    </li>
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/">Meteor</a>
+  <span class="sub-title">The Official Guide</span>
+  <select class="version-select">
+    
+      <option value="v1.2">1.2</option>
+    
+  </select>
+  <!--
+    // Search doesn't seem to work well with this provider
+    <input class="search-box st-default-search-input">
+  -->
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+    // Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+<ul class="menu-root">
+  
+    <li>
+      <a href="guide-index-1.2.html" class="sidebar-link">
+        Introduction
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-collections-1.2.html" class="sidebar-link">
+        Collections and Schemas
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-data-loading-1.2.html" class="sidebar-link">
+        Publications and Data Loading
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-methods-1.2.html" class="sidebar-link">
+        Methods
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-routing-1.2.html" class="sidebar-link">
+        URLs and Routing
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-accounts-1.2.html" class="sidebar-link">
+        Users and Accounts
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-ui-ux-1.2.html" class="sidebar-link">
+        User Interfaces
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-blaze-1.2.html" class="sidebar-link">
+        Blaze
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-security-1.2.html" class="sidebar-link">
+        Security
+      </a>
+    </li>
+  
+    <li>
+      <a href="" class="sidebar-link current">
+        Deployment and Monitoring
+      </a>
+    <ul class="sub-menu"><li><a href="#deploying" data-scroll="" class="H2">Deploying Meteor Applications</a><ul class="sub-menu"><li><a href="#environments" data-scroll="" class="H3">Deployment environments</a></li><li><a href="#environment" data-scroll="" class="H3">Environment variables and settings</a></li></ul></li><li><a href="#other-considerations" data-scroll="" class="H2">Other considerations</a><ul class="sub-menu"><li><a href="#domain-name" data-scroll="" class="H3">Domain name</a></li><li><a href="#ssl" data-scroll="" class="H3">SSL Certificate</a></li><li><a href="#cdn" data-scroll="" class="H3">CDN</a></li></ul></li><li><a href="#deployment-options" data-scroll="" class="H2">Deployment options</a><ul class="sub-menu"><li><a href="#galaxy" data-scroll="" class="H3">Galaxy (recommended)</a></li><li><a href="#mup" data-scroll="" class="H3">Meteor Up</a></li><li><a href="#free-hosting" data-scroll="" class="H3">Basic meteor.com hosting</a></li><li><a href="#custom-deployment" data-scroll="" class="H3">Custom deployment</a></li></ul></li><li><a href="#process" data-scroll="" class="H2">Deployment process</a><ul class="sub-menu"><li><a href="#continuous-deployment" data-scroll="" class="H3">Continuous deployment</a></li><li><a href="#rolling-updates-and-data" data-scroll="" class="H3">Rolling deployments and data versions</a></li></ul></li><li><a href="#analytics" data-scroll="" class="H2">Monitoring users via analytics</a><ul class="sub-menu"></ul></li><li><a href="#apm" data-scroll="" class="H2">Monitoring your application</a><ul class="sub-menu"><li><a href="#meteor-performance" data-scroll="" class="H3">Understanding Meteor performance</a></li><li><a href="#galaxy-apm" data-scroll="" class="H3">Monitoring with Galaxy</a></li><li><a href="#kadira" data-scroll="" class="H3">Kadira</a></li></ul></li><li><a href="#seo" data-scroll="" class="H2">Enabling SEO</a><ul class="sub-menu"></ul></li></ul></li>
+  
+    <li>
+      <a href="guide-build-tool-1.2.html" class="sidebar-link">
+        Build system
+      </a>
+    </li>
+  
+</ul>
+
+  </div>
+  <div id="content">
+    <h1>Deployment and Monitoring</h1>
+    <p>After reading this guide, you’ll know:</p>
+<ol>
+<li>What to consider before you deploy a Meteor application.</li>
+<li>How to deploy to some common Meteor hosting environments.</li>
+<li>How to design a deployment process to make sure your application’s quality is maintained.</li>
+<li>How to monitor user behavior with analytics tools.</li>
+<li>How to monitor your application with Kadira.</li>
+<li>How to make sure your site is discoverable by search engines.</li>
+</ol>
+<h2 id="deploying"><a class="anchor" href="#deploying" aria-hidden="true" data-scroll="">&#x1F517;</a>Deploying Meteor Applications</h2>
+
+<p>Once you’ve built and tested your Meteor application, you need to put it online to show it to the world. Deploying a Meteor application is similar to deploying any other websocket-based Node.js app, but is different in some of the specifics.</p>
+<p>Deploying a web application is fundamentally different to releasing most other kinds of software, in that you can deploy as often as you’d like to. You don’t need to wait for users to do something to get the new version of your software because the server will push it right at them.</p>
+<p>However, it’s still important to test your changes throughly with a good process of Quality Assurance (QA). Although it’s easy to push out fixes to bugs, those bugs can still cause major problems to users and even potentially data corruption!</p>
+<h3 id="environments"><a class="anchor" href="#environments" aria-hidden="true" data-scroll="">&#x1F517;</a>Deployment environments</h3>
+
+<p>In web application deployment it’s common to refer to three runtime environments:</p>
+<ol>
+<li><strong>Development.</strong> This refers to your machine where you develop new features and run local tests.</li>
+<li><strong>Staging.</strong> An intermediate environment that is similar to production, but not visible to users of the application. Can be used for testing and QA.</li>
+<li><strong>Production.</strong> The real deployment of your app that your customers are currently using.</li>
+</ol>
+<p>The idea of the staging environment is to provide a non-user-visible test environment that is as close as possible to production in terms of infrastructure. It’s common for issues to appear with new code on the production infrastructure that just don’t happen in a development environment. A very simple example is issues that involve latency between the client and server—connecting to a local development server with tiny latencies, you just may never see such an issue.</p>
+<p>For this reason, developers tend to try and get staging as close as possible to production. This means that all the steps we outline below about production deployment, should, if possible, also be followed for your staging server.</p>
+<h3 id="environment"><a class="anchor" href="#environment" aria-hidden="true" data-scroll="">&#x1F517;</a>Environment variables and settings</h3>
+
+<p>There are two main ways to configure your application outside of the code of the app itself:</p>
+<ol>
+<li><strong>Environment variables.</strong> This is the set of <code>ENV_VARS</code> that are set on the running process.</li>
+<li><strong>Settings.</strong> These are in a JSON object set via either the <code>--settings</code> Meteor command-line flag or stringified into the <code>METEOR_SETTINGS</code> environment variable.</li>
+</ol>
+<p>Settings should be used to set environment (i.e. staging vs production) specific things, like the access token and secret used to connect to Google. These settings will not change between any given process running your application in the given environment.</p>
+<p>Environment variables are used to set process specific things, which could conceivably change for different instances of your application’s processes. For instance, you can set a different <code>KADIRA_OPTIONS_HOSTNAME</code> for each process to ensure that <a href="#kadira">kadira</a> logs timings with useful hostnames.</p>
+<p>A final note on storing these settings: It’s not a good idea to store settings the same repository where you keep your app code. Read about good places to put your settings in the <a href="security.html#api-keys">Security article</a>.</p>
+<h2 id="other-considerations"><a class="anchor" href="#other-considerations" aria-hidden="true" data-scroll="">&#x1F517;</a>Other considerations</h2>
+
+<p>There are some other considerations that you should make before you deploy your application to a production host. Remember that you should if possible do these steps for both your production <em>and</em> staging environments.</p>
+<h3 id="domain-name"><a class="anchor" href="#domain-name" aria-hidden="true" data-scroll="">&#x1F517;</a>Domain name</h3>
+
+<p>What URL will users use to access your site? You’ll probably need to register a domain name with a domain registrar, and setup DNS entries to point to the site (this will depend on how you deploy, see below). If you deploy to the free Meteor servers, you can use a <code>x.meteor.com</code> domain while you are testing the app.</p>
+<h3 id="ssl"><a class="anchor" href="#ssl" aria-hidden="true" data-scroll="">&#x1F517;</a>SSL Certificate</h3>
+
+<p>It’s always a good idea to use SSL for Meteor applications (see the <a href="security.html#ssl">Security Article</a> to find out why). Once you have a registered domain name, you’ll need to generate an SSL certificate with a certificate authority for your domain.</p>
+<h3 id="cdn"><a class="anchor" href="#cdn" aria-hidden="true" data-scroll="">&#x1F517;</a>CDN</h3>
+
+<p>It’s not strictly required, but often a good idea to setup a Content Delivery Network (CDN) for your site. A CDN is a proxy that sits in front of the static assets of your site (such as JavaScript, CSS files, and some images) and caches copies of those files in locations that are closer to the location of the user. For example, if the actual web server for your application is on the east coast of the USA, if a user is in Australia, a CDN could host a copy of the JavaScript of the site within Australia or even in the city the user is in. This has huge benefits for the initial loading time for your site.</p>
+<p>You want to put your CDN in front of the static assets that Meteor knows about. You can use <code>WebAppInternals.setBundledJsCssPrefix(DNS_HOSTNAME)</code> to set a prefix that applies to all of the bundled JS and CSS assets that the Meteor app serves. In particular, this means if you have relative image URLs inside your CSS files, they will also be served from the CDN.</p>
+<p>If you are following the above approach, you may also want to manually add the CDN’s hostname whenever you put an image/other asset URL in your application’s code. To do this throughout your app, you can write a generic helper like <code>imageUrl()</code>.</p>
+<h2 id="deployment-options"><a class="anchor" href="#deployment-options" aria-hidden="true" data-scroll="">&#x1F517;</a>Deployment options</h2>
+
+<p>Meteor is an open source platform, and you can run the apps that you make with Meteor anywhere just like regular Node.js applications. But operating Meteor apps <em>correctly</em>, so that your apps work for everyone, can be tricky if you are managing your infrastructure manually. This is why we recommend running production Meteor apps on Galaxy.</p>
+<h3 id="galaxy"><a class="anchor" href="#galaxy" aria-hidden="true" data-scroll="">&#x1F517;</a>Galaxy (recommended)</h3>
+
+<p>The easiest way to operate your app with confidence is to use Galaxy, the service built by Meteor Development Group specifically to run Meteor apps.</p>
+<p>Galaxy is a distributed system that runs on Amazon AWS. If you understand what it takes to run Meteor apps correctly and just how Galaxy works, you’ll come to appreciate Galaxy’s value, and that it will save you a lot of time and trouble. Most large Meteor apps run on Galaxy today, and many of them have switched from custom solutions they used prior to Galaxy’s launch.</p>
+<p>In order to deploy to Galaxy, you’ll need to sign up for an account <a href="https://www.meteor.com/why-meteor/pricing" target="_blank" rel="external">here</a>, and separately provision a MongoDB database (see below).</p>
+<p>Once you’ve done that, you can <a href="https://galaxy.meteor.com/help/deploying-to-galaxy" target="_blank" rel="external">deploy to Galaxy</a> almost as easily as you can to Meteor’s free servers. You just need to <a href="https://galaxy.meteor.com/help/setting-environment-variables" target="_blank" rel="external">add some environment variables to your settings file</a> to point it at your MongoDB, and you can deploy with:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy your-app.com --settings production-settings.json</span><br></pre></td></tr></tbody></table></figure>
+<p>In order for Galaxy to work with your custom domain (<code>your-app.com</code> in this case), you need to <a href="https://galaxy.meteor.com/help/configuring-dns" target="_blank" rel="external">set up your DNS to point at Galaxy</a>. Once you’ve done this, you should be able to reach your site from a browser.</p>
+<p>You can also log into the Galaxy UI at <a href="https://galaxy.meteor.com" target="_blank" rel="external">https://galaxy.meteor.com</a>. Once there you can manage your applications, monitor the number of connections and resource usage, view logs, and change settings.</p>
+<p><img src="http://guide.meteor.com/images/galaxy-org-dashboard.png"></p>
+<p>If you are following <a href="security.html#ssl">our advice</a>, you’ll probably want to <a href="https://galaxy.meteor.com/help/using-ssl" target="_blank" rel="external">set up SSL</a> on your Galaxy application with the certificate and key for your domain. The key things here are to add the <code>force-ssl</code> package and to use the Galaxy UI to add your SSL certificate.</p>
+<p>Once you are setup with Galaxy, deployment is simple (just re-run the <code>meteor deploy</code> command above), and scaling is even easier—simply log into galaxy.meteor.com, and scale instantly from there.</p>
+<p><img src="http://guide.meteor.com/images/galaxy-scaling.png"></p>
+<h4 id="galaxy-mongo">MongoDB hosting services to use with Galaxy</h4>
+
+<p>If you are using Galaxy (or need a production quality, managed MongoDB for one of the other options listed here), it’s usually a good idea to use a <a href="https://galaxy.meteor.com/help/configuring-mongodb" target="_blank" rel="external">MongoDB hosting provider</a>. There are a variety of options out there, but a good choice is <a href="https://compose.io" target="_blank" rel="external">Compose</a>. The main things to look for are support for oplog tailing, and a presence in the us-east-1 AWS region.</p>
+<h3 id="mup"><a class="anchor" href="#mup" aria-hidden="true" data-scroll="">&#x1F517;</a>Meteor Up</h3>
+
+<p><a href="https://github.com/arunoda/meteor-up" target="_blank" rel="external">Meteor Up</a>, often referred to as “mup”, is an open source tool that can be used to deploy Meteor application to any online server over SSH. Mup handles some of the essential deployment requirements, but you will still need to do a lot of work to get your load balancing and version updates working smoothly - it’s essentially a way to automate the manual steps of using <code>meteor build</code> and putting that bundle on your server.</p>
+<p>You can obtain a server running Ubuntu or Debian from many generic hosting providers. Mup can SSH into your server with the keys you provide in the config. You can also <a href="https://www.youtube.com/watch?v=WLGdXtZMmiI" target="_blank" rel="external">watch this video</a> for a more complete walkthrough on how to do it.</p>
+<h3 id="free-hosting"><a class="anchor" href="#free-hosting" aria-hidden="true" data-scroll="">&#x1F517;</a>Basic meteor.com hosting</h3>
+
+<p>If you are in the process of developing your application and want to see how it behaves online, or share it with a small group without needing a full production setup, you can get started quickly on the free hosting available at <code>meteor.com</code>. We do <strong>not</strong> recommend hosting critical apps on a subdomain of meteor.com. Each app runs in a single process, and this free service is not capable of scaling to support production workloads.</p>
+<p>Deploying is simple, just type:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor deploy your-app.meteor.com</span><br></pre></td></tr></tbody></table></figure>
+<p>This will bundle your application from the current directory, upload it, and serve it from <a href="https://your-app.meteor.com" target="_blank" rel="external">https://your-app.meteor.com</a>. Along the way it’ll provision you with a MongoDB database and mail setup and configure (via the ENV) your app to run.</p>
+<p>To enable SSL for your free-hosted app, simply add the <code>force-ssl</code> package to your app:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add force-ssl</span><br></pre></td></tr></tbody></table></figure>
+<p>We provide this as a free service so you can try Meteor. It is also helpful for quickly putting up internal betas, demos, and so on. It is not intended to deploy production applications. Also note that if your application does not receive any traffic for six months it will be deleted.</p>
+<h4 id="managing-free-hosting">Managing your meteor.com app</h4>
+
+<p>There are few handy tips for managing your deployed application. To deploy with a <code>settings.json</code> file, use:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor deploy your-app.meteor.com --settings settings.json</span><br></pre></td></tr></tbody></table></figure>
+<p>To delete the app, you can type:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor deploy --delete your-app.meteor.com</span><br></pre></td></tr></tbody></table></figure>
+<p>To allow others to deploy the app, you can add them to the authorized user list with:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor authorized your-app.meteor.com --add &lt;user-or-organization&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>You can view the latest logs with</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor logs your-app.meteor.com</span><br></pre></td></tr></tbody></table></figure>
+<p>Finally, if you want to access the mongo database for your app directly, you can use</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor mongo your-app.meteor.com</span><br></pre></td></tr></tbody></table></figure>
+<p>You can read more details about how to use these commands by using the help command:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="built_in">help</span> deploy</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="custom-deployment"><a class="anchor" href="#custom-deployment" aria-hidden="true" data-scroll="">&#x1F517;</a>Custom deployment</h3>
+
+<p>If you want to figure out your hosting solution completely from scratch, the Meteor tool has a command <code>meteor build</code> that creates a deployment bundle that contains a plain Node.js application. You can host this application wherever you like and there are many options in terms of how you set it up and configure it.</p>
+<p>To run this application, you need to provide Node.js 0.10.x and a MongoDB server. The current release of Meteor has been tested with Node 0.10.41. You can then run the application by invoking <code>node</code>, specifying the HTTP port for the application to listen on, and the MongoDB endpoint.</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my_directory</span><br><span class="line">(<span class="built_in">cd</span> programs/server &amp;&amp; npm install)</span><br><span class="line">env PORT=<span class="number">3000</span> MONGO_URL=mongodb://localhost:<span class="number">27017</span>/myapp node main.js</span><br></pre></td></tr></tbody></table></figure>
+<p>However, unless you have a specific need to roll your own hosting environment, the other options here are definitely easier, and probably make for a better setup than doing everything from scratch. Operating a Meteor app in a way that it works correctly for everyone can be complex, and <a href="#galaxy">Galaxy</a> handles a lot of the specifics like routing clients to the right containers and handling coordinated version updates for you.</p>
+<h2 id="process"><a class="anchor" href="#process" aria-hidden="true" data-scroll="">&#x1F517;</a>Deployment process</h2>
+
+<p>Although it’s much easier to deploy a web application than release most other types of software, that doesn’t mean you should be cavalier with your deployment. It’s important to properly QA and test your releases before you push them live, to ensure that users don’t have a bad experience, or even worse, data get corrupted.</p>
+<p>It’s a good idea to have a release process that you follow in releasing your application. Typically that process looks something like:</p>
+<ol>
+<li>Deploy the new version of the application to your staging server.</li>
+<li>QA the application on the staging server.</li>
+<li>Fix any bugs found in step 2. and repeat.</li>
+<li>Once you are satisfied with the staging release, release the <em>exact same</em> version to production.</li>
+<li>Run final QA on production.</li>
+</ol>
+<p>Steps 2. and 5. can be quite time-consuming, especially if you are aiming to maintain a high level of quality in your application. That’s why it’s a great idea to develop a suite of acceptance tests (see our <a href="XXX">Testing Article</a> for more on this). To take things even further, you could run a load/stress test against your staging server on every release.</p>
+<h3 id="continuous-deployment"><a class="anchor" href="#continuous-deployment" aria-hidden="true" data-scroll="">&#x1F517;</a>Continuous deployment</h3>
+
+<p>Continuous deployment refers to the process of deploying an application via a continuous integration tool, usually when some condition is reached (such as a git push to the <code>master</code> branch). You can use CD to deploy to Galaxy or Meteor’s free hosting, as Nate Strauser explains in a <a href="https://medium.com/@natestrauser/migrating-meteor-apps-from-modulus-to-galaxy-with-continuous-deployment-from-codeship-aed2044cabd9#.lvio4sh4a" target="_blank" rel="external">blog post on the subject</a>.</p>
+<h3 id="rolling-updates-and-data"><a class="anchor" href="#rolling-updates-and-data" aria-hidden="true" data-scroll="">&#x1F517;</a>Rolling deployments and data versions</h3>
+
+<p>It’s important to understand what happens during a deployment, especially if your deployment involves changes in data format (and potentially data migrations, see the <a href="collections.html#migrations">Collections Article</a>).</p>
+<p>When you are running your app on multiple servers or containers, it’s not a good idea to shut down all of the servers at once and then start them all back up again. This will result in more downtime than necessary, and will cause a huge spike in CPU usage when all of your clients reconnect again at the same time. To alleviate this, Galaxy stops and re-starts containers one by one during deployment. There will be a time period during which some containers are running the old version and some the new version, as users are migrated incrementally to the new version of your app.</p>
+<p><img src="http://guide.meteor.com/images/galaxy-deploying.png"></p>
+<p>If the new version involves different data formats in the database, then you need to be a little more careful about how you step through versions to ensure that all the versions that are running simultaneously can work together. You can read more about how to do this in the <a href="collections.html#migrations">collections article</a>.</p>
+<h2 id="analytics"><a class="anchor" href="#analytics" aria-hidden="true" data-scroll="">&#x1F517;</a>Monitoring users via analytics</h2>
+
+<p>It’s common to want to know which pages of your app are most commonly visited, and where users are coming from. Here’s a simple setup that will get you URL tracking using Google Analytics. We’ll be using the <a href="https://atmospherejs.com/okgrow/analytics?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>okgrow:analytics</code></a> package.</p>
+<figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="built_in">add</span> okgro<span class="variable">w:analytics</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Now, we need to configure the package with our Google Analytics key (the package also supports a large variety of other providers, check out the <a href="https://atmospherejs.com/okgrow/analytics?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">documentation on Atmosphere</a>). Pass it in as part of <a href="#environment"><em>Meteor settings</em></a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="string">&quot;public&quot;</span>: {</span><br><span class="line">    <span class="string">&quot;analyticsSettings&quot;</span>: {</span><br><span class="line">      <span class="comment">// Add your analytics tracking id&apos;s here</span></span><br><span class="line">      <span class="string">&quot;Google Analytics&quot;</span> : {<span class="string">&quot;trackingId&quot;</span>: <span class="string">&quot;Your tracking ID&quot;</span>}</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>The analytics package hooks into Flow Router (see the <a href="routing.html">routing article</a> for more) and records all of the page events for you.</p>
+<p>You may want to track non-page change related events (for instance publication subscription, or method calls) also. To do so you can use the custom event tracking functionality:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Todos.methods.updateText = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  ...</span><br><span class="line">  run({ todoId, newText }) {</span><br><span class="line">    <span class="comment">// We use `isClient` here because we only want to track</span></span><br><span class="line">    <span class="comment">// attempted method calls from the client, not server to</span></span><br><span class="line">    <span class="comment">// server method calls</span></span><br><span class="line">    <span class="keyword">if</span> (Meteor.isClient) {</span><br><span class="line">      analytics.track(<span class="string">&apos;Todos.methods.updateText&apos;</span>, { todoId, newText });</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>To achieve a similar abstraction for subscriptions/publications, you may want to write a simple wrapper for <code>Meteor.subscribe()</code>.</p>
+<h2 id="apm"><a class="anchor" href="#apm" aria-hidden="true" data-scroll="">&#x1F517;</a>Monitoring your application</h2>
+
+<p>When you are running an app in production, it’s vitally important that you keep tabs on the performance of your application and ensure it is running smoothly.</p>
+<h3 id="meteor-performance"><a class="anchor" href="#meteor-performance" aria-hidden="true" data-scroll="">&#x1F517;</a>Understanding Meteor performance</h3>
+
+<p>Although a host of tools exist to monitor the performance of HTTP, request-response based applications, the insights they give aren’t necessarily useful for a connected client system like a Meteor application. Although it’s true that slow HTTP response times would be a problem for your app, and so using a tool like <a href="https://www.pingdom.com" target="_blank" rel="external">Pingdom</a> can serve a purpose, there are many kinds of issues with your app that won’t be surfaced by such tools.</p>
+<h3 id="galaxy-apm"><a class="anchor" href="#galaxy-apm" aria-hidden="true" data-scroll="">&#x1F517;</a>Monitoring with Galaxy</h3>
+
+<p><a href="#galaxy">Galaxy</a> offers turnkey Meteor hosting and provides tools that are useful to debug the current and past state of your application. CPU and Memory load graphs in combination with connected user counts can be vital to determining if your setup is handling the current load (or if you need more containers), or if there’s some specific user action that’s causing disproportionate load (if they don’t seem to be correlated):</p>
+<p><img src="http://guide.meteor.com/images/galaxy-metrics.png"></p>
+<p>Galaxy’s UI provides a detailed logging system, which can be invaluable to determine which action it is causing that extra load, or to generally debug other application issues:</p>
+<p><img src="http://guide.meteor.com/images/galaxy-logs.png"></p>
+<h3 id="kadira"><a class="anchor" href="#kadira" aria-hidden="true" data-scroll="">&#x1F517;</a>Kadira</h3>
+
+<p>If you really want to understand the ins and outs of running your Meteor application, you should give <a href="https://kadira.io" target="_blank" rel="external">Kadira</a> a try. Kadira is a full featured Application Performance Monitoring (APM) solution that’s built from the ground up for Meteor. Kadira operates by taking regular client and server side observations of your application’s performance as it conducts various activities and reporting them back to a master server.</p>
+<p>When you visit the Kadira application, you can view current and past behavior of your application over various useful metrics. Kadira’s <a href="https://kadira.io/platform/kadira-apm/overview" target="_blank" rel="external">documentation</a> is extensive and invaluable, but we’ll discuss a few key areas here.</p>
+<h4 id="kadira-method-pub">Method and Publication Latency</h4>
+
+<p>Rather than monitoring HTTP response times, in a Meteor app it makes far more sense to consider DDP response times. The two actions your client will wait for in terms of DDP are <em>method calls</em> and <em>publication subscriptions</em>. Kadira includes tools to help you discover which of your methods and publications are slow and resource intensive.</p>
+<p><img src="http://guide.meteor.com/images/kadira-method-latency.png"></p>
+<p>In the above screenshot you can see the response time breakdown of the various methods commonly called by the Atmosphere application. The median time of 56ms and 99th percentile time of 200ms seems pretty reasonable, and doesn’t seem like too much of a concern</p>
+<p>You can also use the “traces” section to discover particular cases of the method call that are particular slow:</p>
+<p><img src="http://guide.meteor.com/images/kadira-method-trace.png"></p>
+<p>In the above screenshot we’re looking at a slower example of a method call (which takes 214ms), which, when we drill in further we see is mostly taken up waiting on other actions on the user’s connection (principally waiting on the <code>searches/top</code> and <code>counts</code> publications). So we could consider looking to speed up the initial time of those subscriptions as they are slowing down searches a little in some cases.</p>
+<h4 id="kadira-livequery">Livequery Monitoring</h4>
+
+<p>A key performance characteristic of Meteor is driven by the behavior of livequery, the key technology that allows your publications to push changing data automatically in realtime. In order to achieve this, livequery needs to monitor your MongoDB instance for changes (by tailing the oplog) and decide if a given change is relevant for the given publication.</p>
+<p>If the publication is used by a lot of users, or there are a lot of changes to be compared, then these livequery observers can do a lot of work. So it’s immensely useful that Kadira can tell you some statistics about your livequery usage:</p>
+<p><img src="http://guide.meteor.com/images/kadira-observer-usage.png"></p>
+<p>In this screenshot we can see that observers are fairly steadily created and destroyed, with a pretty low amount of reuse over time, although in general they don’t survive for all that long. This would be consistent with the fact that we are looking at the <code>package</code> publication of Atmosphere which is started everytime a user visits a particular package’s page. The behavior is more or less what we would expect so we probably wouldn’t be too concerned by this information.</p>
+<h2 id="seo"><a class="anchor" href="#seo" aria-hidden="true" data-scroll="">&#x1F517;</a>Enabling SEO</h2>
+
+<p>If your application contains a lot of publicly accessible content, then you probably want it to rank well in Google and other search engines’ indexes. As most webcrawlers do not support client-side rendering (or if they do, have spotty support for websockets), it’s better to render the site on the server and deliver it as HTML in this special case.</p>
+<p>To do so, we can use the <a href="https://prerender.io" target="_blank" rel="external">Prerender.io</a> service, thanks to the <a href="https://atmospherejs.com/dfischer/prerenderio?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>dfischer:prerenderio</code></a> package. It’s as simple as <code>meteor add</code>-ing it, and optionally setting your prerender token if you have a paid prerender account and would like to enable more frequent cache changes.</p>
+<p>Chances are you want to set <code>&lt;title&gt;</code> tags and other <code>&lt;head&gt;</code> content to make your site appear nicer in search results. The best way to do so is to use the <a href="https://atmospherejs.com/kadira/dochead?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>kadira:dochead</code></a> package. The sensible place to call out to <code>DocHead</code> is from the <code>onCreated</code> callbacks of your page-level components.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>← <a href="guide-security-1.2.html">Security</a></span>
+      
+      
+        <span style="float:right"><a href="guide-build-tool-1.2.html">Build system</a> →</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/deployment.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/"></a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div><script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script></body></html>

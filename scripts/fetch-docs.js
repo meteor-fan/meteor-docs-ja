@@ -32,43 +32,63 @@
 
 var fs = require('fs');
 var path = require('path');
+var url = require('url');
 var Nightmare = require('nightmare');
 var cheerio = require('cheerio');
 
-function processResult(type, result) {
-  // a dirty hack to fix bare text nodes
-  var bareTextNodes = [
-    'Whenever the indicated event happens on the selected element, the\ncorresponding event handler function will be called with the relevant DOM\nevent object and template instance. See the [Event Maps section](#eventmaps)\nfor details.',
-    'We\'ve written our fair share of single-page JavaScript applications by hand.\nWriting an entire application in one language (JavaScript) with one\ndata format (JSON) is a real joy.  Meteor is everything we wanted\nwhen writing those apps.'
-  ];
-  bareTextNodes.forEach(function(text) {
-    result = result.replace(text, '<p>' + text + '</p>');
-  });
+function processResult(name) {
+  return function(result) {
+    // a dirty hack to fix bare text nodes
+    var bareTextNodes = [
+      'Whenever the indicated event happens on the selected element, the\ncorresponding event handler function will be called with the relevant DOM\nevent object and template instance. See the [Event Maps section](#eventmaps)\nfor details.',
+      'We\'ve written our fair share of single-page JavaScript applications by hand.\nWriting an entire application in one language (JavaScript) with one\ndata format (JSON) is a real joy.  Meteor is everything we wanted\nwhen writing those apps.'
+    ];
+    bareTextNodes.forEach(function(text) {
+      result = result.replace(text, '<p>' + text + '</p>');
+    });
 
-  var $ = cheerio.load(result);
-  var version = /\d\.(?:\d\.){1,2}\d/.exec($('h1').text());
-  $('link').each(function() {
-    $(this).attr('href', 'http://docs.meteor.com' + $(this).attr('href'));
-  });
-  $('img[src="/logo.png"]').attr('src', 'http://docs.meteor.com/logo.png');
-  $('h2, h3, h4').each(function() {
-    var oldId = $(this).attr('id');
-    if (oldId) {
-      $(this).attr('id', '/' + type + '/' + oldId);
+    var $ = cheerio.load(result);
+    var versionEle = $('#site-nav select.version-select option');
+    if (!versionEle.length) {
+      versionEle = $('h1');
     }
-  });
-  $('script').remove();
-  $('.hidden').remove();
-  $('.basic-or-full option[value!="' + type + '"]').remove();
-  fs.writeFileSync(path.join('sources', type + '-' + version + '.html'), $.html(), 'utf8');
-}
+    var version = /\d\.(?:\d\.){0,2}\d/.exec(versionEle.text());
 
-function processBasicResult(result) {
-  processResult('basic', result);
-}
+    var baseUrl;
+    if (name.lastIndexOf('guide', 0) === 0) { // name.startsWith('guide')
+      baseUrl = 'http://guide.meteor.com';
+    } else {
+      baseUrl = 'http://docs.meteor.com';
+    }
 
-function processFullResult(result) {
-  processResult('full', result);
+    $('link').each(function() {
+      $(this).attr('href', url.resolve(baseUrl, $(this).attr('href')));
+    });
+    $('img').each(function() {
+      $(this).attr('src', url.resolve(baseUrl, $(this).attr('src')));
+    });
+
+    if (name.lastIndexOf('guide', 0) === 0) { // name.startsWith('guide')
+      $('a.sidebar-link, .bottom-nav a').each(function() {
+        var oldHref = $(this).attr('href');
+        if (oldHref) {
+          $(this).attr('href', 'guide-' + oldHref.match(/(.*)\.html$/)[1] + '-' + version + '.html');
+        }
+      });
+    } else { // basic, full
+      $('h2, h3, h4').each(function() {
+        var oldId = $(this).attr('id');
+        if (oldId) {
+          $(this).attr('id', '/' + name + '/' + oldId);
+        }
+      });
+    }
+
+    $('script').remove();
+    $('.hidden').remove();
+    $('.basic-or-full option[value!="' + name + '"]').remove();
+    fs.writeFileSync(path.join('sources', name + '-' + version + '.html'), $.html(), 'utf8');
+  };
 }
 
 Nightmare()
@@ -78,9 +98,53 @@ Nightmare()
   .wait(500)
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
-  }, processBasicResult)
+  }, processResult('basic'))
   .select('.basic-or-full', 'full')
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
-  }, processFullResult)
+  }, processResult('full'))
+  .goto('http://guide.meteor.com/')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide'))
+  .goto('http://guide.meteor.com/collections.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-collections'))
+  .goto('http://guide.meteor.com/data-loading.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-data-loading'))
+  .goto('http://guide.meteor.com/methods.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-methods'))
+  .goto('http://guide.meteor.com/routing.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-routing'))
+  .goto('http://guide.meteor.com/accounts.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-accounts'))
+  .goto('http://guide.meteor.com/ui-ux.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-ui-ux'))
+  .goto('http://guide.meteor.com/blaze.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-blaze'))
+  .goto('http://guide.meteor.com/security.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-security'))
+  .goto('http://guide.meteor.com/deployment.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-deployment'))
+  .goto('http://guide.meteor.com/build-tool.html')
+  .evaluate(function() {
+    return document.documentElement.outerHTML; //jshint ignore:line
+  }, processResult('guide-build-tool'))
   .run();

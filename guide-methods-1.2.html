@@ -1,0 +1,394 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to use Methods, Meteor&apos;s remote procedure call system, to write to the database.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Methods | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    <li>
+      <a href="https://www.meteor.com">Meteor.com</a>
+    </li>
+    <li>
+      <a href="https://www.meteor.com/install">Install</a>
+    </li>
+    <li>
+      <a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a>
+    </li>
+    <li>
+      <a href="http://docs.meteor.com">Docs</a>
+    </li>
+    <li>
+      <a href="https://forums.meteor.com/">Forums</a>
+    </li>
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/">Meteor</a>
+  <span class="sub-title">The Official Guide</span>
+  <select class="version-select">
+    
+      <option value="v1.2">1.2</option>
+    
+  </select>
+  <!--
+    // Search doesn't seem to work well with this provider
+    <input class="search-box st-default-search-input">
+  -->
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+    // Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+<ul class="menu-root">
+  
+    <li>
+      <a href="guide-index-1.2.html" class="sidebar-link">
+        Introduction
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-collections-1.2.html" class="sidebar-link">
+        Collections and Schemas
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-data-loading-1.2.html" class="sidebar-link">
+        Publications and Data Loading
+      </a>
+    </li>
+  
+    <li>
+      <a href="" class="sidebar-link current">
+        Methods
+      </a>
+    <ul class="sub-menu"><li><a href="#what-is-a-method" data-scroll="" class="H2">What is a Method?</a><ul class="sub-menu"></ul></li><li><a href="#defining-and-calling" data-scroll="" class="H2">Defining and calling Methods</a><ul class="sub-menu"><li><a href="#basic" data-scroll="" class="H3">Basic Method</a></li><li><a href="#advanced-boilerplate" data-scroll="" class="H3">Advanced Method boilerplate</a></li><li><a href="#validated-method" data-scroll="" class="H3">Advanced Methods with mdg:validated-method</a></li></ul></li><li><a href="#errors" data-scroll="" class="H2">Error handling</a><ul class="sub-menu"><li><a href="#throwing-errors" data-scroll="" class="H3">Throwing errors from a Method</a></li><li><a href="#handling-errors" data-scroll="" class="H3">Handling errors</a></li><li><a href="#throw-stub-exceptions" data-scroll="" class="H3">Errors in Method simulation</a></li></ul></li><li><a href="#method-form" data-scroll="" class="H2">Calling a Method from a form</a><ul class="sub-menu"></ul></li><li><a href="#loading-data" data-scroll="" class="H2">Loading data with Methods</a><ul class="sub-menu"></ul></li><li><a href="#advanced" data-scroll="" class="H2">Advanced concepts</a><ul class="sub-menu"><li><a href="#call-lifecycle" data-scroll="" class="H3">Method call lifecycle</a></li><li><a href="#methods-vs-rest" data-scroll="" class="H3">Benefits of Methods over REST</a></li><li><a href="#calling-method-from-method" data-scroll="" class="H3">Calling a Method from another Method</a></li><li><a href="#consistent-id-generation" data-scroll="" class="H3">Consistent ID generation and optimistic UI</a></li><li><a href="#retries" data-scroll="" class="H3">Method retries</a></li><li><a href="#comparison-with-allow-deny" data-scroll="" class="H3">Historical comparison with allow/deny</a></li></ul></li></ul></li>
+  
+    <li>
+      <a href="guide-routing-1.2.html" class="sidebar-link">
+        URLs and Routing
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-accounts-1.2.html" class="sidebar-link">
+        Users and Accounts
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-ui-ux-1.2.html" class="sidebar-link">
+        User Interfaces
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-blaze-1.2.html" class="sidebar-link">
+        Blaze
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-security-1.2.html" class="sidebar-link">
+        Security
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-deployment-1.2.html" class="sidebar-link">
+        Deployment and Monitoring
+      </a>
+    </li>
+  
+    <li>
+      <a href="guide-build-tool-1.2.html" class="sidebar-link">
+        Build system
+      </a>
+    </li>
+  
+</ul>
+
+  </div>
+  <div id="content">
+    <h1>Methods</h1>
+    <p>After reading this article, you’ll know:</p>
+<ol>
+<li>What Methods are in Meteor and how they work in detail.</li>
+<li>Best practices for defining and calling Methods.</li>
+<li>How to throw and handle errors with Methods.</li>
+<li>How to call a Method from a form.</li>
+</ol>
+<h2 id="what-is-a-method"><a class="anchor" href="#what-is-a-method" aria-hidden="true" data-scroll="">&#x1F517;</a>What is a Method?</h2>
+
+<p>Methods are Meteor’s remote procedure call (RPC) system, used to save user input events and data that come from the client. If you’re familiar with REST APIs or HTTP, you can think of them like POST requests to your server, but with many nice features optimized for building a modern web application. Later on in this article, we’ll go into detail about some of the benefits you get from Methods that you wouldn’t get from an HTTP endpoint.</p>
+<p>At its core, a Method is an API endpoint for your server; you can define a Method on the server and its counterpart on the client, then call it with some data, write to the database, and get the return value in a callback. Meteor Methods are also tightly integrated with the pub/sub and data loading systems of Meteor to allow for <a href="http://info.meteor.com/blog/optimistic-ui-with-meteor-latency-compensation" target="_blank" rel="external">Optimistic UI</a> - the ability to simulate server-side actions on the client to make your app feel faster than it actually is.</p>
+<p>We’ll be referring to Meteor Methods with a capital M to differentiate them from class methods in JavaScript.</p>
+<h2 id="defining-and-calling"><a class="anchor" href="#defining-and-calling" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining and calling Methods</h2>
+
+<h3 id="basic"><a class="anchor" href="#basic" aria-hidden="true" data-scroll="">&#x1F517;</a>Basic Method</h3>
+
+<p>In a basic app, defining a Meteor Method is as simple as defining a function. In a complex app, you want a few extra features to make Methods more powerful and easily testable. First, we’re going to go over how to define a Method using the Meteor core API, and in a later section we’ll go over how to use a helpful wrapper package we’ve created to enable a more powerful Method workflow.</p>
+<h4 id="basic-defining">Defining</h4>
+
+<p>Here’s how you can use the built-in <a href="http://docs.meteor.com/#/full/meteor_methods" target="_blank" rel="external"><code>Meteor.methods</code> API</a> to define a Method. Note that Methods should always be defined in common code loaded on the client and the server to enable Optimistic UI. If you have some secret code in your Method, consult the <a href="security.md#secret-code">Security article</a> for how to hide it from the client.</p>
+<p>This example uses the <code>aldeed:simple-schema</code> package, which is recommended in several other articles, to validate the Method arguments.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Meteor.methods({</span><br><span class="line">  <span class="string">&apos;Todos.methods.updateText&apos;</span>({ todoId, newText }) {</span><br><span class="line">    <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">      todoId: { type: <span class="built_in">String</span> },</span><br><span class="line">      newText: { type: <span class="built_in">String</span> }</span><br><span class="line">    }).validate({ todoId, newText });</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> todo = Todos.findOne(todoId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!todo.editableBy(<span class="keyword">this</span>.userId)) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;Todos.methods.updateText.unauthorized&apos;</span>,</span><br><span class="line">        <span class="string">&apos;Cannot edit todos in a private list that is not yours&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Todos.update(todoId, {</span><br><span class="line">      $set: { text: newText }</span><br><span class="line">    });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="basic-calling">Calling</h4>
+
+<p>This Method is callable from the client and server using <a href="http://docs.meteor.com/#/full/meteor_call" target="_blank" rel="external"><code>Meteor.call</code></a>. Note that you should only use a Method in the case where some code needs to be callable from the client; if you just want to modularize code that is only going to be called from the server, use a regular JavaScript function, not a Method.</p>
+<p>Here’s how you can call this Method from the client:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Meteor.call(<span class="string">&apos;Todos.methods.updateText&apos;</span>, {</span><br><span class="line">  todoId: <span class="string">&apos;12345&apos;</span>,</span><br><span class="line">  newText: <span class="string">&apos;This is a todo item.&apos;</span></span><br><span class="line">}, (err, res) =&gt; {</span><br><span class="line">  <span class="keyword">if</span> (err) {</span><br><span class="line">    alert(err);</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// success!</span></span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>If the Method throws an error, you get that in the first argument of the callback. If the Method succeeds, you get the result in the second argument and the first argument <code>err</code> will be <code>undefined</code>. For more information about errors, see the section below about error handling.</p>
+<h3 id="advanced-boilerplate"><a class="anchor" href="#advanced-boilerplate" aria-hidden="true" data-scroll="">&#x1F517;</a>Advanced Method boilerplate</h3>
+
+<p>Meteor Methods have several features which aren’t immediately obvious, but every complex app will need them at some point. These features were added incrementally over several years in a backwards-compatible fashion, so unlocking the full capabilities of Methods requires a good amount of boilerplate. In this article we will first show you all of the code you need to write for each feature, then the next section will talk about a Method wrapper package we have developed to make it easier.</p>
+<p>Here’s some of the functionality an ideal Method would have:</p>
+<ol>
+<li>Run validation code by itself without running the Method body.</li>
+<li>Easily override the Method for testing.</li>
+<li>Easily call the Method with a custom user ID, especially in tests (as recommended by the <a href="https://www.discovermeteor.com/blog/meteor-pattern-two-tiered-methods/" target="_blank" rel="external">Discover Meteor two-tiered methods pattern</a>).</li>
+<li>Refer to the Method via JS module rather than a magic string.</li>
+<li>Get the Method simulation return value to get IDs of inserted documents.</li>
+<li>Avoid calling the server-side Method if the client-side validation failed, so we don’t waste server resources.</li>
+</ol>
+<h4 id="advanced-boilerplate-defining">Defining</h4>
+
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Define a namespace for Methods related to the Todos collection</span></span><br><span class="line"><span class="comment">// Allows overriding for tests by replacing the implementation (2)</span></span><br><span class="line">Todos.methods = {};</span><br><span class="line"></span><br><span class="line">Todos.methods.updateText = {</span><br><span class="line">  name: <span class="string">&apos;Todos.methods.updateText&apos;</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Factor out validation so that it can be run independently (1)</span></span><br><span class="line">  validate(args) {</span><br><span class="line">    <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">      todoId: { type: <span class="built_in">String</span> },</span><br><span class="line">      newText: { type: <span class="built_in">String</span> }</span><br><span class="line">    }).validate(args)</span><br><span class="line">  },</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Factor out Method body so that it can be called independently (3)</span></span><br><span class="line">  run({ todoId, newText }) {</span><br><span class="line">    <span class="keyword">const</span> todo = Todos.findOne(todoId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!todo.editableBy(<span class="keyword">this</span>.userId)) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;Todos.methods.updateText.unauthorized&apos;</span>,</span><br><span class="line">        <span class="string">&apos;Cannot edit todos in a private list that is not yours&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Todos.update(todoId, {</span><br><span class="line">      $set: { text: newText }</span><br><span class="line">    });</span><br><span class="line">  },</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Call Method by referencing the JS object (4)</span></span><br><span class="line">  <span class="comment">// Also, this lets us specify Meteor.apply options once in</span></span><br><span class="line">  <span class="comment">// the Method implementation, rather than requiring the caller</span></span><br><span class="line">  <span class="comment">// to specify it at the call site.</span></span><br><span class="line">  call(args, callback) {</span><br><span class="line">    <span class="keyword">const</span> options = {</span><br><span class="line">      returnStubValue: <span class="literal">true</span>,     <span class="comment">// (5)</span></span><br><span class="line">      throwStubExceptions: <span class="literal">true</span>  <span class="comment">// (6)</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Meteor.apply(<span class="keyword">this</span>.name, [args], options, callback);</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="comment">// Actually register the method with Meteor&apos;s DDP system</span></span><br><span class="line">Meteor.methods({</span><br><span class="line">  [Todos.methods.updateText.name]: <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>{</span><br><span class="line">    Todos.methods.updateText.validate.call(<span class="keyword">this</span>, args);</span><br><span class="line">    Todos.methods.updateText.run.call(<span class="keyword">this</span>, args);</span><br><span class="line">  }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="advanced-boilerplate-calling">Calling</h4>
+
+<p>Now calling the Method is as simple as calling a JavaScript function:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Call the Method</span></span><br><span class="line">Todos.methods.updateText.call({</span><br><span class="line">  todoId: <span class="string">&apos;12345&apos;</span>,</span><br><span class="line">  newText: <span class="string">&apos;This is a todo item.&apos;</span></span><br><span class="line">}, (err, res) =&gt; {</span><br><span class="line">  <span class="keyword">if</span> (err) {</span><br><span class="line">    alert(err);</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// success!</span></span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call the validation only</span></span><br><span class="line">Todos.methods.updateText.validate({ wrong: <span class="string">&apos;args&apos;</span>});</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call the Method with custom userId in a test</span></span><br><span class="line">Todos.methods.updateText.run.call({ userId: <span class="string">&apos;abcd&apos;</span> }, {</span><br><span class="line">  todoId: <span class="string">&apos;12345&apos;</span>,</span><br><span class="line">  newText: <span class="string">&apos;This is a todo item.&apos;</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>As you can see, this approach to calling Methods results in a better development workflow - you can more easily deal with the different parts of the Method separately and test your code more easily without having to deal with Meteor internals. But this approach requires you to write a lot of boilerplate on the Method definition side.</p>
+<h3 id="validated-method"><a class="anchor" href="#validated-method" aria-hidden="true" data-scroll="">&#x1F517;</a>Advanced Methods with mdg:validated-method</h3>
+
+<p>To alleviate some of the boilerplate that’s involved in correct Method definitions, we’ve published a wrapper package called <code>mdg:validated-method</code> that does most of this for you. Here’s the same Method as above, but defined with the package:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Todos.methods.updateText = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  name: <span class="string">&apos;Todos.methods.updateText&apos;</span>,</span><br><span class="line">  validate: <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    todoId: { type: <span class="built_in">String</span> },</span><br><span class="line">    newText: { type: <span class="built_in">String</span> }</span><br><span class="line">  }).validator(),</span><br><span class="line">  run({ todoId, newText }) {</span><br><span class="line">    <span class="keyword">const</span> todo = Todos.findOne(todoId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!todo.editableBy(<span class="keyword">this</span>.userId)) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;Todos.methods.updateText.unauthorized&apos;</span>,</span><br><span class="line">        <span class="string">&apos;Cannot edit todos in a private list that is not yours&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Todos.update(todoId, {</span><br><span class="line">      $set: { text: newText }</span><br><span class="line">    });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You call it the same way you call the advanced Method above, but the Method definition is significantly simpler. We believe this style of Method lets you clearly see the important parts - the name of the Method sent over the wire, the format of the expected arguments, and the JavaScript namespace by which the Method can be referenced.</p>
+<h2 id="errors"><a class="anchor" href="#errors" aria-hidden="true" data-scroll="">&#x1F517;</a>Error handling</h2>
+
+<p>In regular JavaScript functions, you indicate errors by throwing an <code>Error</code> object. Throwing errors from Meteor Methods works almost the same way, but a bit of complexity is introduced by the fact that in some cases the error object will be sent over a websocket back to the client.</p>
+<h3 id="throwing-errors"><a class="anchor" href="#throwing-errors" aria-hidden="true" data-scroll="">&#x1F517;</a>Throwing errors from a Method</h3>
+
+<p>Meteor introduces two new types of JavaScript errors: <a href="http://docs.meteor.com/#/full/meteor_error" target="_blank" rel="external"><code>Meteor.Error</code></a> and <a href="https://atmospherejs.com/mdg/validation-error?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.5.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>ValidationError</code></a>. These and the regular JavaScript <code>Error</code> type should be used in different situations:</p>
+<h4 id="internal-server-errors">Regular <code>Error</code> for internal server errors</h4>
+
+<p>When you have an error that doesn’t need to be reported to the client, but is internal to the server, throw a regular JavaScript error object. This will be reported to the client as a totally opaque internal server error with no details.</p>
+<h4 id="meteor-error">Meteor.Error for general runtime errors</h4>
+
+<p>When the server was not able to complete the user’s desired action because of a known condition, you should throw a descriptive <code>Meteor.Error</code> object to the client. In the Todos example app, we use these to report situations where the current user is not authorized to complete a certain action, or where the action is not allowed within the app - for example, deleting the last public list.</p>
+<p><code>Meteor.Error</code> takes three arguments: <code>error</code>, <code>reason</code>, and <code>details</code>.</p>
+<ol>
+<li><code>error</code> should be a short, unique, machine-readable error code string that the client can interpret to understand what happened. It’s good to prefix this with the name of the Method for easy internationalization, for example: <code>&apos;Todos.methods.updateText.unauthorized&apos;</code>.</li>
+<li><code>reason</code> should be a short description of the error for the developer. It should give your coworker enough information to be able to debug the error. The <code>reason</code> parameter should not be printed to the end user directly, since this means you now have to do internationalization on the server before sending the error message, and the UI developer has to worry about the Method implementation when thinking about what will be displayed in the UI.</li>
+<li><code>details</code> is optional, and can be used where extra data will help the client understand what is wrong. In particular, it can be combined with the <code>error</code> field to print a more helpful error message to the end user.</li>
+</ol>
+<h4 id="validation-error">ValidationError for argument validation errors</h4>
+
+<p>When a Method call fails because the arguments are of the wrong type, it’s good to throw a <code>ValidationError</code>. This works just like <code>Meteor.Error</code>, but is a custom constructor that enforces a standard error format that can be read by different form and validation libraries. In particular, if you are calling this Method from a form, throwing a <code>ValidationError</code> will make it easy to display nice error messages next to particular fields in the form.</p>
+<p>When you use <code>mdg:validated-method</code> with <code>aldeed:simple-schema</code> as demonstrated above, this type of error is thrown for you.</p>
+<p>Read more about the error format in the <a href="https://atmospherejs.com/mdg/validation-error?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.5.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>mdg:validation-error</code> docs</a>.</p>
+<h3 id="handling-errors"><a class="anchor" href="#handling-errors" aria-hidden="true" data-scroll="">&#x1F517;</a>Handling errors</h3>
+
+<p>When you call a Method, any errors thrown by it will be returned in the callback. At this point, you should identify which error type it is and display the appropriate message to the user. In this case, it is unlikely that the Method will throw a <code>ValidationError</code> or an internal server error, so we will only handle the unauthorized error:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Call the Method</span></span><br><span class="line">Todos.methods.updateText.call({</span><br><span class="line">  todoId: <span class="string">&apos;12345&apos;</span>,</span><br><span class="line">  newText: <span class="string">&apos;This is a todo item.&apos;</span></span><br><span class="line">}, (err, res) =&gt; {</span><br><span class="line">  <span class="keyword">if</span> (err) {</span><br><span class="line">    <span class="keyword">if</span> (err.error === <span class="string">&apos;Todos.methods.updateText.unauthorized&apos;</span>) {</span><br><span class="line">      <span class="comment">// Displaying an alert is probably not what you would do in</span></span><br><span class="line">      <span class="comment">// a real app; you should have some nice UI to display this</span></span><br><span class="line">      <span class="comment">// error, and probably use an i18n library to generate the</span></span><br><span class="line">      <span class="comment">// message from the error code.</span></span><br><span class="line">      alert(<span class="string">&apos;You aren\&apos;t allowed to edit this todo item&apos;</span>);</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">      <span class="comment">// Unexpected error, handle it in the UI somehow</span></span><br><span class="line">    }</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// success!</span></span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>We’ll talk about how to handle the <code>ValidationError</code> in the section on forms below.</p>
+<h3 id="throw-stub-exceptions"><a class="anchor" href="#throw-stub-exceptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Errors in Method simulation</h3>
+
+<p>When a Method is called, it usually runs twice—once on the client to simulate the result for Optimistic UI, and again on the server to make the actual change to the database. This means that if your Method throws an error, it will likely fail on the client <em>and</em> the server. For this reason, <code>ValidatedMethod</code> turns on undocumented option in Meteor to avoid calling the server-side implementation if the simulation throws an error.</p>
+<p>While this behavior is good for saving server resources in cases where a Method will certainly fail, it’s important to make sure that the simulation doesn’t throw an error in cases where the server Method would have succeeded (for example, if you didn’t load some data on the client that the Method needs to do the simulation properly). In this case, you can wrap server-side-only logic in a block that checks for a method simulation:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="keyword">this</span>.isSimulation) {</span><br><span class="line">  <span class="comment">// Logic that depends on server environment here</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="method-form"><a class="anchor" href="#method-form" aria-hidden="true" data-scroll="">&#x1F517;</a>Calling a Method from a form</h2>
+
+<p>The main thing enabled by the <code>ValidationError</code> convention is simple integration between Methods and the forms that call them. In general, your app is likely to have a one-to-one mapping of forms in the UI to Methods. First, let’s define a Method for our business logic:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This Method encodes the form validation requirements.</span></span><br><span class="line"><span class="comment">// By defining them in the Method, we do client and server-side</span></span><br><span class="line"><span class="comment">// validation in one place.</span></span><br><span class="line">Invoices.methods.insert = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  name: <span class="string">&apos;Invoices.methods.insert&apos;</span>,</span><br><span class="line">  validate: <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    email: { type: <span class="built_in">String</span>, regEx: SimpleSchema.RegEx.Email },</span><br><span class="line">    description: { type: <span class="built_in">String</span>, min: <span class="number">5</span> },</span><br><span class="line">    amount: { type: <span class="built_in">String</span>, regEx: <span class="regexp">/^\d*\.(\d\d)?$/</span> }</span><br><span class="line">  }).validator(),</span><br><span class="line">  run(newInvoice) {</span><br><span class="line">    <span class="comment">// In here, we can be sure that the newInvoice argument is</span></span><br><span class="line">    <span class="comment">// validated.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.userId) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;Invoices.methods.insert.not-logged-in&apos;</span>,</span><br><span class="line">        <span class="string">&apos;Must be logged in to create an invoice.&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Invoices.insert(newInvoice)</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Let’s define a simple HTML form:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Invoices_newInvoice&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">&quot;Invoices_newInvoice&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;email&quot;</span>&gt;</span>Recipient email<span class="tag">&lt;/<span class="title">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">&quot;email&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;email&quot;</span> /&gt;</span></span><br><span class="line">    {{#each error in errors &quot;email&quot;}}</span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;form-error&quot;</span>&gt;</span>{{error}}<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    {{/each}}</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;description&quot;</span>&gt;</span>Item description<span class="tag">&lt;/<span class="title">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">&quot;text&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;description&quot;</span> /&gt;</span></span><br><span class="line">    {{#each error in errors &quot;description&quot;}}</span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;form-error&quot;</span>&gt;</span>{{error}}<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    {{/each}}</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">&quot;amount&quot;</span>&gt;</span>Amount owed<span class="tag">&lt;/<span class="title">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">&quot;text&quot;</span> <span class="attribute">name</span>=<span class="value">&quot;amount&quot;</span> /&gt;</span></span><br><span class="line">    {{#each error in errors &quot;amount&quot;}}</span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;form-error&quot;</span>&gt;</span>{{error}}<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    {{/each}}</span><br><span class="line">  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Now, let’s write some JavaScript to handle this form nicely:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Template.Invoices_newInvoice.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.errors = <span class="keyword">new</span> ReactiveDict();</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">Template.Invoices_newInvoice.helpers({</span><br><span class="line">  errors(fieldName) {</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.errors.get(fieldName);</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">Template.Invoices_newInvoice.events({</span><br><span class="line">  <span class="string">&apos;submit .Invoices_newInvoice&apos;</span>(event) {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> data = {</span><br><span class="line">      email: event.target.email.value,</span><br><span class="line">      description: event.target.description.value,</span><br><span class="line">      amount: event.target.amount.value</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    Invoices.methods.insert.call(data, (err, res) =&gt; {</span><br><span class="line">      <span class="keyword">if</span> (err) {</span><br><span class="line">        <span class="keyword">if</span> (err.error === <span class="string">&apos;validation-error&apos;</span>) {</span><br><span class="line">          <span class="comment">// Initialize error object</span></span><br><span class="line">          <span class="keyword">const</span> errors = {</span><br><span class="line">            email: [],</span><br><span class="line">            description: [],</span><br><span class="line">            amount: []</span><br><span class="line">          };</span><br><span class="line"></span><br><span class="line">          <span class="comment">// Go through validation errors returned from Method</span></span><br><span class="line">          err.details.forEach((fieldError) =&gt; {</span><br><span class="line">            <span class="comment">// <span class="label">XXX i18n</span></span></span><br><span class="line">            errors[fieldError.name].push(fieldError.type);</span><br><span class="line">          });</span><br><span class="line"></span><br><span class="line">          <span class="comment">// Update ReactiveDict, errors will show up in the UI</span></span><br><span class="line">          instance.errors.set(errors);</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>As you can see, there is a fair amount of boilerplate to handle errors nicely in a form, but most of it can be easily abstracted by an off-the-shelf form framework or a simple application-specific wrapper of your own design. The final released version of the Meteor guide will have a new article about forms.</p>
+<h2 id="loading-data"><a class="anchor" href="#loading-data" aria-hidden="true" data-scroll="">&#x1F517;</a>Loading data with Methods</h2>
+
+<p>Since Methods can work as general purpose RPCs, they can also be used to fetch data instead of publications. There are some advantages and some disadvantages to this approach compared with loading data through publications, and at the end of the day we recommend always using publications to load data.</p>
+<p>Methods can be useful to fetch the result of a complex computation from the server that doesn’t need to update when the server data changes. The biggest disadvantage of fetching data through Methods is that the data won’t be automatically loaded into Minimongo, Meteor’s client-side data cache, so you’ll need to manage the lifecycle of that data manually.</p>
+<h4 id="local-collection">Using a local collection to store and display data fetched from a Method</h4>
+
+<p>Collections are a very convenient way of storing data on the client side. If you’re fetching data using something other than subscriptions, you can put it in a collection manually. Let’s look at an example where we have a complex algorithm for calculating average scores from a series of games for a number of players. We don’t want to use a publication to load this data because we want to control exactly when it runs, and don’t want the data to be cached automatically.</p>
+<p>First, you need to create a <em>local collection</em> - this is a collection that exists only on the client side and is not tied to a database collection on the server. Read more in the <a href="http://guide.meteor.com/collections.html#local-collections">Collections article</a>.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In client-side code, declare a local collection</span></span><br><span class="line"><span class="comment">// by passing `null` as the argument</span></span><br><span class="line">ScoreAverages = <span class="keyword">new</span> Mongo.Collection(<span class="literal">null</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>Now, if you fetch data using a Method, you can put into this collection:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateAverages</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="comment">// Clean out result cache</span></span><br><span class="line">  ScoreAverages.remove({});</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Call a Method that does an expensive computation</span></span><br><span class="line">  Games.methods.calculateAverages.call((err, res) =&gt; {</span><br><span class="line">    res.forEach((item) =&gt; {</span><br><span class="line">      ScoreAverages.insert(item);</span><br><span class="line">    });</span><br><span class="line">  });</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>We can now use the data from the local collection <code>ScoreAverages</code> inside a UI component exactly the same way we would use a regular MongoDB collection. Instead of it updating automatically, we’ll need to call <code>updateAverages</code> every time we need new results.</p>
+<h2 id="advanced"><a class="anchor" href="#advanced" aria-hidden="true" data-scroll="">&#x1F517;</a>Advanced concepts</h2>
+
+<p>While you can easily use Methods in a simple app by following the Meteor introductory tutorial, it’s important to understand exactly how they work to use them effectively in a production app. One of the downsides of using a framework like Meteor that does a lot for you under the hood is that you don’t always understand what is going on, so it’s good to learn some of the core concepts.</p>
+<h3 id="call-lifecycle"><a class="anchor" href="#call-lifecycle" aria-hidden="true" data-scroll="">&#x1F517;</a>Method call lifecycle</h3>
+
+<p>Here’s exactly what happens, in order, when a Method is called:</p>
+<h4 id="lifecycle-simulation">1. Method simulation runs on the client</h4>
+
+<p>If we defined this Method in client and server code, as all Methods should be, a Method simulation is executed in the client that called it.</p>
+<p>The client enters a special mode where it tracks all changes made to client-side collections, so that they can be rolled back later. When this step is complete, the user of your app sees their UI update instantly with the new content of the client-side database, but the server hasn’t received any data yet.</p>
+<p>If an exception is thrown from the Method simulation, then by default Meteor ignores it and continues to step (2). If you are using <code>ValidatedMethod</code> or pass a special <code>throwStubExceptions</code> option to <code>Meteor.apply</code>, then an exception thrown from the simulation will stop the server-side Method from running at all.</p>
+<p>The return value of the Method simulation is discarded, unless the <code>returnStubValue</code> option is passed when calling the Method, in which case it is returned to the Method caller. ValidatedMethod passes this option by default.</p>
+<h4 id="lifecycle-ddp-message">2. A <code>method</code> DDP message is sent to the server</h4>
+
+<p>The Meteor client constructs a DDP message to send to the server. This includes the Method name, arguments, and an automatically generated Method ID that represents this particular Method invocation.</p>
+<h4 id="lifecycle-server">3. Method runs on the server</h4>
+
+<p>When the server receives the message, it executes the Method code again on the server. The client side version was a simulation that will be rolled back later, but this time it’s the real version that is writing to the actual database. Running the actual Method logic on the server is crucial because the server is a trusted environment where we know that security-critical code will run the way we expect.</p>
+<h4 id="lifecycle-result">4. Return value is sent to the client</h4>
+
+<p>Once the Method has finished running on the server, it sends a <code>result</code> message to the client with the Method ID generated in step 2, and the return value itself. The client stores this for later use, but <em>doesn’t call the Method callback yet</em>. If you pass the <a href="http://docs.meteor.com/#/full/meteor_apply" target="_blank" rel="external"><code>onResultReceived</code> option to <code>Meteor.apply</code></a>, that callback is fired.</p>
+<h4 id="lifecycle-publications">5. Any DDP publications affected by the Method are updated</h4>
+
+<p>If we have any publications on the page that have been affected by the database writes from this Method, the server sends the appropriate updates to the client. Note that the client data system doesn’t reveal these updates to the app UI until the next step.</p>
+<h4 id="lifecycle-updated">6. <code>updated</code> message sent to the client, data replaced with server result, Method callback fires</h4>
+
+<p>After the relevant data updates have been sent to the correct client, the server sends back the last message in the Method life cycle - the DDP <code>updated</code> message with the relevant Method ID. The client rolls back any changes to client side data made in the Method simulation in step 1, and replaces them with the actual changes sent from the server in step 5.</p>
+<p>Lastly, the callback passed to <code>Meteor.call</code> actually fires with the return value from step 4. It’s important that the callback waits until the client is up to date, so that your Method callback can assume that the client state reflects any changes done inside the Method.</p>
+<h4 id="lifecycle-error">Error case</h4>
+
+<p>In the list above, we didn’t cover the case when the Method execution on the server throws an error. In that case, there is no return value, and the client gets an error instead. The Method callback is fired instantly with the returned error as the first argument. Read more about error handling in the section about errors below.</p>
+<h3 id="methods-vs-rest"><a class="anchor" href="#methods-vs-rest" aria-hidden="true" data-scroll="">&#x1F517;</a>Benefits of Methods over REST</h3>
+
+<p>We believe Methods provide a much better primitive for building modern applications than REST endpoints built on HTTP. Let’s go over some of the things you get for free with Methods that you would have to worry about if using HTTP. The purpose of this section is not to convince you that REST is bad - it’s just to remind you that you don’t need to handle these things yourself in a Meteor app.</p>
+<h4 id="non-blocking">Methods use synchronous-style APIs, but are non-blocking</h4>
+
+<p>You may notice in the example Method above, we didn’t need to write any callbacks when interacting with MongoDB, but the Method still has the non-blocking properties that people associate with Node.js and callback-style code. Meteor uses a coroutine library called <a href="https://github.com/laverdet/node-fibers" target="_blank" rel="external">Fibers</a> to enable you to write code that uses return values and throws errors, and avoid dealing with lots of nested callbacks.</p>
+<h4 id="ordered">Methods always run and return in order</h4>
+
+<p>When accessing a REST API, you will sometimes run into a situation where you make two requests one after the other, but the results arrive out of order. Meteor’s underlying machinery makes sure this never happens with Methods. When multiple Method calls are received <em>from the same client</em>, Meteor runs each Method to completion before starting the next one. If you need to disable this functionality for one particularly long-running Method, you can use <a href="http://docs.meteor.com/#/full/method_unblock" target="_blank" rel="external"><code>this.unblock()</code></a> to allow the next Method to run while the current one is still in progress. Also, since Meteor is based on Websockets instead of HTTP, all Method calls and results are guaranteed to arrive in the order they are sent. You can also pass a special option <code>wait: true</code> to <code>Meteor.apply</code> to wait to send a particular Method until all others have returned, and not send any other Methods until this one returns.</p>
+<h4 id="change-tracking">Change tracking for Optimistic UI</h4>
+
+<p>When Method simulations and server-side executions run, Meteor tracks any resulting changes to the database. This is what lets the Meteor data system roll back the changes from the Method simulation and replace them with the actual writes from the server. Without this automatic database tracking, it would be very difficult to implement a correct Optimistic UI system.</p>
+<h3 id="calling-method-from-method"><a class="anchor" href="#calling-method-from-method" aria-hidden="true" data-scroll="">&#x1F517;</a>Calling a Method from another Method</h3>
+
+<p>Sometimes, you’ll want to call a Method from another Method. Perhaps you already have some functionality implemented and you want to add a wrapper that fills in some of the arguments automatically. This is a totally fine pattern, and Meteor does some nice things for you:</p>
+<ol>
+<li>Inside a client-side Method simulation, calling another Method doesn’t fire off an extra request to the server - the assumption is that the server-side implementation of the Method will do it. However, it does run the <em>simulation</em> of the called Method, so that the simulation on the client closely matches what will happen on the server.</li>
+<li>Inside a Method execution on the server, calling another Method runs that Method as if it were called by the same client. That means the Method runs as usual, and the context - <code>userId</code>, <code>connection</code>, etc - are taken from the original Method call.</li>
+</ol>
+<h3 id="consistent-id-generation"><a class="anchor" href="#consistent-id-generation" aria-hidden="true" data-scroll="">&#x1F517;</a>Consistent ID generation and optimistic UI</h3>
+
+<p>When you insert documents into Minimongo from the client-side simulation of a Method, the <code>_id</code> field of each document is a random string. When the Method call is executed on the server, the IDs are generated again before being inserted into the database. If it were implemented naively, it could mean that the IDs generated on the server are different, which would cause undesirable flickering and re-renders in the UI when the Method simulation was rolled back and replaced with the server data. But this is not the case in Meteor!</p>
+<p>Each Meteor Method invocation shares a random generator seed with the client that called the Method, so any IDs generated by the client and server Methods are guaranteed to be the same. This means you can safely use the IDs generated on the client to do things while the Method is being sent to the server, and be confident that the IDs will be the same when the Method finishes. One case where this is particularly useful is if you want to create a new document in the database, then immediately redirect to a URL that contains that new document’s ID.</p>
+<h3 id="retries"><a class="anchor" href="#retries" aria-hidden="true" data-scroll="">&#x1F517;</a>Method retries</h3>
+
+<p>If you call a Method from the client, and the user’s Internet connection disconnects before the result is received, Meteor assumes that the Method didn’t actually run. When the connection is re-established, the Method call will be sent again. This means that, in certain situations, Methods can be sent more than once. This should only happen very rarely, but in the case where an extra Method call could have negative consequences it is worth putting in extra effort to ensure that Methods are idempotent - that is, calling them multiple times doesn’t result in additional changes to the database.</p>
+<p>Many Method operations are idempotent by default. Inserts will throw an error if they happen twice because the generated ID will conflict. Removes on collections won’t do anything the second time, and most update operators like <code>$set</code> will have the same result if run again. The only places you need to worry about code running twice are MongoDB update operators that stack, like <code>$inc</code> and <code>$push</code>, and calls to external APIs.</p>
+<h3 id="comparison-with-allow-deny"><a class="anchor" href="#comparison-with-allow-deny" aria-hidden="true" data-scroll="">&#x1F517;</a>Historical comparison with allow/deny</h3>
+
+<p>The Meteor core API includes an alternative to Methods for manipulating data from the client. Instead of explicitly defining Methods with specific arguments, you can instead call <code>insert</code>, <code>update</code>, and <code>remove</code> directly from the client and specify security rules with <a href="http://docs.meteor.com/#/full/allow" target="_blank" rel="external"><code>allow</code></a> and <a href="http://docs.meteor.com/#/full/deny" target="_blank" rel="external"><code>deny</code></a>. In the Meteor Guide, we are taking a strong position that this feature should be avoided and Methods used instead. Read more about the problems with allow/deny in the <a href="security.html#allow-deny">Security article</a>.</p>
+<p>Historically, there have been some misconceptions about the features of Meteor Methods as compared with the allow/deny feature, including that it was more difficult to achieve Optimistic UI when using Methods. However, the client-side <code>insert</code>, <code>update</code>, and <code>remove</code> feature is actually implemented <em>on top of</em> Methods, so Methods are strictly more powerful. You get great default Optimistic UI just by defining your Method code on the client and the server, as described in the Method lifecycle section above.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>← <a href="guide-data-loading-1.2.html">Publications and Data Loading</a></span>
+      
+      
+        <span style="float:right"><a href="guide-routing-1.2.html">URLs and Routing</a> →</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/methods.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/"></a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div><script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script></body></html>

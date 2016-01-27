@@ -70,22 +70,6 @@
       
   
     <h2>
-        <a href="#/full/sevenprinciples" class="">
-          Seven principles
-        </a>
-      </h2>
-  
-  
-  
-  
-  
-    
-  
-    
-    
-      
-  
-    <h2>
         <a href="#/full/resources" class="">
           Resources
         </a>
@@ -106,22 +90,6 @@
         </a>
       </h1>
   
-  
-  
-  
-  
-  
-    
-  
-    
-    
-      
-  
-    <h2>
-        <a href="#/full/whatismeteor" class="">
-          What is Meteor?
-        </a>
-      </h2>
   
   
   
@@ -4269,7 +4237,7 @@
   
   
     <h3>
-        <a href="https://atmospherejs.com/meteor/spiderable?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591" class="">
+        <a href="https://atmospherejs.com/meteor/spiderable?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.1.1453870867155&amp;__hsfp=1614345591" class="">
           spiderable
         </a>
       </h3>
@@ -4683,34 +4651,6 @@
           <div id="introduction">
 <!-- clicking this anchor in the left bar should scroll to top of doc,
 not here -->
-<!-- XXX by: (three headshot thumbnails w names) -->
-
-<p><b><em class="original">Meteor is an ultra-simple environment for building modern websites.
-What once took weeks, even with the best tools, now takes hours with
-Meteor.</em>
-<em class="translation">MeteorはモダンなWebサイトを作るためのとてもシンプルな環境です。従来、優れたツールを使っても何週間もかかっていたものがMeteorでは数時間になります。</em></b></p>
-
-<p class="original">The web was originally designed to work in the same way that mainframes
-worked in the 70s.  The application server rendered a screen and sent it
-over the network to a dumb terminal. Whenever the user did anything,
-that server rerendered a whole new screen. This model served the Web
-well for over a decade. It gave rise to LAMP, Rails, Django, PHP.</p>
-<p class="translation">Webはもともとは70年代のメインフレームと同じように動くように設計されました。アプリケーションサーバが描画した画面をネットワーク経由で端末に表示させます。ユーザが何かしたらサーバが画面全体を再描画します。このモデルは10年にわたってWebに残りました。そのため、LAMPやRailsやDjangoやPHPが伸びたのです。</p>
-
-<p class="original">But the best teams, with the biggest budgets and the longest schedules,
-now build applications in JavaScript that run on the client.  These apps
-have stellar interfaces.  They don&apos;t reload pages.  They are reactive:
-changes from any client immediately appear on everyone&apos;s screen.</p>
-<p class="translation">しかし、優れたチームが大きな予算と長い開発期間をかけて、今ではクライアントで動作するJavaScriptアプリケーションを開発するようになりました。そのアプリケーションはすばらしいインタフェースを備えました。ページをリロードする必要がないのです。それらはリアクティブであり、あるクライアントでの変更が瞬時にすべての人の画面に反映されます。</p>
-
-<p class="original">They&apos;ve built them the hard way.  Meteor makes it an order of
-magnitude simpler, and a lot more fun.  You can build a complete
-application in a weekend, or a sufficiently caffeinated hackathon.  No
-longer do you need to provision server resources, or deploy API
-endpoints in the cloud, or manage a database, or wrangle an ORM layer,
-or swap back and forth between JavaScript and Ruby, or broadcast data
-invalidations to clients.</p>
-<p class="translation">開発者はとても苦労して作りあげたことでしょう。Meteorはそれを桁違いに簡単にし、楽しくします。ひとつの完全なアプリケーションを一週間で作ることができるでしょう。もしくは、一回の充実したハッカソンでも可能でしょう。サーバの準備もすることなく、クラウドにAPIを用意することもなく、データベースを管理することもなく、ORMレイヤーの論争をすることもなく、JavaScriptとRubyをいったりきたりすることもなく、データ形式のエラーをクライアントに伝搬することもありません。</p>
 
 <h2 id="/full/quickstart" class="original">Quick start!</h2>
 <h2 id="/full/quickstart" class="translation">クイックスタート！</h2>
@@ -4752,135 +4692,41 @@ meteor
 <pre><code class="hljs bash">meteor deploy myapp.meteor.com
 </code></pre>
 
-<h2 id="/full/sevenprinciples" class="original">Principles of Meteor</h2>
-<h2 id="/full/sevenprinciples" class="translation">Meteorの特徴</h2>
-
-<ul>
-<li><p class="original"><em>Data on the Wire</em>. Meteor doesn&apos;t send HTML over the network. The server sends data and
-lets the client render it.</p>
-<p class="translation"><em>ネットワークを流れるデータ</em>. MeteorはネットワークでHTMLを送りません。サーバはデータを送り、クライアントがそれを描画します。</p></li>
-<li><p class="original"><em>One Language.</em> Meteor lets you write both the client and the server parts of your
-application in JavaScript.</p>
-<p class="translation"><em>単一の言語.</em> Meteorでは、アプリケーションのクライアントサイドもサーバサイドも両方JavaScriptで記述します。</p></li>
-<li><p class="original"><em>Database Everywhere</em>. You can use the same methods to access your
-database from the client or the server.</p>
-<p class="translation"><em>どこでもデータベース</em>. クライアントサイドでもサーバサイドでもデータベースにアクセスするのに同じメソッドを使うことができます。</p></li>
-<li><p class="original"><em>Latency Compensation</em>. On the client, Meteor prefetches data and simulates models to make it look like server method calls return instantly.</p>
-<p class="translation"><em>遅延の補償</em>. クライアントサイドではデータを事前取得しモデル変化を追従することにより、サーバのメソッド呼び出しの応答が瞬時にあったかのように見せかけます。</p></li>
-<li><p class="original"><em>Full Stack Reactivity</em>. In Meteor, realtime is the default. All layers, from
-database to template, update themselves automatically when necessary.</p>
-<p class="translation"><em>フルスタックリアクティビティ</em>. Meteorでは、標準でリアルタイムです。データベースからテンプレートまでのすべてのレイヤーで必要に応じて自動で更新されます。</p></li>
-<li><p class="original"><em>Embrace the Ecosystem</em>. Meteor is open source and integrates with existing open source tools and frameworks.</p>
-<p class="translation"><em>エコシステムの採用</em>. Meteorはオープンソースであり、既存のオープンソースのツールやフレームワークと統合します。</p></li>
-<li><p class="original"><em>Simplicity Equals Productivity</em>. The best way to make something
-seem simple is to have it actually <em>be</em> simple. Meteor&apos;s main functionality has
-clean, classically beautiful APIs.</p>
-<p class="translation"><em>単純さによる生産性</em>. 何かを簡単に見せるための一番の方法は「単純」にすることです。Meteorの中心機能はクリーンできれいなAPIになっています。</p></li>
-</ul>
-
 <h2 id="/full/resources">Developer Resources</h2>
 
-<!-- https://github.com/blog/273-github-ribbons -->
-
-<p><a href="http://github.com/meteor/meteor"><img class="github-ribbon visible-desktop" style="position: absolute; top: 0; right: 0; border: 0;" src="/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a></p>
-
-<p>If anything in Meteor catches your interest, we hope you&apos;ll get involved
-with the project!</p>
-
-<dl class="involved">
+<p></p><dl class="involved">
 <dt class="original"><span>Tutorial</span></dt>
 <dt class="translation">チュートリアル</dt>
 <dd class="original">Get started fast with the <a href="https://www.meteor.com/install">official Meteor tutorial</a>!
 </dd>
-<dd class="translation"><a href="https://www.meteor.com/install">Meteor公式チュートリアル</a></dd>
+<dd class="translation"><a href="https://www.meteor.com/install">Meteor公式チュートリアル</a></dd><p></p>
 
-<dt class="original"><span>Stack Overflow</span></dt>
+<p></p><dt><span>Guide</span></dt>
+<dd>Learn about best practices in the <a href="https://www.meteor.com/install">Meteor Guide</a>!
+</dd><p></p>
+
+<p></p><dt class="original"><span>Stack Overflow</span></dt>
 <dt class="translation">スタック・オーバーフロー</dt>
 <dd class="original">The best place to ask (and answer!) technical questions is on <a href="http://stackoverflow.com/questions/tagged/meteor">Stack
   Overflow</a>.  Be sure to add
   the <code>meteor</code> tag to your question.
 </dd>
-<dd class="translation">技術的な質問と回答に最適な場所は<a href="http://stackoverflow.com/questions/tagged/meteor">Stack Overflow</a>です。質問の際はMeteorタグを追加してください。</dd>
+<dd class="translation">技術的な質問と回答に最適な場所は<a href="http://stackoverflow.com/questions/tagged/meteor">Stack Overflow</a>です。質問の際はMeteorタグを追加してください。</dd><p></p>
 
-<dt class="original"><span>Forums</span></dt>
+<p></p><dt class="original"><span>Forums</span></dt>
 <dt class="translation">フォーラム</dt>
 <dd>Visit the <a href="https://forums.meteor.com">Meteor discussion
     forums</a>to announce projects, get help, talk about the community,
   or discuss changes to core.
-</dd>
+</dd><p></p>
 
-<dt><span>GitHub</span></dt>
+<p></p><dt><span>GitHub</span></dt>
 <dd class="original">The core code is on <a href="http://github.com/meteor/meteor">GitHub</a>.  If you&apos;re able to write code or file issues, we&apos;d love to have your help.  Please read <a href="https://github.com/meteor/meteor/wiki/Contributing-to-Meteor">Contributing to Meteor</a> for how to get started.
 </dd>
-<dd class="translation">コアコードは<a href="http://github.com/meteor/meteor">Github</a>上にあります。あなたの貢献をお待ちしています。貢献の際は、<a href="https://github.com/meteor/meteor/wiki/Contributing-to-Meteor">Contributing to Meteor</a>をお読みください。</dd>
-
-<dt><span>The Meteor Manual</span></dt>
-<dd>In-depth articles about the core components of Meteor can be found on the <a href="http://manual.meteor.com/">Meteor Manual</a>. The first article is about <a href="http://manual.meteor.com/#tracker">Tracker</a>, our transparent reactivity framework. More articles (covering topics like Blaze, Unibuild, and DDP) are coming soon!
-</dd>
-</dl>
+<dd class="translation">コアコードは<a href="http://github.com/meteor/meteor">Github</a>上にあります。あなたの貢献をお待ちしています。貢献の際は、<a href="https://github.com/meteor/meteor/wiki/Contributing-to-Meteor">Contributing to Meteor</a>をお読みください。</dd><p></p></dl>
 </div>
   <h1 id="concepts" class="original">Concepts</h1>
 <h1 id="concepts" class="translation">コンセプト</h1>
-
-<p class="original">We&apos;ve written our fair share of single-page JavaScript applications by hand.
-Writing an entire application in one language (JavaScript) with one
-data format (JSON) is a real joy.  Meteor is everything we wanted
-when writing those apps.</p>
-<p class="translation">
-私達はいままでそれなりの数のシングルページJavaScriptアプリケーションを地道に書いてきました。
-アプリケーション全体を一つの言語（JavaScript）と一つのデータフォーマット（JSON）だけで書くのは本当に喜ばしいことです。
-このようなアプリを書く時、Meteorはまさに我々が欲しかったものの全てです。
-</p>
-
-<h2 id="/full/whatismeteor" class="original">What is Meteor?</h2>
-<h2 id="/full/whatismeteor" class="translation">Meteorとは何か？</h2>
-
-<p class="original">Meteor is two things:</p>
-<p class="translation">Meteorにおける2つのもの</p>
-
-<ul>
-<li><p class="original">A <em>library of packages</em>: pre-written, self-contained modules that
-you might need in your app.</p>
-<p class="translation"><em>パッケージ化されたライブラリー</em>: すでに書かれていて、おそらくあなたのアプリで必要になる、自己完結しているモジュール。</p>
-
-<p class="original">There are about a dozen core Meteor packages that most any app will use. Two
-examples: <a href="#webapp"><code>webapp</code></a>, which handles incoming HTTP connections, and
-<code>templating</code>, which lets you make HTML templates that automatically update
-live as data changes. Then there are optional packages like <code>email</code>, which
-lets your app send emails, or the Meteor Accounts series (<code>accounts-password</code>,
-<code>accounts-facebook</code>, <code>accounts-ui</code>, and others) which provide a full-featured
-user account system that you can drop right into your app. In addition to
-these &quot;core&quot; packages, there are thousands of community-written packages in
-<a href="https://atmospherejs.com/?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Atmosphere</a>, one of which might do just what you
-need.</p>
-<p class="translation">
-ほとんどのアプリが使う、１ダースほどのコアMeteorがあります。2つ例を上げると、<a href="#webapp"><code>webapp</code></a> は、やって来るHTTPコネクションと、
-データが変わる度に自動的に更新するHTMLテンプレートを作ることができる<code>templating</code>の処理を担当します。
-また、オプショナルのパッケージには、あなたのアプリにEメールを送信させることができる、<code>email</code>や、
-あなたのアプリに追加するだけで、完全な機能をもったユーザーアカウントシステムを利用できる、MeteorのAccountsシリーズ（<code>accounts-password</code>、<code>accounts-facebook</code>、<code>accounts-ui</code>、などその他）などがあります。
-これらのコア・パッケージに加えて、何千ものコミュニティによって書かれたパッケージが、<a href="https://atmospherejs.com/?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Atmosphere</a>にあります。これの中の一つは、あなたがまさに必要としているものかもしれません。
-</p></li>
-<li><p class="original">A <em>command-line tool</em> called <code>meteor</code>.</p>
-<p class="translation"><code>Meteor</code> <em>コマンドラインツール</em></p>
-
-<p class="original"><code>meteor</code> is a build tool analogous to <code>make</code>, <code>rake</code>, or the non-visual parts
-of Visual Studio. It gathers up all of the source files and assets in your
-application, carries out any necessary build steps (such as compiling
-<a href="http://coffeescript.org">CoffeeScript</a>, minifying CSS, building
-<a href="https://npmjs.org/">npm</a> modules, or generating source maps), fetches the
-packages used by your app, and outputs a standalone, ready-to-run application
-bundle. In development mode it can do all of this interactively, so that
-whenever you change a file you immediately see the changes in your browser. It&apos;s
-super easy to use out of the box, but it&apos;s also extensible: you can add support
-for new languages and compilers by adding build plugin packages to your app.</p>
-<p class="translation"><code>meteor</code>は<code>make</code>,<code>rake</code>に似たビルドツールです。それかまた、GUIの無いVisual Studioです。<code>meteor</code>はアプリケーション内のソースファイルとアセットをまとめあげ、必要とされるビルドを行います（<a href="http://coffeescript.org">CoffeeScript</a>のコンパイル , minifying CSS, npm module の構築 <a href="https://npmjs.org/">npm</a> ,またsource mapの生成などです。)</p>
-
-<p class="original">The key idea in the Meteor package system is that <em>everything should work
-identically in the browser and on the server</em> (wherever it makes sense, of
-course: browsers can&apos;t send email and servers can&apos;t capture mouse events). Our
-whole ecosystem has been built from the ground up to support this.</p>
-<p class="translation">Meteorのパッケージシステムの鍵となるアイデアは、パッケージは<em>ブラウザとサーバー上で全く同じように動くべきだ</em>というものですす。( ブラウザはE-mailをサーバーに送ることができ、サーバーはマウスのイベントを捕捉することができるのです。我々のエコシステムはこれを完全に実現するために作られました。)</p></li>
-</ul>
 <h2 id="/full/structuringyourapp" class="original">Structuring your application</h2>
 <h2 id="/full/structuringyourapp" class="translation">アプリケーションを構造化する</h2>
 
@@ -5113,199 +4959,18 @@ packages/apples/&lt;anything&gt;.js  <span class="hljs-comment"># file loading i
 packages/oranges/package.js    <span class="hljs-comment"># files, dependencies, exports for orange feature</span>
 packages/oranges/&lt;anything&gt;.js <span class="hljs-comment"># file loading is controlled by package.js</span>
 </code></pre>
+<p><a id="dataandsecurity-validation"></a></p>
+
 <h2 id="/full/dataandsecurity">Data and security</h2>
 
-<p class="original">Meteor makes writing distributed client code as simple as talking to a
-local database.  It&apos;s a clean, simple, and secure approach that removes
-the need to implement individual RPC endpoints, manually cache data on
-the client to avoid slow roundtrips to the server, and carefully
-orchestrate invalidation messages to every client as data changes.</p>
-<p class="translation">Meteorでは分散クライアントのコードを書くは、ローカルデータベースと話すくらい簡単です。
-クリーンで、シンプルで、セキュアなアプローチで、個別のRPCエンドポイントを実装する必要がありません。
-また、サーバーとのラウンドトリップに時間がかかるのを避けるためにクライアントに手動でデータをキャッシュしたり、
-全てのクライアントに、データが変更される度に注意深く無効化メッセージを配信したりする必要がありません。</p>
+<p>To read about best practices for managing data and security in Meteor, consult the Meteor Guide:</p>
 
-<p class="original">In Meteor, the client and server share the same database API.  The same
-exact application code — like validators and computed properties — can
-often run in both places.  But while code running on the server has
-direct access to the database, code running on the client does <em>not</em>.
-This distinction is the basis for Meteor&apos;s data security model.</p>
-<p class="translation">Meteorではクライアントとサーバーは同じデータベースAPIを共有します。
-ほとんどの場合、同一のアプリケーションコード（バリデータや計算されたプロパティなど）を両方の場所で実行できます。
-ただし、コードがサーバーで走っている時は、データベースに直接アクセスしますが、コードがクライアントで走っている時はデータベースに直接アクセス<em>しません</em>。
-この相違がMeteorのデータセキュリティモデルの根幹です。</p>
-
-<div class="note">
-  <p class="original">By default, a new Meteor app includes the <code>autopublish</code> and <code>insecure</code>
-packages, which together mimic the effect of each client having full
-read/write access to the server&apos;s database.  These are useful
-prototyping tools, but typically not appropriate for production
-applications.  When you&apos;re ready, just remove the packages.</p>
-<p class="translation">新しく作ったMeteorのアプリにはデフォルトで、<code>autopublish</code>と、<code>insecure</code>パッケージが入っています。
-これらのパッケージは、各クライアントがあたかもフルで読み出し/書き込み権限をサーバーのデータベースに対してもっているように振る舞います。
-これらは有用なプロトタイピングツールですが、プロダクション用としてはほとんどの場合適切ではありません。
-準備がととのったら、これらのパッケージを取り除いてください。</p>
-</div>
-
-<p class="original">Every Meteor client includes an in-memory database cache.  To manage the
-client cache, the server <em>publishes</em> sets of JSON documents, and the
-client <em>subscribes</em> to those sets.  As documents in a set change, the
-server patches each client&apos;s cache.</p>
-<p class="translation">それぞれのMeteorクライアントは、インメモリ データベースキャッシュを持っています。
-クライアントキャッシュを管理するため、サーバーはJSONドキュメントのセットを<em>publish</em>し、
-クライアントはそのセットを<em>subscribe</em>します。
-セット内のドキュメントが変わるたび、サーバーはクライアントキャッシュにパッチを送ります。</p>
-
-<p class="original">Today most Meteor apps use MongoDB as their database because it is the
-best supported, though support for other databases is coming in the
-future. The
-<a href="#mongo_collection"><code>Mongo.Collection</code></a> class
-is used to declare Mongo collections and to manipulate them. Thanks to
-<code>minimongo</code>, Meteor&apos;s client-side Mongo emulator, <code>Mongo.Collection</code>
-can be used from both client and server code.</p>
-<p class="translation">現在、ほとんどのMeteorアプリはMongoDBをデータベースとして使います。
-なぜならそれが一番サポートされているからです。とはいえ、他のデータベースのサポートも将来提供される予定です。
-<a href="#mongo_collection"><code>Mongo.Collection</code></a> クラスはMongoコレクションを宣言し、操作するために使われます。
-MeteorのクライアントサイドのMongoエミュレーターである<code>minimongo</code>のおかげで、<code>Mongo.Collection</code>はクライアントとサーバーの両方から使うことができます。</p>
-
-<pre><code class="hljs js"><span class="hljs-comment">// declare collections</span>
-<span class="hljs-comment">// this code should be included in both the client and the server</span>
-Rooms = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="hljs-string">&quot;rooms&quot;</span>);
-Messages = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="hljs-string">&quot;messages&quot;</span>);
-Parties = <span class="hljs-keyword">new</span> Mongo.Collection(<span class="hljs-string">&quot;parties&quot;</span>);
-
-<span class="hljs-comment">// server: populate collections with some initial documents</span>
-Rooms.insert({name: <span class="hljs-string">&quot;Conference Room A&quot;</span>});
-<span class="hljs-keyword">var</span> myRooms = Rooms.find({}).fetch();
-Messages.insert({text: <span class="hljs-string">&quot;Hello world&quot;</span>, room: myRooms[<span class="hljs-number">0</span>]._id});
-Parties.insert({name: <span class="hljs-string">&quot;Super Bowl Party&quot;</span>});
-</code></pre>
-
-<p class="original">Each document set is defined by a publish function on the server.  The
-publish function runs each time a new client subscribes to a document
-set.  The data in a document set can come from anywhere, but the common
-case is to publish a database query.</p>
-<p class="translation">各ドキュメントセットはサーバーのpublish関数により定義されます。
-publish関数は新たなクライアントがドキュメントセットをsubscribする度に実行されます。
-ドキュメントセットのデータはどこからでも持ってこれますが、データベースのクエリをpublishすることが通常のケースです。</p>
-
-<pre><code class="hljs js"><span class="hljs-comment">// server: publish all room documents</span>
-Meteor.publish(<span class="hljs-string">&quot;all-rooms&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> Rooms.find(); <span class="hljs-comment">// everything</span>
-});
-
-<span class="hljs-comment">// server: publish all messages for a given room</span>
-Meteor.publish(<span class="hljs-string">&quot;messages&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(roomId)</span> </span>{
-  check(roomId, <span class="hljs-built_in">String</span>);
-  <span class="hljs-keyword">return</span> Messages.find({room: roomId});
-});
-
-<span class="hljs-comment">// server: publish the set of parties the logged-in user can see.</span>
-Meteor.publish(<span class="hljs-string">&quot;parties&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> Parties.find({$or: [{<span class="hljs-string">&quot;public&quot;</span>: <span class="hljs-literal">true</span>},
-                             {invited: <span class="hljs-keyword">this</span>.userId},
-                             {owner: <span class="hljs-keyword">this</span>.userId}]});
-});
-</code></pre>
-
-<p class="original">Publish functions can provide different results to each client.  In the
-last example, a logged in user can only see <code>Party</code> documents that
-are public, that the user owns, or that the user has been invited to.</p>
-<p class="translation">publish関数は各クライアントに異なる結果を提供することができます。
-上の最後の例では、ログインしたユーザーが参照できるのは、publicであり、そのユーザーが所有(owner)するか招待(invited)されている、<code>Party</code>ドキュメントのみです。</p>
-
-<p class="original">Once subscribed, the client uses its cache as a fast local database,
-dramatically simplifying client code.  Reads never require a costly
-round trip to the server.  And they&apos;re limited to the contents of the
-cache: a query for every document in a collection on a client will only
-return documents the server is publishing to that client.</p>
-<p class="translation">
-一旦subscribeすると、クライアントは自身のキャッシュを高速なローカルデータベースとして利用し、クライアントコードを劇的にシンプルにします。
-読み出しは決してコストのかかるサーバーへのラウンドトリップを必要としません。
-また読み出し処理は、キャッシュ内のコンテンツに限定されています。
-つまり、クライアントにあるコレクション内の全てのドキュメントへのクエリは、サーバーがクライアントにpublishしたドキュメントだけを返します。</p>
-
-<pre><code class="hljs js"><span class="hljs-comment">// client: start a parties subscription</span>
-Meteor.subscribe(<span class="hljs-string">&quot;parties&quot;</span>);
-
-<span class="hljs-comment">// client: return array of Parties this client can read</span>
-<span class="hljs-keyword">return</span> Parties.find().fetch(); <span class="hljs-comment">// synchronous!</span>
-</code></pre>
-
-<p class="original">Sophisticated clients can turn subscriptions on and off to control how
-much data is kept in the cache and manage network traffic.  When a
-subscription is turned off, all its documents are removed from the cache
-unless the same document is also provided by another active
-subscription.</p>
-<p class="translation">洗練されたクライアントは、キャッシュへのデータ保持量とネットワーク上のトラフィックを制御するため、サブスクリプションのオンとオフを切り替えられます。
-サブスクリプションがオフにされた場合、同じドキュメントが別のアクティブなサブスクリプションから提供されない限り、全てのドキュメントがキャッシュから取り除かれます。</p>
-
-<p class="original">When the client <em>changes</em> one or more documents, it sends a message to
-the server requesting the change.  The server checks the proposed change
-against a set of allow/deny rules you write as JavaScript functions.
-The server only accepts the change if all the rules pass.</p>
-<p class="translation">クライアントが1つまたは複数のドキュメントを<em>変更</em>すると、サーバーへ変更要求のメッセージを1回送ります。
-サーバーは提案された変更を、あなたがJavaScript関数として書いた、allow/denyルールのセットに対してチェックをします。
-サーバーは全てのルールをパスした変更のみを受け入れます。</p>
-
-<pre><code class="hljs js"><span class="hljs-comment">// server: don&apos;t allow client to insert a party</span>
-Parties.allow({
-  insert: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(userId, party)</span> </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-  }
-});
-
-<span class="hljs-comment">// client: this will fail</span>
-<span class="hljs-keyword">var</span> party = { ... };
-Parties.insert(party);
-</code></pre>
-
-<p class="original">If the server accepts the change, it applies the change to the database
-and automatically propagates the change to other clients subscribed to
-the affected documents.  If not, the update fails, the server&apos;s database
-remains untouched, and no other client sees the update.</p>
-<p class="translation">もしサーバーが変更を受け入れると、サーバーはその変更をデータベースに適用し、自動的にそのドキュメントをsubscribeしている他のクライアントに変更を伝播します。
-もしサーバーが変更を受け入れないと、その更新は失敗し、サーバーのデータベースは変更されないままとなり、他のどのクライアントもその変更を見ることはありません</p>
-
-<p class="original">Meteor has a cute trick, though.  When a client issues a write to the
-server, it also updates its local cache immediately, without waiting for
-the server&apos;s response.  This means the screen will redraw right away.
-If the server accepted the update — what ought to happen most of the
-time in a properly behaving client — then the client got a jump on the
-change and didn&apos;t have to wait for the round trip to update its own
-screen.  If the server rejects the change, Meteor patches up the
-client&apos;s cache with the server&apos;s result.</p>
-<p class="translation">
-ただ、Meteorはちょっとした技を持っています。
-クライアントがサーバーに書き込みをする行うとき、クライアントはサーバーからの応答を待たず、ローカルキャッシュを瞬時に更新します。
-これは、画面が即座に書き換わるということです。
-もしサーバーがその変更を受け入れたら、（これは正しく振る舞うクライアントでほとんどの場合にそうなるはずですが）
-クライアントはすでに変更を取り込んでしまっていて、画面を書き換えるためにサーバーとのラウンドトリップを待つ必要がないのです。
-もしサーバーが変更を拒否したら、Meteorはクライアントのキャッシュにサーバーからの結果を反映させて直します。
-</p>
-
-<p class="original">Putting it all together, these techniques accomplish latency
-compensation.  Clients hold a fresh copy of the data they need, and
-never need to wait for a roundtrip to the server. And when clients
-modify data, those modifications can run locally without waiting for the
-confirmation from the server, while still giving the server final say
-over the requested change.</p>
-<p class="translation">
-まとめると、これらの技術は遅延補正（レイテンシー・コンペンセイション）を果たします。
-クライアントは必要とする最新データを保持し、決してサーバーへのラウンドトリップを待つ必要がありません。
-また、クライアントがデータを変更する時、その変更操作はサーバーからの確認を待たずにローカルで実施可能です。
-一方で、サーバーには依然として、要求した変更に関しての最終的な発言権を与えています。
-</p>
-
-<div class="note">
-  <p class="original">The current release of Meteor supports MongoDB, the popular document
-database, and the examples in this section use the
-        <a href="http://www.mongodb.org/display/DOCS/Manual">MongoDB API</a>.  Future
-releases will include support for other databases.</p>
-<p class="translation">現在リリースされているのMeteorは人気のドキュメント型データベースであるMongoDBをサポートしています。
-また、このセクションの例は<a href="http://www.mongodb.org/display/DOCS/Manual">MongoDB API</a>をつかっています。
-将来のリリースでは、他のデータベースのサポートも含まれる予定です。</p>
-</div>
+<ul>
+<li><a href="http://guide.meteor.com/security.html">Security</a></li>
+<li><a href="http://guide.meteor.com/collections.html">Database collections</a></li>
+<li><a href="http://guide.meteor.com/data-loading.html">Data loading</a></li>
+<li><a href="http://guide.meteor.com/methods.html">Methods and saving data</a></li>
+</ul>
 
 <h3 id="/full/dataandsecurity-authentication" class="original">Authentication and user accounts</h3>
 <h3 id="/full/dataandsecurity-authentication" class="translation">認証とユーザーアカウント</h3>
@@ -5332,38 +4997,7 @@ set up the external login services you&apos;re using in your app.</p>
 <a href="#accountsui">Accounts UI</a>をたったの一行のコードであなたのアプリに追加することができます。
 <code>accounts-ui</code>パッケージはあなたのアプリで使っている外部ログインサービスのセットアップを順番に手助けしてくれる設定ウィザードまで提供しています。</p>
 
-<h3 id="/full/dataandsecurity-validation" class="original">Input validation</h3>
-<h3 id="/full/dataandsecurity-validation" class="translation">入力バリデーション</h3>
-
-<p class="original">Meteor allows your methods and publish functions to take arguments of any
-<a href="http://json.org/">JSON</a> type. (In fact, Meteor&apos;s wire protocol supports
-<a href="#ejson">EJSON</a>, an extension of JSON which also supports other common types
-like dates and binary buffers.) JavaScript&apos;s dynamic typing means you don&apos;t need
-to declare precise types of every variable in your app, but it&apos;s usually helpful
-to ensure that the arguments that clients are passing to your methods and
-publish functions are of the type that you expect.</p>
-<p class="translation">Meteorはあなたのメソッドとpublish関数に任意の<a href="http://json.org/">JSON</a> 型の引数を受け取れるようにします。
-（じっさいのところ、Meteorの伝送プロトコルは、JSONの拡張で日付やバイナリバッファなども利用可能な<a href="#ejson">EJSON</a>をサポートしています。）
-JavaScriptの動的型付けでは、あなたはアプリで全ての変数に正確な型を宣言する必要がありません、
-しかしクライアントがあなたのメソッドとpublish関数に渡す引数が、あなたが想定している型のものか確認するのは大抵の場合において有用です。</p>
-
-<p class="original">Meteor provides a <a href="#check_package">lightweight library</a> for checking that arguments and
-other values are the type you expect them to be. Simply start your functions
-with statements like <code>check(username, String)</code> or
-<code>check(office, {building: String, room: Number})</code>. The <code>check</code> call will
-throw an error if its argument is of an unexpected type.</p>
-<p class="translation">Meteorは、引数とそのほかの変数の型があなたが想定しているものかチェックするための<a href="#check_package">軽量ライブラリ</a>を提供しています。
-単に、あなたの関数の冒頭に<code>check(username, String)</code> または、<code>check(office, {building: String, room: Number})</code>のように書いてください。
-<code>check</code>の呼び出しは、引数の型が予想と異なっていた場合エラーを投げます。</p>
-
-<p class="original">Meteor also provides an easy way to make sure that all of your methods
-and publish functions validate all of their arguments. Just run
-<code>meteor add <a href="#auditargumentchecks">audit-argument-checks</a></code> and any
-method or publish function which skips <code>check</code>ing any of its arguments will fail
-with an exception.</p>
-<p class="translation">Meteorはあなたの全てのメソッドとpublish関数がその引数を検証することを確実にする簡単な方法も提供しています。
-<code>meteor add <a href="#auditargumentchecks">audit-argument-checks</a></code>を実行するだけです。
-これで全てのメソッドとpublish関数が引数に対して<code>check</code>をし忘れると、例外が発生して失敗します。</p>
+<p><a href="http://guide.meteor.com/accounts.html">Read about how to manage user accounts in your Meteor app in the Meteor Guide.</a></p>
 <h2 id="/full/reactivity">Reactivity</h2>
 
 <p class="original">Meteor embraces the concept of <a href="http://en.wikipedia.org/wiki/Reactive_programming">reactive
@@ -5458,183 +5092,7 @@ generate it.</p>
 Blazeを用いると、Meteorのライブページアップデート技術により、リアクティブにあなたのHTMLを描画できます。
 これは、描画するのに使ったデータの変更を追跡し、自動的に更新するということです。</p>
 
-<p class="original">Meteor makes it easy to use your favorite HTML templating language along with
-Meteor&apos;s live page update technology. Just write your template as you normally
-would, and Meteor will take care of making it update in realtime.</p>
-<p class="translation">
-Meteorではあなたのお気に入りのHTMLテンプレート言語と一緒にMeteorのライブページアップデート技術を簡単に使えるようにしています。
-いつものようにあなたのテンプレートを書いてください。Meteorがリアルタイムに更新する作業を引き受けます。</p>
-
-<p class="original">Meteor ships with a templating language called
-<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>,
-inspired by <a href="http://handlebarsjs.com/">Handlebars</a>.  It shares some of the
-spirit and syntax of Handlebars, but it has been tailored to produce reactive
-Meteor templates when compiled.</p>
-<p class="translation">
-Meteorは<a href="http://handlebarsjs.com/">Handlebars</a>にインスパイアされた、
-<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">Spacebars</a>というテンプレート言語を提供しています。
-これはある程度、Handlebarsの考え方とシンタックスを共有したものですが、コンパイル時にリアクティブなMeteorテンプレートを生成するよう作りこまれています。</p>
-
-<div class="note">
-  <p class="original">Today, the only templating system that ships with Meteor is Spacebars, though
-  our community has created packages for other languages such as
-  <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Jade</a>.</p>
-<p class="translation">
-現在、Meteorと一緒に提供されている唯一のテンプレートシステムはSpacebarsですが、我々のコミュニティは他の言語に関してもパッケージを作っています。
-たとえば、<a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Jade</a>です。</p>
-</div>
-
-<p class="original">To define templates, create a file in your project with the <code>.html</code>
-extension. In the file, make a <code>&lt;template&gt;</code> tag and give it a
-<code>name</code> attribute. Put the template contents inside the tag. Meteor
-will precompile the template, ship it down to the client, and make it
-available as on the global <code>Template</code> object.</p>
-<p class="translation">
-テンプレートを定義するには、あなたのプロジェクトに拡張子<code>.html</code>のファイルを作ってください。
-そのファイルの中に、<code>&lt;template&gt;</code>タグを作り、<code>name</code>アトリビュートを付けてください。
-そのタグのなかにコンテンツを入れてください。
-Meteorはプリコンパイルして、クライアント側に送り、グローバルな<code>Template</code> オブジェクトの中で使えるようにします。</p>
-
-<p class="original">When your app is loaded, it automatically renders the special template called
-<code>&lt;body&gt;</code>, which is written using the <code>&lt;body&gt;</code> element instead of a
-<code>&lt;template&gt;</code>. You insert a template inside another template by using the
-<code>{{&gt; inclusion}}</code> operator.</p>
-<p class="translation">あなたのアプリが読み込まれるとき、<code>&lt;body&gt;</code>という特別なテンプレートを描画します。
-これは、<code>&lt;template&gt;</code>の代わりに、<code>&lt;body&gt;</code> 要素を使って書かれたテンプレートです。
-あなたは、<code>{{&gt; inclusion}}</code>オペレーターを使って、あるテンプレートを別のテンプレートの中に挿入できます。</p>
-
-<p class="original">The easiest way to get data into templates is by defining helper
-functions in JavaScript. Define helpers with the
-<code>Template.templateName.helpers({ ... })</code> function. Putting it all together:</p>
-<p class="translation">テンプレートの中にデータを取り込む最も簡単な方法は、JavaScriptにhelper functionを定義することです。
-ヘルパーは<code>Template.templateName.helpers({ ... })</code>関数をつかって定義します。
-全て並べると:</p>
-
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- in myapp.html --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Today&apos;s weather!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
-  {{&gt; forecast}}
-<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;forecast&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>It&apos;ll be {{prediction}} tonight<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
-</code></pre>
-
-<pre><code class="hljs js"><span class="hljs-comment">// in client/myapp.js: reactive helper function</span>
-Template.forecast.helpers({
-  prediction: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">return</span> Session.get(<span class="hljs-string">&quot;weather&quot;</span>);
-  }
-});
-</code></pre>
-
-<pre><code class="hljs js"><span class="hljs-comment">// in the JavaScript console</span>
-&gt; Session.set(<span class="hljs-string">&quot;weather&quot;</span>, <span class="hljs-string">&quot;cloudy&quot;</span>);
-&gt; <span class="hljs-built_in">document</span>.body.innerHTML
- =&gt; <span class="hljs-string">&quot;&lt;h1&gt;Today&apos;s weather!&lt;/h1&gt; &lt;div&gt;It&apos;ll be cloudy tonight&lt;/div&gt;&quot;</span>
-
-&gt; Session.set(<span class="hljs-string">&quot;weather&quot;</span>, <span class="hljs-string">&quot;cool and dry&quot;</span>);
-&gt; <span class="hljs-built_in">document</span>.body.innerHTML
- =&gt; <span class="hljs-string">&quot;&lt;h1&gt;Today&apos;s weather!&lt;/h1&gt; &lt;div&gt;It&apos;ll be cool and dry tonight&lt;/div&gt;&quot;</span>
-</code></pre>
-
-<p class="original">To iterate over an array or database cursor, use <code>{{#each}}</code>:</p>
-<p class="translation">配列またはデータベースのカーソルをイテレートするには、<code>{{#each}}</code> をつかいます:</p>
-
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- in myapp.html --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;players&quot;</span>&gt;</span>
-  {{#each topScorers}}
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>{{name}}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  {{/each}}
-<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
-</code></pre>
-
-<pre><code class="hljs js"><span class="hljs-comment">// in myapp.js</span>
-Template.players.helpers({
-  topScorers: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">return</span> Users.find({score: {$gt: <span class="hljs-number">100</span>}}, {sort: {score: -<span class="hljs-number">1</span>}});
-  }
-});
-</code></pre>
-
-<p class="original">In this case, the data is coming from a database query. When the
-database cursor is passed to <code>{{#each}}</code>, it will wire up all of the
-machinery to efficiently add and move DOM nodes as new results enter
-the query.</p>
-<p class="translation">この場合、データはデータベースのクエリーからやってきます。
-データベースのカーソルが<code>{{#each}}</code>に渡されると、全ての仕掛けが連動し、新しい結果がクエリに入るたびに、効果的にDOMノードを追加、移動させます。</p>
-
-<p class="original">Helpers can take arguments, and they receive the current template context data
-in <code>this</code>. Note that some block helpers change the current context (notably
-<code>{{#each}}</code> and <code>{{#with}}</code>):</p>
-<p class="translation">ヘルパーは引数を取ることができます。また、現在のテンプレートのコンテキスト・データを<code>this</code>で受け取ります。
-いくつかのブロック・ヘルパーはカレント・コンテキストが変わります。（特に、<code>{{#each}}</code> と <code>{{#with}}</code>です）：</p>
-
-<pre><code class="hljs js"><span class="hljs-comment">// in a JavaScript file</span>
-Template.players.helpers({
-  leagueIs: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(league)</span> </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.league === league;
-  }
-});
-</code></pre>
-
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- in a HTML file --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;players&quot;</span>&gt;</span>
-  {{#each topScorers}}
-    {{#if leagueIs &quot;junior&quot;}}
-      <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Junior: {{name}}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    {{/if}}
-    {{#if leagueIs &quot;senior&quot;}}
-      <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Senior: {{name}}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    {{/if}}
-  {{/each}}
-<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
-</code></pre>
-
-<p class="original">Helpers can also be used to pass in constant data.</p>
-<p class="translation">ヘルパーは、定数値を渡すためにも使われます。</p>
-
-<pre><code class="hljs js"><span class="hljs-comment">// Works fine with {{#each sections}}</span>
-Template.report.helpers({
-  sections: [<span class="hljs-string">&quot;Situation&quot;</span>, <span class="hljs-string">&quot;Complication&quot;</span>, <span class="hljs-string">&quot;Resolution&quot;</span>]
-});
-</code></pre>
-
-<p class="original">Finally, you can use the <code>events</code> function on a template to attach
-event handlers. The object passed into <code>events</code> is documented at
-<a href="#eventmaps">Event Maps</a>. The <code>this</code> argument to the event handler will
-be the data context of the element that triggered the event.</p>
-<p class="translation">最後に、<code>events</code> 関数をつかって、テンプレートにイベントハンドラを設置することができます。
-<code>events</code>に渡されるオブジェクトは、<a href="#eventmaps">Event Maps</a>に記述されています。
-イベントハンドラの変数<code>this</code> はイベントを起動した要素のデータコンテキストになります。</p>
-
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- myapp.html --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;scores&quot;</span>&gt;</span>
-  {{#each player}}
-    {{&gt; playerScore}}
-  {{/each}}
-<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">&quot;playerScore&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>{{name}}: {{score}}
-    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;give-points&quot;</span>&gt;</span>Give points<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
-</code></pre>
-
-<pre><code class="hljs js"><span class="hljs-comment">// myapp.js</span>
-Template.playerScore.events({
-  <span class="hljs-string">&apos;click .give-points&apos;</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-    Users.update(<span class="hljs-keyword">this</span>._id, {$inc: {score: <span class="hljs-number">2</span>}});
-  }
-});
-</code></pre>
-
-<p class="original">For more details about Spacebars, read <a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
-README</a>.</p>
-<p class="translation">Spacebarsに関する詳細は、<a href="https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md">the Spacebars
-README</a>をよんでください。</p>
+<p><a href="http://guide.meteor.com/blaze.html">Read about how to use Blaze in the Meteor Guide.</a></p>
 <h2 id="/full/usingpackages">Using packages</h2>
 
 <p class="original">All of the functionality you&apos;ve read about so far is implemented in standard
@@ -5646,15 +5104,11 @@ plugins that extend the build process, such as <code>coffeescript</code>
 HTML templates).</p>
 <p class="translation">ここまでところ、あたなが読んだ全ての機能は、標準のMeteorパッケージで実装されています。 ここまでできるのは、Meteorの非常にパワフルでisomorphicなパッケージとビルドシステムのおかげです。 isomorphicとは、同じパッケージが、Webブラウザ、モバイルアプリ、サーバーで動くということです。 パッケージは、<code>coffeescript</code>(<a href="http://coffeescript.org">CoffeeScript</a>のコンパイル)や、 <code>templating</code> ( HTMLテンプレートのコンパイル)のようなビルド・プロセスを拡張するプラグインを含むこともできます</p>
 
-<p class="original">Anyone can publish a Meteor package, and thousands of community-written packages
+<p>Anyone can publish a Meteor package, and thousands of community-written packages
 have been published to date. The easiest way to browse these packages is
-<a href="http://www.atmospherejs.com/?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
+<a href="http://www.atmospherejs.com/?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.1.1453870867155&amp;__hsfp=1614345591">Atmosphere</a>, by Percolate Studio.
 You can also use the <a href="#meteorsearch"><code>meteor search</code></a> and
 <a href="#meteorshow"><code>meteor show</code></a> commands.</p>
-<p class="translation">Meteorパッケージはだれでも公開することができ、今日まで何千ものコミュニティによって書かれたパッケージが公開されています。 
-これらのパッケージを閲覧する最も簡単な方法は、Percolate Studioによって運営されている、<a href="\&quot;http://www.atmospherejs.com/?__hstc=256467284.eff58f8bcd24d01de0c0c49f3422de0d.1445924524567.1445924524567.1445924524567.1&amp;__hssc=256467284.1.1445924524568&amp;__hsfp=1614345591\&quot;">Atmosphere</a>です。 
-<a href="\&quot;#meteorsearch\&quot;"><code>meteor search</code></a>と<a href="\&quot;#meteorshow\&quot;"><code>meteor show</code></a>コマンドを使うこともできます。
-</p>
 
 <p class="original">You can add packages to your project with <a href="#meteoradd"><code>meteor add</code></a> and remove
 them with <a href="#meteorremove"><code>meteor remove</code></a>.
@@ -5856,89 +5310,9 @@ Meteorは将来、チェックをしてもしあなたがそんなことをし�
 </div>
 <h2 id="/full/deploying">Deploying</h2>
 
-<p class="original">Meteor is a full application server.  We include everything you need
-to deploy your application on the internet: you just provide the JavaScript,
-HTML, and CSS.</p>
-<p class="translation">Meteorはフル・アプリケーションサーバーです。
-あなたのアプリケーションをインターネット上にデプロイするために必要な全てのものが既に入っています。
-あなたは単に、JavaScript、HTML、CSSを入れればいいのです。</p>
-
-<h3 class="nosection original">Running on Meteor&apos;s infrastructure</h3>
-<h3 class="nosection translation">Meteorのインフラで走らせる</h3>
-
-<p class="original">The easiest way to deploy your application is to use <code>meteor
-deploy</code>.  We provide it because it&apos;s what, personally, we&apos;ve always
-wanted: an easy way to take an app idea, flesh it out over a weekend,
-and put it out there for the world to use, with nothing getting in the
-way of creativity.</p>
-<p class="translation">あなたのアプリケーションをデプロイするための最も簡単な方法は、<code>meteor deploy</code> コマンドを使うことです。
-私達がこれを提供するのは、個人的に、ずっと欲しいとおもってたものだからです。
-それは、アイディアが浮かんだら、週末で形にして、創造性を妨げずに世界中でつかってもらうようにするということです。</p>
-
-<pre><code class="hljs bash">meteor deploy myapp.meteor.com
-</code></pre>
-
-<p class="original">Your application is now available at myapp.meteor.com.  If
-this is the first time deploying to this hostname, Meteor creates a
-fresh empty database for your application.  If you want to deploy an
-update, Meteor will preserve the existing data and just refresh the
-code.</p>
-<p class="translation">あなたのアプリケーションは、myapp.meteor.comで使えるようになりました。
-もし、これがこのホスト名にデプロイする初回であれば、Meteorあなたのアプリケーションに新しい空のデータベースを作ります。
-もし、変更をデプロイしたいのであれば、Meteorは既存のデータを保存して、単にコードをリフレッシュします。
-</p>
-
-<p class="original">You can also deploy to your own domain.  Just set up the hostname you
-want to use as a CNAME to <code>origin.meteor.com</code>, then deploy to that name.</p>
-<p class="translation">自分のドメインへもデプロイすることができます。
-使いたいホスト名のCNAMEを、<code>origin.meteor.com</code>にセットし、その名前でdeployしてください。</p>
-
-<pre><code class="hljs bash">meteor deploy www.myapp.com
-</code></pre>
-
-<p class="original">We provide this as a free service so you can try Meteor.  It is also
-helpful for quickly putting up internal betas, demos, and so on. For
-more information, see <a href="#meteordeploy">meteor deploy</a>.</p>
-<p class="translation">あなたがMeteorを試せるように、我々はこれを無料のサービスとして提供しています。
-これは内部ベータや、デモなどを簡単に立ち上げるのにも役に立ちます。
-詳細は<a href="#meteordeploy">meteor deploy</a>を見てください。</p>
-
-<h3 class="nosection original">Running on your own infrastructure</h3>
-<h3 class="nosection translation">あなたの自分のインフラ上で走らせる</h3>
-
-<p class="original">You can also run your application on your own infrastructure or any
-hosting provider that can run Node.js apps.</p>
-<p class="translation">あなたのアプリケーションをあなた自身のインフラの上で走らせることができます。
-また、Node.jsアプリを実行できるどんなホスティングサービスの上でも走らせることができます。</p>
-
-<p class="original">To get started, run</p>
-<p class="translation">開始するために、以下を実行してください</p>
-
-<pre><code class="hljs bash">meteor build my_directory
-</code></pre>
-
-<p class="original">This command will generate a fully-contained Node.js application in the form of
-a tarball.  To run this application, you need to provide Node.js 0.10 and a
-MongoDB server.  (The current release of Meteor has been tested with Node
-0.10.40.) You can then run the application by invoking node, specifying the
-HTTP port for the application to listen on, and the MongoDB endpoint.</p>
-<p class="translation">
-このコマンドは、全てを含んだNode.jsアプリケーションをtarアーカイブ形式で生成します。
-このアプリケーションを走らせるには、Node.js 0.10とMongoDBサーバーが必要です。
-(最新リリースのMeteorは、Node 0.10.40でテストされています。)
-nodeを起動し、アプリケーションのHTTPポートとMongoDBのエンドポイントを指定することでこのアプリケーションを実行することができます。</p>
-
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> my_directory
-(<span class="hljs-built_in">cd</span> programs/server &amp;&amp; npm install)
-env PORT=<span class="hljs-number">3000</span> MONGO_URL=mongodb://localhost:<span class="hljs-number">27017</span>/myapp node main.js
-</code></pre>
-
-<p class="original">Some packages might require other environment variables. For example,
-the <code>email</code> package requires a <code>MAIL_URL</code> environment variable.</p>
-<p class="translation">
-いくつかのパッケージは他の環境変数を必要とするかもしれません。
-例えば、<code>email</code> パッケージは、環境変数<code>MAIL_URL</code> を必要とします。</p>
-<p></p><h2 id="/full/writingpackages">Writing packages</h2><p></p>
+<p>To learn how to deploy Meteor apps, read the
+<a href="http://guide.meteor.com/deployment.html">deployment article in the Meteor Guide</a>.</p>
+<h2 id="/full/writingpackages">Writing packages</h2>
 
 <p class="original">Writing Meteor packages is easy. To initialize a meteor package, run
 <code>meteor create --package username:packagename</code>, where <code>username</code> is your Meteor
@@ -7701,7 +7075,7 @@ interval.</p>
     <span class="hljs-keyword">return</span> Meteor.users.findOne(userId).type !== <span class="hljs-string">&apos;Admin&apos;</span>;
   },
   type: <span class="hljs-string">&apos;method&apos;</span>,
-  method: <span class="hljs-string">&apos;login&apos;</span>
+  name: <span class="hljs-string">&apos;login&apos;</span>
 }
 <span class="hljs-comment">// Add the rule, allowing up to 5 messages every 1000 milliseconds.</span>
 DDPRateLimiter.addRule(loginRule, <span class="hljs-number">5</span>, <span class="hljs-number">1000</span>);
@@ -13041,7 +12415,7 @@ with <code>&lt;template name=&quot;myTemplate&quot;&gt;</code>.</p>
 <pre><code class="hljs javascript">{{displayName <span class="hljs-string">&quot;John&quot;</span> <span class="hljs-string">&quot;Doe&quot;</span> title=<span class="hljs-string">&quot;President&quot;</span>}}
 </code></pre>
 
-<p>You can learn more about arguments to helpers in <a href="https://atmospherejs.com/meteor/spacebars?__hstc=256467284.449a70e519594323315e9234a679e4a7.1451206053709.1451206053709.1451206053709.1&amp;__hssc=256467284.1.1451206053709&amp;__hsfp=1614345591">Spacebars
+<p>You can learn more about arguments to helpers in <a href="https://atmospherejs.com/meteor/spacebars?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.1.1453870867155&amp;__hsfp=1614345591">Spacebars
 Readme</a>.</p>
 
 <p>Under the hood, each helper starts a new
@@ -13914,11 +13288,7 @@ template.</p>
 may be calculated by a helper and may change reactively.  The <code>data</code>
 argument is optional, and if it is omitted, the current data context
 is used. It&apos;s also possible, to use <code>Template.dynamic</code> as a block helper
-(<code>
-  
-    
-    
-  </code>)</p>
+(<code>{{#Template.dynamic}} ... {{/Template.dynamic}}</code>)</p>
 
 <p>For example, if there is a template named &quot;foo&quot;, <code>{{&gt; Template.dynamic
 template=&quot;foo&quot;}}</code> is equivalent to <code>{{&gt; foo}}</code> and
