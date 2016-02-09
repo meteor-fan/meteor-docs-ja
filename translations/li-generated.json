@@ -20,5 +20,11 @@
   "<code>name</code>: The name of the method or subscription being called": "<code>name</code>: 呼び出されるメソッドやsubscriptionの名前",
   "<code>userId</code>: The user ID attempting the method or subscription": "<code>userId</code>: メソッドやsubscriptionを呼び出そうとしているユーザID",
   "<code>connectionId</code>: A string representing the user&apos;s DDP connection": "<code>connectionId</code>: ユーザのDDPコネクションの文字列表現",
-  "<code>clientAddress</code>: The IP address of the user": "<code>clientAddress</code>: ユーザのIPアドレス"
+  "<code>clientAddress</code>: The IP address of the user": "<code>clientAddress</code>: ユーザのIPアドレス",
+  "The different types of MongoDB collections in Meteor, and how to use them.": "Meteorにおいての、異なる種類のMongoDB コレクションとそれらの使い方。",
+  "How to define a schema for a collection to control its content.": "コレクションの内容をコントロールするためのスキーマの定義の仕方。",
+  "What to consider when defining your collection&#x2019;s schema.": "あなたのコレクションのスキーマを定義するとき、考慮することは何か。",
+  "How to enforce the schema when writing to a collection.": "コレクションに書き込みをするときのスキーマの強制させ方。",
+  "How to carefully change the schema of your collection.": "あなたのコレクションのスキーマの慎重な変更の仕方。",
+  "How to deal with associations between records.": "レコード同士の関連の扱い方。"
 }
