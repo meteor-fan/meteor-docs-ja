@@ -6,7 +6,7 @@
     <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
-  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
 .st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
   <body>
     <div id="wrap">
@@ -62,7 +62,7 @@
 <ul class="menu-root">
   
     <li>
-      <a href="guide-index-1.2.html" class="sidebar-link">
+      <a href="guide-1.2.html" class="sidebar-link">
         Introduction
       </a>
     </li>
@@ -153,7 +153,7 @@
 <p>However, most of the user-facing features of URLs listed above are still relevant for typical Meteor applications. Since the server is not URL-driven, the URL just becomes a useful representation of the client-side state the user is currently looking at. However, unlike in a server-rendered application, it does not need to describe the entirety of the user’s current state; it simply needs to contain the parts that you want to be linkable. For example, the URL should contain any search filters applied on a page, but not necessarily the state of a dropdown menu or popup.</p>
 <h2 id="flow-router"><a class="anchor" href="#flow-router" aria-hidden="true" data-scroll="">&#x1F517;</a>Using Flow Router</h2>
 
-<p>To add routing to your app, install the <a href="https://atmospherejs.com/kadira/flow-router?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.6.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>kadira:flow-router</code></a> package:</p>
+<p>To add routing to your app, install the <a href="https://atmospherejs.com/kadira/flow-router" target="_blank" rel="external"><code>kadira:flow-router</code></a> package:</p>
 <figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="built_in">add</span> kadir<span class="variable">a:flow</span>-router</span><br></pre></td></tr></tbody></table></figure>
 <p>Flow Router is a community routing package for Meteor. At the time of writing this guide, it is at version 2.x. For detailed information about all of the features Flow Router has to offer, refer to the <a href="https://kadira.io/academy/meteor-routing-guide" target="_blank" rel="external">Kadira Meteor routing guide</a>.</p>
 <h2 id="defining-routes"><a class="anchor" href="#defining-routes" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a simple route</h2>
@@ -234,7 +234,7 @@
 <h3 id="active-route"><a class="anchor" href="#active-route" aria-hidden="true" data-scroll="">&#x1F517;</a>Highlighting the active route</h3>
 
 <p>One situation where it is sensible to access the global <code>FlowRouter</code> singleton to access the current route’s information deeper in the component hierarchy is when rendering links via a navigation component. It’s often required to highlight the “active” route in some way (this is the route or section of the site that the user is currently looking at).</p>
-<p>A convenient package for this is <a href="https://atmospherejs.com/zimme/active-route?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.6.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>zimme:active-route</code></a>:</p>
+<p>A convenient package for this is <a href="https://atmospherejs.com/zimme/active-route" target="_blank" rel="external"><code>zimme:active-route</code></a>:</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add zimme:active-route</span><br></pre></td></tr></tbody></table></figure>
 <p>In the Todos example app, we link to each list the user knows about in the <code>App_body</code> template:</p>
 <figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">{{#each list in lists}}</span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&quot;list-todo {{activeListClass list}}&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    {{list.name}}</span><br><span class="line">  <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">{{/each}}</span><br></pre></td></tr></tbody></table></figure>
@@ -336,8 +336,8 @@
 <p>As we’ve discussed, Meteor is a framework for client rendered applications, but this doesn’t always remove the requirement for server rendered routes. There are two main use cases for server-side routing.</p>
 <h4 id="server-side-apis">Server Routing for API access</h4>
 
-<p>Although Meteor allows you to <a href="http://docs.meteor.com/#/full/webapp" target="_blank" rel="external">write low-level connect handlers</a> to create any kind of API you like on the server-side, if you all you want to do is create a RESTful version of your Methods and Publications, you can often use the <a href="http://atmospherejs.com/simple/rest?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.6.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>simple:rest</code></a> package to do this easily. See the <a href="data-loading.html#publications-as-rest">Data Loading</a> and <a href="methods.html">Methods</a> articles for more information.</p>
-<p>If you need more control, you can use the comphrensive <a href="https://atmospherejs.com/nimble/restivus?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.6.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>nimble:restivus</code></a> package to create more or less whatever you need in whatever ontology you require.</p>
+<p>Although Meteor allows you to <a href="http://docs.meteor.com/#/full/webapp" target="_blank" rel="external">write low-level connect handlers</a> to create any kind of API you like on the server-side, if you all you want to do is create a RESTful version of your Methods and Publications, you can often use the <a href="http://atmospherejs.com/simple/rest" target="_blank" rel="external"><code>simple:rest</code></a> package to do this easily. See the <a href="data-loading.html#publications-as-rest">Data Loading</a> and <a href="methods.html">Methods</a> articles for more information.</p>
+<p>If you need more control, you can use the comphrensive <a href="https://atmospherejs.com/nimble/restivus" target="_blank" rel="external"><code>nimble:restivus</code></a> package to create more or less whatever you need in whatever ontology you require.</p>
 <h4 id="server-side-rendering">Server Rendering</h4>
 
 <p>The Blaze UI library does not have support for server-side rendering, so it’s not possible to render your pages on the server if you use Blaze. However, the React UI library does. This means it is possible to render HTML on the server if you use React as your rendering framework.</p>

@@ -6,7 +6,7 @@
     <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
-  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
 .st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
   <body>
     <div id="wrap">
@@ -62,7 +62,7 @@
 <ul class="menu-root">
   
     <li>
-      <a href="guide-index-1.2.html" class="sidebar-link">
+      <a href="guide-1.2.html" class="sidebar-link">
         Introduction
       </a>
     </li>
@@ -256,9 +256,9 @@
 <p>If the new version involves different data formats in the database, then you need to be a little more careful about how you step through versions to ensure that all the versions that are running simultaneously can work together. You can read more about how to do this in the <a href="collections.html#migrations">collections article</a>.</p>
 <h2 id="analytics"><a class="anchor" href="#analytics" aria-hidden="true" data-scroll="">&#x1F517;</a>Monitoring users via analytics</h2>
 
-<p>It’s common to want to know which pages of your app are most commonly visited, and where users are coming from. Here’s a simple setup that will get you URL tracking using Google Analytics. We’ll be using the <a href="https://atmospherejs.com/okgrow/analytics?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>okgrow:analytics</code></a> package.</p>
+<p>It’s common to want to know which pages of your app are most commonly visited, and where users are coming from. Here’s a simple setup that will get you URL tracking using Google Analytics. We’ll be using the <a href="https://atmospherejs.com/okgrow/analytics" target="_blank" rel="external"><code>okgrow:analytics</code></a> package.</p>
 <figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="built_in">add</span> okgro<span class="variable">w:analytics</span></span><br></pre></td></tr></tbody></table></figure>
-<p>Now, we need to configure the package with our Google Analytics key (the package also supports a large variety of other providers, check out the <a href="https://atmospherejs.com/okgrow/analytics?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">documentation on Atmosphere</a>). Pass it in as part of <a href="#environment"><em>Meteor settings</em></a>:</p>
+<p>Now, we need to configure the package with our Google Analytics key (the package also supports a large variety of other providers, check out the <a href="https://atmospherejs.com/okgrow/analytics" target="_blank" rel="external">documentation on Atmosphere</a>). Pass it in as part of <a href="#environment"><em>Meteor settings</em></a>:</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="string">&quot;public&quot;</span>: {</span><br><span class="line">    <span class="string">&quot;analyticsSettings&quot;</span>: {</span><br><span class="line">      <span class="comment">// Add your analytics tracking id&apos;s here</span></span><br><span class="line">      <span class="string">&quot;Google Analytics&quot;</span> : {<span class="string">&quot;trackingId&quot;</span>: <span class="string">&quot;Your tracking ID&quot;</span>}</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>The analytics package hooks into Flow Router (see the <a href="routing.html">routing article</a> for more) and records all of the page events for you.</p>
 <p>You may want to track non-page change related events (for instance publication subscription, or method calls) also. To do so you can use the custom event tracking functionality:</p>
@@ -297,8 +297,9 @@
 <h2 id="seo"><a class="anchor" href="#seo" aria-hidden="true" data-scroll="">&#x1F517;</a>Enabling SEO</h2>
 
 <p>If your application contains a lot of publicly accessible content, then you probably want it to rank well in Google and other search engines’ indexes. As most webcrawlers do not support client-side rendering (or if they do, have spotty support for websockets), it’s better to render the site on the server and deliver it as HTML in this special case.</p>
-<p>To do so, we can use the <a href="https://prerender.io" target="_blank" rel="external">Prerender.io</a> service, thanks to the <a href="https://atmospherejs.com/dfischer/prerenderio?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>dfischer:prerenderio</code></a> package. It’s as simple as <code>meteor add</code>-ing it, and optionally setting your prerender token if you have a paid prerender account and would like to enable more frequent cache changes.</p>
-<p>Chances are you want to set <code>&lt;title&gt;</code> tags and other <code>&lt;head&gt;</code> content to make your site appear nicer in search results. The best way to do so is to use the <a href="https://atmospherejs.com/kadira/dochead?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.11.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>kadira:dochead</code></a> package. The sensible place to call out to <code>DocHead</code> is from the <code>onCreated</code> callbacks of your page-level components.</p>
+<p>To do so, we can use the <a href="https://prerender.io" target="_blank" rel="external">Prerender.io</a> service, thanks to the <a href="https://atmospherejs.com/dfischer/prerenderio" target="_blank" rel="external"><code>dfischer:prerenderio</code></a> package. It’s a simple as <code>meteor add</code>-ing it, and optionally setting your prerender token if you have a premium prerender account and would like to enable more frequent cache changes.</p>
+<p>If you’re using a Galaxy Team, Business, or Pro account to host your meteor apps, you can also take advantage of built-in automatic <a href="https://prerender.io" target="_blank" rel="external">Prerender.io</a> integration. Simply add <a href="https://atmospherejs.com/mdg/seo" target="_blank" rel="external"><code>mdg:seo</code></a> to your app and Galaxy will take care of the rest.</p>
+<p>Chances are you also want to set <code>&lt;title&gt;</code> tags and other <code>&lt;head&gt;</code> content to make your site appear nicer in search results. The best way to do so is to use the <a href="https://atmospherejs.com/kadira/dochead" target="_blank" rel="external"><code>kadira:dochead</code></a> package. The sensible place to call out to <code>DocHead</code> is from the <code>onCreated</code> callbacks of your page-level components.</p>
 
     <div class="bottom-nav">
       

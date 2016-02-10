@@ -67,12 +67,24 @@ function processResult(name) {
     $('img').each(function() {
       $(this).attr('src', url.resolve(baseUrl, $(this).attr('src')));
     });
+    $('a').each(function() {
+      var oldHref = $(this).attr('href');
+      if (oldHref) {
+        $(this).attr('href', oldHref.replace(/\?__hstc=[\w\.]+&__hssc=[\w\.]+&__hsfp=[\w\.]+/, ''));
+      }
+    });
 
     if (name.lastIndexOf('guide', 0) === 0) { // name.startsWith('guide')
       $('a.sidebar-link, .bottom-nav a').each(function() {
         var oldHref = $(this).attr('href');
         if (oldHref) {
-          $(this).attr('href', 'guide-' + oldHref.match(/(.*)\.html$/)[1] + '-' + version + '.html');
+          var oldPath = oldHref.match(/(.*)\.html$/)[1];
+          if (oldPath === 'index') {
+            oldPath = '';
+          } else {
+            oldPath = '-' + oldPath;
+          }
+          $(this).attr('href', 'guide' + oldPath + '-' + version + '.html');
         }
       });
     } else { // basic, full

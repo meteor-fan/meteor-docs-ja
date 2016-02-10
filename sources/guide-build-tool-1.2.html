@@ -6,7 +6,7 @@
     <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
-  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
 .st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
   <body>
     <div id="wrap">
@@ -62,7 +62,7 @@
 <ul class="menu-root">
   
     <li>
-      <a href="guide-index-1.2.html" class="sidebar-link">
+      <a href="guide-1.2.html" class="sidebar-link">
         Introduction
       </a>
     </li>
@@ -153,7 +153,7 @@
 <p>Building an application completely from scratch is a tall order. This is one of the main reasons you might consider using Meteor in the first place - you can focus on writing the code that is specific to your app, instead of reinventing wheels like user login and data synchronization. To streamline your workflow even further, it makes sense to use community packages from Atmosphere and NPM. Many of these packages are recommended in the guide, and you can find more in the online directories.</p>
 <h3 id="atmosphere"><a class="anchor" href="#atmosphere" aria-hidden="true" data-scroll="">&#x1F517;</a>Atmosphere</h3>
 
-<p><a href="https://atmospherejs.com/?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Atmosphere</a> is a repository and discovery website for Meteor-specific packages. Packages are published on Atmosphere when they need to take advantage of features specific to Meteor, like the cross-platform build system, isomorphic client/server code, or data system.</p>
+<p><a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere</a> is a repository and discovery website for Meteor-specific packages. Packages are published on Atmosphere when they need to take advantage of features specific to Meteor, like the cross-platform build system, isomorphic client/server code, or data system.</p>
 <h4 id="atmosphere-adding">Adding packages to your app</h4>
 
 <p>You have two options for adding packages from Atmosphere to your app:</p>
@@ -168,7 +168,7 @@
 
 <p>There are a few ways to search for Meteor packages published to Atmosphere:</p>
 <ol>
-<li>Search on the <a href="https://atmospherejs.com/?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Atmosphere website</a>.</li>
+<li>Search on the <a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere website</a>.</li>
 <li>Use <code>meteor search</code> from the command line.</li>
 <li>Use a community package search website like <a href="http://fastosphere.meteor.com/" target="_blank" rel="external">Fastosphere</a>.</li>
 </ol>
@@ -191,7 +191,7 @@
 <p><a href="http://npmjs.com/" target="_blank" rel="external">NPM</a> is the most popular package repository for JavaScript packages. Historically, NPM was only used for publishing server-side Node.js packages, but is now used for a much wider variety of packages, including client/server JavaScript utilities, React components, Angular directives, and more.</p>
 <h4 id="npm-adding">Adding packages to your app</h4>
 
-<p>Meteor 1.3 will have seamless integration with NPM, and you will be able to simply <code>npm install</code> these packages into your app directory. Until then, the easiest way to use NPM packages in your app is <a href="https://atmospherejs.com/meteorhacks/npm?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>meteorhacks:npm</code></a>.</p>
+<p>Meteor 1.3 will have seamless integration with NPM, and you will be able to simply <code>npm install</code> these packages into your app directory. Until then, the easiest way to use NPM packages in your app is <a href="https://atmospherejs.com/meteorhacks/npm" target="_blank" rel="external"><code>meteorhacks:npm</code></a>.</p>
 <h4 id="npm-searching">Searching for packages</h4>
 
 <p>The best way to find NPM packages is by searching on <a href="https://www.npmjs.com/" target="_blank" rel="external">npmjs.com</a>. There are also some websites that have special search features specifically for certain kinds of packages, like the aptly named <a href="http://react-components.com/" target="_blank" rel="external">react-components.com</a>.</p>
@@ -220,7 +220,7 @@
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sendTextMessage() {</span><br><span class="line">  <span class="keyword">const</span> promise = client.sendMessage({</span><br><span class="line">    to:<span class="string">&apos;+16515556677&apos;</span>,</span><br><span class="line">    from: <span class="string">&apos;+14506667788&apos;</span>,</span><br><span class="line">    body: <span class="string">&apos;Hello world!&apos;</span></span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Wait for and return the result</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.await(promise);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="client-npm"><a class="anchor" href="#client-npm" aria-hidden="true" data-scroll="">&#x1F517;</a>NPM on the client</h3>
 
-<p>NPM started as a package manager for Node.js, but is quickly becoming one of the most popular places to publish client-side modules as well. Meteor 1.3 will include built-in support for bundling NPM modules on the client, but in the meantime the best option is to use the <a href="https://atmospherejs.com/cosmos/browserify?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>cosmos:browserify</code></a> package to bundle these modules. Since one of the most common scenarios is using React components from NPM, read about how to do this in the <a href="http://react-in-meteor.readthedocs.org/en/latest/client-npm/?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">React in Meteor guide</a>.</p>
+<p>NPM started as a package manager for Node.js, but is quickly becoming one of the most popular places to publish client-side modules as well. Meteor 1.3 will include built-in support for bundling NPM modules on the client, but in the meantime the best option is to use the <a href="https://atmospherejs.com/cosmos/browserify" target="_blank" rel="external"><code>cosmos:browserify</code></a> package to bundle these modules. Since one of the most common scenarios is using React components from NPM, read about how to do this in the <a href="http://react-in-meteor.readthedocs.org/en/latest/client-npm/" target="_blank" rel="external">React in Meteor guide</a>.</p>
 <h2 id="javascript-transpilation"><a class="anchor" href="#javascript-transpilation" aria-hidden="true" data-scroll="">&#x1F517;</a>JavaScript transpilation</h2>
 
 <p>These days, the landscape of JavaScript tools and frameworks is constantly shifting, and the language itself is evolving just as rapidly. It&#x2019;s no longer reasonable to wait for web browsers to implement the language features you want to use. Most JavaScript development workflows rely on compiling code to work on the lowest common denominator of environments, while letting you use the newest features in development. Meteor has support for some of the most popular tools out of the box.</p>
@@ -250,7 +250,7 @@
 <p><a href="blaze.html">Read about how to use Blaze and Spacebars in the Blaze article.</a></p>
 <h3 id="blaze-jade"><a class="anchor" href="#blaze-jade" aria-hidden="true" data-scroll="">&#x1F517;</a>Blaze Jade templates</h3>
 
-<p>If you don&#x2019;t like the Spacebars syntax Meteor uses by default and want something more concise, you can give Jade a try by using <a href="https://atmospherejs.com/mquandalle/jade?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>mquandalle:jade</code></a>. This package will compile all files in your app with the <code>.jade</code> extension into Blaze-compatible code, and can be used side-by-side with <code>blaze-html-templates</code> if you want to have some of your code in Spacebars and some in Jade.</p>
+<p>If you don&#x2019;t like the Spacebars syntax Meteor uses by default and want something more concise, you can give Jade a try by using <a href="https://atmospherejs.com/dalgard/jade" target="_blank" rel="external"><code>dalgard:jade</code></a>. This package will compile all files in your app with the <code>.jade</code> extension into Blaze-compatible code, and can be used side-by-side with <code>blaze-html-templates</code> if you want to have some of your code in Spacebars and some in Jade.</p>
 <h3 id="react-jsx"><a class="anchor" href="#react-jsx" aria-hidden="true" data-scroll="">&#x1F517;</a>JSX for React</h3>
 
 <p>If you&#x2019;re building your app&#x2019;s UI with React, currently the most popular way to write your UI components involves JSX, an extension to JavaScript that allows you to type HTML tags that are converted to React DOM elements. To enable JSX compilation, simply add the <code>jsx</code> package to your app; you can also use the <code>react</code> meta-package which will include <code>jsx</code> for you.</p>
@@ -293,13 +293,13 @@
 <p>Read the documentation for your favorite CSS pre-processor package to learn more about the details.</p>
 <h3 id="sass"><a class="anchor" href="#sass" aria-hidden="true" data-scroll="">&#x1F517;</a>Sass</h3>
 
-<p>The best Sass build plugin for Meteor is <a href="https://atmospherejs.com/fourseven/scss?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>fourseven:scss</code></a>.</p>
+<p>The best Sass build plugin for Meteor is <a href="https://atmospherejs.com/fourseven/scss" target="_blank" rel="external"><code>fourseven:scss</code></a>.</p>
 <h3 id="less"><a class="anchor" href="#less" aria-hidden="true" data-scroll="">&#x1F517;</a>Less</h3>
 
-<p>Less is maintained as a <a href="https://atmospherejs.com/meteor/less?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Meteor core package called <code>less</code></a>.</p>
+<p>Less is maintained as a <a href="https://atmospherejs.com/meteor/less" target="_blank" rel="external">Meteor core package called <code>less</code></a>.</p>
 <h3 id="stylus"><a class="anchor" href="#stylus" aria-hidden="true" data-scroll="">&#x1F517;</a>Stylus</h3>
 
-<p>Stylus is maintained as a <a href="https://atmospherejs.com/meteor/stylus?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Meteor core package called <code>stylus</code></a>.</p>
+<p>Stylus is maintained as a <a href="https://atmospherejs.com/meteor/stylus" target="_blank" rel="external">Meteor core package called <code>stylus</code></a>.</p>
 <h2 id="postcss"><a class="anchor" href="#postcss" aria-hidden="true" data-scroll="">&#x1F517;</a>PostCSS and Autoprefixer</h2>
 
 <p>In addition to CSS pre-processors like Sass, Less, and Stylus, there is now an ecosystem of CSS post-processors. Regardless of which CSS pre-processor you use, a post-processor can give you additional benefits like cross-browser compatibility.</p>
@@ -307,7 +307,7 @@
 <p>Currently, Meteor doesn&#x2019;t have a separate build step for post-processing CSS, so the only way to integrate it is to build it into the minifier. Thankfully, there is a community package that has integrated PostCSS with plugin support into a replacement for Meteor&#x2019;s standard minification package.</p>
 <h3 id="juliancwirko-postcss"><a class="anchor" href="#juliancwirko-postcss" aria-hidden="true" data-scroll="">&#x1F517;</a>juliancwirko:postcss</h3>
 
-<p>Use the package <a href="https://atmospherejs.com/juliancwirko/postcss?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.12.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">juliancwirko:postcss</a> to your app to enable PostCSS for your Meteor app. It&#x2019;s not completely trivial to set it up, and we hope to make support for PostCSS a more core part of Meteor in the future. Read the documentation for the package to get the steps to add it to your app; we won&#x2019;t reproduce the instructions here since they might change in future versions.</p>
+<p>Use the package <a href="https://atmospherejs.com/juliancwirko/postcss" target="_blank" rel="external">juliancwirko:postcss</a> to your app to enable PostCSS for your Meteor app. It&#x2019;s not completely trivial to set it up, and we hope to make support for PostCSS a more core part of Meteor in the future. Read the documentation for the package to get the steps to add it to your app; we won&#x2019;t reproduce the instructions here since they might change in future versions.</p>
 <h2 id="minification"><a class="anchor" href="#minification" aria-hidden="true" data-scroll="">&#x1F517;</a>Minification</h2>
 
 <p>The current best practice for deploying web production applications is to concatenate and minify all of your app assets. This lets you add all of the comments and whitespace you want to your source code, and split it into as many files as is necessary without worrying about app performance.</p>
