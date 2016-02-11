@@ -200,15 +200,42 @@ Meteorではこのようなユーザーエクスペリエンスを簡単に実�
 </p>
 
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line won&apos;t complete until the insert is done</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this line will return something</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// Look ma, no callbacks!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="client-collections"><a class="anchor" href="#client-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Client-side collections</h3>
 
 <p>On the client, when you write the same line:</p>
+<p class="translation">クライアント側では、あなたが同じ行を書くとき：</p>
+
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Todos&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+
 <p>It does something totally different!</p>
+<p class="translation">全然違う動作をします！</p>
+
 <p>On the client, there is no direct connection to the MongoDB database, and in fact a synchronous API to it is not possible (nor probably what you want). Instead, on the client, a collection is a client side <em>cache</em> of the database. This is achieved thanks to the <a href="https://www.meteor.com/mini-databases" target="_blank" rel="external">Minimongo</a> library—an in-memory, all JS, implementation of the MongoDB API. What this means is that on the client, when you write:</p>
+
+<p class="translation">
+クライアント側では、MongoDBへダイレクトな接続は無いし、実際に同期APIをつかうことは不可能です。（あるいは、多分あなたがやりたいことではないです）
+代わりにクライアント側では、collectionはクライアント側のデータベースの<em>キャッシュ</em>となっています。
+これは、<a href="https://www.meteor.com/mini-databases" target="_blank" rel="external">Minimongo</a>ライブラリのおかげで実現されています。
+Minimongoは、メモリ上で動き、全てJSでできている、MongoDB APIの実装です。
+これはどういうことかというと、あなたがクライアント側で以下のコードを書く時：
+</p>
+
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line is changing an in-memory Minimongo data structure</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// And this line is querying it</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this happens right away!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
+
 <p>The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="data-loading.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
+
+<p class="translation">
+あなたがサーバー側の（MongoDBの）collectionを、クライアント側（インメモリ）へ移動させるのは、<a href="data-loading.html">data loading article</a>で扱います。
+ザックリと言うと、あなたは<em>publication</em>を<em>subscribe</em>して、データをサーバーからクライアントにプッシュします。
+通常クライアントは、完全なMongoDB collectionのサブセットの最新のコピーを持っているとみなすことができます。
+</p>
+
 <p>To write data back to the server, you use a <em>Method</em>, the subject of the <a href="methods.html">methods article</a>.</p>
+<p class="translation">
+データをサーバー側に書き戻すためには、<em>Method</em>を使います。これは<a href="methods.html">methods article</a>で扱います。
+</p>
+
 <h3 id="local-collections"><a class="anchor" href="#local-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Local collections</h3>
 
 <p>There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
