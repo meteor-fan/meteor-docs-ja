@@ -150,10 +150,28 @@
 </ol>
 <h2 id="mongo-collections"><a class="anchor" href="#mongo-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>MongoDB collections in Meteor</h2>
 
-<p>At its core, a web application offers its users a view into, and a way to modify, a persistent set of data. Whether managing a list of todos, or ordering a car to pick you up, you are interacting with a permanent but constantly changing data layer.</p>
-<p>In Meteor, that data layer is typically stored in MongoDB. A set of related data in MongoDB is referred to as a “collection”. In Meteor you access MongoDB through <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>, making them the primary persistence mechanism for your app data.</p>
-<p>However, collections are a lot more than a way to save and retrieve data. They also provide the core of the interactive, connected user experience that users expect from the best applications. Meteor makes this user experience easy to implement.</p>
-<p>In this article, we’ll look closely at how collections work in various places in the framework, and how to get the most out of them.</p>
+<p class="original">At its core, a web application offers its users a view into, and a way to modify, a persistent set of data. Whether managing a list of todos, or ordering a car to pick you up, you are interacting with a permanent but constantly changing data layer.</p>
+<p class="translation">
+ウェブアプリケーションは、基本的な機能として、ユーザーに永続的なデータの集まりに対して、ビューと、変更する方法を提供します。
+TODOリストを管理するにしろ、車を手配する注文をするにしろ、あなたは永続的でかつ常に変化するデータレイヤとやり取りをしいます。
+</p>
+<p class="original">In Meteor, that data layer is typically stored in MongoDB. A set of related data in MongoDB is referred to as a “collection”. In Meteor you access MongoDB through <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>, making them the primary persistence mechanism for your app data.</p>
+<p class="translation">
+Meteorでは、そのデータレイヤは通常MongoDBに保管します。
+MongoDBでは、関連するデータの集まりは“collection”と呼ばれます。
+Meteorでは、MongoDBは <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>を通してアクセスできます。
+これはあなたのアプリデータの主要な永続メカニズムになります。
+</p>
+<p class="original">However, collections are a lot more than a way to save and retrieve data. They also provide the core of the interactive, connected user experience that users expect from the best applications. Meteor makes this user experience easy to implement.</p>
+<p class="translation">
+しかし、collectionsは単にデータを保存したり取り出したりするだけではありません。
+これは、インテラクティブ性の中心的な機能、ユーザーが最高のアプリケーションに期待する、コネクティッドユーザーエクスペリエンスを提供するものでもあります。
+Meteorではこのようなユーザーエクスペリエンスを簡単に実装することができます。
+</p>
+<p class="original">In this article, we’ll look closely at how collections work in various places in the framework, and how to get the most out of them.</p>
+<p class="translation">
+この記事では、フレームワークの中のいろいろなところで、collectionsがどのように動くのか、そして、それらを最大限利用する方法を見ていきます。
+</p>
 <h3 id="server-collections"><a class="anchor" href="#server-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Server-side collections</h3>
 
 <p>When you create a collection on the server:</p>
