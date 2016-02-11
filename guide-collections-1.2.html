@@ -164,7 +164,7 @@ Meteorでは、MongoDBは <a href="http://docs.meteor.com/#/full/mongo_collectio
 </p>
 <p class="original">However, collections are a lot more than a way to save and retrieve data. They also provide the core of the interactive, connected user experience that users expect from the best applications. Meteor makes this user experience easy to implement.</p>
 <p class="translation">
-しかし、collectionsは単にデータを保存したり取り出したりするだけではありません。
+しかし、collectionsは単にデータを保存したり取り出したりするだけのものではありません。
 これは、インテラクティブ性の中心的な機能、ユーザーが最高のアプリケーションに期待する、コネクティッドユーザーエクスペリエンスを提供するものでもあります。
 Meteorではこのようなユーザーエクスペリエンスを簡単に実装することができます。
 </p>
@@ -174,9 +174,16 @@ Meteorではこのようなユーザーエクスペリエンスを簡単に実�
 </p>
 <h3 id="server-collections"><a class="anchor" href="#server-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Server-side collections</h3>
 
-<p>When you create a collection on the server:</p>
+<p class="original">When you create a collection on the server:</p>
+<p class="translation">
+あなたがサーバー側でcollectionを作るとき：
+</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Todos&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
-<p>You are creating a collection within MongoDB, and an interface to that collection to be used on the server. It’s a fairly straightforward layer on top of the underlying Node MongoDB driver, but with a synchronous API:</p>
+<p class="original">You are creating a collection within MongoDB, and an interface to that collection to be used on the server. It’s a fairly straightforward layer on top of the underlying Node MongoDB driver, but with a synchronous API:</p>
+<p class="translation">
+あなたは、MongoDBの中にcollectionと、そのcollectionをサーバー側で使えるようにするインターフェースを作っています。
+これは、Node MongoDBドライバの上の非常にシンプルなレイヤーですが、同期APIを備えています：
+</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line won&apos;t complete until the insert is done</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this line will return something</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// Look ma, no callbacks!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="client-collections"><a class="anchor" href="#client-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Client-side collections</h3>
 
