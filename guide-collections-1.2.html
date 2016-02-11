@@ -213,10 +213,24 @@ Minimongoは、メモリ上で動き、全てJSでできている、MongoDB API�
 </p>
 <h3 id="local-collections"><a class="anchor" href="#local-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Local collections</h3>
 
-<p>There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
+<p class="original">There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
+<p class="translation">
+Meteorでcollectionを使う、第三の方法があります。
+クライアント側またはサーバー側で、collectionに名前の代わりに <code>null</code>を渡して作ると：
+</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SelectedTodos = <span class="keyword">new</span> Mongo.Collection(<span class="literal">null</span>);</span><br></pre></td></tr></tbody></table></figure>
-<p>This creates a <em>local collection</em>. This is a Minimongo collection that has no database connection (ordinarily a named collection would either be directly connected to the database on the server, or via a subscription on the client).</p>
-<p>A local collection is a convenient way to use the full power of the Minimongo library for in-memory storage. For instance, you might use it instead of a simple array if you need to execute complex queries over your data. Or you may want to take advantage of its <em>reactivity</em> on the client to drive some UI in a way that feels natural in Meteor.</p>
+<p class="original">This creates a <em>local collection</em>. This is a Minimongo collection that has no database connection (ordinarily a named collection would either be directly connected to the database on the server, or via a subscription on the client).</p>
+<p class="translation">
+これは<em>local collection</em>を作成します。
+これはデータベースへの接続が無いMinimongo collectionです。
+（通常、名前付きのcollectionは、サーバー側で直接データベースに接続されているか、クライアント側でsubscriptionを通してデータベースに接続されているかのどちらかです）
+</p>
+<p class="original">A local collection is a convenient way to use the full power of the Minimongo library for in-memory storage. For instance, you might use it instead of a simple array if you need to execute complex queries over your data. Or you may want to take advantage of its <em>reactivity</em> on the client to drive some UI in a way that feels natural in Meteor.</p>
+<p class="translation">
+local collectionはインメモリストレージのMinimongoライブラリのフルパワーを利用する便利な方法です。
+例えば、あなたのデータに対して複雑なクエリを実行したい場合なら、シンプルな配列の代わりに使えます。
+あるいは、クライアント側でその<em>リアクティブ性</em>を利用すると良いかもしれません。Meteorでは自然に感じるようなやりかたでUIを動作させることができます。
+</p>
 <h2 id="schemas"><a class="anchor" href="#schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a schema</h2>
 
 <p>Although MongoDB is a schema-less database, which allows maximum flexibility in data structuring, it is generally good practice to use a schema to constrain the contents of your collection to conform to a known format. If you don’t, then you tend to end up needing to write defensive code to check and confirm the structure of your data as it <em>comes out</em> of the database, instead of when it <em>goes into</em> the database. As in most things, you tend to <em>read data more often than you write it</em>, and so it’s usually easier, and less buggy to use a schema when writing.</p>
