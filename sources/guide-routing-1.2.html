@@ -254,7 +254,7 @@
 <h2 id="page-templates"><a class="anchor" href="#page-templates" aria-hidden="true" data-scroll="">&#x1F517;</a>Components as pages</h2>
 
 <p>Notice that we called the component to be rendered <code>Lists_show_page</code> (rather than <code>Lists_show</code>). This indicates that this template is rendered directly by a Flow Router action and forms the &#x2018;top&#x2019; of the rendering hierarchy for this URL.</p>
-<p>The <code>Lists_show_page</code> template renders <em>without</em> arguments&#x2014;it is this template&#x2019;s responsibility to collect information from the current route, and then pass this information down into its child templates. Correspondingly the <code>Lists_show_page</code> template is very tied to the route that rendered it, and so it needs to be a smart component. See the article on <a href="ui-ux.html">UI/UX</a> for more about smart and reusable components.</p>
+<p>The <code>Lists_show_page</code> template renders <em>without</em> arguments&#x2014;it is this template&#x2019;s responsibility to collect information from the current route, and then pass this information down into its child templates. Correspondingly the <code>Lists_show_page</code> template is very tied to the route that rendered it, and so it needs to be a smart component. See the article on <a href="guide-ui-ux-1.2.html">UI/UX</a> for more about smart and reusable components.</p>
 <p>It makes sense for a &#x201C;page&#x201D; smart component like <code>Lists_show_page</code> to:</p>
 <ol>
 <li>Collect route information,</li>
@@ -335,7 +335,7 @@
 <p>As we&#x2019;ve discussed, Meteor is a framework for client rendered applications, but this doesn&#x2019;t always remove the requirement for server rendered routes. There are two main use cases for server-side routing.</p>
 <h4 id="server-side-apis">Server Routing for API access</h4>
 
-<p>Although Meteor allows you to <a href="http://docs.meteor.com/#/full/webapp" target="_blank" rel="external">write low-level connect handlers</a> to create any kind of API you like on the server-side, if you all you want to do is create a RESTful version of your Methods and Publications, you can often use the <a href="http://atmospherejs.com/simple/rest" target="_blank" rel="external"><code>simple:rest</code></a> package to do this easily. See the <a href="data-loading.html#publications-as-rest">Data Loading</a> and <a href="methods.html">Methods</a> articles for more information.</p>
+<p>Although Meteor allows you to <a href="http://docs.meteor.com/#/full/webapp" target="_blank" rel="external">write low-level connect handlers</a> to create any kind of API you like on the server-side, if you all you want to do is create a RESTful version of your Methods and Publications, you can often use the <a href="http://atmospherejs.com/simple/rest" target="_blank" rel="external"><code>simple:rest</code></a> package to do this easily. See the <a href="data-loading.html#publications-as-rest">Data Loading</a> and <a href="guide-methods-1.2.html">Methods</a> articles for more information.</p>
 <p>If you need more control, you can use the comphrensive <a href="https://atmospherejs.com/nimble/restivus" target="_blank" rel="external"><code>nimble:restivus</code></a> package to create more or less whatever you need in whatever ontology you require.</p>
 <h4 id="server-side-rendering">Server Rendering</h4>
 

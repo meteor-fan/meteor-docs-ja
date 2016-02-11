@@ -201,15 +201,15 @@ Minimongoは、メモリ上で動き、全てJSでできている、MongoDB API�
 これはどういうことかというと、あなたがクライアント側で以下のコードを書く時：
 </p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line is changing an in-memory Minimongo data structure</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// And this line is querying it</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this happens right away!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
-<p class="original">The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="data-loading.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
+<p class="original">The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="guide-data-loading-1.2.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
 <p class="translation">
-あなたがサーバー側の（MongoDBの）collectionを、クライアント側（インメモリ）へ移動させるのは、<a href="data-loading.html">data loading article</a>で扱います。
+あなたがサーバー側の（MongoDBの）collectionを、クライアント側（インメモリ）へ移動させるのは、<a href="guide-data-loading-1.2.html">data loading article</a>で扱います。
 ザックリと言うと、あなたは<em>publication</em>を<em>subscribe</em>して、データをサーバーからクライアントにプッシュします。
 通常クライアントは、完全なMongoDB collectionのサブセットの最新のコピーを持っているとみなすことができます。
 </p>
-<p class="original">To write data back to the server, you use a <em>Method</em>, the subject of the <a href="methods.html">methods article</a>.</p>
+<p class="original">To write data back to the server, you use a <em>Method</em>, the subject of the <a href="guide-methods-1.2.html">methods article</a>.</p>
 <p class="translation">
-データをサーバー側に書き戻すためには、<em>Method</em>を使います。これは<a href="methods.html">methods article</a>で扱います。
+データをサーバー側に書き戻すためには、<em>Method</em>を使います。これは<a href="guide-methods-1.2.html">methods article</a>で扱います。
 </p>
 <h3 id="local-collections"><a class="anchor" href="#local-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Local collections</h3>
 
@@ -243,7 +243,7 @@ local collectionはインメモリストレージのMinimongoライブラリの�
 <li>We specify the <code>incompleteCount</code> is a number, which on insertion is set to <code>0</code> if not otherwise specified.</li>
 <li>We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.</li>
 </ol>
-<p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="methods.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
+<p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="guide-methods-1.2.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
 <p>You can see that with relatively little code we’ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>.</p>
 <h3 id="validating-schemas"><a class="anchor" href="#validating-schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Validating against a schema</h3>
 

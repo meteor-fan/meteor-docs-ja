@@ -214,11 +214,11 @@
 <p>Note that there are some exceptions to this second rule. A common one is <code>Meteor.user()</code>—although this is strictly speaking subscribed to (automatically usually), it’s typically over-complicated to pass it through the component hierarchy as an argument to each component. However keep in mind it’s best not to use it in too many places as it makes components harder to test.</p>
 <h3 id="global-subscriptions"><a class="anchor" href="#global-subscriptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Global subscriptions</h3>
 
-<p>One place where you might be tempted to not subscribe inside a component is when it accesses data that you know you <em>always</em> need. For instance, a subscription to extra fields on the user object (see the <a href="accounts.html">Accounts Article</a>) that you need on every screen of your app.</p>
+<p>One place where you might be tempted to not subscribe inside a component is when it accesses data that you know you <em>always</em> need. For instance, a subscription to extra fields on the user object (see the <a href="guide-accounts-1.2.html">Accounts Article</a>) that you need on every screen of your app.</p>
 <p>However, it’s generally a good idea to use a layout component (which you wrap all your components in) to subscribe to this subscription anyway. It’s better to be consistent about such things, and it makes for a more flexible system if you ever decide you have a screen that <em>doesn’t</em> need that data.</p>
 <h2 id="patterns"><a class="anchor" href="#patterns" aria-hidden="true" data-scroll="">&#x1F517;</a>Patterns for data loading</h2>
 
-<p>Across Meteor applications, there are some common patterns of data loading and management on the client side that are worth knowing. We’ll go into more detail about some of these in the <a href="ui-ux.html">UI/UX Article</a>.</p>
+<p>Across Meteor applications, there are some common patterns of data loading and management on the client side that are worth knowing. We’ll go into more detail about some of these in the <a href="guide-ui-ux-1.2.html">UI/UX Article</a>.</p>
 <h3 id="readiness"><a class="anchor" href="#readiness" aria-hidden="true" data-scroll="">&#x1F517;</a>Subscription readiness</h3>
 
 <p>It is key to understand that a subscription will not instantly provide its data. There will be a latency between subscribing to the data on the client and it arriving from the publication on the server. You should also be aware that this delay may be a lot longer for your users in production that for you locally in development!</p>

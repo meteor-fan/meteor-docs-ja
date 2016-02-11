@@ -147,7 +147,7 @@
 <p>Before we get into all of the different user-facing accounts functionality you can add with Meteor, let’s go over some of the features built into the Meteor DDP protocol and <code>accounts-base</code> package. These are the parts of Meteor that you’ll definitely need to be aware of if you have any user accounts in your app; most of everything else is optional and added/removed via packages.</p>
 <h3 id="userid-ddp"><a class="anchor" href="#userid-ddp" aria-hidden="true" data-scroll="">&#x1F517;</a>userId in DDP</h3>
 
-<p>DDP is Meteor’s built-in pub/sub and RPC protocol. You can read about how to use it in the <a href="data-loading.html">Data Loading</a> and <a href="methods.html">Methods</a> articles. In addition to the concepts of data loading and method calls, DDP has one more feature built in - the idea of a <code>userId</code> field on a connection. This is the place where login state is tracked, regardless of which accounts UI package or login service you are using.</p>
+<p>DDP is Meteor’s built-in pub/sub and RPC protocol. You can read about how to use it in the <a href="guide-data-loading-1.2.html">Data Loading</a> and <a href="guide-methods-1.2.html">Methods</a> articles. In addition to the concepts of data loading and method calls, DDP has one more feature built in - the idea of a <code>userId</code> field on a connection. This is the place where login state is tracked, regardless of which accounts UI package or login service you are using.</p>
 <p>This built-in feature means that you always get <code>this.userId</code> inside Methods and Publications, and can access the user ID on the client. This is a great starting point for building your own custom accounts system, but most developers won’t need to worry about the mechanics, since you’ll mostly be interacting with the <code>accounts-base</code> package instead.</p>
 <h3 id="accounts-base"><a class="anchor" href="#accounts-base" aria-hidden="true" data-scroll="">&#x1F517;</a><code>accounts-base</code></h3>
 
@@ -181,7 +181,7 @@
 </ul>
 <p>While it’s optional and the basic functionality will work without it, it’s also a good idea to pick a router integration:</p>
 <ul>
-<li><a href="https://atmospherejs.com/useraccounts/flow-routing" target="_blank" rel="external">Flow Router</a>, the router <a href="routing.html">recommended in this guide</a>.</li>
+<li><a href="https://atmospherejs.com/useraccounts/flow-routing" target="_blank" rel="external">Flow Router</a>, the router <a href="guide-routing-1.2.html">recommended in this guide</a>.</li>
 <li><a href="https://atmospherejs.com/useraccounts/iron-routing" target="_blank" rel="external">Iron Router</a>, another popular router in the Meteor community.</li>
 </ul>
 <p>In the example app we are using the Flow Router integration with great success. Some of the later sections will cover how to customize the routes and templates to fit your app better.</p>
