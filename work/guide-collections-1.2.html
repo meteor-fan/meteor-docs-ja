@@ -263,17 +263,50 @@ local collectionはインメモリストレージのMinimongoライブラリの�
 <h2 id="schemas"><a class="anchor" href="#schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a schema</h2>
 
 <p>Although MongoDB is a schema-less database, which allows maximum flexibility in data structuring, it is generally good practice to use a schema to constrain the contents of your collection to conform to a known format. If you don’t, then you tend to end up needing to write defensive code to check and confirm the structure of your data as it <em>comes out</em> of the database, instead of when it <em>goes into</em> the database. As in most things, you tend to <em>read data more often than you write it</em>, and so it’s usually easier, and less buggy to use a schema when writing.</p>
+<p class="translation">
+MongoDBはスキーマレスなデータベースで、データストラクチャーに最大限の柔軟性を与えます。
+とは言え、一般的に、あなたのcollectionの内容を事前定義したフォーマットに従わせるよう制限するスキーマを使うのは、良いプラクティスです。
+もし使わないと、あなたのデータが、データベースに<em>入っていく</em>時ではなく、データベースから<em>出てくる</em>たびに、ストラクチャーを確認するようなディフェンシブなコードを書くはめになりがちです。
+ほとんどの場合で、あなたは<em>データを書くより、読む方がずっと多い</em>でしょう。なので、通常、書き込むときにスキーマを使うほうが簡単でバグを少なくするのです。</p>
+
 <p>In Meteor, the pre-eminent schema package is <a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">aldeed:simple-schema</a>. It’s an expressive, MongoDB based schema that’s used to insert and update documents.</p>
+<p class="translation">Meteorで、卓越したスキーマパッケージは、<a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">aldeed:simple-schema</a>です。
+これは、表現力豊かな、MongoDBベースのスキーマで、ドキュメントをinsertとupdateする時に使われます。</p>
+
 <p>To write a schema using <code>simple-schema</code>, you can simply create a new instance of the <code>SimpleSchema</code> class:</p>
+<p class="translation">
+
+<code>simple-schema</code>をつかってスキーマを書くには、単に、<code>SimpleSchema</code>クラスの新しいインスタンスを以下のように作ることができます：</p>
+
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Lists.schema = <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">  name: {type: <span class="built_in">String</span>},</span><br><span class="line">  incompleteCount: {type: <span class="built_in">Number</span>, defaultValue: <span class="number">0</span>},</span><br><span class="line">  userId: {type: <span class="built_in">String</span>, regEx: SimpleSchema.RegEx.Id, optional: <span class="literal">true</span>}</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
 <p>This example from the Todos app defines a schema with a few simple rules:</p>
+<p class="translation">このTodoアプリの例はいくつかのシンプルなルールを定義しています：</p>
+
 <ol>
 <li>We specify that the <code>name</code> field of a list is required and must be a string.</li>
+<li class="translation"><code>name</code> フィールドを、必須で、文字列であることを指定しています。</li>
+
 <li>We specify the <code>incompleteCount</code> is a number, which on insertion is set to <code>0</code> if not otherwise specified.</li>
+<li class="translation"><code>incompleteCount</code> は、数値で、insertの時なにも指定がなければ、 <code>0</code>をセットすることを指定しています。</li>
+
 <li>We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.</li>
+<li class="translation"><code>userId</code> は、オプショナルで、ユーザードキュメントのIDのような文字でなければならないと指定しています。</li>
 </ol>
 <p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="methods.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
+<p class="translation">
+我々は、スキーマを<code>Lists</code>の名前空間に直接取り付けます。
+こうすることで、フォームの中や、<a href="methods.html">Method</a>などで、いつでもオブジェクトをスキーマに対してチェックしたいときに使うことができます。
+<a href="#schemas-on-write">次のセクション</a>では、collectionの書き込みをする時、どうやってこのスキーマを自動的に利用するのかを見ていきます。</p>
+
 <p>You can see that with relatively little code we’ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Simple Schema docs</a>.</p>
+
+<p class="translation">
+比較的少ないコードで、非常に効果的にlistのフォーマットを制限することに成功しているのがわかるでしょう。
+スキーマを使ったより複雑なことをなどについて詳細を <a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Simple Schema docs</a>で読むことができます。
+</p>
+
+
 <h3 id="validating-schemas"><a class="anchor" href="#validating-schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Validating against a schema</h3>
 
 <p>Now we have a schema, how do we use it?</p>

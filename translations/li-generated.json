@@ -26,5 +26,8 @@
   "What to consider when defining your collection&#x2019;s schema.": "あなたのコレクションのスキーマを定義するとき、考慮することは何か。",
   "How to enforce the schema when writing to a collection.": "コレクションに書き込みをするときのスキーマの強制させ方。",
   "How to carefully change the schema of your collection.": "あなたのコレクションのスキーマの慎重な変更の仕方。",
-  "How to deal with associations between records.": "レコード同士の関連の扱い方。"
+  "How to deal with associations between records.": "レコード同士の関連の扱い方。",
+  "We specify that the <code>name</code> field of a list is required and must be a string.": "<code>name</code> フィールドを、必須で、文字列であることを指定しています。",
+  "We specify the <code>incompleteCount</code> is a number, which on insertion is set to <code>0</code> if not otherwise specified.": "<code>incompleteCount</code> は、数値で、insertの時なにも指定がなければ、 <code>0</code>をセットすることを指定しています。",
+  "We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.": "<code>userId</code> は、オプショナルで、ユーザードキュメントのIDのような文字でなければならないと指定しています。"
 }
