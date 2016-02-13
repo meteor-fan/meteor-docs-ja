@@ -201,8 +201,16 @@ Minimongoは、メモリ上で動き、全てJSでできている、MongoDB API�
 これはどういうことかというと、あなたがクライアント側で以下のコードを書く時：
 </p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line is changing an in-memory Minimongo data structure</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// And this line is querying it</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this happens right away!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
-<p>The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="guide-data-loading-1.2.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
-<p>To write data back to the server, you use a <em>Method</em>, the subject of the <a href="guide-methods-1.2.html">methods article</a>.</p>
+<p class="original">The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="guide-data-loading-1.2.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
+<p class="translation">
+あなたがサーバー側の（MongoDBの）collectionを、クライアント側（インメモリ）へ移動させるのは、<a href="guide-data-loading-1.2.html">data loading article</a>で扱います。
+一般的にいって、あなたは<em>publication</em>を<em>subscribe</em>して、データをサーバーからクライアントにプッシュします。
+通常クライアントは、完全なMongoDB collectionのサブセットの最新のコピーを持っているとみなすことができます。
+</p>
+<p class="original">To write data back to the server, you use a <em>Method</em>, the subject of the <a href="guide-methods-1.2.html">methods article</a>.</p>
+<p class="translation">
+データをサーバー側に書き戻すためには、<em>Method</em>を使います。これは<a href="guide-methods-1.2.html">methods article</a>で扱います。
+</p>
 <h3 id="local-collections"><a class="anchor" href="#local-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Local collections</h3>
 
 <p class="original">There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
@@ -231,7 +239,9 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
 とは言え、一般的に、あなたのcollectionの内容を事前定義したフォーマットに従わせるよう制限するスキーマを使うのは、良いプラクティスです。
 もし使わないと、あなたのデータが、データベースに<em>入っていく</em>時ではなく、データベースから<em>出てくる</em>たびに、ストラクチャーを確認するようなディフェンシブなコードを書くはめになりがちです。
 ほとんどの場合で、あなたは<em>データを書くより、読む方がずっと多い</em>でしょう。なので、通常、書き込むときにスキーマを使うほうが簡単でバグを少なくするのです。</p>
-<p>In Meteor, the pre-eminent schema package is <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">aldeed:simple-schema</a>. It’s an expressive, MongoDB based schema that’s used to insert and update documents.</p>
+<p class="original">In Meteor, the pre-eminent schema package is <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">aldeed:simple-schema</a>. It’s an expressive, MongoDB based schema that’s used to insert and update documents.</p>
+<p class="translation">Meteorで、卓越したスキーマパッケージは、<a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">aldeed:simple-schema</a>です。
+これは、表現力豊かな、MongoDBベースのスキーマで、ドキュメントをinsertとupdateする時に使われます。</p>
 <p class="original">To write a schema using <code>simple-schema</code>, you can simply create a new instance of the <code>SimpleSchema</code> class:</p>
 <p class="translation">
 
@@ -247,8 +257,16 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
 <li class="original">We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.</li>
 <li class="translation"><code>userId</code> は、オプショナルで、ユーザードキュメントのIDのような文字でなければならないと指定しています。</li>
 </ol>
-<p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="guide-methods-1.2.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
-<p>You can see that with relatively little code we’ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>.</p>
+<p class="original">We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="guide-methods-1.2.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
+<p class="translation">
+我々は、スキーマを<code>Lists</code>の名前空間に直接取り付けます。
+こうすることで、フォームの中や、<a href="guide-methods-1.2.html">Method</a>などで、いつでもオブジェクトをスキーマに対してチェックしたいときに使うことができます。
+<a href="#schemas-on-write">次のセクション</a>では、collectionの書き込みをする時、どうやってこのスキーマを自動的に利用するのかを見ていきます。</p>
+<p class="original">You can see that with relatively little code we’ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>.</p>
+<p class="translation">
+比較的少ないコードで、非常に効果的にlistのフォーマットを制限することに成功しているのがわかるでしょう。
+スキーマを使ったより複雑なことをなどについて詳細を <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>で読むことができます。
+</p>
 <h3 id="validating-schemas"><a class="anchor" href="#validating-schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Validating against a schema</h3>
 
 <p>Now we have a schema, how do we use it?</p>

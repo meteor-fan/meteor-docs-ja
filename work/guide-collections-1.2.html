@@ -6,7 +6,7 @@
     <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
-  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-dcb4557aeb0ba1ebe8e4bffa39460335.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
 .st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
   <body>
     <div id="wrap">
@@ -62,7 +62,7 @@
 <ul class="menu-root">
   
     <li>
-      <a href="guide-index-1.2.html" class="sidebar-link">
+      <a href="guide-1.2.html" class="sidebar-link">
         Introduction
       </a>
     </li>
@@ -132,87 +132,67 @@
   </div>
   <div id="content">
     <h1>Collections and Schemas</h1>
-
-<p>After reading this guide, you’ll know:</p>
-
+    <p class="original">After reading this guide, you’ll know:</p>
 <p class="translation">このガイドを読むと、以下のことがわかります：</p>
-
 <ol>
-<li>The different types of MongoDB collections in Meteor, and how to use them.</li>
+<li class="original">The different types of MongoDB collections in Meteor, and how to use them.</li>
 <li class="translation">Meteorにおいての、異なる種類のMongoDB コレクションとそれらの使い方。</li>
-<li>How to define a schema for a collection to control its content.</li>
+<li class="original">How to define a schema for a collection to control its content.</li>
 <li class="translation">コレクションの内容をコントロールするためのスキーマの定義の仕方。</li>
-<li>What to consider when defining your collection’s schema.</li>
+<li class="original">What to consider when defining your collection’s schema.</li>
 <li class="translation">あなたのコレクションのスキーマを定義するとき、考慮することは何か。</li>
-<li>How to enforce the schema when writing to a collection.</li>
+<li class="original">How to enforce the schema when writing to a collection.</li>
 <li class="translation">コレクションに書き込みをするときのスキーマの強制させ方。</li>
-<li>How to carefully change the schema of your collection.</li>
+<li class="original">How to carefully change the schema of your collection.</li>
 <li class="translation">あなたのコレクションのスキーマの慎重な変更の仕方。</li>
-<li>How to deal with associations between records.</li>
+<li class="original">How to deal with associations between records.</li>
 <li class="translation">レコード同士の関連の扱い方。</li>
 </ol>
-
 <h2 id="mongo-collections"><a class="anchor" href="#mongo-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>MongoDB collections in Meteor</h2>
 
-<p>At its core, a web application offers its users a view into, and a way to modify, a persistent set of data. Whether managing a list of todos, or ordering a car to pick you up, you are interacting with a permanent but constantly changing data layer.</p>
-
+<p class="original">At its core, a web application offers its users a view into, and a way to modify, a persistent set of data. Whether managing a list of todos, or ordering a car to pick you up, you are interacting with a permanent but constantly changing data layer.</p>
 <p class="translation">
 ウェブアプリケーションは、基本的な機能として、ユーザーに永続的なデータの集まりに対して、ビューと、変更する方法を提供します。
 TODOリストを管理するにしろ、車を手配する注文をするにしろ、あなたは永続的でかつ常に変化するデータレイヤとやり取りをしいます。
 </p>
-
-<p>In Meteor, that data layer is typically stored in MongoDB. A set of related data in MongoDB is referred to as a “collection”. In Meteor you access MongoDB through <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>, making them the primary persistence mechanism for your app data.</p>
-
+<p class="original">In Meteor, that data layer is typically stored in MongoDB. A set of related data in MongoDB is referred to as a “collection”. In Meteor you access MongoDB through <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>, making them the primary persistence mechanism for your app data.</p>
 <p class="translation">
 Meteorでは、そのデータレイヤは通常MongoDBに保管します。
 MongoDBでは、関連するデータの集まりは“collection”と呼ばれます。
 Meteorでは、MongoDBは <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>を通してアクセスできます。
 これはあなたのアプリデータの主要な永続メカニズムになります。
 </p>
-
-<p>However, collections are a lot more than a way to save and retrieve data. They also provide the core of the interactive, connected user experience that users expect from the best applications. Meteor makes this user experience easy to implement.</p>
-
+<p class="original">However, collections are a lot more than a way to save and retrieve data. They also provide the core of the interactive, connected user experience that users expect from the best applications. Meteor makes this user experience easy to implement.</p>
 <p class="translation">
 しかし、collectionsは単にデータを保存したり取り出したりするだけのものではありません。
 これは、インテラクティブ性の中心的な機能、ユーザーが最高のアプリケーションに期待する、コネクティッドユーザーエクスペリエンスを提供するものでもあります。
 Meteorではこのようなユーザーエクスペリエンスを簡単に実装することができます。
 </p>
-
-<p>In this article, we’ll look closely at how collections work in various places in the framework, and how to get the most out of them.</p>
+<p class="original">In this article, we’ll look closely at how collections work in various places in the framework, and how to get the most out of them.</p>
 <p class="translation">
 この記事では、フレームワークの中のいろいろなところで、collectionsがどのように動くのか、そして、それらを最大限利用する方法を見ていきます。
 </p>
-
-
 <h3 id="server-collections"><a class="anchor" href="#server-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Server-side collections</h3>
 
-<p>When you create a collection on the server:</p>
+<p class="original">When you create a collection on the server:</p>
 <p class="translation">
 あなたがサーバー側でcollectionを作るとき：
 </p>
-
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Todos&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>You are creating a collection within MongoDB, and an interface to that collection to be used on the server. It’s a fairly straightforward layer on top of the underlying Node MongoDB driver, but with a synchronous API:</p>
+<p class="original">You are creating a collection within MongoDB, and an interface to that collection to be used on the server. It’s a fairly straightforward layer on top of the underlying Node MongoDB driver, but with a synchronous API:</p>
 <p class="translation">
 あなたは、MongoDBの中にcollectionと、そのcollectionをサーバー側で使えるようにするインターフェースを作っています。
 これは、Node MongoDBドライバの上の非常にシンプルなレイヤーですが、同期APIを備えています：
 </p>
-
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line won&apos;t complete until the insert is done</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this line will return something</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// Look ma, no callbacks!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="client-collections"><a class="anchor" href="#client-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Client-side collections</h3>
 
-<p>On the client, when you write the same line:</p>
+<p class="original">On the client, when you write the same line:</p>
 <p class="translation">クライアント側では、あなたが同じ行を書くとき：</p>
-
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Todos&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>It does something totally different!</p>
+<p class="original">It does something totally different!</p>
 <p class="translation">全然違う動作をします！</p>
-
-<p>On the client, there is no direct connection to the MongoDB database, and in fact a synchronous API to it is not possible (nor probably what you want). Instead, on the client, a collection is a client side <em>cache</em> of the database. This is achieved thanks to the <a href="https://www.meteor.com/mini-databases" target="_blank" rel="external">Minimongo</a> library—an in-memory, all JS, implementation of the MongoDB API. What this means is that on the client, when you write:</p>
-
+<p class="original">On the client, there is no direct connection to the MongoDB database, and in fact a synchronous API to it is not possible (nor probably what you want). Instead, on the client, a collection is a client side <em>cache</em> of the database. This is achieved thanks to the <a href="https://www.meteor.com/mini-databases" target="_blank" rel="external">Minimongo</a> library—an in-memory, all JS, implementation of the MongoDB API. What this means is that on the client, when you write:</p>
 <p class="translation">
 クライアント側では、MongoDBへダイレクトな接続は無いし、実際に同期APIをつかうことは不可能です。（あるいは、多分あなたがやりたいことではないです）
 代わりにクライアント側では、collectionはクライアント側のデータベースの<em>キャッシュ</em>となっています。
@@ -220,92 +200,81 @@ Meteorではこのようなユーザーエクスペリエンスを簡単に実�
 Minimongoは、メモリ上で動き、全てJSでできている、MongoDB APIの実装です。
 これはどういうことかというと、あなたがクライアント側で以下のコードを書く時：
 </p>
-
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line is changing an in-memory Minimongo data structure</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// And this line is querying it</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this happens right away!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
 
-<p>The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="data-loading.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
+<p>The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="guide-data-loading-1.2.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
 
 <p class="translation">
-あなたがサーバー側の（MongoDBの）collectionを、クライアント側（インメモリ）へ移動させるのは、<a href="data-loading.html">data loading article</a>で扱います。
-ザックリと言うと、あなたは<em>publication</em>を<em>subscribe</em>して、データをサーバーからクライアントにプッシュします。
+あなたがサーバー側の（MongoDBの）collectionを、クライアント側（インメモリ）へ移動させるのは、<a href="guide-data-loading-1.2.html">data loading article</a>で扱います。
+一般的にいって、あなたは<em>publication</em>を<em>subscribe</em>して、データをサーバーからクライアントにプッシュします。
 通常クライアントは、完全なMongoDB collectionのサブセットの最新のコピーを持っているとみなすことができます。
 </p>
 
-<p>To write data back to the server, you use a <em>Method</em>, the subject of the <a href="methods.html">methods article</a>.</p>
+<p>To write data back to the server, you use a <em>Method</em>, the subject of the <a href="guide-methods-1.2.html">methods article</a>.</p>
 <p class="translation">
-データをサーバー側に書き戻すためには、<em>Method</em>を使います。これは<a href="methods.html">methods article</a>で扱います。
+データをサーバー側に書き戻すためには、<em>Method</em>を使います。これは<a href="guide-methods-1.2.html">methods article</a>で扱います。
 </p>
-
 <h3 id="local-collections"><a class="anchor" href="#local-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Local collections</h3>
 
-<p>There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
+<p class="original">There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
 <p class="translation">
 Meteorでcollectionを使う、第三の方法があります。
 クライアント側またはサーバー側で、collectionに名前の代わりに <code>null</code>を渡して作ると：
 </p>
-
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SelectedTodos = <span class="keyword">new</span> Mongo.Collection(<span class="literal">null</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>This creates a <em>local collection</em>. This is a Minimongo collection that has no database connection (ordinarily a named collection would either be directly connected to the database on the server, or via a subscription on the client).</p>
+<p class="original">This creates a <em>local collection</em>. This is a Minimongo collection that has no database connection (ordinarily a named collection would either be directly connected to the database on the server, or via a subscription on the client).</p>
 <p class="translation">
 これは<em>local collection</em>を作成します。
 これはデータベースへの接続が無いMinimongo collectionです。
 （通常、名前付きのcollectionは、サーバー側で直接データベースに接続されているか、クライアント側でsubscriptionを通してデータベースに接続されているかのどちらかです）
 </p>
-
-<p>A local collection is a convenient way to use the full power of the Minimongo library for in-memory storage. For instance, you might use it instead of a simple array if you need to execute complex queries over your data. Or you may want to take advantage of its <em>reactivity</em> on the client to drive some UI in a way that feels natural in Meteor.</p>
+<p class="original">A local collection is a convenient way to use the full power of the Minimongo library for in-memory storage. For instance, you might use it instead of a simple array if you need to execute complex queries over your data. Or you may want to take advantage of its <em>reactivity</em> on the client to drive some UI in a way that feels natural in Meteor.</p>
 <p class="translation">
 local collectionはインメモリストレージのMinimongoライブラリのフルパワーを利用する便利な方法です。
 例えば、あなたのデータに対して複雑なクエリを実行したい場合なら、シンプルな配列の代わりに使えます。
 あるいは、クライアント側でその<em>リアクティブ性</em>を利用すると良いかもしれません。Meteorでは自然に感じるようなやりかたでUIを動作させることができます。
 </p>
-
 <h2 id="schemas"><a class="anchor" href="#schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a schema</h2>
 
-<p>Although MongoDB is a schema-less database, which allows maximum flexibility in data structuring, it is generally good practice to use a schema to constrain the contents of your collection to conform to a known format. If you don’t, then you tend to end up needing to write defensive code to check and confirm the structure of your data as it <em>comes out</em> of the database, instead of when it <em>goes into</em> the database. As in most things, you tend to <em>read data more often than you write it</em>, and so it’s usually easier, and less buggy to use a schema when writing.</p>
+<p class="original">Although MongoDB is a schema-less database, which allows maximum flexibility in data structuring, it is generally good practice to use a schema to constrain the contents of your collection to conform to a known format. If you don’t, then you tend to end up needing to write defensive code to check and confirm the structure of your data as it <em>comes out</em> of the database, instead of when it <em>goes into</em> the database. As in most things, you tend to <em>read data more often than you write it</em>, and so it’s usually easier, and less buggy to use a schema when writing.</p>
 <p class="translation">
 MongoDBはスキーマレスなデータベースで、データストラクチャーに最大限の柔軟性を与えます。
 とは言え、一般的に、あなたのcollectionの内容を事前定義したフォーマットに従わせるよう制限するスキーマを使うのは、良いプラクティスです。
 もし使わないと、あなたのデータが、データベースに<em>入っていく</em>時ではなく、データベースから<em>出てくる</em>たびに、ストラクチャーを確認するようなディフェンシブなコードを書くはめになりがちです。
 ほとんどの場合で、あなたは<em>データを書くより、読む方がずっと多い</em>でしょう。なので、通常、書き込むときにスキーマを使うほうが簡単でバグを少なくするのです。</p>
+<p>In Meteor, the pre-eminent schema package is <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">aldeed:simple-schema</a>. It’s an expressive, MongoDB based schema that’s used to insert and update documents.</p>
 
-<p>In Meteor, the pre-eminent schema package is <a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">aldeed:simple-schema</a>. It’s an expressive, MongoDB based schema that’s used to insert and update documents.</p>
-<p class="translation">Meteorで、卓越したスキーマパッケージは、<a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">aldeed:simple-schema</a>です。
+<p class="translation">Meteorで、卓越したスキーマパッケージは、<a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">aldeed:simple-schema</a>です。
 これは、表現力豊かな、MongoDBベースのスキーマで、ドキュメントをinsertとupdateする時に使われます。</p>
 
-<p>To write a schema using <code>simple-schema</code>, you can simply create a new instance of the <code>SimpleSchema</code> class:</p>
+<p class="original">To write a schema using <code>simple-schema</code>, you can simply create a new instance of the <code>SimpleSchema</code> class:</p>
 <p class="translation">
 
 <code>simple-schema</code>をつかってスキーマを書くには、単に、<code>SimpleSchema</code>クラスの新しいインスタンスを以下のように作ることができます：</p>
-
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Lists.schema = <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">  name: {type: <span class="built_in">String</span>},</span><br><span class="line">  incompleteCount: {type: <span class="built_in">Number</span>, defaultValue: <span class="number">0</span>},</span><br><span class="line">  userId: {type: <span class="built_in">String</span>, regEx: SimpleSchema.RegEx.Id, optional: <span class="literal">true</span>}</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
-
-<p>This example from the Todos app defines a schema with a few simple rules:</p>
+<p class="original">This example from the Todos app defines a schema with a few simple rules:</p>
 <p class="translation">このTodoアプリの例はいくつかのシンプルなルールを定義しています：</p>
-
 <ol>
-<li>We specify that the <code>name</code> field of a list is required and must be a string.</li>
+<li class="original">We specify that the <code>name</code> field of a list is required and must be a string.</li>
 <li class="translation"><code>name</code> フィールドを、必須で、文字列であることを指定しています。</li>
-
-<li>We specify the <code>incompleteCount</code> is a number, which on insertion is set to <code>0</code> if not otherwise specified.</li>
+<li class="original">We specify the <code>incompleteCount</code> is a number, which on insertion is set to <code>0</code> if not otherwise specified.</li>
 <li class="translation"><code>incompleteCount</code> は、数値で、insertの時なにも指定がなければ、 <code>0</code>をセットすることを指定しています。</li>
-
-<li>We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.</li>
+<li class="original">We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.</li>
 <li class="translation"><code>userId</code> は、オプショナルで、ユーザードキュメントのIDのような文字でなければならないと指定しています。</li>
 </ol>
-<p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="methods.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
+<p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="guide-methods-1.2.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we’ll see how to use this schema automatically when writing to the collection.</p>
 <p class="translation">
 我々は、スキーマを<code>Lists</code>の名前空間に直接取り付けます。
-こうすることで、フォームの中や、<a href="methods.html">Method</a>などで、いつでもオブジェクトをスキーマに対してチェックしたいときに使うことができます。
+こうすることで、フォームの中や、<a href="guide-methods-1.2.html">Method</a>などで、いつでもオブジェクトをスキーマに対してチェックしたいときに使うことができます。
 <a href="#schemas-on-write">次のセクション</a>では、collectionの書き込みをする時、どうやってこのスキーマを自動的に利用するのかを見ていきます。</p>
 
-<p>You can see that with relatively little code we’ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Simple Schema docs</a>.</p>
 
+
+<p>You can see that with relatively little code we’ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>.</p>
 <p class="translation">
 比較的少ないコードで、非常に効果的にlistのフォーマットを制限することに成功しているのがわかるでしょう。
-スキーマを使ったより複雑なことをなどについて詳細を <a href="http://atmospherejs.com/aldeed/simple-schema?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">Simple Schema docs</a>で読むことができます。
+スキーマを使ったより複雑なことをなどについて詳細を <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>で読むことができます。
 </p>
-
 
 <h3 id="validating-schemas"><a class="anchor" href="#validating-schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Validating against a schema</h3>
 
@@ -339,7 +308,7 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
 <p>The amount of foresight you bake into your schema design will depend on your app’s individual constraints, and will need to be a judgement call on your part.</p>
 <h3 id="schemas-on-write"><a class="anchor" href="#schemas-on-write" aria-hidden="true" data-scroll="">&#x1F517;</a>Using schemas on write</h3>
 
-<p>Although there are a variety of ways that you can run data through a Simple Schema before sending it to your collection (for instance you could check a schema in every method call), the simplest and most reliable is to use the <a href="https://atmospherejs.com/aldeed/collection2?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>aldeed:collection2</code></a> package to run every mutator (<code>insert/update/upsert</code> call) through the schema.</p>
+<p>Although there are a variety of ways that you can run data through a Simple Schema before sending it to your collection (for instance you could check a schema in every method call), the simplest and most reliable is to use the <a href="https://atmospherejs.com/aldeed/collection2" target="_blank" rel="external"><code>aldeed:collection2</code></a> package to run every mutator (<code>insert/update/upsert</code> call) through the schema.</p>
 <p>To do so, we use <code>attachSchema()</code>:</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lists.attachSchema(Lists.schema);</span><br></pre></td></tr></tbody></table></figure>
 <p>What this means is that now every time we call <code>Lists.insert()</code>, <code>Lists.update()</code>, <code>Lists.upsert()</code>, first our document or modifier will be automatically checked against the schema (in subtly different ways depending on the exact mutator).</p>
@@ -382,11 +351,11 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
 <p>As we discussed above, trying to predict all future requirements of your data schema ahead of time is impossible. Inevitably, as a project matures, there will come a time when you need to change the schema of the database. You need to be careful about how you make the migration to the new schema to make sure your app works smoothly during and after the migration.</p>
 <h3 id="writing-migrations"><a class="anchor" href="#writing-migrations" aria-hidden="true" data-scroll="">&#x1F517;</a>Writing migrations</h3>
 
-<p>A useful package for writing migrations is <a href="https://atmospherejs.com/percolate/migrations?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>percolate:migrations</code></a>, which provides a nice framework for switching between different versions of your schema.</p>
+<p>A useful package for writing migrations is <a href="https://atmospherejs.com/percolate/migrations" target="_blank" rel="external"><code>percolate:migrations</code></a>, which provides a nice framework for switching between different versions of your schema.</p>
 <p>Suppose, as an example, that we wanted to add a <code>list.todoCount</code> field, and ensure that it was set for all existing lists. Then we might write the following in server-only code (e.g. <code>/server/migrations.js</code>):</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Migrations.add({</span><br><span class="line">  version: <span class="number">1</span>,</span><br><span class="line">  up() {</span><br><span class="line">    Lists.find({todoCount: {$exists: <span class="literal">false</span>}}).forEach(list =&gt; {</span><br><span class="line">      <span class="keyword">const</span> todoCount = Todos.find({listId: list._id})).count();</span><br><span class="line">      Lists.update(list._id, {$set: {todoCount}});</span><br><span class="line">    });</span><br><span class="line">  },</span><br><span class="line">  down() {</span><br><span class="line">    Lists.update({}, {$unset: {todoCount: <span class="literal">true</span>}});</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
 <p>This migration, which is sequenced to be the first migration to run over the database, will, when called, bring each list up to date with the current todo count.</p>
-<p>To find out more about the API of the Migrations package, refer to <a href="https://atmospherejs.com/percolate/migrations?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external">its documentation</a>.</p>
+<p>To find out more about the API of the Migrations package, refer to <a href="https://atmospherejs.com/percolate/migrations" target="_blank" rel="external">its documentation</a>.</p>
 <h3 id="bulk-data-changes"><a class="anchor" href="#bulk-data-changes" aria-hidden="true" data-scroll="">&#x1F517;</a>Bulk changes</h3>
 
 <p>If your migration needs to change a lot of data, and especially if you need to stop your app server while it’s running, it may be a good idea to use a <a href="https://docs.mongodb.org/v3.0/core/bulk-write-operations/" target="_blank" rel="external">MongoDB Bulk Operation</a>.</p>
@@ -433,7 +402,7 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
 <p>To make this easier, we can attach functions to the prototype of the documents that belong to a given collection, to give us “methods” on the documents (in the object oriented sense). We can then use these methods to create new queries to find related documents.</p>
 <h3 id="collection-helpers"><a class="anchor" href="#collection-helpers" aria-hidden="true" data-scroll="">&#x1F517;</a>Collection helpers</h3>
 
-<p>We can use the <a href="https://atmospherejs.com/dburles/collection-helpers?__hstc=256467284.14590e95a568c29ce32c4cbb6d734454.1453870867154.1453870867155.1453870867155.1&amp;__hssc=256467284.3.1453870867155&amp;__hsfp=1614345591" target="_blank" rel="external"><code>dburles:collection-helpers</code></a> package to easily attach such methods (or “helpers”) to documents. For instance:</p>
+<p>We can use the <a href="https://atmospherejs.com/dburles/collection-helpers" target="_blank" rel="external"><code>dburles:collection-helpers</code></a> package to easily attach such methods (or “helpers”) to documents. For instance:</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Lists.helpers({</span><br><span class="line">  <span class="comment">// A list is considered to be private if it has a userId set</span></span><br><span class="line">  isPrivate() {</span><br><span class="line">    <span class="keyword">return</span> !!<span class="keyword">this</span>.userId;</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
 <p>Once we’ve attached this helper to the <code>Lists</code> collection, every time we fetch a list from the database (on the client or server), it will have a <code>.isPrivate()</code> function available:</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = Lists.findOne();</span><br><span class="line"><span class="keyword">if</span> (list.isPrivate()) {</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;The first list is private!&apos;</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -447,7 +416,7 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
     <div class="bottom-nav">
       
       
-        <span>← <a href="guide-index-1.2.html">Introduction</a></span>
+        <span>← <a href="guide-1.2.html">Introduction</a></span>
       
       
         <span style="float:right"><a href="guide-data-loading-1.2.html">Publications and Data Loading</a> →</span>
