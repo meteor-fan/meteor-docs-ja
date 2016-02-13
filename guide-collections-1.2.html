@@ -269,12 +269,25 @@ MongoDBはスキーマレスなデータベースで、データストラクチ�
 </p>
 <h3 id="validating-schemas"><a class="anchor" href="#validating-schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Validating against a schema</h3>
 
-<p>Now we have a schema, how do we use it?</p>
-<p>It’s pretty straightforward to validate a document with a schema. We can write:</p>
+<p class="original">Now we have a schema, how do we use it?</p>
+<p class="translation">
+さあ、スキーマを作りましたが、どうやってつかったらいいでしょうか？</p>
+<p class="original">It’s pretty straightforward to validate a document with a schema. We can write:</p>
+<p class="translation">
+documentを検証するのはけっこうシンプルで簡単です。以下のように書くことができます：
+</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = {</span><br><span class="line">  name: <span class="string">&apos;My list&apos;</span>,</span><br><span class="line">  incompleteCount: <span class="number">3</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">Lists.schema.validate(list);</span><br></pre></td></tr></tbody></table></figure>
-<p>In this case, as the list is valid according to the schema, the <code>validate()</code> line will run without problems. If however, we wrote:</p>
+<p class="original">In this case, as the list is valid according to the schema, the <code>validate()</code> line will run without problems. If however, we wrote:</p>
+<p class="translation">
+このケースでは、listがスキーマに対して妥当なので、lineを<code>validate()</code>するのは問題なく実行されます。
+しかし、もしこのように書くと：
+</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = {</span><br><span class="line">  name: <span class="string">&apos;My list&apos;</span>,</span><br><span class="line">  incompleteCount: <span class="number">3</span>,</span><br><span class="line">  madeUpField: <span class="string">&apos;this should not be here&apos;</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">Lists.schema.validate(list);</span><br></pre></td></tr></tbody></table></figure>
-<p>Then the <code>validate()</code> call will throw a <code>ValidationError</code> which contains details about what is wrong with the <code>list</code> document.</p>
+<p class="original">Then the <code>validate()</code> call will throw a <code>ValidationError</code> which contains details about what is wrong with the <code>list</code> document.</p>
+<p class="translation">
+<code>validate()</code>の呼び出しは、<code>ValidationError</code> を投げます。
+そこには<code>list</code> documentで何が間違っているのかという詳細情報が入っています。
+</p>
 <h3 id="validation-error"><a class="anchor" href="#validation-error" aria-hidden="true" data-scroll="">&#x1F517;</a>The <code>ValidationError</code></h3>
 
 <p>What is a <a href="https://github.com/meteor/validation-error/" target="_blank" rel="external"><code>ValidationError</code></a>? It’s a special error that is used in Meteor to indicate a user-input based error in modifying a collection. Typically, the details on a <code>ValidationError</code> are used to mark up a form with information about what inputs don’t match the schema. In the <a href="methods.html#validation-error">methods article</a>, we’ll see more about how this works.</p>
