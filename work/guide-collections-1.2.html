@@ -299,11 +299,25 @@ documentを検証するのはけっこうシンプルで簡単です。以下の
 </p>
 <h2 id="schema-design"><a class="anchor" href="#schema-design" aria-hidden="true" data-scroll="">&#x1F517;</a>Designing your data schema</h2>
 
-<p>Now that you are familiar with the basic API of Simple Schema, it’s worth considering a few of the constraints of the Meteor data system that can influence the design of your data schema. Although generally speaking you can build a Meteor data schema much like any MongoDB data schema, there are some important details to keep in mind.</p>
-<p>The most important consideration is related to the way DDP, Meteor’s data loading protocol, communicates documents over the wire. The key thing to realize is that DDP sends changes to documents at the level of top-level document <em>fields</em>. What this means is that if you have large and complex subfields on document that change often, DDP can send unnecessary changes over the wire.</p>
-<p>For instance, in “pure” MongoDB you might design the schema so that each list document had a field called <code>todos</code> which was an array of todo items:</p>
+<p class="original">Now that you are familiar with the basic API of Simple Schema, it’s worth considering a few of the constraints of the Meteor data system that can influence the design of your data schema. Although generally speaking you can build a Meteor data schema much like any MongoDB data schema, there are some important details to keep in mind.</p>
+<p class="translation">
+Simple Schemaの基本のAPIがわかったので、あなたのデータスキーマに影響を与えうる、Meteorのデータシステムのいくつかの制限を考慮しておくのがよいでしょう。一般的にMeteorのデータスキーマは、ほとんど普通のMongoDBのデータスキーマのように作成できるのですが、細かい点でいくつかの覚えておくべき重要なことがあります。
+</p>
+<p class="original">The most important consideration is related to the way DDP, Meteor’s data loading protocol, communicates documents over the wire. The key thing to realize is that DDP sends changes to documents at the level of top-level document <em>fields</em>. What this means is that if you have large and complex subfields on document that change often, DDP can send unnecessary changes over the wire.</p>
+<p class="translation">
+もっとも重要な考慮事項はMeteorのデータローディングプロトコルであるDDPがドキュメントを送受信する方法に関係しています。
+キーとなるのは、DDPはドキュメントの変更を送信するのは、トップレベルのドキュメントの<em>フィールド</em>を送るということです。
+どういうことかというと、もし巨大で複雑なサブフィールドをドキュメントをもっていて、それが頻繁に変更されるなら、DDPは不必要な変更を送受信することがありえます。
+</p>
+<p class="original">For instance, in “pure” MongoDB you might design the schema so that each list document had a field called <code>todos</code> which was an array of todo items:</p>
+<p class="translation">
+たとえば、「純粋な」MongoDBでは、あなたはスキーマを、各lineのドキュメントがtodoフィールドの配列である<code>todos</code>というフィールドをもつように設計するかもしれません：</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Lists.schema = <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">  name: {type: <span class="built_in">String</span>},</span><br><span class="line">  todos: {type: [<span class="built_in">Object</span>]}</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
-<p>The issue with this schema is that due to the DDP behavior just mentioned, each change to <em>any</em> todo item in a list will require sending the <em>entire</em> set of todos for that list over the network. This is because DDP has no concept of “change the <code>text</code> field of the 3rd item in the field called <code>todos</code>“, simply “change the field called <code>todos</code> to a totally new array”.</p>
+<p class="original">The issue with this schema is that due to the DDP behavior just mentioned, each change to <em>any</em> todo item in a list will require sending the <em>entire</em> set of todos for that list over the network. This is because DDP has no concept of “change the <code>text</code> field of the 3rd item in the field called <code>todos</code>“, simply “change the field called <code>todos</code> to a totally new array”.</p>
+<p class="translation">
+このスキーマの問題は、さっきの言ったDDPの振る舞いです。listのなかの<em>どの</em>todo アイテムを変更しても、そのlistのために<code>todos</code>というフィールドのセット<em>全体を</em>、ネットワークに送信する必要があります。
+これはDDPには「<code>todos</code>というフィールドの3番目のアイテムの<code>text</code>フィールドを変更」という概念はなく、単に、「<code>todos</code>というフィールドを完全に新しい配列に変更」とするからです。
+</p>
 <h3 id="denormalization"><a class="anchor" href="#denormalization" aria-hidden="true" data-scroll="">&#x1F517;</a>Denormalization and multiple collections</h3>
 
 <p>The implication of the above is that we need to create more collections to contain sub-documents. In the case of the Todos application, we need both a <code>Lists</code> collection and a <code>Todos</code> collection to contain each list’s todo items. Consequently we need to do some things that you’d typically associate with a SQL database, like using foreign keys (<code>todo.listId</code>) to associate one document with another.</p>
