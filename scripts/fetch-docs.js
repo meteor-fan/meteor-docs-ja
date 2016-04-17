@@ -78,7 +78,7 @@ function processResult(name) {
       $('a').each(function() {
         var oldHref = $(this).attr('href');
         if (oldHref) {
-          var oldPath = oldHref.match(/^([\w\-]+)\.html$/);
+          var oldPath = oldHref.match(/^([\w\-\.]+)\.html$/);
           if (oldPath) {
             if (oldPath[1] === 'index') {
               oldPath = '';
