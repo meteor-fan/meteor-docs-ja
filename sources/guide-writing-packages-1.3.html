@@ -1,0 +1,558 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Writing Packages | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Writing Packages
+            </a>
+          <ul class="sub-menu"><li><a href="#npm-vs-atmosphere" data-scroll="" class="H2">npm vs. Atmosphere</a><ul class="sub-menu"></ul></li><li><a href="#creating-npm" data-scroll="" class="H2">Creating an npm package</a><ul class="sub-menu"><li><a href="#including-in-app" data-scroll="" class="H3">Including in your app</a></li><li><a href="#publishing-npm" data-scroll="" class="H3">Publishing your package</a></li></ul></li><li><a href="#creating" data-scroll="" class="H2">Creating an Atmosphere package</a><ul class="sub-menu"></ul></li><li><a href="#adding-files" data-scroll="" class="H2">Adding files and assets</a><ul class="sub-menu"><li><a href="#adding-javascript" data-scroll="" class="H3">Adding JavaScript</a></li><li><a href="#adding-css" data-scroll="" class="H3">Adding CSS</a></li><li><a href="#adding-style" data-scroll="" class="H3">Adding Sass, Less, or Stylus mixins/variables</a></li><li><a href="#adding-assets" data-scroll="" class="H3">Adding other assets</a></li></ul></li><li><a href="#exporting" data-scroll="" class="H2">Exporting</a><ul class="sub-menu"></ul></li><li><a href="#dependencies" data-scroll="" class="H2">Dependencies</a><ul class="sub-menu"><li><a href="#atmosphere-dependencies" data-scroll="" class="H3">Atmosphere dependencies</a></li><li><a href="#npm-dependencies" data-scroll="" class="H3">npm dependencies</a></li><li><a href="#peer-npm-dependencies" data-scroll="" class="H3">Peer npm dependencies</a></li></ul></li><li><a href="#cordova-plugins" data-scroll="" class="H2">Cordova plugins</a><ul class="sub-menu"></ul></li><li><a href="#testing" data-scroll="" class="H2">Testing packages</a><ul class="sub-menu"><li><a href="#testing-with-peer-dependencies" data-scroll="" class="H3">Peer npm dependencies</a></li></ul></li><li><a href="#local-vs-published" data-scroll="" class="H2">Local packages vs. published packages</a><ul class="sub-menu"></ul></li><li><a href="#build-plugins" data-scroll="" class="H2">Build plugins</a><ul class="sub-menu"><li><a href="#types-of-build-plugins" data-scroll="" class="H3">Types of build plugins</a></li><li><a href="#writing-build-plugins" data-scroll="" class="H3">Writing your own build plugin</a></li><li><a href="#caching-build-plugins" data-scroll="" class="H3">Caching</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Writing Packages</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/writing-packages.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/20194">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this article, you&#x2019;ll know:</p>
+<ol>
+<li>When to create an npm package and when to create an Atmosphere package</li>
+<li>The basics of writing an npm package</li>
+<li>The basics of writing an Atmosphere package</li>
+<li>How to depend on other packages, both from Atmosphere and npm</li>
+<li>How an Atmosphere package can integrate with Meteor&#x2019;s build system</li>
+</ol>
+<p>The Meteor platform supports two package systems: <a href="https://www.npmjs.com" target="_blank" rel="external">npm</a>, a repository of JavaScript modules for Node.js and the browser, and <a href="https://atmospherejs.com" target="_blank" rel="external">Atmosphere</a>, a repository of packages written specifically for Meteor.</p>
+<h2 id="npm-vs-atmosphere"><a class="anchor" href="#npm-vs-atmosphere" aria-hidden="true" data-scroll="">&#x1F517;</a>npm vs. Atmosphere</h2>
+
+<p>With the release of version 1.3, Meteor has full support for npm. In the future, there will be a time when all packages will be migrated to npm, but currently there are benefits to both systems. You can read more about the tradeoffs between Atmosphere and npm in the <a href="guide-using-packages-1.3.html">Using Packages article</a>.</p>
+<p>If you want to distribute and reuse code that you&#x2019;ve written for a Meteor application, then you should consider publishing that code on npm if it&#x2019;s general enough to be consumed by a wider JavaScript audience. It&#x2019;s simple to <a href="using-packages.html#npm">use npm packages from Meteor applications</a>, and possible to <a href="#npm-dependencies">use npm packages from Atmosphere packages</a>, so even if your main audience is Meteor developers, npm might be the best choice.</p>
+<p>However, if your package depends on an Atmosphere package (which, in Meteor 1.3, includes the Meteor core packages), or needs to take advantage of Meteor&#x2019;s <a href="guide-build-tool-1.3.html">build system</a>, then writing an Atmosphere package might be the best option.</p>
+<h2 id="creating-npm"><a class="anchor" href="#creating-npm" aria-hidden="true" data-scroll="">&#x1F517;</a>Creating an npm package</h2>
+
+<p>If you want to override a package that already exists in the npm registry, <a href="using-packages.html#npm-overriding">use this method</a>.</p>
+<p>To create a new package:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir my-package</span><br><span class="line"><span class="built_in">cd</span> my-package/</span><br><span class="line">meteor npm init</span><br></pre></td></tr></tbody></table></figure>
+<p>The last command creates a <code>package.json</code> file and prompts you for the package information. You may skip everything but <code>name</code>, <code>version</code>, and <code>entry point</code>. You can use the default <code>index.js</code> for <code>entry point</code>. This file is where you set your package&#x2019;s exports:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my-package/index.js</span></span><br><span class="line">exports.myPackageLog = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;logged from my-package&quot;</span>);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>Now apps that include this package can do:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { myPackageLog } <span class="keyword">from</span> <span class="string">&apos;my-package&apos;</span></span><br><span class="line"></span><br><span class="line">myPackageLog(); <span class="comment">// &gt; &quot;logged from my-package&quot;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="including-in-app"><a class="anchor" href="#including-in-app" aria-hidden="true" data-scroll="">&#x1F517;</a>Including in your app</h3>
+
+<p>When you are developing a new npm package for your app, there are a couple methods for including the package in your app:</p>
+<ul>
+<li><strong>Inside node_modules</strong>: Place the package in your app&#x2019;s <code>node_modules/</code> directory, and add the package to source control. Do this when you want everything in a single repository.</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-app/node_modules/</span><br><span class="line">mkdir my-package</span><br><span class="line"><span class="built_in">cd</span> my-package/</span><br><span class="line">meteor npm init</span><br><span class="line">git add <span class="operator">-f</span> ./ <span class="comment"># or use a git submodule</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><strong>npm link</strong>: Place the package outside your app&#x2019;s directory in a separate repository and use <a href="https://docs.npmjs.com/cli/link" target="_blank" rel="external"><code>npm link</code></a>. Do this when you want to use the package in multiple apps.</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/</span><br><span class="line">mkdir my-package</span><br><span class="line"><span class="built_in">cd</span> my-package/</span><br><span class="line">meteor npm init</span><br><span class="line"><span class="built_in">cd</span> ~/my-app/</span><br><span class="line">meteor npm link ~/my-package</span><br></pre></td></tr></tbody></table></figure>
+<p>Other developers will also need to run the <code>npm link</code> command.</p>
+<p>After either method, edit the <code>dependencies</code> attribute of <code>my-app/package.json</code>, adding <code>&quot;my-package&quot;: &quot;1.0.0&quot;</code> (use the same version number you chose during <code>meteor npm init</code>).</p>
+<h3 id="publishing-npm"><a class="anchor" href="#publishing-npm" aria-hidden="true" data-scroll="">&#x1F517;</a>Publishing your package</h3>
+
+<p>You can share your package with others by publishing it to the npm registry. While most packages are public, you can control who may view and use your package with <a href="https://docs.npmjs.com/private-modules/intro" target="_blank" rel="external">private modules</a>).</p>
+<p>To publish publicly, <a href="https://docs.npmjs.com/getting-started/publishing-npm-packages" target="_blank" rel="external">follow these instructions</a>. When you&#x2019;re done, anyone can add your package to their app with <code>npm install --save your-package</code>.</p>
+<p>If you want to share packages during development, we recommend using the <a href="#including-in-app">above methods</a> instead of the registry. If you use the registry, then every time you change the package, you need to increment the version number, publish, and then <code>npm update my-package</code> inside your app.</p>
+<h2 id="creating"><a class="anchor" href="#creating" aria-hidden="true" data-scroll="">&#x1F517;</a>Creating an Atmosphere package</h2>
+
+<p>To get started writing a package, use the Meteor command line tool:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor create --package my-package</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>It is required that your <code>my-package</code> name take the form of <code>username:my-package</code>, where <code>username</code> is your Meteor Developer username, if you plan to publish your package to Atmosphere.</p>
+</blockquote>
+<p>If you run this inside an app, it will place the newly generated package in that app&#x2019;s <code>packages/</code> directory. Outside an app, it will just create a standalone package directory. The command also generates some boilerplate files for you:</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my-package
+&#x251C;&#x2500;&#x2500; README.md
+&#x251C;&#x2500;&#x2500; package.js
+&#x251C;&#x2500;&#x2500; my-package-tests.js
+&#x2514;&#x2500;&#x2500; my-package.js</span><br></pre></td></tr></tbody></table></figure>
+<p>The <code>package.js</code> file is the main file in every Meteor package. This is a JavaScript file that defines the metadata, files loaded, architectures, npm packages, and Cordova packages for your Meteor package.</p>
+<p>In this guide article, we will go over some important points for building packages, but we won&#x2019;t explain every part of the <code>package.js</code> API. To learn about all of the options, <a href="http://docs.meteor.com/#/full/packagejs" target="_blank" rel="external">read about the <code>package.js</code> API in the Meteor docs.</a></p>
+<blockquote>
+<p>Don&#x2019;t forget to run <a href="http://docs.meteor.com/#/full/meteoradd" target="_blank" rel="external"><code>meteor add [my-package]</code></a> once you have finished developing your package in order to use it; this applies if the package is a local package for internal use only or if you have published the package to Atmosphere.</p>
+</blockquote>
+<h2 id="adding-files"><a class="anchor" href="#adding-files" aria-hidden="true" data-scroll="">&#x1F517;</a>Adding files and assets</h2>
+
+<p>The main function of an Atmosphere package is to contain source code (JS, CSS, and any transpiled languages) and assets (images, fonts, and more) that will be shared across different applications.</p>
+<h3 id="adding-javascript"><a class="anchor" href="#adding-javascript" aria-hidden="true" data-scroll="">&#x1F517;</a>Adding JavaScript</h3>
+
+<p>To add JavaScript files to a package, specify an entrypoint with <a href="http://docs.meteor.com/#/full/pack_mainModule" target="_blank" rel="external"><code>api.mainModule()</code></a> in the package&#x2019;s <code>onUse</code> block (this will already have been done by <code>meteor create --package</code> above):</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  api.mainModule(<span class="string">&apos;my-package.js&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>From that entrypoint, you can <code>import</code> other files within your package, <a href="guide-structure-1.3.html">just as you would in an application</a>.</p>
+<p>If you want to include different files on the client and server, you can specify multiple entry points using the second argument to the function:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  api.mainModule(<span class="string">&apos;my-package-client.js&apos;</span>, <span class="string">&apos;client&apos;</span>);</span><br><span class="line">  api.mainModule(<span class="string">&apos;my-package-server.js&apos;</span>, <span class="string">&apos;server&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You can also add any source file that would be compiled to a JS file (such as a CoffeeScript file) in a similar way, assuming you <a href="#dependencies">depend</a> on an appropriate build plugin.</p>
+<h3 id="adding-css"><a class="anchor" href="#adding-css" aria-hidden="true" data-scroll="">&#x1F517;</a>Adding CSS</h3>
+
+<p>To include CSS files with your package you can use <a href="http://docs.meteor.com/#/full/pack_addFiles" target="_blank" rel="external"><code>api.addFiles()</code></a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  api.addFiles(<span class="string">&apos;my-package.css&apos;</span>, <span class="string">&apos;client&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>The CSS file will be automatically loaded into any app that uses your package.</p>
+<h3 id="adding-style"><a class="anchor" href="#adding-style" aria-hidden="true" data-scroll="">&#x1F517;</a>Adding Sass, Less, or Stylus mixins/variables</h3>
+
+<p>Just like packages can export JavaScript code, they can export reusable bits of CSS pre-processor code. You can also have a package that doesn&#x2019;t actually include any CSS, but just exports different bits of reusable mixins and variables. To get more details see Meteor <a href="build-tool.html#css">build tool CSS pre-processors</a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  api.addFiles(<span class="string">&apos;my-package.scss&apos;</span>, <span class="string">&apos;client&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>This Sass file will be eagerly evaluated and its compiled form will be added to the CSS of the app immediately.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  api.addFiles([</span><br><span class="line">    <span class="string">&apos;stylesheets/_util.scss&apos;</span>,</span><br><span class="line">    <span class="string">&apos;stylesheets/_variables.scss&apos;</span></span><br><span class="line">  ], <span class="string">&apos;client&apos;</span>, {isImport: <span class="literal">true</span>});</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>These two Sass files will be lazily evaluated and only included in the CSS of the app if imported from some other file.</p>
+<h3 id="adding-assets"><a class="anchor" href="#adding-assets" aria-hidden="true" data-scroll="">&#x1F517;</a>Adding other assets</h3>
+
+<p>You can include other assets, such as fonts, icons or images, to your package using <a href="http://docs.meteor.com/#/full/PackageAPI-addAssets" target="_blank" rel="external"><code>api.addAssets</code></a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  api.addAssets([</span><br><span class="line">    <span class="string">&apos;font/OpenSans-Regular-webfont.eot&apos;</span>,</span><br><span class="line">    <span class="string">&apos;font/OpenSans-Regular-webfont.svg&apos;</span>,</span><br><span class="line">    <span class="string">&apos;font/OpenSans-Regular-webfont.ttf&apos;</span>,</span><br><span class="line">    <span class="string">&apos;font/OpenSans-Regular-webfont.woff&apos;</span>,</span><br><span class="line">  ], <span class="string">&apos;client&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You can then access these files from the client from a URL <code>/packages/username_my-package/font/OpenSans-Regular-webfont.eot</code> or from the server using the <a href="http://docs.meteor.com/#/full/assets_getText" target="_blank" rel="external">Assets API</a>.</p>
+<h2 id="exporting"><a class="anchor" href="#exporting" aria-hidden="true" data-scroll="">&#x1F517;</a>Exporting</h2>
+
+<p>While some packages exist just to provide side effects to the app, most packages provide a reusable bit of code that can be used by the consumer with <code>import</code>. To export a symbol from your package, simply use the ES2015 <code>export</code> syntax in your <code>mainModule</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in my-package.js:</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> myName = <span class="string">&apos;my-package&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>Now users of your package can import the symbol with:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { myName } <span class="keyword">from</span> <span class="string">&apos;meteor/username:my-package&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="dependencies"><a class="anchor" href="#dependencies" aria-hidden="true" data-scroll="">&#x1F517;</a>Dependencies</h2>
+
+<p>Chances are your package will want to make use of other packages&#x2014;to ensure they are available, you can declare dependencies. Atmosphere packages can depend both on other Atmosphere packages, as well as packages from npm.</p>
+<h3 id="atmosphere-dependencies"><a class="anchor" href="#atmosphere-dependencies" aria-hidden="true" data-scroll="">&#x1F517;</a>Atmosphere dependencies</h3>
+
+<p>To depend on another Atmosphere package, use <a href="http://docs.meteor.com/#/full/pack_use" target="_blank" rel="external"><code>api.use</code></a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  <span class="comment">// This package depends on 1.3.3 or above of simple-schema</span></span><br><span class="line">  api.use(<span class="string">&apos;aldeed:simple-schema@1.3.3&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>One important feature of the Atmosphere package system is that it is single-loading: no two packages in the same app can have dependencies on conflicting versions of a single package. Read more about that in the section about version constraints below.</p>
+<h4 id="meteor-version-dependencies">Depending on Meteor version</h4>
+
+<p>Note that the Meteor release version number is mostly a marketing artifact&#x2014;the core Meteor packages themselves typically don&#x2019;t share this version number. This means packages can only depend on specific versions of the packages inside a Meteor release, but can&#x2019;t depend on a specific release itself. We have a helpful shorthand api called <a href="http://docs.meteor.com/#/full/pack_versions" target="_blank" rel="external"><code>api.versionsFrom</code></a> that handles this for you by automatically filling in package version numbers from a particular release:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use versions of core packages from Meteor 1.2.1</span></span><br><span class="line">api.versionsFrom(<span class="string">&apos;1.2.1&apos;</span>);</span><br><span class="line"></span><br><span class="line">api.use([</span><br><span class="line">  <span class="comment">// Don&apos;t need to specify version because of versionsFrom above</span></span><br><span class="line">  <span class="string">&apos;ecmascript&apos;</span>,</span><br><span class="line">  <span class="string">&apos;check&apos;</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Still need to specify versions of non-core packages</span></span><br><span class="line">  <span class="string">&apos;aldeed:simple-schema@1.3.3&apos;</span>,</span><br><span class="line">  <span class="string">&apos;mdg:validation-error@0.1.0&apos;</span></span><br><span class="line">]);</span><br></pre></td></tr></tbody></table></figure>
+<p>The above code snippet is equivalent to the code below, which specifies all of the version numbers individually:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">api.use([</span><br><span class="line">  <span class="string">&apos;ecmascript@0.1.6&apos;</span>,</span><br><span class="line">  <span class="string">&apos;check@1.1.0&apos;</span>,</span><br><span class="line">  <span class="string">&apos;aldeed:simple-schema@1.3.3&apos;</span>,</span><br><span class="line">  <span class="string">&apos;mdg:validation-error@0.1.0&apos;</span></span><br><span class="line">]);</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="version-constraints">Semantic versioning and version constraints</h4>
+
+<p>Meteor&#x2019;s package system relies heavily on <a href="http://semver.org/" target="_blank" rel="external">Semantic Versioning</a>, or SemVer. When one package declares a dependency on another, it always comes with a version constraint. These version constraints are then solved by Meteor&#x2019;s industrial-grade Version Solver to arrive at a set of package versions that meet all of the requirements, or display a helpful error if there is no solution.</p>
+<p>The mental model here is:</p>
+<ol>
+<li><strong>The major version must always match exactly.</strong> If package <code>a</code> depends on <code>b@2.0.0</code>, the constraint will only be satisfied if the version of package <code>b</code> starts with a <code>2</code>. This means that you can never have two different major versions of a package in the same app.</li>
+<li><strong>The minor and patch version numbers must be greater or equal to the requested version.</strong> If the dependency requests version <code>2.1.3</code>, then <code>2.1.4</code> and <code>2.2.0</code> will work, but <code>2.0.4</code> and <code>2.1.2</code> will not.</li>
+</ol>
+<p>The constraint solver is necessary because Meteor&#x2019;s package system is <strong>single-loading</strong> - that is, you can never have two different versions of the same package loaded side-by-side in the same app. This is particularly useful for packages that include a lot of client-side code, or packages that expect to be singletons.</p>
+<p>Note that the version solver also has a concept of &#x201C;gravity&#x201D; - when many solutions are possible for a certain set of dependencies, it always selects the oldest possible version. This is helpful if you are trying to develop a package to ship to lots of users, since it ensures your package will be compatible with the lowest common denominator of a dependency. If your package needs a newer version than is currently being selected for a certain dependency, you need to update your <code>package.js</code> to have a newer version constraint.</p>
+<h3 id="npm-dependencies"><a class="anchor" href="#npm-dependencies" aria-hidden="true" data-scroll="">&#x1F517;</a>npm dependencies</h3>
+
+<p>Meteor packages can include <a href="https://www.npmjs.com/" target="_blank" rel="external">npm packages</a> to use JavaScript code from outside the Meteor package ecosystem, or to include JavaScript code with native dependencies.</p>
+<p>If your package is using a dependency on the server then you can include npm packages in your Meteor package by using <a href="http://docs.meteor.com/#/full/Npm-depends" target="_blank" rel="external">Npm.depends</a>. For example, here&#x2019;s how you could include the <code>github</code> package from npm in your <code>package.js</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Npm.depends({</span><br><span class="line">  github: <span class="string">&apos;0.2.4&apos;</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You can import the dependency from within you package code in the same way that you would inside an <a href="using-packages.html#using-npm">application</a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> github <span class="keyword">from</span> <span class="string">&apos;github&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="peer-npm-dependencies"><a class="anchor" href="#peer-npm-dependencies" aria-hidden="true" data-scroll="">&#x1F517;</a>Peer npm dependencies</h3>
+
+<p><code>Npm.depends()</code> is fairly rigid (you can only depend on an exact version), and will typically result in multiple versions of a package being installed if many different Atmosphere packages depend on the same npm package. This makes it less than ideal to use on the client, where it&#x2019;s impractical to ship multiple copies of the same package code to the browser. Client-side packages are also often written with the assumption that only a single copy will be loaded. For example, React will complain if it is included more than once in an application bundle.</p>
+<p>To avoid this problem as a package author, you can request that users of your package have installed the npm package you want to use at the application level. This is similar to a <a href="https://nodejs.org/en/blog/npm/peer-dependencies/" target="_blank" rel="external">peer dependency</a> of an npm package (although with less support in the tool). You can use the <a href="https://atmospherejs.com/tmeasday/check-npm-versions" target="_blank" rel="external"><code>tmeasday:check-npm-versions</code></a> package to ensure that they&#x2019;ve done this, and to warn them if not.</p>
+<p>For instance, if you are writing a React package, you should not directly depend on <a href="https://www.npmjs.com/package/react" target="_blank" rel="external"><code>react</code></a>, but instead use <code>check-npm-versions</code> to check the user has installed it:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { checkNpmVersions } <span class="keyword">from</span> <span class="string">&apos;meteor/tmeasday:check-npm-versions&apos;</span>;</span><br><span class="line"></span><br><span class="line">checkNpmVersions({</span><br><span class="line">  <span class="string">&apos;react&apos;</span>: <span class="string">&apos;0.14.x&apos;</span></span><br><span class="line">}, <span class="string">&apos;my:awesome-package&apos;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If you are using the dependency in the same file, you&apos;ll need to use require, otherwise</span></span><br><span class="line"><span class="comment">// you can continue to `import` in another file.</span></span><br><span class="line"><span class="keyword">const</span> React = <span class="built_in">require</span>(<span class="string">&apos;react&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>Note that <code>checkNpmVersions</code> will only output a warning if the user has installed a incompatible version of the npm package. So your <code>require</code> call may not give you what you expect. This is consistent with npm&#x2019;s handling of <a href="http://blog.npmjs.org/post/110924823920/npm-weekly-5" target="_blank" rel="external">peer dependencies</a>.</p>
+</blockquote>
+<h2 id="cordova-plugins"><a class="anchor" href="#cordova-plugins" aria-hidden="true" data-scroll="">&#x1F517;</a>Cordova plugins</h2>
+
+<p>Meteor packages can include <a href="http://cordova.apache.org/plugins/" target="_blank" rel="external">Cordova plugins</a> to ship native code for the Meteor mobile app container. This way, you can interact with the native camera interface, use the gyroscope, save files locally, and more.</p>
+<p>Include Cordova plugins in your Meteor package by using <a href="http://docs.meteor.com/#/full/Cordova-depends" target="_blank" rel="external">Cordova.depends</a>.</p>
+<p>Read more about using Cordova in the <a href="guide-mobile-1.3.html">mobile guide</a>.</p>
+<h2 id="testing"><a class="anchor" href="#testing" aria-hidden="true" data-scroll="">&#x1F517;</a>Testing packages</h2>
+
+<p>Meteor has a test mode for packages called <code>meteor test-packages</code>. If you are in a package&#x2019;s directory, you can run</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="built_in">test</span>-packages ./ --driver-package practicalmeteor:mocha</span><br></pre></td></tr></tbody></table></figure>
+<p>This will run a special app containing only a &#x201C;test&#x201D; version of your package and start a Mocha <a href="testing.html#driver-packages">test driver package</a>.</p>
+<p>When your package starts in test mode, rather than loading the <code>onUse</code> block, Meteor loads the <code>onTest</code> block:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Package.onTest(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>{</span><br><span class="line">  <span class="comment">// You almost definitely want to depend on the package itself,</span></span><br><span class="line">  <span class="comment">// this is what you are testing!</span></span><br><span class="line">  api.use(<span class="string">&apos;my-package&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// You should also include any packages you need to use in the test code</span></span><br><span class="line">  api.use([<span class="string">&apos;ecmascript&apos;</span>, <span class="string">&apos;random&apos;</span>, <span class="string">&apos;practicalmeteor:mocha@2.1.1&apos;</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Finally add an entry point for tests</span></span><br><span class="line">  api.mainModule(<span class="string">&apos;my-package-tests.js&apos;</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>From within your test entry point, you can import other files as you would in the package proper.</p>
+<p>You can read more about testing in Meteor in the <a href="guide-testing-1.3.html">Testing article</a>.</p>
+<h3 id="testing-with-peer-dependencies"><a class="anchor" href="#testing-with-peer-dependencies" aria-hidden="true" data-scroll="">&#x1F517;</a>Peer npm dependencies</h3>
+
+<p>If your package makes use of <a href="#peer-npm-dependencies">peer npm dependencies</a>, you cannot currently use <code>test-packages</code> to write package tests (as the dependencies will not be included in the special test app).</p>
+<p>To work around this, you can create a &#x201C;scaffolding&#x201D; test application, which is a simple app which simply includes the package and uses standard <a href="guide-testing-1.3.html">tests</a> to run tests against the package. You can see examples of these kind of scaffold test apps in the <a href="https://github.com/meteor/react-packages/tree/devel/tests" target="_blank" rel="external">React packages repository</a>.</p>
+<h2 id="local-vs-published"><a class="anchor" href="#local-vs-published" aria-hidden="true" data-scroll="">&#x1F517;</a>Local packages vs. published packages</h2>
+
+<p>If you&#x2019;ve ever looked inside Meteor&#x2019;s package cache at <code>~/.meteor/packages</code>, you know that the on-disk format of a built Meteor package is completely different from the way the source code looks when you&#x2019;re developing the package. The idea is that the target format of a package can remain consistent even if the API for development changes.</p>
+<p>To publish your package to Atmosphere, run <a href="http://docs.meteor.com/#/full/meteorpublish" target="_blank" rel="external"><code>meteor publish</code></a> from the package directory. To publish a package the package name must follow the format of <code>username:my-package</code> and the package must contain a <a href="#version-constraints">SemVer version number</a>.</p>
+<h2 id="build-plugins"><a class="anchor" href="#build-plugins" aria-hidden="true" data-scroll="">&#x1F517;</a>Build plugins</h2>
+
+<p>The most powerful feature of Meteor&#x2019;s build system is the ability to define custom build plugins. If you find yourself writing scripts that mangle one type of file into another, merge multiple files, or something else, it&#x2019;s likely that these scripts would be better implemented as a build plugin. The <code>ecmascript</code>, <code>templating</code>, and <code>coffeescript</code> packages are all implemented as build plugins, so you can replace them with your own versions if you want to!</p>
+<p><a href="https://github.com/meteor/meteor/wiki/Build-Plugins-API" target="_blank" rel="external">Read the documentation about build plugins.</a></p>
+<h3 id="types-of-build-plugins"><a class="anchor" href="#types-of-build-plugins" aria-hidden="true" data-scroll="">&#x1F517;</a>Types of build plugins</h3>
+
+<p>There are three types of build plugins supported by Meteor today:</p>
+<ol>
+<li>Compiler plugin - compiles source files (LESS, CoffeeScript) into built output (JS, CSS, asset files, and HTML). Only one compiler plugin can handle a single file extension.</li>
+<li>Minifier plugin - compiles lots of built CSS or JS files into one or more minified files, for example <code>standard-minifiers</code>. Only one minifier can handle each of <code>js</code> and <code>css</code>.</li>
+<li>Linter plugin - processes any number of files, and can print lint errors. Multiple linters can process the same files.</li>
+</ol>
+<h3 id="writing-build-plugins"><a class="anchor" href="#writing-build-plugins" aria-hidden="true" data-scroll="">&#x1F517;</a>Writing your own build plugin</h3>
+
+<p>Writing a build plugin is a very advanced task that only the most advanced Meteor users should get into. The best place to start is to copy a different plugin that is the most similar to what you are trying to do. For example, if you wanted to make a new CSS compiler plugin, you could fork the <code>less</code> package; if you wanted to make your own JS transpiler, you could fork <code>ecmascript</code>. A good example of a linter is the <code>jshint</code> package, and for a minifier you can look at <code>standard-minifiers-js</code> and <code>standard-minifiers-css</code>.</p>
+<h3 id="caching-build-plugins"><a class="anchor" href="#caching-build-plugins" aria-hidden="true" data-scroll="">&#x1F517;</a>Caching</h3>
+
+<p>The best way to make your build plugin fast is to use caching anywhere you can - the best way to save time is to do less work! Check out the <a href="https://github.com/meteor/meteor/wiki/Build-Plugins-API#caching" target="_blank" rel="external">documentation about CachingCompiler</a> to learn more. It&#x2019;s used in all of the above examples, so you can see how to use it by looking at them.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-using-packages-1.3.html">Using Packages</a></span>
+      
+      
+        <span style="float:right"><a href="guide-mobile-1.3.html">Mobile</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/writing-packages.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=20194" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="2734px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

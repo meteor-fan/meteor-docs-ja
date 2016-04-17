@@ -1,0 +1,492 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to use Meteor&apos;s build system to compile your app.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Build system | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Build system
+            </a>
+          <ul class="sub-menu"><li><a href="#what-it-does" data-scroll="" class="H2">What does it do?</a><ul class="sub-menu"><li><a href="#reload-on-file-change" data-scroll="" class="H3">Reloads app on file change</a></li><li><a href="#compiles-with-build-plugins" data-scroll="" class="H3">Compiles files with build plugins</a></li><li><a href="#concatenate-and-minify" data-scroll="" class="H3">Combines and minifies code</a></li><li><a href="#dev-vs-prod" data-scroll="" class="H3">Development vs. production</a></li></ul></li><li><a href="#javascript-transpilation" data-scroll="" class="H2">JavaScript transpilation</a><ul class="sub-menu"><li><a href="#es2015" data-scroll="" class="H3">ES2015+ (recommended)</a></li><li><a href="#coffeescript" data-scroll="" class="H3">CoffeeScript</a></li></ul></li><li><a href="#blaze-templates" data-scroll="" class="H2">Templates and HTML</a><ul class="sub-menu"><li><a href="#blaze-spacebars" data-scroll="" class="H3">Blaze HTML templates</a></li><li><a href="#blaze-jade" data-scroll="" class="H3">Blaze Jade templates</a></li><li><a href="#react-jsx" data-scroll="" class="H3">JSX for React</a></li><li><a href="#angular-templates" data-scroll="" class="H3">Angular templates</a></li></ul></li><li><a href="#css" data-scroll="" class="H2">CSS pre-processors</a><ul class="sub-menu"><li><a href="#css-which-preprocessor" data-scroll="" class="H3">Sass, Less, or Stylus?</a></li><li><a href="#css-source-vs-import" data-scroll="" class="H3">Source vs. import files</a></li><li><a href="#css-importing" data-scroll="" class="H3">Importing styles</a></li><li><a href="#sass" data-scroll="" class="H3">Sass</a></li><li><a href="#less" data-scroll="" class="H3">Less</a></li><li><a href="#stylus" data-scroll="" class="H3">Stylus</a></li></ul></li><li><a href="#postcss" data-scroll="" class="H2">PostCSS and Autoprefixer</a><ul class="sub-menu"><li><a href="#juliancwirko-postcss" data-scroll="" class="H3">juliancwirko:postcss</a></li></ul></li><li><a href="#minification" data-scroll="" class="H2">Minification</a><ul class="sub-menu"></ul></li></ul></li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Build system</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/build-tool.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/19669">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>The Meteor build system is the actual command line tool that you get when you install Meteor. You run it by typing the <code>meteor</code> command in your terminal, possibly followed by a set of arguments. Read the <a href="http://docs.meteor.com/#/full/commandline" target="_blank" rel="external">docs about the command line tool</a> or type <code>meteor help</code> in your terminal to learn about all of the commands.</p>
+<h2 id="what-it-does"><a class="anchor" href="#what-it-does" aria-hidden="true" data-scroll="">&#x1F517;</a>What does it do?</h2>
+
+<p>The Meteor build tool is what compiles, runs, deploys, and publishes all of your Meteor apps and packages. It’s Meteor’s built-in solution to the problems also solved by tools like Grunt, Gulp, Webpack, Browserify, Nodemon, and many others, and uses many popular Node.js tools like Babel and UglifyJS internally to enable a seamless experience.</p>
+<h3 id="reload-on-file-change"><a class="anchor" href="#reload-on-file-change" aria-hidden="true" data-scroll="">&#x1F517;</a>Reloads app on file change</h3>
+
+<p>When you run <code>meteor</code>, the tool starts up, and you should leave it running continuously while developing your app. The tool automatically detects any relevant file changes and recompiles the necessary changes, restarting your client or server environment if needed.</p>
+<h3 id="compiles-with-build-plugins"><a class="anchor" href="#compiles-with-build-plugins" aria-hidden="true" data-scroll="">&#x1F517;</a>Compiles files with build plugins</h3>
+
+<p>The main function of the Meteor build tool is to run “build plugins” - these plugins define different parts of your app build process. Meteor puts heavy emphasis on reducing or removing build configuration files, so you won’t see any large build process config files like you would in Gulp or Webpack. The Meteor build process is configured almost entirely through adding and removing packages to your app, and putting files in specially named directories. For example, to get all of the newest stable ES2015 JavaScript features in your app, you just add the <code>ecmascript</code> package. As new Meteor releases add new features to this package, you’ll get them for free.</p>
+<h3 id="concatenate-and-minify"><a class="anchor" href="#concatenate-and-minify" aria-hidden="true" data-scroll="">&#x1F517;</a>Combines and minifies code</h3>
+
+<p>Another important feature of the Meteor build tool is that it automatically concatenates and minifies all of your files in production mode. This is enabled by the <a href="https://atmospherejs.com/meteor/standard-minifiers-js" target="_blank" rel="external"><code>standard-minifier-js</code></a> and <a href="https://atmospherejs.com/meteor/standard-minifiers-css" target="_blank" rel="external"><code>standard-minifier-css</code></a> packages, which are in all Meteor apps by default. If you need different minification behavior, you can replace these packages. Below, we’ll talk about how to <a href="#postcss">switch out a minifier to add PostCSS to your build process</a>.</p>
+<h3 id="dev-vs-prod"><a class="anchor" href="#dev-vs-prod" aria-hidden="true" data-scroll="">&#x1F517;</a>Development vs. production</h3>
+
+<p>Running an app in development is all about fast iteration time. All kinds of different parts of your app are handled differently and instrumented to enable better reloads and debugging. In production, the app is reduced to just the necessary code, and functions like a regular Node.js app. Therefore, you shouldn’t run your app in production by running the <code>meteor</code> command. Instead, follow the directions in the <a href="deployment.html#custom-deployment">production deployment article</a>.</p>
+<h2 id="javascript-transpilation"><a class="anchor" href="#javascript-transpilation" aria-hidden="true" data-scroll="">&#x1F517;</a>JavaScript transpilation</h2>
+
+<p>These days, the landscape of JavaScript tools and frameworks is constantly shifting, and the language itself is evolving just as rapidly. It’s no longer reasonable to wait for web browsers to implement the language features you want to use. Most JavaScript development workflows rely on compiling code to work on the lowest common denominator of environments, while letting you use the newest features in development. Meteor has support for some of the most popular tools out of the box.</p>
+<h3 id="es2015"><a class="anchor" href="#es2015" aria-hidden="true" data-scroll="">&#x1F517;</a>ES2015+ (recommended)</h3>
+
+<p>The <code>ecmascript</code> package (which is installed into all new apps and packages by default, but can be removed), allows support for many ES2015 features. We recommend using it. You can read more about it in the <a href="code-style.html#ecmascript">Code Style</a> article.</p>
+<h3 id="coffeescript"><a class="anchor" href="#coffeescript" aria-hidden="true" data-scroll="">&#x1F517;</a>CoffeeScript</h3>
+
+<p>While we recommend using ES2015 with the <code>ecmascript</code> package as the best development experience for Meteor, everything in the platform is 100% compatible with <a href="http://coffeescript.org/" target="_blank" rel="external">CoffeeScript</a> and many people in the Meteor community prefer it.</p>
+<p>All you need to do to use CoffeeScript is add the right Meteor package:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add coffeescript</span><br></pre></td></tr></tbody></table></figure>
+<p>All code written in CoffeeScript compiles to JavaScript under the hood, and is completely compatible with any code in other packages that is written in JS or ES2015.</p>
+<h2 id="blaze-templates"><a class="anchor" href="#blaze-templates" aria-hidden="true" data-scroll="">&#x1F517;</a>Templates and HTML</h2>
+
+<p>Since Meteor uses client-side rendering for your app’s UI, all of your HTML code, UI components, and templates need to be compiled to JavaScript. There are a few options at your disposal to write your UI code.</p>
+<h3 id="blaze-spacebars"><a class="anchor" href="#blaze-spacebars" aria-hidden="true" data-scroll="">&#x1F517;</a>Blaze HTML templates</h3>
+
+<p>The aptly named <code>blaze-html-templates</code> package that comes with every new Meteor app by default compiles your <code>.html</code> files written using <a href="blaze.html#spacebars">Spacebars</a> into Blaze-compatible JavaScript code. You can also add <code>blaze-html-templates</code> to any of your packages to compile template files located in the package.</p>
+<p><a href="guide-blaze-1.3.html">Read about how to use Blaze and Spacebars in the Blaze article.</a></p>
+<h3 id="blaze-jade"><a class="anchor" href="#blaze-jade" aria-hidden="true" data-scroll="">&#x1F517;</a>Blaze Jade templates</h3>
+
+<p>If you don’t like the Spacebars syntax Meteor uses by default and want something more concise, you can give Jade a try by using <a href="https://atmospherejs.com/dalgard/jade" target="_blank" rel="external"><code>dalgard:jade</code></a>. This package will compile all files in your app with the <code>.jade</code> extension into Blaze-compatible code, and can be used side-by-side with <code>blaze-html-templates</code> if you want to have some of your code in Spacebars and some in Jade.</p>
+<h3 id="react-jsx"><a class="anchor" href="#react-jsx" aria-hidden="true" data-scroll="">&#x1F517;</a>JSX for React</h3>
+
+<p>If you’re building your app’s UI with React, currently the most popular way to write your UI components involves JSX, an extension to JavaScript that allows you to type HTML tags that are converted to React DOM elements. JSX code is handled automatically by the <code>ecmascript</code> package.</p>
+<h4 id="react-other">Other options for React</h4>
+
+<p>If you want to use React but don’t want to deal with JSX and prefer a more HTML-like syntax, there are a few community options available. One that stands out in particular is <a href="https://github.com/timbrandin/blaze-react" target="_blank" rel="external">Blaze-React</a>, which simulates the entire Blaze API using React as a rendering engine.</p>
+<h3 id="angular-templates"><a class="anchor" href="#angular-templates" aria-hidden="true" data-scroll="">&#x1F517;</a>Angular templates</h3>
+
+<p>If you would like to write your UI in Angular, you will need to switch out Meteor’s Blaze template compiler which comes by default with the Angular one. Read about how to do this in the <a href="https://www.meteor.com/tutorials/angular/templates" target="_blank" rel="external">Angular-Meteor tutorial</a>.</p>
+<h2 id="css"><a class="anchor" href="#css" aria-hidden="true" data-scroll="">&#x1F517;</a>CSS pre-processors</h2>
+
+<p>It’s no secret that writing raw CSS can often be a hassle - there’s no way to share common CSS code between different selectors or have a consistent color scheme between different elements. CSS compilers or pre-processors solve these issues by adding extra features on top of the CSS language like variables, mixins, math, and more, and in some cases also significantly change the syntax of CSS to be easier to read and write.</p>
+<h3 id="css-which-preprocessor"><a class="anchor" href="#css-which-preprocessor" aria-hidden="true" data-scroll="">&#x1F517;</a>Sass, Less, or Stylus?</h3>
+
+<p>There are three CSS pre-processors that are particularly popular right now:</p>
+<ol>
+<li><a href="http://sass-lang.com/" target="_blank" rel="external">Sass</a></li>
+<li><a href="http://lesscss.org/" target="_blank" rel="external">Less.js</a></li>
+<li><a href="https://learnboost.github.io/stylus/" target="_blank" rel="external">Stylus</a></li>
+</ol>
+<p>They all have their pros and cons, and different people have different preferences, just like with JavaScript transpiled languages. The most popular one at the time of writing seems to be Sass with the SCSS syntax. Popular CSS frameworks like Bootstrap 4 and more are switching to Sass, and the C++ LibSass implementation appears to be faster than some of the other compilers available.</p>
+<p>CSS framework compatibility should be a primary concern when picking a pre-processor, because a framework written with Less won’t be compatible with one written in Sass.</p>
+<h3 id="css-source-vs-import"><a class="anchor" href="#css-source-vs-import" aria-hidden="true" data-scroll="">&#x1F517;</a>Source vs. import files</h3>
+
+<p>An important feature shared by all of the available CSS pre-processors is the ability to import files. This lets you split your CSS into smaller pieces, and provides a lot of the same benefits that you get from JavaScript modules:</p>
+<ol>
+<li>You can control the load order of files by encoding dependencies through imports, since the load order of CSS matters.</li>
+<li>You can create reusable CSS “modules” that just have variables and mixins, and don’t actually generate any CSS.</li>
+</ol>
+<p>In Meteor, each of your <code>.scss</code>, <code>.less</code>, or <code>.styl</code> source files will be one of two types: “source” or “import”.</p>
+<p>A “source” file is evaluated eagerly and adds its compiled form to the CSS of the app immediately.</p>
+<p>An “import” file is evaluated only if imported from some other file and can be used to share common mixins and variables between different CSS files in your app.</p>
+<p>Read the documentation for each package listed below to see how to indicate which files are source files vs. imports.</p>
+<h3 id="css-importing"><a class="anchor" href="#css-importing" aria-hidden="true" data-scroll="">&#x1F517;</a>Importing styles</h3>
+
+<p>In all three Meteor-supported CSS pre-processors you can import files from an absolute path in your app by using the special <code>{}</code> syntax:</p>
+<figure class="highlight less"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@import</span> <span class="string">&apos;{}/imports/ui/stylesheets/button.less&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>To import files from a Meteor Atmosphere packages using this special package name syntax:</p>
+<figure class="highlight less"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@import</span> <span class="string">&quot;{my-package:pretty-buttons}/buttons/styles.import.less&quot;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>It is currently not possible to import non-CSS assets from npm packages in <code>node_modules</code> using the Meteor build tool. There are various potential workarounds such as creating a symbolic link to the asset file in node_modules from somewhere else in your app <code>ln -s /path/to/node_modules/package-name/style.scss /path/to/app/imports/ui/style.scss</code> and importing it from there <code>@import &apos;{}/imports/ui/style.scss&apos;;</code> or try using an alternative pre-processor tool with <a href="https://github.com/tableflip/meteor-sass-bootstrap4" target="_blank" rel="external">npm scripts</a> or try using this configuration of <a href="https://github.com/juliancwirko/meteor-bootstrap-postcss-test" target="_blank" rel="external">PostCSS</a>.</p>
+</blockquote>
+<p>For more details using <code>@imports</code> with packages see <a href="guide-using-packages-1.3.html">Using Packages</a> in the Meteor Guide.</p>
+<h3 id="sass"><a class="anchor" href="#sass" aria-hidden="true" data-scroll="">&#x1F517;</a>Sass</h3>
+
+<p>The best Sass build plugin for Meteor is <a href="https://atmospherejs.com/fourseven/scss" target="_blank" rel="external"><code>fourseven:scss</code></a>.</p>
+<h3 id="less"><a class="anchor" href="#less" aria-hidden="true" data-scroll="">&#x1F517;</a>Less</h3>
+
+<p>Less is maintained as a <a href="https://atmospherejs.com/meteor/less" target="_blank" rel="external">Meteor core package called <code>less</code></a>.</p>
+<h3 id="stylus"><a class="anchor" href="#stylus" aria-hidden="true" data-scroll="">&#x1F517;</a>Stylus</h3>
+
+<p>Stylus is maintained as a <a href="https://atmospherejs.com/meteor/stylus" target="_blank" rel="external">Meteor core package called <code>stylus</code></a>.</p>
+<h2 id="postcss"><a class="anchor" href="#postcss" aria-hidden="true" data-scroll="">&#x1F517;</a>PostCSS and Autoprefixer</h2>
+
+<p>In addition to CSS pre-processors like Sass, Less, and Stylus, there is now an ecosystem of CSS post-processors. Regardless of which CSS pre-processor you use, a post-processor can give you additional benefits like cross-browser compatibility.</p>
+<p>The most popular CSS post-processor right now is <a href="https://github.com/postcss/postcss" target="_blank" rel="external">PostCSS</a>, which supports a variety of plugins. <a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">Autoprefixer</a> is perhaps the most useful plugin, since it enables you to stop worrying about browser prefixes and compatibility and write standards-compliant CSS. No more copying 5 different statements every time you want a CSS gradient - you can just write a standard gradient without any prefixes and Autoprefixer handles it for you.</p>
+<p>Currently, Meteor doesn’t have a separate build step for post-processing CSS, so the only way to integrate it is to build it into the minifier. Thankfully, there is a community package that has integrated PostCSS with plugin support into a replacement for Meteor’s standard minification package.</p>
+<h3 id="juliancwirko-postcss"><a class="anchor" href="#juliancwirko-postcss" aria-hidden="true" data-scroll="">&#x1F517;</a>juliancwirko:postcss</h3>
+
+<p>Use the package <a href="https://atmospherejs.com/juliancwirko/postcss" target="_blank" rel="external">juliancwirko:postcss</a> to your app to enable PostCSS for your Meteor app. To do so, we remove the standard CSS minifier and replace it with the postcss package:</p>
+<figure class="highlight oxygene"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="keyword">remove</span> standard-minifier-css</span><br><span class="line">meteor <span class="keyword">add</span> juliancwirko:postcss</span><br></pre></td></tr></tbody></table></figure>
+<p>Then we can install any npm CSS processing packages that we’d like to use and reference them from a <code>postcss</code> section of our <code>package.json</code>. In the Todos example app, we use <code>autoprefixer</code> package to increase browser support:</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  &quot;<span class="attribute">devDependencies</span>&quot;: <span class="value">{</span><br><span class="line">    &quot;<span class="attribute">autoprefixer</span>&quot;: <span class="value"><span class="string">&quot;^6.3.1&quot;</span></span><br><span class="line">  </span>}</span>,</span><br><span class="line">  &quot;<span class="attribute">postcss</span>&quot;: <span class="value">{</span><br><span class="line">    &quot;<span class="attribute">plugins</span>&quot;: <span class="value">{</span><br><span class="line">      &quot;<span class="attribute">autoprefixer</span>&quot;: <span class="value">{&quot;<span class="attribute">browsers</span>&quot;: <span class="value">[<span class="string">&quot;last 2 versions&quot;</span>]</span>}</span><br><span class="line">    </span>}</span><br><span class="line">  </span>}</span><br><span class="line"></span>}</span><br></pre></td></tr></tbody></table></figure>
+<p>After doing the above, you’ll need to ensure you <code>npm install</code> and restart the <code>meteor</code> process running your app to make sure the PostCSS system has had a chance to set itself up.</p>
+<h2 id="minification"><a class="anchor" href="#minification" aria-hidden="true" data-scroll="">&#x1F517;</a>Minification</h2>
+
+<p>The current best practice for deploying web production applications is to concatenate and minify all of your app assets. This lets you add all of the comments and whitespace you want to your source code, and split it into as many files as is necessary without worrying about app performance.</p>
+<p>Every Meteor app comes with production minification by default with the <code>standard-minifier-js</code> and <code>standard-minifier-css</code> packages. These minifiers go to some extra effort to do a good job - for example, Meteor automatically splits up your files if they get too big to maintain support for older versions of Internet Explorer which had a limit on the number of CSS rules per file.</p>
+<p>Minification usually happens when you <code>meteor deploy</code> or <code>meteor build</code> your app. If you have an error in production that you suspect is related to minification, you can run the minified version of your app locally with <code>meteor --production</code>.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>← <a href="guide-mobile-1.3.html">Mobile</a></span>
+      
+      
+        <span style="float:right"><a href="guide-security-1.3.html">Security</a> →</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/build-tool.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=19669" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="30px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div><script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script></body></html>

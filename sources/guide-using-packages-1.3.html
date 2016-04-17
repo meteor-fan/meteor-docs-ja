@@ -1,0 +1,529 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Using Packages | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Using Packages
+            </a>
+          <ul class="sub-menu"><li><a href="#npm" data-scroll="" class="H2">npm</a><ul class="sub-menu"><li><a href="#client-npm" data-scroll="" class="H3">npm on the client</a></li><li><a href="#installing-npm" data-scroll="" class="H3">Installing npm Packages</a></li><li><a href="#using-npm" data-scroll="" class="H3">Using npm Packages</a></li><li><a href="#npm-shrinkwrap" data-scroll="" class="H3">npm Shrinkwrap</a></li></ul></li><li><a href="#atmosphere" data-scroll="" class="H2">Atmosphere Packages</a><ul class="sub-menu"><li><a href="#installing-atmosphere" data-scroll="" class="H3">Installing Atmosphere Packages</a></li><li><a href="#using-atmosphere" data-scroll="" class="H3">Using Atmosphere Packages</a></li><li><a href="#peer-npm-dependencies" data-scroll="" class="H3">Peer npm Dependencies</a></li></ul></li><li><a href="#async-callbacks" data-scroll="" class="H2">Asyncronous Callbacks</a><ul class="sub-menu"><li><a href="#bind-environment" data-scroll="" class="H3">Meteor.bindEnvironment</a></li><li><a href="#wrap-async" data-scroll="" class="H3">Meteor.wrapAsync</a></li><li><a href="#promises" data-scroll="" class="H3">Promises</a></li></ul></li><li><a href="#overriding-packages" data-scroll="" class="H2">Overriding packages with a local version</a><ul class="sub-menu"><li><a href="#npm-overriding" data-scroll="" class="H3">npm</a></li><li><a href="#atmosphere-overriding" data-scroll="" class="H3">Atmosphere</a></li></ul></li><li><a href="#npm-shrinkpack" data-scroll="" class="H2">Using Shrinkpack</a><ul class="sub-menu"></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Using Packages</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/using-packages.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/20192">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this article, you&#x2019;ll know:</p>
+<ol>
+<li>About npm and Atmosphere, two JavaScript package systems you can use with Meteor</li>
+<li>How to use npm packages and deal with callback-based APIs</li>
+<li>How to use Atmosphere packages in your Meteor application</li>
+</ol>
+<p>Building an application completely from scratch is a tall order. This is one of the main reasons you might consider using Meteor in the first place - you can focus on writing the code that is specific to your app, instead of reinventing wheels like user login and data synchronization. To streamline your workflow even further, it makes sense to use community packages from <a href="https://www.npmjs.com" target="_blank" rel="external">npm</a> and <a href="https://atmospherejs.com" target="_blank" rel="external">Atmosphere</a>. Many of these packages are recommended in the guide, and you can find more in the online directories.</p>
+<h2 id="npm"><a class="anchor" href="#npm" aria-hidden="true" data-scroll="">&#x1F517;</a>npm</h2>
+
+<p>npm is a repository of general JavaScript packages. These packages were originally intended solely for the Node.js server-side environment, but as the JavaScript ecosystem matured, solutions arose to enable the use of npm packages in other environments such the browser. Today, npm is used for all types of JavaScript packages.</p>
+<p>The best way to find npm packages is by searching on <a href="https://www.npmjs.com/" target="_blank" rel="external">npmjs.com</a>. There are also some websites that have special search features specifically for certain kinds of packages, like the aptly named <a href="http://react-components.com/" target="_blank" rel="external">react-components.com</a>.</p>
+<h3 id="client-npm"><a class="anchor" href="#client-npm" aria-hidden="true" data-scroll="">&#x1F517;</a>npm on the client</h3>
+
+<p>Tools like <a href="http://browserify.org" target="_blank" rel="external">browserify</a> and <a href="https://webpack.github.io" target="_blank" rel="external">webpack</a> are designed to provide a Node-like environment on the client so that many npm packages, even ones originally intended for the server, can run unmodified. Meteor&#x2019;s ES2015 module system does this for you out of the box with no additional configuration necessary. In most cases, you can simply import npm dependencies from a client file, just as you would on the server.</p>
+<blockquote>
+<p>When creating a new application Meteor installs the <code>meteor-node-stubs</code> npm package to help provide this client browser compatibility. If you are upgrading an application to Meteor 1.3 you may have to run <code>meteor npm install --save meteor-node-stubs</code> manually.</p>
+</blockquote>
+<h3 id="installing-npm"><a class="anchor" href="#installing-npm" aria-hidden="true" data-scroll="">&#x1F517;</a>Installing npm Packages</h3>
+
+<p>npm packages are configured in a <code>package.json</code> file at the root of your project. If you create a new Meteor project, you will have such a file created for you; if not you can run <code>meteor npm init</code> to create one.</p>
+<p>To install a package into your app, you can run the <code>npm install</code> command with the <code>--save</code> flag:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install --save moment</span><br></pre></td></tr></tbody></table></figure>
+<p>This will both update your <code>package.json</code> with information about the dependency, and download the package into your app&#x2019;s local <code>node_modules/</code> directory. Typically, you don&#x2019;t check the <code>node_modules/</code> directory into source control, and your teammates run <code>meteor npm install</code> to get up to date when dependencies change:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install</span><br></pre></td></tr></tbody></table></figure>
+<p>If the package is just a development dependency (i.e. it&#x2019;s used for testing, linting or the like), then you can use <code>--save-dev</code>. That way if you have some kind of build script, it can do <code>npm install --production</code> and avoid installing packages it doesn&#x2019;t need.</p>
+<p>For more information about <code>npm install</code>, check out the <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally" target="_blank" rel="external">official documentation</a>.</p>
+<blockquote>
+<p>Meteor comes with npm bundled so that you can type <code>meteor npm</code> without worrying about installing it yourself. If you like, you can also use a globally installed npm to manage your packages.</p>
+</blockquote>
+<h3 id="using-npm"><a class="anchor" href="#using-npm" aria-hidden="true" data-scroll="">&#x1F517;</a>Using npm Packages</h3>
+
+<p>To use an npm package from a file in your application, you simply <code>import</code> the name of the package:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">&apos;moment&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// this is equivalent to the standard node require:</span></span><br><span class="line"><span class="keyword">const</span> moment = <span class="built_in">require</span>(<span class="string">&apos;moment&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>This imports the default export from the package into the symbol <code>moment</code>.</p>
+<p>You can also import specific functions from a package using the destructuring syntax:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { isArray } <span class="keyword">from</span> <span class="string">&apos;lodash&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>You can also import other files or JS entry points from a package:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { parse } <span class="keyword">from</span> <span class="string">&apos;graphql/language&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="npm-shrinkwrap"><a class="anchor" href="#npm-shrinkwrap" aria-hidden="true" data-scroll="">&#x1F517;</a>npm Shrinkwrap</h3>
+
+<p><code>package.json</code> typically encodes a version range, and so each <code>npm install</code> command can sometimes lead to a different result if new versions have been published in the meantime. In order to ensure that you and the rest of your team are using the same exact same version of each package, it&#x2019;s a good idea to use <code>npm shrinkwrap</code> after making any dependency changes to <code>package.json</code>:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># after installing</span></span><br><span class="line">meteor npm install --save moment</span><br><span class="line">meteor npm shrinkwrap</span><br></pre></td></tr></tbody></table></figure>
+<p>This will create an <code>npm-shrinkwrap.json</code> file containing the exact versions of each dependency, and you should check this file into source control. For even more precision (the contents of a given version of a package <em>can</em> change), and to avoid a reliance on the npm server during deployment, you can consider using <a href="#npm-shrinkpack"><code>npm shrinkpack</code></a> also. We&#x2019;ll cover that in the advanced section.</p>
+<h2 id="atmosphere"><a class="anchor" href="#atmosphere" aria-hidden="true" data-scroll="">&#x1F517;</a>Atmosphere Packages</h2>
+
+<p>Atmosphere packages are packages written specifically for Meteor. Atmosphere packages have several advantages over npm when used with Meteor. In particular, Atmosphere packages can:</p>
+<ul>
+<li>Depend on core Meteor packages, such as <code>ddp</code> and <code>blaze</code></li>
+<li>Include non-javascript files including CSS and static assets</li>
+<li>Take advantage of Meteor&#x2019;s <a href="guide-build-tool-1.3.html">build system</a> to be automatically transpiled from languages like CoffeeScript and SASS</li>
+<li>Have a well defined way to ship different code for client and server, enabling different behavior in each context</li>
+<li>Include build plugins for Meteor&#x2019;s build system</li>
+<li>Include pre-built binary code for different server architectures, such as Linux or Windows</li>
+</ul>
+<h4 id="atmosphere-searching">Searching for packages</h4>
+
+<p>There are a few ways to search for Meteor packages published to Atmosphere:</p>
+<ol>
+<li>Search on the <a href="https://atmospherejs.com/" target="_blank" rel="external">Atmosphere website</a>.</li>
+<li>Use <code>meteor search</code> from the command line.</li>
+<li>Use a community package search website like <a href="http://fastosphere.meteor.com/" target="_blank" rel="external">Fastosphere</a>.</li>
+</ol>
+<p>The main Atmosphere website provides additional curation features like trending packages, package stars, and flags, but some of the other options can be faster if you&#x2019;re trying to find a specific package. For example, you can use <code>meteor show kadira:flow-router</code> from the command line to see the description of that package and different available versions.</p>
+<h4 id="atmosphere-naming">Package naming</h4>
+
+<p>You may notice that, with the exception of Meteor platform packages, all packages on Atmosphere have a name of the form <code>prefix:name</code>. The prefix is the name of the organization or user that published the package. Meteor uses such a convention of package naming to make sure that it&#x2019;s clear who has published a certain package, and to avoid an ad-hoc namespacing convention. Meteor platform packages do not have any <code>prefix:</code>.</p>
+<h3 id="installing-atmosphere"><a class="anchor" href="#installing-atmosphere" aria-hidden="true" data-scroll="">&#x1F517;</a>Installing Atmosphere Packages</h3>
+
+<p>To install an Atmosphere package, you simply run <code>meteor add</code>:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add kadira:flow-router</span><br></pre></td></tr></tbody></table></figure>
+<p>This will add the newest version of the desired package that is compatible with the other packages in your app. If you want to specify a particular version, you can specify it by adding a suffix to the package name, like so: <code>meteor add kadira:flow-router@2.10.0</code>.</p>
+<p>Regardless of how you add the package to your app, its actual version will be tracked in the file at <code>.meteor/versions</code>. This means that anybody collaborating with you on the same app is guaranteed to have the same package versions as you. If you want to update to a newer version of a package after installing it, use <code>meteor update</code>. You can run <code>meteor update</code> without any arguments to update all packages and Meteor itself to their latest versions, or pass a specific package to update just that one, for example <code>meteor update kadira:flow-router</code>.</p>
+<p>If your app is running when you add a new package, Meteor will automatically download it and restart your app for you.</p>
+<blockquote>
+<p>The actual files for a given version of an Atmosphere package are stored in your local <code>~/.meteor/packages</code> directory.</p>
+</blockquote>
+<h3 id="using-atmosphere"><a class="anchor" href="#using-atmosphere" aria-hidden="true" data-scroll="">&#x1F517;</a>Using Atmosphere Packages</h3>
+
+<p>To use an Atmosphere Package, you can import it with the <code>meteor/</code> prefix:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { SimpleSchema } <span class="keyword">from</span> <span class="string">&apos;meteor/aldeed:simple-schema&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>Typically a package will export one or more symbols which you&#x2019;ll need to grab with the destructuring syntax. Sometimes a package will have no exports and simply have side effects when included in your app. In such cases you don&#x2019;t need to import the package at all.</p>
+<h3 id="peer-npm-dependencies"><a class="anchor" href="#peer-npm-dependencies" aria-hidden="true" data-scroll="">&#x1F517;</a>Peer npm Dependencies</h3>
+
+<p>Atmosphere packages can ship with contained <a href="writing-packages.html#npm-dependencies">npm dependencies</a>, in which case you don&#x2019;t need to do anything to make them work. However, some Atmosphere packages will expect that you have installed certain &#x201C;peer&#x201D; npm dependencies in your application.</p>
+<p>Typically the package will warn you if you have not done so. For example, if you install the <a href="https://atmospherejs.com/meteor/react-meteor-data" target="_blank" rel="external"><code>react-meteor-data</code></a> package into your app, you&#x2019;ll also need to <a href="#installing-npm">install</a> the <a href="https://www.npmjs.com/package/react" target="_blank" rel="external"><code>react</code></a> and the <a href="https://www.npmjs.com/package/react-addons-pure-render-mixin" target="_blank" rel="external"><code>react-addons-pure-render-mixin</code></a> packages:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install --save react react-addons-pure-render-mixin</span><br><span class="line">meteor add react-meteor-data</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="async-callbacks"><a class="anchor" href="#async-callbacks" aria-hidden="true" data-scroll="">&#x1F517;</a>Asyncronous Callbacks</h2>
+
+<p>Many npm packages rely on an asynchronous, callback or promise-based coding style. For several reasons, Meteor is currently built around a synchronous-looking but still non-blocking style using <a href="https://github.com/laverdet/node-fibers" target="_blank" rel="external">Fibers</a>.</p>
+<p>The global Meteor server context and every method and publication initialize a new fiber so that they can run concurrently. Many Meteor APIs, for example collections, rely on running inside a fiber. They also rely on an internal Meteor mechanism that tracks server &#x201C;environment&#x201D; state, like the currently executing method. This means you need to initialize your own fiber and environment to use asynchronous Node code inside a Meteor app. Let&#x2019;s look at an example of some code that won&#x2019;t work, using the code example from the <a href="https://github.com/mikedeboer/node-github" target="_blank" rel="external">node-github repository</a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Inside a Meteor method definition</span></span><br><span class="line">updateGitHubFollowers() {</span><br><span class="line">  github.user.getFollowingFromUser({</span><br><span class="line">    user: <span class="string">&apos;stubailo&apos;</span></span><br><span class="line">  }, (err, res) =&gt; {</span><br><span class="line">    <span class="comment">// Using a collection here will throw an error</span></span><br><span class="line">    <span class="comment">// because the asynchronous code is not in a fiber</span></span><br><span class="line">    Followers.insert(res);</span><br><span class="line">  });</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Let&#x2019;s look at a few ways to resolve this issue.</p>
+<h3 id="bind-environment"><a class="anchor" href="#bind-environment" aria-hidden="true" data-scroll="">&#x1F517;</a><code>Meteor.bindEnvironment</code></h3>
+
+<p>In most cases, simply wrapping the callback in <code>Meteor.bindEnvironment</code> will do the trick. This function both wraps the callback in a fiber, and does some work to maintain Meteor&#x2019;s server-side environment tracking. Here&#x2019;s the same code with <code>Meteor.bindEnvironment</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Inside a Meteor method definition</span></span><br><span class="line">updateGitHubFollowers() {</span><br><span class="line">  github.user.getFollowingFromUser({</span><br><span class="line">    user: <span class="string">&apos;stubailo&apos;</span></span><br><span class="line">  }, Meteor.bindEnvironment((err, res) =&gt; {</span><br><span class="line">    <span class="comment">// Everything is good now</span></span><br><span class="line">    Followers.insert(res);</span><br><span class="line">  }));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>However, this won&#x2019;t work in all cases - since the code runs asynchronously, we can&#x2019;t use anything we got from an API in the method return value. We need a different approach that will convert the async API to a synchronous-looking one that will allow us to return a value.</p>
+<h3 id="wrap-async"><a class="anchor" href="#wrap-async" aria-hidden="true" data-scroll="">&#x1F517;</a><code>Meteor.wrapAsync</code></h3>
+
+<p>Many npm packages adopt the convention of taking a callback that accepts <code>(err, res)</code> arguments. If your asynchronous function fits this description, like the one above, you can use <code>Meteor.wrapAsync</code> to convert to a fiberized API that uses return values and exceptions instead of callbacks, like so:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Setup sync API</span></span><br><span class="line"><span class="keyword">const</span> getFollowingFromUserFiber =</span><br><span class="line">  Meteor.wrapAsync(github.user.getFollowingFromUser, github.user);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Inside a Meteor method definition</span></span><br><span class="line">updateGitHubFollowers() {</span><br><span class="line">  <span class="keyword">const</span> res = getFollowingFromUserFiber({</span><br><span class="line">    user: <span class="string">&apos;stubailo&apos;</span></span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  Followers.insert(res);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Return how many followers we have</span></span><br><span class="line">  <span class="keyword">return</span> res.length;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>If you wanted to refactor this and create a completely fiber-wrapper GitHub client, you could write some logic to loop over all of the methods available and call <code>Meteor.wrapAsync</code> on them, creating a new object with the same shape but with a more Meteor-compatible API.</p>
+<h3 id="promises"><a class="anchor" href="#promises" aria-hidden="true" data-scroll="">&#x1F517;</a>Promises</h3>
+
+<p>Recently, a lot of npm packages have been moving to Promises instead of callbacks for their API. This means you actually get a return value from the asynchronous function, but it&#x2019;s just an empty shell where the real value is filled in later. If you are using a package that has a promise-based API, you can convert it to synchronous-looking code very easily.</p>
+<p>First, add the Meteor promise package:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add promise</span><br></pre></td></tr></tbody></table></figure>
+<p>Now, you can use <code>Promise.await</code> to get a return value from a promise-returning function. For example, here is how you could send a text message using the Node Twilio API:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sendTextMessage() {</span><br><span class="line">  <span class="keyword">const</span> promise = client.sendMessage({</span><br><span class="line">    to:<span class="string">&apos;+16515556677&apos;</span>,</span><br><span class="line">    from: <span class="string">&apos;+14506667788&apos;</span>,</span><br><span class="line">    body: <span class="string">&apos;Hello world!&apos;</span></span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Wait for and return the result</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.await(promise);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="overriding-packages"><a class="anchor" href="#overriding-packages" aria-hidden="true" data-scroll="">&#x1F517;</a>Overriding packages with a local version</h2>
+
+<p>If you need to modify a package to do something that the published version doesn&#x2019;t do, you can edit a local version of the package on your computer.</p>
+<h3 id="npm-overriding"><a class="anchor" href="#npm-overriding" aria-hidden="true" data-scroll="">&#x1F517;</a>npm</h3>
+
+<p>Let&#x2019;s say you want to modify the <code>left-pad</code> npm package. If you haven&#x2019;t already, run inside your app directory:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install --save left-pad</span><br></pre></td></tr></tbody></table></figure>
+<p>Now <code>left-pad</code> is included in your <code>package.json</code>, and the code has been downloaded to <code>node_modules/left_pad/</code>. Add the new directory to source control with:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add <span class="operator">-f</span> node_modules/left_pad/</span><br></pre></td></tr></tbody></table></figure>
+<p>Now you can edit the package, commit, and push, and your teammates will get your version of the package. To ensure that your package doesn&#x2019;t get overwritten during an <code>npm update</code>, change the default <a href="https://docs.npmjs.com/misc/semver#caret-ranges-123-025-004" target="_blank" rel="external">caret version range</a> in your <code>package.json</code> to an exact version.</p>
+<p>Before:</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;left-pad&quot;: &quot;^1.0.2&quot;,</span><br></pre></td></tr></tbody></table></figure>
+<p>After:</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;left-pad&quot;: &quot;1.0.2&quot;,</span><br></pre></td></tr></tbody></table></figure>
+<p>An alternative method is maintaining a separate repository for the package and changing the <code>package.json</code> version number <a href="http://debuggable.com/posts/how-to-fork-patch-npm-modules:4e2eb9f3-e584-44be-b1a9-3db7cbdd56cb" target="_blank" rel="external">to a git URL or tarball</a>, but every time you edit the separate repo, you&#x2019;ll need to commit, push, and <code>npm update left-pad</code>.</p>
+<h3 id="atmosphere-overriding"><a class="anchor" href="#atmosphere-overriding" aria-hidden="true" data-scroll="">&#x1F517;</a>Atmosphere</h3>
+
+<p>A Meteor app can load Atmosphere packages in one of three ways, and it looks for a matching package name in the following order:</p>
+<ol>
+<li>Package source code in the <code>packages/</code> directory inside your app.</li>
+<li>Package source code in directories indicated by setting a <code>PACKAGE_DIRS</code> environment variable before running any <code>meteor</code> command. You can add multiple directories by separating the paths with a <code>:</code> on OSX or Linux, or a <code>;</code> on Windows. For example: <code>PACKAGE_DIRS=../first/directory:../second/directory</code>, or on Windows: <code>set PACKAGE_DIRS=..\first\directory;..\second\directory</code>.</li>
+<li>Pre-built package from Atmosphere. The package is cached in <code>~/.meteor/packages</code> on Mac/Linux or <code>%LOCALAPPDATA%\.meteor\packages</code> on Windows, and only loaded into your app as it is built.</li>
+</ol>
+<p>You can use (1) or (2) to override the version from Atmosphere. You can even do this to load patched versions of Meteor core packages - just copy the code of the package from <a href="https://github.com/meteor/meteor/tree/devel/packages" target="_blank" rel="external">Meteor&#x2019;s GitHub repository</a>, and edit away.</p>
+<p>One difference between pre-published packages and local app packages is that the published packages have any binary dependencies pre-built. This should only affect a small subset of packages. If you clone the source code into your app, you need to make sure you have any compilers required by that package.</p>
+<h2 id="npm-shrinkpack"><a class="anchor" href="#npm-shrinkpack" aria-hidden="true" data-scroll="">&#x1F517;</a>Using Shrinkpack</h2>
+
+<p><a href="https://github.com/JamieMason/shrinkpack" target="_blank" rel="external">Shrinkpack</a> is a tool that gives you more bulletproof and repeatable builds than you get by using <a href="#npm-shrinkwrap"><code>npm shrinkwrap</code></a> alone.</p>
+<p>Essentially it copies a tarball of the contents of each of your npm dependencies into your application source repository. This is essentially a more robust version of the <code>npm-shrinkwrap.json</code> file that shrinkwrap creates, because it means your application&#x2019;s npm dependencies can be assembled without the need or reliance on the npm servers being available or reliable. This is good for repeatable builds especially when deploying.</p>
+<p>To use shrinkpack, first globalling install it:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g shrinkpack</span><br></pre></td></tr></tbody></table></figure>
+<p>Then use it directly after you shrinkwrap</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install moment</span><br><span class="line">meteor npm shrinkwrap</span><br><span class="line">shrinkpack</span><br></pre></td></tr></tbody></table></figure>
+<p>You should then check the generated <code>node_shrinkwrap/</code> directory into source control, but ensure it is ignored by your text editor.</p>
+<p><strong>NOTE</strong>: Although this is a good idea for projects with a lot of npm dependencies, it will not affect Atmosphere dependencies, even if they themselves have direct npm dependencies.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-angular-1.3.html">Angular</a></span>
+      
+      
+        <span style="float:right"><a href="guide-writing-packages-1.3.html">Writing Packages</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/using-packages.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=20192" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="2612px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

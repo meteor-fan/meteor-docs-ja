@@ -1,0 +1,560 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to structure your Meteor app with ES2015 modules, ship code to the client and server, and split your code into multiple apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Application structure | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Application structure
+            </a>
+          <ul class="sub-menu"><li><a href="#meteor-structure" data-scroll="" class="H2">Universal JavaScript</a><ul class="sub-menu"><li><a href="#es2015-modules" data-scroll="" class="H3">ES2015 modules</a></li><li><a href="#intro-to-import-export" data-scroll="" class="H3">Introduction to using import and export</a></li><li><a href="#importing-from-packages" data-scroll="" class="H3">Importing from packages</a></li><li><a href="#using-require" data-scroll="" class="H3">Using require</a></li><li><a href="#exporting-from-coffeescript" data-scroll="" class="H3">Exporting with CoffeeScript</a></li></ul></li><li><a href="#javascript-structure" data-scroll="" class="H2">File structure</a><ul class="sub-menu"><li><a href="#example-app-structure" data-scroll="" class="H3">Example directory layout</a></li><li><a href="#structuring-imports" data-scroll="" class="H3">Structuring imports</a></li><li><a href="#startup-files" data-scroll="" class="H3">Startup files</a></li><li><a href="#importing-meteor-globals" data-scroll="" class="H3">Importing Meteor “pseudo-globals”</a></li></ul></li><li><a href="#load-order" data-scroll="" class="H2">Default file load order</a><ul class="sub-menu"><li><a href="#special-directories" data-scroll="" class="H3">Special directories</a></li><li><a href="#files-outside" data-scroll="" class="H3">Files outside special directories</a></li></ul></li><li><a href="#splitting-your-app" data-scroll="" class="H2">Splitting into multiple apps</a><ul class="sub-menu"><li><a href="#sharing-code" data-scroll="" class="H3">Sharing code</a></li><li><a href="#sharing-data" data-scroll="" class="H3">Sharing data</a></li><li><a href="#sharing-accounts" data-scroll="" class="H3">Sharing accounts</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Application structure</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/structure.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/20187">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this article, you’ll know:</p>
+<ol>
+<li>How a Meteor application compares to other types of applications in terms of file structure.</li>
+<li>How to organize your application both for small and larger applications.</li>
+<li>How to format your code and name the parts of your application in consistent and maintainable ways.</li>
+</ol>
+<h2 id="meteor-structure"><a class="anchor" href="#meteor-structure" aria-hidden="true" data-scroll="">&#x1F517;</a>Universal JavaScript</h2>
+
+<p>Meteor is a <em>full-stack</em> framework for building JavaScript applications. This means Meteor applications differ from most applications in that they include code that runs on the client, inside a web browser or Cordova mobile app, code that runs on the server, inside a <a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a> container, and <em>common</em> code that runs in both environments. The <a href="guide-build-tool-1.3.html">Meteor build tool</a> allows you to easily specify what JavaScript code, including any supporting UI templates, CSS rules, and static assets, to run in each environment using a combination of ES2015 <code>import</code> and <code>export</code> and the Meteor build system <a href="#load-order">default file load order</a> rules.</p>
+<h3 id="es2015-modules"><a class="anchor" href="#es2015-modules" aria-hidden="true" data-scroll="">&#x1F517;</a>ES2015 modules</h3>
+
+<p>As of version 1.3, Meteor ships with full support for <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/statements/import" target="_blank" rel="external">ES2015 modules</a>. The ES2015 module standard is the replacement for <a href="http://requirejs.org/docs/commonjs.html" target="_blank" rel="external">CommonJS</a> and <a href="https://github.com/amdjs/amdjs-api" target="_blank" rel="external">AMD</a>, which are commonly used JavaScript module format and loading systems.</p>
+<p>In ES2015, you can make variables available outside a file using the <code>export</code> keyword. To use the variables somewhere else, you must <code>import</code> them using the path to the source. Files that export some variables are called “modules”, because they represent a unit of reusable code. Explicitly importing the modules and packages you use helps you write your code in a modular way, avoiding the introduction of global symbols and “action at a distance”.</p>
+<p>Since this is a new feature introduced in Meteor 1.3, you will find a lot of code online that uses the older, more centralized conventions built around packages and apps declaring global symbols. This old system still works, so to opt-in to the new module system code must be placed inside the <code>imports/</code> directory in your application. We expect a future release of Meteor will turn on modules by default for all code, because this is more aligned with how developers in the wider JavaScript community write their code.</p>
+<p>You can read about the module system in detail in the <a href="https://docs.meteor.com/#/full/modules" target="_blank" rel="external"><code>modules</code> package README</a>. This package is automatically included in every new Meteor app as part of the <a href="https://docs.meteor.com/#/full/ecmascript" target="_blank" rel="external"><code>ecmascript</code> meta-package</a>, so most apps won’t need to do anything to start using modules right away.</p>
+<h3 id="intro-to-import-export"><a class="anchor" href="#intro-to-import-export" aria-hidden="true" data-scroll="">&#x1F517;</a>Introduction to using <code>import</code> and <code>export</code></h3>
+
+<p>Meteor allows you to <code>import</code> not only JavaScript in your application, but also CSS and HTML to control load order:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&apos;../../api/lists/methods.js&apos;</span>;  <span class="comment">// import from relative path</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;/imports/startup/client&apos;</span>;     <span class="comment">// import module with index.js from absolute path</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;./loading.html&apos;</span>;              <span class="comment">// import Blaze compiled HTML from relative path</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;/imports/ui/style.css&apos;</span>;       <span class="comment">// import CSS from absolute path</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Meteor also supports the standard E2015 modules <code>export</code> syntax:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> listRenderHold = LaunchScreen.hold();  <span class="comment">// named export</span></span><br><span class="line"><span class="keyword">export</span> { Todos };                                   <span class="comment">// named export</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Lists;                               <span class="comment">// default export</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Collection(<span class="string">&apos;lists&apos;</span>);             <span class="comment">// default export</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="importing-from-packages"><a class="anchor" href="#importing-from-packages" aria-hidden="true" data-scroll="">&#x1F517;</a>Importing from packages</h3>
+
+<p>In Meteor, it is also simple and straightforward to use the <code>import</code> syntax to load npm packages on the client or server and access the package’s exported symbols as you would with any other module. You can also import from Meteor Atmosphere packages, but the import path must be prefixed with <code>meteor/</code> to avoid conflict with the npm package namespace. For example, to import <code>moment</code> from npm and <code>HTTP</code> from Atmosphere:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">&apos;moment&apos;</span>;          <span class="comment">// default import from npm</span></span><br><span class="line"><span class="keyword">import</span> { HTTP } <span class="keyword">from</span> <span class="string">&apos;meteor/http&apos;</span>;   <span class="comment">// named import from Atmosphere</span></span><br></pre></td></tr></tbody></table></figure>
+<p>For more details using <code>imports</code> with packages see <a href="guide-using-packages-1.3.html">Using Packages</a> in the Meteor Guide.</p>
+<h3 id="using-require"><a class="anchor" href="#using-require" aria-hidden="true" data-scroll="">&#x1F517;</a>Using <code>require</code></h3>
+
+<p>In Meteor, <code>import</code> statements compile to CommonJS <code>require</code> syntax. However, as a convention we encourage you to use <code>import</code>.</p>
+<p>With that said, in some situations you may need to call out to <code>require</code> directly. One notable example is when requiring client or server-only code from a common file. As <code>import</code>s must be at the top-level scope, you may not place them within an <code>if</code> statement, so you’ll need to write code like:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Meteor.isClient) {</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&apos;./client-only-file.js&apos;</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Note that dynamic calls to <code>require()</code> (where the name being required can change at runtime) cannot be analyzed correctly and may result in broken client bundles.</p>
+<p>If you need to <code>require</code> from an ES2015 module with a <code>default</code> export, you can grab the export with <code>require(&quot;package&quot;).default</code>.</p>
+<p>Another situation where you’ll need to use <code>require</code> is in CoffeeScript files. As CS doesn’t support the <code>import</code> syntax yet, you should use <code>require</code>:</p>
+<figure class="highlight cs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">{ FlowRouter } = require <span class="string">&apos;meteor/kadira:flow-router&apos;</span></span><br><span class="line">React = require <span class="string">&apos;react&apos;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="exporting-from-coffeescript"><a class="anchor" href="#exporting-from-coffeescript" aria-hidden="true" data-scroll="">&#x1F517;</a>Exporting with CoffeeScript</h3>
+
+<p>When using CoffeeScript, not only the syntax to import variables is different, but also the export has to be done in a different way. Variables to be exported are put in the <code>exports</code> object:</p>
+<figure class="highlight cs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exports.Lists = ListsCollection <span class="string">&apos;Lists&apos;</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="javascript-structure"><a class="anchor" href="#javascript-structure" aria-hidden="true" data-scroll="">&#x1F517;</a>File structure</h2>
+
+<p>To fully use the module system and ensure that our code only runs when we ask it to, we recommend that all of your application code should be placed inside the <code>imports/</code> directory. This means that the Meteor build system will only bundle and include that file if it is referenced from another file using an <code>import</code> (also called “lazy evaluation or loading”).</p>
+<p>Meteor will load all files outside of any directory named <code>imports/</code> in the application using the <a href="#load-order">default file load order</a> rules (also called “eager evaluation or loading”). It is recommended that you create exactly two eagerly loaded files, <code>client/main.js</code> and <code>server/main.js</code>, in order to define explicit entry points for both the client and the server. Meteor ensures that any file in any directory named <code>server/</code> will only be available on the server, and likewise for files in any directory named <code>client/</code>. This also precludes trying to <code>import</code> a file to be used on the server from any directory named <code>client/</code> even if it is nested in an <code>imports/</code> directory and vice versa for importing client files from <code>server/</code>.</p>
+<p>These <code>main.js</code> files won’t do anything themselves, but they should import some <em>startup</em> modules which will run immediately, on client and server respectively, when the app loads. These modules should do any configuration necessary for the packages you are using in your app, and import the rest of your app’s code.</p>
+<h3 id="example-app-structure"><a class="anchor" href="#example-app-structure" aria-hidden="true" data-scroll="">&#x1F517;</a>Example directory layout</h3>
+
+<p>To start, let’s look at our <a href="https://github.com/meteor/todos" target="_blank" rel="external">Todos example application</a>, which is a great example to follow when structuring your app. Here’s an overview of its directory structure:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">imports/</span><br><span class="line">  startup/</span><br><span class="line">    client/</span><br><span class="line">      index.js                 <span class="comment"># import client startup through a single index entry point</span></span><br><span class="line">      routes.js                <span class="comment"># set up all routes in the app</span></span><br><span class="line">      useraccounts-configuration.js <span class="comment"># configure login templates</span></span><br><span class="line">    server/</span><br><span class="line">      fixtures.js              <span class="comment"># fill the DB with example data on startup</span></span><br><span class="line">      index.js                 <span class="comment"># import server startup through a single index entry point</span></span><br><span class="line"></span><br><span class="line">  api/</span><br><span class="line">    lists/                     <span class="comment"># a unit of domain logic</span></span><br><span class="line">      server/</span><br><span class="line">        publications.js        <span class="comment"># all list-related publications</span></span><br><span class="line">        publications.tests.js  <span class="comment"># tests for the list publications</span></span><br><span class="line">      lists.js                 <span class="comment"># definition of the Lists collection</span></span><br><span class="line">      lists.tests.js           <span class="comment"># tests for the behavior of that collection</span></span><br><span class="line">      methods.js               <span class="comment"># methods related to lists</span></span><br><span class="line">      methods.tests.js         <span class="comment"># tests for those methods</span></span><br><span class="line"></span><br><span class="line">  ui/</span><br><span class="line">    components/                <span class="comment"># all reusable components in the application</span></span><br><span class="line">                               <span class="comment"># can be split by domain if there are many</span></span><br><span class="line">    layouts/                   <span class="comment"># wrapper components for behaviour and visuals</span></span><br><span class="line">    pages/                     <span class="comment"># entry points for rendering used by the router</span></span><br><span class="line"></span><br><span class="line">client/</span><br><span class="line">  main.js                      <span class="comment"># client entry point, imports all client code</span></span><br><span class="line"></span><br><span class="line">server/</span><br><span class="line">  main.js                      <span class="comment"># server entry point, imports all server code</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="structuring-imports"><a class="anchor" href="#structuring-imports" aria-hidden="true" data-scroll="">&#x1F517;</a>Structuring imports</h3>
+
+<p>Now that we have placed all files inside the <code>imports/</code> directory, let’s think about how best to organize our code using modules. It makes sense to put all code that runs when your app starts in an <code>imports/startup</code> directory. Another good idea is splitting data and business logic from UI rendering code. We suggest using directories called <code>imports/api</code> and <code>imports/ui</code> for this logical split.</p>
+<p>Within the <code>imports/api</code> directory, it’s sensible to split the code into directories based on the domain that the code is providing an API for — typically this corresponds to the collections you’ve defined in your app. For instance in the Todos example app, we have the <code>imports/api/lists</code> and <code>imports/api/todos</code> domains. Inside each directory we define the collections, publications and methods used to manipulate the relevant domain data.</p>
+<blockquote>
+<p>Note: in a larger application, given that the todos themselves are a part of a list, it might make sense to group both of these domains into a single larger “list” module. The Todos example is small enough that we need to separate these only to demonstrate modularity.</p>
+</blockquote>
+<p>Within the <code>imports/ui</code> directory it typically makes sense to group files into directories based on the type of UI side code they define, i.e. top level <code>pages</code>, wrapping <code>layouts</code>, or reusable <code>components</code>.</p>
+<p>For each module defined above, it makes sense to co-locate the various auxiliary files with the base JavaScript file. For instance, a Blaze UI component should have its template HTML, JavaScript logic, and CSS rules in the same directory. A JavaScript module with some business logic should be co-located with the unit tests for that module.</p>
+<h3 id="startup-files"><a class="anchor" href="#startup-files" aria-hidden="true" data-scroll="">&#x1F517;</a>Startup files</h3>
+
+<p>Some of your code isn’t going to be a unit of business logic or UI, it’s just some setup or configuration code that needs to run in the context of the app when it starts up. In the Todos example app, the <code>imports/startup/client/useraccounts-configuration.js</code> file configures the <code>useraccounts</code> login templates (see the <a href="guide-accounts-1.3.html">Accounts</a> article for more information about <code>useraccounts</code>). The <code>imports/startup/client/routes.js</code> configures all of the routes and then imports <em>all</em> other code that is required on the client:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { FlowRouter } <span class="keyword">from</span> <span class="string">&apos;meteor/kadira:flow-router&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> { BlazeLayout } <span class="keyword">from</span> <span class="string">&apos;meteor/kadira:blaze-layout&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> { AccountsTemplates } <span class="keyword">from</span> <span class="string">&apos;meteor/useraccounts:core&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Import to load these templates</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../../ui/layouts/app-body.js&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../../ui/pages/root-redirector.js&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../../ui/pages/lists-show-page.js&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../../ui/pages/app-not-found.js&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Import to override accounts templates</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../../ui/accounts/accounts-templates.js&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Below here are the route definitions</span></span><br></pre></td></tr></tbody></table></figure>
+<p>We then import both of these files in <code>imports/startup/client/index.js</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&apos;./useraccounts-configuration.js&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;./routes.js&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>This makes it easy to then import all the client startup code with a single import as a module from our main eagerly loaded client entry point <code>client/main.js</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&apos;/imports/startup/client&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>On the server, we use the same technique of importing all the startup code in <code>imports/startup/server/index.js</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This defines a starting set of data to be loaded if the app is loaded with an empty db.</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../imports/startup/server/fixtures.js&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This file configures the Accounts package to define the UI of the reset password email.</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../imports/startup/server/reset-password-email.js&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set up some rate limiting and other important security settings.</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../imports/startup/server/security.js&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This defines all the collections, publications and methods that the application provides</span></span><br><span class="line"><span class="comment">// as an API to the client.</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;../imports/api/api.js&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>Our main server entry point <code>server/main.js</code> then imports this startup module. You can see that here we don’t actually import any variables from these files - we just import them so that they execute in this order.</p>
+<h3 id="importing-meteor-globals"><a class="anchor" href="#importing-meteor-globals" aria-hidden="true" data-scroll="">&#x1F517;</a>Importing Meteor “pseudo-globals”</h3>
+
+<p>For backwards compatibility Meteor 1.3 still provides Meteor’s global namespacing for the Meteor core package as well as for other Meteor packages you include in your application. You can also still directly call functions such as <a href="http://docs.meteor.com/#/full/meteor_publish" target="_blank" rel="external"><code>Meteor.publish</code></a>, as in previous versions of Meteor, without first importing them. However, it is recommended best practice that you first load all the Meteor “pseudo-globals” using the <code>import { Name } from &apos;meteor/package&apos;</code> syntax before using them. For instance:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { Meteor } <span class="keyword">from</span> <span class="string">&apos;meteor/meteor&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> { EJSON } <span class="keyword">from</span> <span class="string">&apos;meteor/ejson&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="load-order"><a class="anchor" href="#load-order" aria-hidden="true" data-scroll="">&#x1F517;</a>Default file load order</h2>
+
+<p>Even though it is recommended that you write your application to use ES2015 modules and the <code>imports/</code> directory, Meteor 1.3 continues to support eager loading of files, using these default load order rules, to provide backwards compatibility with applications written for Meteor 1.2 and earlier. You may combine both eager loading and lazy loading using <code>import</code> in a single app. Any import statements are evaluated in the order they are listed in a file when that file is loaded and evaluated using these rules.</p>
+<p>There are several load order rules. They are <em>applied sequentially</em> to all applicable files in the application, in the priority given below:</p>
+<ol>
+<li>HTML template files are <strong>always</strong> loaded before everything else</li>
+<li>Files beginning with <code>main.</code> are loaded <strong>last</strong></li>
+<li>Files inside <strong>any</strong> <code>lib/</code> directory are loaded next</li>
+<li>Files with deeper paths are loaded next</li>
+<li>Files are then loaded in alphabetical order of the entire path</li>
+</ol>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nav.html</span><br><span class="line">main.html</span><br><span class="line">client/lib/methods.js</span><br><span class="line">client/lib/styles.js</span><br><span class="line">lib/feature/styles.js</span><br><span class="line">lib/collections.js</span><br><span class="line">client/feature-y.js</span><br><span class="line">feature-x.js</span><br><span class="line">client/main.js</span><br></pre></td></tr></tbody></table></figure>
+<p>For example, the files above are arranged in the correct load order. <code>main.html</code> is loaded second because HTML templates are always loaded first, even if it begins with <code>main.</code>, since rule 1 has priority over rule 2. However, it will be loaded after <code>nav.html</code> because rule 2 has priority over rule 5.</p>
+<p><code>client/lib/styles.js</code> and <code>lib/feature/styles.js</code> have identical load order up to rule 4; however, since <code>client</code> comes before <code>lib</code> alphabetically, it will be loaded first.</p>
+<blockquote>
+<p>You can also use <a href="http://docs.meteor.com/#/full/meteor_startup" target="_blank" rel="external">Meteor.startup</a> to control when run code is run on both the server and the client.</p>
+</blockquote>
+<h3 id="special-directories"><a class="anchor" href="#special-directories" aria-hidden="true" data-scroll="">&#x1F517;</a>Special directories</h3>
+
+<p>By default, any JavaScript files in your Meteor application folder are bundled and loaded on both the client and the server. However, the names of the files and directories inside your project can affect their load order, where they are loaded, and some other characteristics. Here is a list of file and directory names that are treated specially by Meteor:</p>
+<ul>
+<li><p><strong>imports</strong></p>
+<p>  Any directory named <code>imports/</code> is not loaded anywhere and files must be imported using <code>import</code>.</p>
+</li>
+<li><p><strong>node_modules</strong></p>
+<p>  Any directory named <code>node_modules/</code> is not loaded anywhere. node.js packages installed into <code>node_modules</code> directories must be imported using <code>import</code> or by using <code>Npm.depends</code> in <code>package.js</code>.</p>
+</li>
+<li><p><strong>client</strong></p>
+<p>  Any directory named <code>client/</code> is not loaded on the server. Similar to wrapping your code in <code>if (Meteor.isClient) { ... }</code>. All files loaded on the client are automatically concatenated and minified when in production mode. In development mode, JavaScript and CSS files are not minified, to make debugging easier. CSS files are still combined into a single file for consistency between production and development, because changing the CSS file’s URL affects how URLs in it are processed.</p>
+<blockquote>
+<p class="original">HTML files in a Meteor application are treated quite a bit differently from a server-side framework.  Meteor scans all the HTML files in your directory for three top-level elements: <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, and <code>&lt;template&gt;</code>.  The head and body sections are separately concatenated into a single head and body, which are transmitted to the client on initial page load.</p>
+<p class="translation">MeteorアプリケーションにおけるHTMLファイルの扱いは、サーバーサイドフレームワークにおけるものと異なっています。Meteorはディレクトリ内のHTMLファイルにおいて、３つのトップレベル要素でスキャンします。:<code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;template&gt;</code>の３つです。headとbodyはそれぞれ分けられて、一つのheadと一つのbodyに結合されます。それらはページの最初のローディングの際にクライアントに転送されます。</p>
+</blockquote>
+</li>
+<li><p><strong>server</strong></p>
+<p>  Any directory named <code>server/</code> is not loaded on the client. Similar to wrapping your code in <code>if (Meteor.isServer) { ... }</code>, except the client never even receives the code. Any sensitive code that you don’t want served to the client, such as code containing passwords or authentication mechanisms, should be kept in the <code>server/</code> directory.</p>
+<p>  Meteor gathers all your JavaScript files, excluding anything under the <code>client</code>, <code>public</code>, and <code>private</code> subdirectories, and loads them into a Node.js server instance. In Meteor, your server code runs in a single thread per request, not in the asynchronous callback style typical of Node.</p>
+</li>
+<li><p><strong>public</strong></p>
+<p>  All files inside a top-level directory called <code>public/</code> are served as-is to the client. When referencing these assets, do not include <code>public/</code> in the URL, write the URL as if they were all in the top level. For example, reference <code>public/bg.png</code> as <code>&lt;img src=&apos;/bg.png&apos; /&gt;</code>. This is the best place for <code>favicon.ico</code>, <code>robots.txt</code>, and similar files.</p>
+</li>
+<li><p><strong>private</strong></p>
+<p>  All files inside a top-level directory called <code>private/</code> are only accessible from server code and can be loaded via the <a href="http://docs.meteor.com/#/full/assets_getText" target="_blank" rel="external"><code>Assets</code></a> API. This can be used for private data files and any files that are in your project directory that you don’t want to be accessible from the outside.</p>
+</li>
+<li><p><strong>client/compatibility</strong></p>
+<p>  This folder is for compatibility with JavaScript libraries that rely on variables declared with var at the top level being exported as globals. Files in this  directory are executed without being wrapped in a new variable scope. These files are executed before other client-side JavaScript files.</p>
+<blockquote>
+<p>It is recommended to use npm for 3rd party JavaScript libraries and use <code>import</code> to control when files are loaded.</p>
+</blockquote>
+</li>
+<li><p><strong>tests</strong></p>
+<p>  Any directory named <code>tests/</code> is not loaded anywhere. Use this for any test code you want to run using a test runner outside of <a href="guide-testing-1.3.html">Meteor’s built-in test tools</a>.</p>
+</li>
+</ul>
+<p class="original">The following directories are also not loaded as part of your app code:</p>
+<p class="translation">以下のディレクトリもアプリケーションのコードとしてロードされません。</p>
+<ul>
+<li>Files/directories whose names start with a dot, like <code>.meteor</code> and <code>.git</code></li>
+<li><code>packages/</code>: Used for local packages</li>
+<li><code>cordova-build-override/</code>: Used for <a href="mobile.html#advanced-build">advanced mobile build customizations</a></li>
+<li><code>programs</code>: For legacy reasons</li>
+</ul>
+<h3 id="files-outside"><a class="anchor" href="#files-outside" aria-hidden="true" data-scroll="">&#x1F517;</a>Files outside special directories</h3>
+
+<p>All JavaScript files outside special directories are loaded on both the client and the server. Meteor provides the variables <a href="http://docs.meteor.com/#/full/meteor_isserver" target="_blank" rel="external"><code>Meteor.isClient</code></a> and <a href="http://docs.meteor.com/#/full/meteor_isserver" target="_blank" rel="external"><code>Meteor.isServer</code></a> so that your code can alter its behavior depending on whether it’s running on the client or the server.</p>
+<p>CSS and HTML files outside special directories are loaded on the client only and cannot be used from server code.</p>
+<h2 id="splitting-your-app"><a class="anchor" href="#splitting-your-app" aria-hidden="true" data-scroll="">&#x1F517;</a>Splitting into multiple apps</h2>
+
+<p>If you are writing a sufficiently complex system, there can come a time where it makes sense to split your code up into multiple applications. For example you may want to create a separate application for the administration UI (rather than checking permissions all through the admin part of your site, you can check once), or separate the code for the mobile and desktop versions of your app.</p>
+<p>Another very common use case is splitting a worker process away from your main application so that expensive jobs do not impact the user experience of your visitors by locking up a single web server.</p>
+<p>There are some advantages of splitting your application in this way:</p>
+<ul>
+<li><p>Your client JavaScript bundle can be significantly smaller if you separate out code that a specific type of user will never use.</p>
+</li>
+<li><p>You can deploy the different applications with different scaling setups and secure them differently (for instance you might restrict access to your admin application to users behind a firewall).</p>
+</li>
+<li><p>You can allow different teams at your organization to work on the different applications independently.</p>
+</li>
+</ul>
+<p>However there are some challenges to splitting your code in this way that should be considered before jumping in.</p>
+<h3 id="sharing-code"><a class="anchor" href="#sharing-code" aria-hidden="true" data-scroll="">&#x1F517;</a>Sharing code</h3>
+
+<p>The primary challenge is properly sharing code between the different applications you are building. The simplest approach to deal with this issue is to simply deploy the <em>same</em> application on different web servers, controlling the behavior via different <a href="deployment.html#environment">settings</a>. This approach allows you to easily deploy different versions with different scaling behavior but doesn’t enjoy most of the other advantages stated above.</p>
+<p>If you want to create Meteor applications with separate code, you’ll have some modules that you’d like to share between them. If those modules are something the wider world could use, you should consider <a href="guide-writing-packages-1.3.html">publishing them to a package system</a>, either npm or Atmosphere, depending on whether the code is Meteor-specific or otherwise.</p>
+<p>If the code is private, or of no interest to others, it typically makes sense to simply include the same module in both applications (you <em>can</em> do this with <a href="https://www.npmjs.com/private-modules" target="_blank" rel="external">private npm modules</a>). There are several ways to do this:</p>
+<ul>
+<li><p>a straightforward approach is simply to include the common code as a <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules" target="_blank" rel="external">git submodule</a> of both applications.</p>
+</li>
+<li><p>alternatively, if you include both applications in a single repository, you can use symbolic links to include the common module inside both apps.</p>
+</li>
+</ul>
+<h3 id="sharing-data"><a class="anchor" href="#sharing-data" aria-hidden="true" data-scroll="">&#x1F517;</a>Sharing data</h3>
+
+<p>Another important consideration is how you’ll share the data between your different applications.</p>
+<p>The simplest approach is to point both applications at the same <code>MONGO_URL</code> and allow both applications to read and write from the database directly. This works well thanks to Meteor’s support for reactivity through the database. When one app changes some data in MongoDB, users of any other app connected to the database will see the changes immediately thanks to Meteor’s livequery.</p>
+<p>However, in some cases it’s better to allow one application to be the master and control access to the data for other applications via an API. This can help if you want to deploy the different applications on different schedules and need to be conservative about how the data changes.</p>
+<p>The simplest way to provide a server-server API is to use Meteor’s built-in DDP protocol directly. This is the same way your Meteor client gets data from your server, but you can also use it to communicate between different applications. You can use <a href="http://docs.meteor.com/#/full/ddp_connect" target="_blank" rel="external"><code>DDP.connect()</code></a> to connect from a “client” server to the master server, and then use the connection object returned to make method calls and read from publications.</p>
+<h3 id="sharing-accounts"><a class="anchor" href="#sharing-accounts" aria-hidden="true" data-scroll="">&#x1F517;</a>Sharing accounts</h3>
+
+<p>If you have two servers that access the same database and you want authenticated users to make DDP calls across the both of them, you can use the <em>resume token</em> set on one connection to login on the other.</p>
+<p>If your user has connected to server A, then you can use <code>DDP.connect()</code> to open a connection to server B, and pass in server A’s resume token to authenticate on server B. As both servers are using the same DB, the same server token will work in both cases. The code to authenticate looks like this:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This is server A&apos;s token as the default `Accounts` points at our server</span></span><br><span class="line"><span class="keyword">const</span> token = Accounts._storedLoginToken();</span><br><span class="line"></span><br><span class="line"><span class="comment">// We create a *second* accounts client pointing at server B</span></span><br><span class="line"><span class="keyword">const</span> app2 = DDP.connect(<span class="string">&apos;url://of.server.b&apos;</span>);</span><br><span class="line"><span class="keyword">const</span> accounts2 = <span class="keyword">new</span> AccountsClient({ connection: app2 });</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now we can login with the token. Further calls to `accounts2` will be authenticated</span></span><br><span class="line">accounts2.loginWithToken(token);</span><br></pre></td></tr></tbody></table></figure>
+<p>You can see a proof of concept of this architecture in an <a href="https://github.com/tmeasday/multi-app-accounts" target="_blank" rel="external">example repository</a>.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>← <a href="guide-code-style-1.3.html">Code style</a></span>
+      
+      
+        <span style="float:right"><a href="1.3-migration.html">Migrating to Meteor 1.3</a> →</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/structure.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=20187" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="3379px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div><script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script></body></html>

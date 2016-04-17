@@ -1,0 +1,533 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to migrate your application to use recommended best practice as of Meteor 1.3.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Migrating to Meteor 1.3 | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style><style>.original{display:none}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Migrating to Meteor 1.3
+            </a>
+          <ul class="sub-menu"><li><a href="#breaking-changes" data-scroll="" class="H2">Breaking changes</a><ul class="sub-menu"><li><a href="#breaking-changes-mobile" data-scroll="" class="H3">Mobile</a></li></ul></li><li><a href="#modules" data-scroll="" class="H2">Recommended change: use modules</a><ul class="sub-menu"></ul></li><li><a href="#packages" data-scroll="" class="H2">Recommended changes: package authors</a><ul class="sub-menu"></ul></li><li><a href="#testing" data-scroll="" class="H2">Recommended changes: Testing</a><ul class="sub-menu"><li><a href="#full-app-testing" data-scroll="" class="H3">Full app testing</a></li><li><a href="#module-testing" data-scroll="" class="H3">Module testing</a></li></ul></li><li><a href="#mobile" data-scroll="" class="H2">Recommended changes: Mobile</a><ul class="sub-menu"></ul></li><li><a href="#react" data-scroll="" class="H2">Install React from npm</a><ul class="sub-menu"><li><a href="#react-meteor-data" data-scroll="" class="H3">Loading data with React</a></li></ul></li><li><a href="#react" data-scroll="" class="H2">Install Angular from npm</a><ul class="sub-menu"><li><a href="#angular-meteor-packages" data-scroll="" class="H3">Existing Angular Atmosphere packages</a></li></ul></li><li><a href="#guide" data-scroll="" class="H2">New guide articles</a><ul class="sub-menu"></ul></li></ul></li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Migrating to Meteor 1.3</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/1.3-migration.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/20190">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <h2 id="breaking-changes"><a class="anchor" href="#breaking-changes" aria-hidden="true" data-scroll="">&#x1F517;</a>Breaking changes</h2>
+
+<p>These are all the <em>breaking changes</em> – that is changes that you absolutely have to worry about if you are updating your app from 1.2.x to 1.3. However, we recommend that you also consider the <em>recommended</em> changes listed in the other sections below.</p>
+<ul>
+<li><p>Files in a directory named <code>imports/</code> will no longer load eagerly. (You should probably rename such a directory as it the basis of our new <a href="#modules">module system</a>).</p>
+</li>
+<li><p>Files within your app named <code>*.test[s].*</code>, <code>*.app-test[s].*</code>, <code>*.spec[s].*</code> and <code>*.app-spec[s].*</code> will no longer load eagerly (you should probably rename such a file if it doesn’t contain tests, as it will be eagerly loaded by our new <a href="#testing">app testing modes</a>).</p>
+</li>
+<li><p>If you are using React you will now need to install a set of React npm packages in your app. See the <a href="#react">recommendations for React</a> below for more details.</p>
+</li>
+</ul>
+<h3 id="breaking-changes-mobile"><a class="anchor" href="#breaking-changes-mobile" aria-hidden="true" data-scroll="">&#x1F517;</a>Mobile</h3>
+
+<ul>
+<li><p>iOS apps now require iOS 8 or higher, and building for iOS requires Xcode 7.2 or higher to be installed.</p>
+</li>
+<li><p>Building for Android now requires Android SDK 23 to be installed. You may also need to create a new AVD for the emulator.</p>
+</li>
+<li><p>Cordova has been upgraded to the most recent versions (Cordova 6.0.0, Cordova iOS 4.0.1 and Cordova Android 5.1.0). This may require you to upgrade your plugin versions. We pin core Cordova plugins to versions known to be compatible and warn about this during build, but you may encounter compile time or runtime errors with third party plugins. Upgrading to newer versions of these plugins may help if they have been updated to work with recent versions of Cordova.</p>
+</li>
+<li><p>The plugin used to serve your app’s files and support hot code push has been completely rewritten. As a result, files are now served from <code>localhost</code> instead of <code>meteor.local</code>, with a fixed port number derived from your <code>appId</code>. You may have to update OAuth redirect URLs to point to the new local domain and port.</p>
+</li>
+</ul>
+<h2 id="modules"><a class="anchor" href="#modules" aria-hidden="true" data-scroll="">&#x1F517;</a>Recommended change: use modules</h2>
+
+<p>The biggest new feature in Meteor 1.3 is support for <a href="https://developer.mozilla.org/en/docs/web/javascript/reference/statements/import" target="_blank" rel="external">ES2015 modules</a> on the client and the server. Using modules you can declare dependencies between files, control load order, and use npm packages on the client and server easily.</p>
+<ul>
+<li>You should load all Meteor “pseudo-globals” using the `import { Name } from ‘meteor/package’ syntax. For instance:</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { Meteor } <span class="keyword">from</span> <span class="string">&apos;meteor/meteor&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> { EJSON } <span class="keyword">from</span> <span class="string">&apos;meteor/ejson&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>You should consider installing the <code>meteor-node-stubs</code> npm package to allow using npm packages written for <code>node</code> on the browser:</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install --save meteor-node-stubs</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>If you are using app-local packages to control load order and write unit tests for your application, we recommend you switch to using modules:<ul>
+<li>Remove code related to the <a href="http://docs.meteor.com/#/full/packagejs" target="_blank" rel="external">Package API</a> from the <code>package.js</code> files and rename them to <code>index.js</code>,</li>
+<li>Move your local packages to the <code>imports/</code> directory.</li>
+<li>Add the necessary <code>import</code> statements to each of the modules in your packages.</li>
+<li>Add <code>export</code> statements to each of your packages exports.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">api.addFiles(<span class="string">&apos;file.js&apos;</span>);</span><br><span class="line"><span class="comment">// For files that are not imported elsewhere, this turns into</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;./file.js&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Remove from package.js</span></span><br><span class="line">api.export(<span class="string">&apos;Foo&apos;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// localPackage/foo.js</span></span><br><span class="line"><span class="comment">// Foo must be explicitly exported</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Foo;</span><br><span class="line"></span><br><span class="line"><span class="comment">// client/main.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&apos;/imports/localPackage&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><p>You can read about our recommended structure for applications and modules in the <a href="guide-structure-1.3.html">Application Structure article</a> of the Meteor Guide, and how to test them in the <a href="guide-testing-1.3.html">Testing article</a>.</p>
+</li>
+<li><p>If you are using Atmosphere packages which simply wrap npm packages, both on the client and server, it is now recommended that you simply install them using npm. Run <code>npm init</code> to initialize your <code>package.json</code> and install packages with <code>npm install --save</code> (or <code>npm install --save-dev</code> if it’s development dependency for testing etc.). We have <a href="using-packages.html#async-callbacks">some tips</a> about how to use npm packages written in an asynchronous style.</p>
+</li>
+</ul>
+<p>Also, you should no longer need to use the <a href="https://atmospherejs.com/meteorhacks/npm" target="_blank" rel="external"><code>meteorhacks:npm</code></a> package.</p>
+<h2 id="packages"><a class="anchor" href="#packages" aria-hidden="true" data-scroll="">&#x1F517;</a>Recommended changes: package authors</h2>
+
+<p>Package authors are recommended to:</p>
+<ul>
+<li><p>No longer publish wrapper packages that do no more than include an npm package / client side lib. If your package adds significant wrappers around the npm package, it might make sense however.</p>
+</li>
+<li><p>Publish to npm when appropriate, especially if your package can be used by the wider JS community!</p>
+</li>
+<li><p>Use <a href="http://1.3-docs.meteorapp.com/#/full/modularpackagestructure" target="_blank" rel="external"><code>api.mainModule()</code></a> and <code>export</code> from your main module rather than <code>api.exports()</code> in Atmosphere packages.</p>
+</li>
+<li><p>If you depend (directly or transitively) on a client side npm package that is large or problematic if installed twice (e.g. React), use <a href="https://github.com/tmeasday/check-npm-versions" target="_blank" rel="external"><code>tmeasday:check-npm-versions</code></a> to declare “peer” dependencies. If the client side npm package you depend on is <code>angular</code>, you can support both Meteor 1.2 and 1.3 using <a href="#angular-meteor-packages">this solution</a>. Read more about this in the <a href="writing-packages.html#peer-npm-dependencies">Writing Packages article</a>.</p>
+</li>
+</ul>
+<h2 id="testing"><a class="anchor" href="#testing" aria-hidden="true" data-scroll="">&#x1F517;</a>Recommended changes: Testing</h2>
+
+<p>Meteor 1.3 includes a new command <code>meteor test</code>, which can be used to run tests against your app, in two modalities. You can read about these features in much more detail in the <a href="guide-testing-1.3.html">Testing Guide Article</a>.</p>
+<h3 id="full-app-testing"><a class="anchor" href="#full-app-testing" aria-hidden="true" data-scroll="">&#x1F517;</a>Full app testing</h3>
+
+<p>If you were previously using <a href="http://velocity.meteor.com" target="_blank" rel="external">Velocity</a> to run tests against your running Meteor app, the full app test mode should allow you to run your tests against 1.3, with some small changes.</p>
+<ul>
+<li><p>To convert tests, you’ll need to change or upgrade your test driver package to a 1.3 compatible package (as of this writing there is only one choice <a href="https://atmospherejs.com/practicalmeteor/mocha" target="_blank" rel="external"><code>practicalmeteor:mocha</code></a> but we expect more to exist in the future). You should name your test files in the pattern <code>*.app-test[s].*</code> and place them <em>outside</em> of <code>tests/</code> directories. To run the tests you can run <code>meteor test --full-app --driver-package &lt;driver-package&gt;</code></p>
+</li>
+<li><p>Note that full app test mode does not run the test reporter in a separate application to the app under test, and does not amalgamate results from multiple testing systems, as Velocity does. This effectively means if you are using more than one testing system, you will need to run <code>meteor test --full-app</code> multiple times.</p>
+</li>
+<li><p>Also, it means certain types of tests are better off written as <a href="testing.html#acceptance-tests"><em>acceptance tests</em></a> outside of the Meteor tool.</p>
+</li>
+</ul>
+<h3 id="module-testing"><a class="anchor" href="#module-testing" aria-hidden="true" data-scroll="">&#x1F517;</a>Module testing</h3>
+
+<p>If you were previously using in-app packages in order to unit test your app, you should switch to a <a href="#modules">modules-based approach</a> and test them using the normal test mode.</p>
+<ul>
+<li><p>To convert your unit tests to run against the app, first upgrade your test driver (see <a href="#full-app-testing">above</a>) and then place your test files alongside the modules they are testing with a name matching <code>*.tests.*</code>. Such files will automatically be added to your “test app” when you run <code>meteor test --driver-package &lt;driver-package&gt;</code>. You can <code>import</code> the modules that you need to test against within each test file.</p>
+</li>
+<li><p>Some example tests can be seen the <a href="https://github.com/meteor/todos" target="_blank" rel="external">Todos example app</a></p>
+</li>
+</ul>
+<h2 id="mobile"><a class="anchor" href="#mobile" aria-hidden="true" data-scroll="">&#x1F517;</a>Recommended changes: Mobile</h2>
+
+<p>Along side some of the breaking mobile changes <a href="#breaking-changes-mobile">listed above</a>, there are some changes in the way the mobile integration works that you should consider:</p>
+<ul>
+<li><p>Some low resolution app icon and launch images sizes for now unsupported devices have been deprecated. To avoid a deprecation warning during build, please remove the entries from your <code>mobile-config.js</code>. (You probably also want to remove the image files from your project.)</p>
+</li>
+<li><p>The plugin now allows for local file access on both iOS and Android. You can construct file system URLs manually (<code>http://localhost:&lt;port&gt;/local-filesystem/&lt;path&gt;</code>) or use <code>WebAppLocalServer.localFileSystemUrl()</code> to convert a <code>file://</code> URL.</p>
+</li>
+</ul>
+<h2 id="react"><a class="anchor" href="#react" aria-hidden="true" data-scroll="">&#x1F517;</a>Install React from npm</h2>
+
+<p>In Meteor 1.3, we recommend installing <code>react</code> and <code>react-dom</code> <a href="react.html#using-with-meteor">into your app using npm</a>, and importing them from your app code:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&apos;react&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&apos;react-dom&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>As mentioned in the <a href="#breaking-changes">breaking changes</a>, the <code>react</code> Atmosphere package still works, but it now expects you to install the React npm packages it uses in your application (read the <a href="guide-using-packages-1.3.html">Using Packages</a> article for more details about how to manage your npm dependencies):</p>
+<figure class="highlight armasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">npm</span> install --save react react-dom react-<span class="keyword">addons-transition-group </span>\</span><br><span class="line"> react-<span class="keyword">addons-css-transition-group </span>react-<span class="keyword">addons-linked-state-mixin </span>\</span><br><span class="line"> react-<span class="keyword">addons-create-fragment </span>react-<span class="keyword">addons-update </span>react-<span class="keyword">addons-pure-render-mixin </span>\</span><br><span class="line"> react-<span class="keyword">addons-test-utils </span>react-<span class="keyword">addons-perf</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>However</strong>, we recommend that you should stop using the <code>react</code> or <code>react-runtime</code> Atmosphere packages and instead install React directly from npm (for more detail, see the <a href="guide-react-1.3.html">React article</a> of the guide). To make this change in an existing app, you can run:</p>
+<figure class="highlight cmake"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="keyword">remove</span> react</span><br><span class="line"></span><br><span class="line"><span class="comment"># if you are using our data integration</span></span><br><span class="line">meteor add react-meteor-data</span><br><span class="line"></span><br><span class="line">npm <span class="keyword">install</span> --save react react-dom react-addons-pure-render-mixin</span><br></pre></td></tr></tbody></table></figure>
+<p>Then, in your application, you should import React directly rather than <a href="#modules">relying on a global React symbol</a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&apos;react&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>If you are using a package that depends on the <code>react</code> or <code>react-runtime</code> Atmosphere packages, you will still need to install the full list of npm React packages above, so we encourage package authors to update their packages to import React directly from npm.</p>
+<h3 id="react-meteor-data"><a class="anchor" href="#react-meteor-data" aria-hidden="true" data-scroll="">&#x1F517;</a>Loading data with React</h3>
+
+<p>The <code>react-meteor-data</code> has a <a href="react.html#data">new <code>createContainer</code> syntax</a> for combining Meteor’s data system with React in an idiomatic way. We encourage you to use containers to separate your data loading concerns from your presentational components!</p>
+<h2 id="react"><a class="anchor" href="#react" aria-hidden="true" data-scroll="">&#x1F517;</a>Install Angular from npm</h2>
+
+<p>With an Angular Meteor app you can safely update to Meteor 1.3 without any changes to your code.<br>You just need to make sure you are using the latest <code>angular</code> Atmosphere package <code>1.3.9_2</code>.</p>
+<p>But, in Meteor 1.3, we recommend installing <code>angular</code> and <code>angular-meteor</code> into your app using npm:<br></p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--save angular angular-meteor</span></span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>and importing them from your app code:<br></p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angular <span class="keyword">from</span> <span class="string">&apos;angular&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> angular-meteor <span class="keyword">from</span> <span class="string">&apos;angular-meteor&apos;</span>;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Read the <a href="guide-using-packages-1.3.html">Using Packages</a> article for more details about how to manage your npm dependencies.</p>
+<p>If you already using the Atmosphere packages and want to move to the npm packages, you will need to remove the Atmosphere packages first but keep the angular-templates Atmosphere package:</p>
+<figure class="highlight cmake"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="keyword">remove</span> angular</span><br><span class="line">meteor add angular-templates</span><br><span class="line"></span><br><span class="line">npm <span class="keyword">install</span> --save angular angular-meteor</span><br></pre></td></tr></tbody></table></figure>
+<p>Then, in your application, you should import angular directly rather than <a href="#modules">relying on global angular</a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angular <span class="keyword">from</span> <span class="string">&apos;angular&apos;</span>;</span><br><span class="line"><span class="keyword">import</span> angular-meteor <span class="keyword">from</span> <span class="string">&apos;angular-meteor&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="angular-meteor-packages"><a class="anchor" href="#angular-meteor-packages" aria-hidden="true" data-scroll="">&#x1F517;</a>Existing Angular Atmosphere packages</h3>
+
+<p>If you are a package author that depends on the <code>angular:angular</code> Atmosphere package, you can support both Meteor 1.2 and 1.3 so your users will have an easy and unbreaking update process:</p>
+<p>Change your <code>angular:angular</code> dependency into a weak dependency:<br></p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api.use(<span class="string">&apos;angular:angular@1.5.3&apos;</span>, <span class="string">&apos;client&apos;</span>, { weak: <span class="literal">true</span> });</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>and then add a dependency check for both Meteor 1.2 and 1.3 before initializing your angular module:<br></p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">window</span>.angular) {</span><br><span class="line">  <span class="keyword">try</span> {</span><br><span class="line">    <span class="keyword">if</span> (Package[<span class="string">&apos;modules-runtime&apos;</span>]) {</span><br><span class="line">      <span class="keyword">var</span> <span class="built_in">require</span> = Package[<span class="string">&apos;modules-runtime&apos;</span>].meteorInstall();</span><br><span class="line">      <span class="built_in">require</span>(<span class="string">&apos;angular&apos;</span>);</span><br><span class="line">    }</span><br><span class="line">  } <span class="keyword">catch</span>(e) {</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&apos;angular package is missing&apos;</span>);</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">angular.module(<span class="string">&apos;your.module&apos;</span>, []);</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="guide"><a class="anchor" href="#guide" aria-hidden="true" data-scroll="">&#x1F517;</a>New guide articles</h2>
+
+<p>As part of the 1.3 release, we have some new guide articles and updated sections of existing articles:</p>
+<ul>
+<li><p>There’s a <a href="guide-structure-1.3.html">Application Structure</a> article which explains how to structure your files and use the module system.</p>
+</li>
+<li><p>There’s a <a href="guide-code-style-1.3.html">Code Style</a> article that makes recommendations about how to ensure consistent formatting for your code.</p>
+</li>
+<li><p>There’s a <a href="guide-testing-1.3.html">Testing</a> article which covers how to do various kinds of testing in Meteor.</p>
+</li>
+<li><p>There’s a <a href="guide-react-1.3.html">React</a> article which explains how to best use React with Meteor</p>
+</li>
+<li><p>There’s a <a href="guide-mobile-1.3.html">Mobile</a> article which covers how to best use our Cordova integration.</p>
+</li>
+<li><p>There’s a <a href="guide-using-packages-1.3.html">Using Packages</a> article which explains how best to use both npm and Atmosphere packages in your app.</p>
+</li>
+</ul>
+<ul>
+<li><p>There’s a <a href="guide-writing-packages-1.3.html">Writing Packages</a> article which explains practice for writing Atmosphere packages and using all kinds of dependencies within them.</p>
+</li>
+<li><p>The UI/UX article has been updated to explain how to do <a href="ui-ux.html#i18n">i18n</a> in Meteor applications.</p>
+</li>
+</ul>
+
+    <div class="bottom-nav">
+      
+      
+        <span>← <a href="guide-structure-1.3.html">Application structure</a></span>
+      
+      
+        <span style="float:right"><a href="guide-collections-1.3.html">Collections and Schemas</a> →</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/1.3-migration.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=20190" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="1614px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div><script>if(window.location.hash==="#showoriginal"){var nodes=document.getElementsByClassName("original");for(var i=0;i<nodes.length;i++){nodes[i].style.display="initial";}}</script></body></html>

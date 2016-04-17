@@ -1,0 +1,566 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to secure your Meteor app.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Security | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Security
+            </a>
+          <ul class="sub-menu"><li><a href="#attack-surface" data-scroll="" class="H2">Concept: Attack surface</a><ul class="sub-menu"><li><a href="#allow-deny" data-scroll="" class="H3">Avoid allow/deny</a></li></ul></li><li><a href="#methods" data-scroll="" class="H2">Methods</a><ul class="sub-menu"><li><a href="#validate-arguments" data-scroll="" class="H3">Validate all arguments</a></li><li><a href="#validated-method" data-scroll="" class="H3">mdg:validated-method</a></li><li><a href="#user-id-client" data-scroll="" class="H3">Don&#x2019;t pass userId from the client</a></li><li><a href="#specific-action" data-scroll="" class="H3">One Method per action</a></li><li><a href="#rate-limiting" data-scroll="" class="H3">Rate limiting</a></li></ul></li><li><a href="#publications" data-scroll="" class="H2">Publications</a><ul class="sub-menu"><li><a href="#method-rules" data-scroll="" class="H3">Rules about Methods still apply</a></li><li><a href="#fields" data-scroll="" class="H3">Always restrict fields</a></li><li><a href="#publications-user-id" data-scroll="" class="H3">Publications and userId</a></li><li><a href="#publication-options" data-scroll="" class="H3">Passing options</a></li></ul></li><li><a href="#served-files" data-scroll="" class="H2">Served files</a><ul class="sub-menu"><li><a href="#secret-code" data-scroll="" class="H3">Secret server code</a></li></ul></li><li><a href="#api-keys" data-scroll="" class="H2">Securing API keys</a><ul class="sub-menu"><li><a href="#client-settings" data-scroll="" class="H3">Settings on the client</a></li><li><a href="#api-keys-oauth" data-scroll="" class="H3">API keys for OAuth</a></li></ul></li><li><a href="#ssl" data-scroll="" class="H2">SSL</a><ul class="sub-menu"></ul></li><li><a href="#checklist" data-scroll="" class="H2">Security checklist</a><ul class="sub-menu"></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Security</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/security.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/19667">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this guide, you&#x2019;ll know:</p>
+<ol>
+<li>The security surface area of a Meteor app.</li>
+<li>How to secure Meteor Methods, publications, and source code.</li>
+<li>Where to store secret keys in development and production.</li>
+<li>How to follow a security checklist when auditing your app.</li>
+</ol>
+<h1 id="introduction">Introduction</h1>
+
+<p>Securing a web application is all about understanding security domains and understanding the attack surface between these domains. In a Meteor app, things are pretty simple:</p>
+<ol>
+<li>Code that runs on the server can be trusted.</li>
+<li>Everything else: code that runs on the client, data sent through Method and publication arguments, etc, can&#x2019;t be trusted.</li>
+</ol>
+<p>In practice, this means that you should do most of your security and validation on the boundary between these two domains. In simple terms:</p>
+<ol>
+<li>Validate and check all inputs that come from the client.</li>
+<li>Don&#x2019;t leak any secret information to the client.</li>
+</ol>
+<h2 id="attack-surface"><a class="anchor" href="#attack-surface" aria-hidden="true" data-scroll="">&#x1F517;</a>Concept: Attack surface</h2>
+
+<p>Since Meteor apps are often written in a style that puts client and server code together, it&#x2019;s extra important to be aware what is running on the client, what is running on the server, and what the boundaries are. Here&#x2019;s a complete list of places security checks need to be done in a Meteor app:</p>
+<ol>
+<li><strong>Methods</strong>: Any data that comes in through Method arguments needs to be validated, and Methods should not return data the user shouldn&#x2019;t have access to.</li>
+<li><strong>Publications</strong>: Any data that comes in through publication arguments needs to be validated, and publications should not return data the user shouldn&#x2019;t have access to.</li>
+<li><strong>Served files</strong>: You should make sure none of the source code or configuration files served to the client have secret data.</li>
+</ol>
+<p>Each of these points will have their own section below.</p>
+<h3 id="allow-deny"><a class="anchor" href="#allow-deny" aria-hidden="true" data-scroll="">&#x1F517;</a>Avoid allow/deny</h3>
+
+<p>In this guide, we&#x2019;re going to take a strong position that using <a href="http://docs.meteor.com/#/full/allow" target="_blank" rel="external">allow</a> or <a href="http://docs.meteor.com/#/full/deny" target="_blank" rel="external">deny</a> to run MongoDB queries directly from the client is not a good idea. The main reason is that it is hard to follow the principles outlined above. It&#x2019;s extremely difficult to validate the complete space of possible MongoDB operators, which could potentially grow over time with new versions of MongoDB.</p>
+<p>There have been several articles about the potential pitfalls of accepting MongoDB update operators from the client, in particular the <a href="https://www.discovermeteor.com/blog/allow-deny-security-challenge/" target="_blank" rel="external">Allow &amp; Deny Security Challenge</a> and its <a href="https://www.discovermeteor.com/blog/allow-deny-challenge-results/" target="_blank" rel="external">results</a>, both on the Discover Meteor blog.</p>
+<p>Given the points above, we recommend that all Meteor apps should use Methods to accept data input from the client, and restrict the arguments accepted by each Method as tightly as possible.</p>
+<p>Here&#x2019;s a code snippet to add to your server code which disables client-side updates on a collection. This will make sure no other part of your app can use <code>allow</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Deny all client-side updates on the Lists collection</span></span><br><span class="line">Lists.deny({</span><br><span class="line">  insert() { <span class="keyword">return</span> <span class="literal">true</span>; },</span><br><span class="line">  update() { <span class="keyword">return</span> <span class="literal">true</span>; },</span><br><span class="line">  remove() { <span class="keyword">return</span> <span class="literal">true</span>; },</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="methods"><a class="anchor" href="#methods" aria-hidden="true" data-scroll="">&#x1F517;</a>Methods</h2>
+
+<p>Methods are the way your Meteor server accepts inputs and data from the outside world, so it&#x2019;s natural that they are the most important topic for security. If you don&#x2019;t properly secure your Methods, users can end up modifying your database in unexpected ways - editing other people&#x2019;s documents, deleting data, or messing up your database schema causing the app to crash.</p>
+<h3 id="validate-arguments"><a class="anchor" href="#validate-arguments" aria-hidden="true" data-scroll="">&#x1F517;</a>Validate all arguments</h3>
+
+<p>It&#x2019;s much easier to write clean code if you can assume your inputs are correct, so it&#x2019;s valuable to validate all Method arguments before running any actual business logic. You don&#x2019;t want someone to pass a data type you aren&#x2019;t expecting and cause unexpected behavior.</p>
+<p>Consider that if you are writing unit tests for your Methods, you would need to test all possible kinds of input to the Method; validating the arguments restricts the space of inputs you need to unit test, reducing the amount of code you need to write overall. It also has the extra bonus of being self-documenting; someone else can come along and read the code to find out what kinds of parameters a Method is looking for.</p>
+<p>Just as an example, here&#x2019;s a situation where not checking arguments can be disastrous:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Meteor.methods({</span><br><span class="line">  removeWidget(id) {</span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">this</span>.userId) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;removeWidget.unauthorized&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Widgets.remove(id);</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>If someone comes along and passes a non-ID selector like <code>{}</code>, they will end up deleting the entire collection.</p>
+<h3 id="validated-method"><a class="anchor" href="#validated-method" aria-hidden="true" data-scroll="">&#x1F517;</a>mdg:validated-method</h3>
+
+<p>To help you write good Methods that exhaustively validate their arguments, we&#x2019;ve written a simple wrapper package for Methods that enforces argument validation. Read more about how to use it in the <a href="methods.html#validated-method">Methods article</a>. The rest of the code samples in this article will assume that you are using this package. If you aren&#x2019;t, you can still apply the same principles but the code will look a little different.</p>
+<h3 id="user-id-client"><a class="anchor" href="#user-id-client" aria-hidden="true" data-scroll="">&#x1F517;</a>Don&#x2019;t pass userId from the client</h3>
+
+<p>The <code>this</code> context inside every Meteor Method has some useful information about the current connection, and the most useful is <a href="http://docs.meteor.com/#/full/method_userId" target="_blank" rel="external"><code>this.userId</code></a>. This property is managed by the DDP login system, and is guaranteed by the framework itself to be secure following widely-used best practices.</p>
+<p>Given that the user ID of the current user is available through this context, you should never pass the ID of the current user as an argument to a Method. This would allow any client of your app to pass any user ID they want. Let&#x2019;s look at an example:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #1: Bad! The client could pass any user ID and set someone else&apos;s name</span></span><br><span class="line">setName({ userId, newName }) {</span><br><span class="line">  Meteor.users.update(userId, {</span><br><span class="line">    $set: { name: newName }</span><br><span class="line">  });</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// #2: Good, the client can only set the name on the currently logged in user</span></span><br><span class="line">setName({ newName }) {</span><br><span class="line">  Meteor.users.update(<span class="keyword">this</span>.userId, {</span><br><span class="line">    $set: { name: newName }</span><br><span class="line">  });</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>The <em>only</em> times you should be passing any user ID as an argument are the following:</p>
+<ol>
+<li>This is a Method only accessible by admin users, who are allowed to edit other users. See the section about <a href="accounts.html##roles-and-permissions">user roles</a> to learn how to check that a user is in a certain role.</li>
+<li>This Method doesn&#x2019;t modify the other user, but uses it as a target; for example, it could be a Method for sending a private message, or adding a user as a friend.</li>
+</ol>
+<h3 id="specific-action"><a class="anchor" href="#specific-action" aria-hidden="true" data-scroll="">&#x1F517;</a>One Method per action</h3>
+
+<p>The best way to make your app secure is to understand all of the possible inputs that could come from an untrusted source, and make sure that they are all handled correctly. The easiest way to understand what inputs can come from the client is to restrict them to as small of a space as possible. This means your Methods should all be specific actions, and shouldn&#x2019;t take a multitude of options that change the behavior in significant ways. The end goal is that you can easily look at each Method in your app and validate or test that it is secure. Here&#x2019;s a secure example Method from the Todos example app:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> makePrivate = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  name: <span class="string">&apos;lists.makePrivate&apos;</span>,</span><br><span class="line">  validate: <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: { type: <span class="built_in">String</span> }</span><br><span class="line">  }).validator(),</span><br><span class="line">  run({ listId }) {</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.userId) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;lists.makePrivate.notLoggedIn&apos;</span>,</span><br><span class="line">        <span class="string">&apos;Must be logged in to make private lists.&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> list = Lists.findOne(listId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (list.isLastPublicList()) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;lists.makePrivate.lastPublicList&apos;</span>,</span><br><span class="line">        <span class="string">&apos;Cannot make the last public list private.&apos;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Lists.update(listId, {</span><br><span class="line">      $set: { userId: <span class="keyword">this</span>.userId }</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    Lists.userIdDenormalizer.set(listId, <span class="keyword">this</span>.userId);</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You can see that this Method does a <em>very specific thing</em> - it just makes a single list private. An alternative would have been to have a Method called <code>setPrivacy</code>, which could set the list to private or public, but it turns out that in this particular app the security considerations for the two related operations - <code>makePrivate</code> and <code>makePublic</code> - are very different. By splitting our operations into different Methods, we make each one much clearer. It&#x2019;s obvious from the above Method definition which arguments we accept, what security checks we perform, and what operations we do on the database.</p>
+<p>However, this doesn&#x2019;t mean you can&#x2019;t have any flexibility in your Methods. Let&#x2019;s look at an example:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Meteor.users.methods.setUserData = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  name: <span class="string">&apos;Meteor.users.methods.setUserData&apos;</span>,</span><br><span class="line">  validate: <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    fullName: { type: <span class="built_in">String</span>, optional: <span class="literal">true</span> },</span><br><span class="line">    dateOfBirth: { type: <span class="built_in">Date</span>, optional: <span class="literal">true</span> },</span><br><span class="line">  }).validator(),</span><br><span class="line">  run(fieldsToSet) {</span><br><span class="line">    Meteor.users.update(<span class="keyword">this</span>.userId, {</span><br><span class="line">      $set: fieldsToSet</span><br><span class="line">    });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>The above Method is great because you can have the flexibility of having some optional fields and only passing the ones you want to change. In particular, what makes it possible for this Method is that the security considerations of setting one&#x2019;s full name and date of birth are the same - we don&#x2019;t have to do different security checks for different fields being set. Note that it&#x2019;s very important that the <code>$set</code> query on MongoDB is generated on the server - we should never take MongoDB operators as-is from the client, since they are hard to validate and could result in unexpected side effects.</p>
+<h4 id="reusing-security-rules">Refactoring to reuse security rules</h4>
+
+<p>You might run into a situation where many Methods in your app have the same security checks. This can be simplified by factoring out the security into a separate module, wrapping the Method body, or extending the <code>Mongo.Collection</code> class to do security inside the <code>insert</code>, <code>update</code>, and <code>remove</code> implementations on the server. However, implementing your client-server communication via specific Methods is still a good idea rather than sending arbitrary <code>update</code> operators from the client, since a malicious client can&#x2019;t send an <code>update</code> operator that you didn&#x2019;t test for.</p>
+<h3 id="rate-limiting"><a class="anchor" href="#rate-limiting" aria-hidden="true" data-scroll="">&#x1F517;</a>Rate limiting</h3>
+
+<p>Just like REST endpoints, Meteor Methods can easily be called from anywhere - a malicious program, script in the browser console, etc. It is easy to fire many Method calls in a very short amount of time. This means it can be easy for an attacker to test lots of different inputs to find one that works. Meteor has built-in rate limiting for password login to stop password brute-forcing, but it&#x2019;s up to you to define rate limits for your other Methods.</p>
+<p>In the Todos example app, we use the following code to set a basic rate limit on all Methods:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get list of all method names on Lists</span></span><br><span class="line"><span class="keyword">const</span> LISTS_METHODS = _.pluck([</span><br><span class="line">  insert,</span><br><span class="line">  makePublic,</span><br><span class="line">  makePrivate,</span><br><span class="line">  updateName,</span><br><span class="line">  remove,</span><br><span class="line">], <span class="string">&apos;name&apos;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Only allow 5 list operations per connection per second</span></span><br><span class="line">DDPRateLimiter.addRule({</span><br><span class="line">  name(name) {</span><br><span class="line">    <span class="keyword">return</span> _.contains(LISTS_METHODS, name);</span><br><span class="line">  },</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Rate limit per connection ID</span></span><br><span class="line">  connectionId() { <span class="keyword">return</span> <span class="literal">true</span>; }</span><br><span class="line">}, <span class="number">5</span>, <span class="number">1000</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>This will make every Method only callable 5 times per second per connection. This is a rate limit that shouldn&#x2019;t be noticeable by the user at all, but will prevent a malicious script from totally flooding the server with requests. You will need to tune the limit parameters to match your app&#x2019;s needs.</p>
+<h2 id="publications"><a class="anchor" href="#publications" aria-hidden="true" data-scroll="">&#x1F517;</a>Publications</h2>
+
+<p>Publications are the primary way a Meteor server can make data available to a client. While with Methods the primary concern was making sure users can&#x2019;t modify the database in unexpected ways, with publications the main issue is filtering the data being returned so that a malicious user can&#x2019;t get access to data they aren&#x2019;t supposed to see.</p>
+<h4 id="You_can&#x2019;t_do_security_at_the_rendering_layer">You can&#x2019;t do security at the rendering layer</h4><p>In a server-side-rendered framework like Ruby on Rails, it&#x2019;s sufficient to simply not display sensitive data in the returned HTML response. In Meteor, since the rendering is done on the client, an <code>if</code> statement in your HTML template is not secure; you need to do security at the data level to make sure that data is never sent in the first place.</p>
+<h3 id="method-rules"><a class="anchor" href="#method-rules" aria-hidden="true" data-scroll="">&#x1F517;</a>Rules about Methods still apply</h3>
+
+<p>All of the points above about Methods apply to publications as well:</p>
+<ol>
+<li>Validate all arguments using <code>check</code> or <code>aldeed:simple-schema</code>.</li>
+<li>Never pass the current user ID as an argument.</li>
+<li>Don&#x2019;t take generic arguments; make sure you know exactly what your publication is getting from the client.</li>
+<li>Use rate limiting to stop people from spamming you with subscriptions.</li>
+</ol>
+<h3 id="fields"><a class="anchor" href="#fields" aria-hidden="true" data-scroll="">&#x1F517;</a>Always restrict fields</h3>
+
+<p><a href="http://docs.meteor.com/#/full/find" target="_blank" rel="external"><code>Mongo.Collection#find</code> has an option called <code>fields</code></a> which lets you filter the fields on the fetched documents. You should always use this in publications to make sure you don&#x2019;t accidentally publish secret fields.</p>
+<p>For example, you could write a publication, then later add a secret field to the published collection. Now, the publication would be sending that secret to the client. If you filter the fields on every publication when you first write it, then adding another field won&#x2019;t automatically publish it.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #1: Bad! If we add a secret field to Lists later, the client</span></span><br><span class="line"><span class="comment">// will see it</span></span><br><span class="line">Meteor.publish(<span class="string">&apos;lists.public&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> Lists.find({userId: {$exists: <span class="literal">false</span>}});</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// #2: Good, if we add a secret field to Lists later, the client</span></span><br><span class="line"><span class="comment">// will only publish it if we add it to the list of fields</span></span><br><span class="line">Meteor.publish(<span class="string">&apos;lists.public&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> Lists.find({userId: {$exists: <span class="literal">false</span>}}, {</span><br><span class="line">    fields: {</span><br><span class="line">      name: <span class="number">1</span>,</span><br><span class="line">      incompleteCount: <span class="number">1</span>,</span><br><span class="line">      userId: <span class="number">1</span></span><br><span class="line">    }</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>If you find yourself repeating the fields often, it makes sense to factor out a dictionary of public fields that you can always filter by, like so:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In the file where Lists is defined</span></span><br><span class="line">Lists.publicFields = {</span><br><span class="line">  name: <span class="number">1</span>,</span><br><span class="line">  incompleteCount: <span class="number">1</span>,</span><br><span class="line">  userId: <span class="number">1</span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>Now your code becomes a bit simpler:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;lists.public&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> Lists.find({userId: {$exists: <span class="literal">false</span>}}, {</span><br><span class="line">    fields: Lists.publicFields</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="publications-user-id"><a class="anchor" href="#publications-user-id" aria-hidden="true" data-scroll="">&#x1F517;</a>Publications and userId</h3>
+
+<p>The data returned from publications will often be dependent on the currently logged in user, and perhaps some properties about that user - whether they are an admin, whether they own a certain document, etc.</p>
+<p>Publications are not reactive, and they only re-run when the currently logged in <code>userId</code> changes, which can be accessed through <code>this.userId</code>. Because of this, it&#x2019;s easy to accidentally write a publication that is secure when it first runs, but doesn&#x2019;t respond to changes in the app environment. Let&#x2019;s look at an example:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #1: Bad! If the owner of the list changes, the old owner will still see it</span></span><br><span class="line">Meteor.publish(<span class="string">&apos;list&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">listId</span>) </span>{</span><br><span class="line">  check(listId, <span class="built_in">String</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> list = Lists.findOne(listId);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (! list.userId === <span class="keyword">this</span>.userId) {</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Meteor.Error(<span class="string">&apos;list.unauthorized&apos;</span>,</span><br><span class="line">      <span class="string">&apos;This list doesn\&apos;t belong to you.&apos;</span>);</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> Lists.find(listId, {</span><br><span class="line">    fields: {</span><br><span class="line">      name: <span class="number">1</span>,</span><br><span class="line">      incompleteCount: <span class="number">1</span>,</span><br><span class="line">      userId: <span class="number">1</span></span><br><span class="line">    }</span><br><span class="line">  });</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// #2: Good! When the owner of the list changes, the old owner won&apos;t see it anymore</span></span><br><span class="line">Meteor.publish(<span class="string">&apos;list&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">listId</span>) </span>{</span><br><span class="line">  check(listId, <span class="built_in">String</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> Lists.find({</span><br><span class="line">    _id: listId,</span><br><span class="line">    userId: <span class="keyword">this</span>.userId</span><br><span class="line">  }, {</span><br><span class="line">    fields: {</span><br><span class="line">      name: <span class="number">1</span>,</span><br><span class="line">      incompleteCount: <span class="number">1</span>,</span><br><span class="line">      userId: <span class="number">1</span></span><br><span class="line">    }</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>In the first example, if the <code>userId</code> property on the selected list changes, the query in the publication will still return the data, since the security check in the beginning will not re-run. In the second example, we have fixed this by putting the security check in the returned query itself.</p>
+<p>Unfortunately, not all publications are as simple to secure as the example above. For more tips on how to use <code>reywood:publish-composite</code> to handle reactive changes in publications, see the <a href="data-loading.html#complex-auth">data loading article</a>.</p>
+<h3 id="publication-options"><a class="anchor" href="#publication-options" aria-hidden="true" data-scroll="">&#x1F517;</a>Passing options</h3>
+
+<p>For certain applications, for example pagination, you&#x2019;ll want to pass options into the publication to control things like how many documents should be sent to the client. There are some extra considerations to keep in mind for this particular case.</p>
+<ol>
+<li><strong>Passing a limit</strong>: In the case where you are passing the <code>limit</code> option of the query from the client, make sure to set a maximum limit. Otherwise, a malicious client could request too many documents at once, which could raise performance issues.</li>
+<li><strong>Passing in a filter</strong>: If you want to pass fields to filter on because you don&#x2019;t want all of the data, for example in the case of a search query, make sure to use MongoDB <code>$and</code> to intersect the filter coming from the client with the documents that client should be allowed to see. Also, you should whitelist the keys that the client can use to filter - if the client can filter on secret data, it can run a search to find out what that data is.</li>
+<li><strong>Passing in fields</strong>: If you want the client to be able to decide which fields of the collection should be fetched, make sure to intersect that with the fields that client is allowed to see, so that you don&#x2019;t accidentally send secret data to the client.</li>
+</ol>
+<p>In summary, you should make sure that any options passed from the client to a publication can only restrict the data being requested, rather than extending it.</p>
+<h2 id="served-files"><a class="anchor" href="#served-files" aria-hidden="true" data-scroll="">&#x1F517;</a>Served files</h2>
+
+<p>Publications are not the only place the client gets data from the server. The set of source code files and static assets that are served by your application server could also potentially contain sensitive data:</p>
+<ol>
+<li>Business logic an attacker could analyze to find weak points.</li>
+<li>Secret algorithms that a competitor could steal.</li>
+<li>Secret API keys.</li>
+</ol>
+<h3 id="secret-code"><a class="anchor" href="#secret-code" aria-hidden="true" data-scroll="">&#x1F517;</a>Secret server code</h3>
+
+<p>While the client-side code of your application is necessarily accessible by the browser, every application will have some secret code on the server that you don&#x2019;t want to share with the world.</p>
+<p>Secret business logic in your app should be located in code that is only loaded on the server. This means it is in a <code>server/</code> directory of your app, in a package that is only included on the server, or in a file inside a package that was loaded only on the server.</p>
+<p>If you have a Meteor Method in your app that has secret business logic, you might want to split the Method into two functions - the optimistic UI part that will run on the client, and the secret part that runs on the server. Most of the time, putting the entire Method on the server doesn&#x2019;t result in the best user experience. Let&#x2019;s look at an example, where you have a secret algorithm for calculating someone&#x2019;s MMR (ranking) in a game:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In a server-only file</span></span><br><span class="line">MMR = {</span><br><span class="line">  updateWithSecretAlgorithm(userId) {</span><br><span class="line">    <span class="comment">// your secret code here</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// In a file loaded on client and server</span></span><br><span class="line"><span class="keyword">const</span> Meteor.users.methods.updateMMR = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  name: <span class="string">&apos;Meteor.users.methods.updateMMR&apos;</span>,</span><br><span class="line">  validate: <span class="literal">null</span>,</span><br><span class="line">  run() {</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isSimulation) {</span><br><span class="line">      <span class="comment">// Simulation code for the client (optional)</span></span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">      MMR.updateWithSecretAlgorithm(<span class="keyword">this</span>.userId);</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Note that while the Method is defined on the client, the actual secret logic is only accessible from the server. Keep in mind that code inside <code>if (Meteor.isServer)</code> blocks is still sent to the client, it is just not executed. So don&#x2019;t put any secret code in there.</p>
+<p>Secret API keys should never be stored in your source code at all, the next section will talk about how to handle them.</p>
+<h2 id="api-keys"><a class="anchor" href="#api-keys" aria-hidden="true" data-scroll="">&#x1F517;</a>Securing API keys</h2>
+
+<p>Every app will have some secret API keys or passwords:</p>
+<ol>
+<li>Your database password.</li>
+<li>API keys for external APIs.</li>
+</ol>
+<p>These should never be stored as part of your app&#x2019;s source code in version control, because developers might copy code around to unexpected places and forget that it contains secret keys. You can keep your keys separately in <a href="https://www.dropbox.com/" target="_blank" rel="external">Dropbox</a>, <a href="https://lastpass.com" target="_blank" rel="external">LastPass</a>, or another service, and then reference them when you need to deploy the app.</p>
+<p>You can pass settings to your app through a <em>settings file</em> or an <em>environment variable</em>. Most of your app settings should be in JSON files that you pass in when starting your app. You can start your app with a settings file by passing the <code>--settings</code> flag:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pass development settings when running your app locally</span></span><br><span class="line">meteor --settings development.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pass production settings when deploying your app to Galaxy</span></span><br><span class="line">meteor deploy myapp.com --settings production.json</span><br></pre></td></tr></tbody></table></figure>
+<p>Here&#x2019;s what a settings file with some API keys might look like:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="string">&quot;facebook&quot;</span>: {</span><br><span class="line">    <span class="string">&quot;clientId&quot;</span>: <span class="string">&quot;12345&quot;</span>,</span><br><span class="line">    <span class="string">&quot;secret&quot;</span>: <span class="string">&quot;1234567&quot;</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>In your app&#x2019;s JavaScript code, these settings can be accessed from the variable <code>Meteor.settings</code>.</p>
+<p><a href="deployment.html#environment">Read more about managing keys and settings in the Deployment article.</a></p>
+<h3 id="client-settings"><a class="anchor" href="#client-settings" aria-hidden="true" data-scroll="">&#x1F517;</a>Settings on the client</h3>
+
+<p>In most normal situations, API keys from your settings file will only be used by the server, and by default the data passed in through <code>--settings</code> is only available on the server. However, if you put data under a special key called <code>public</code>, it will be available on the client. You might want to do this if, for example, you need to make an API call from the client and are OK with users knowing that key. Public settings will be available on the client under <code>Meteor.settings.public</code>.</p>
+<h3 id="api-keys-oauth"><a class="anchor" href="#api-keys-oauth" aria-hidden="true" data-scroll="">&#x1F517;</a>API keys for OAuth</h3>
+
+<p>For the <code>accounts-facebook</code> package to pick up these keys, you need to add them to the service configuration collection in the database. Here&#x2019;s how you do that:</p>
+<p>First, add the <code>service-configuration</code> package:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add service-configuration</span><br></pre></td></tr></tbody></table></figure>
+<p>Then, upsert into the <code>ServiceConfiguration</code> collection:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ServiceConfiguration.configurations.upsert({</span><br><span class="line">  service: <span class="string">&quot;facebook&quot;</span></span><br><span class="line">}, {</span><br><span class="line">  $set: {</span><br><span class="line">    clientId: Meteor.settings.facebook.clientId,</span><br><span class="line">    loginStyle: <span class="string">&quot;popup&quot;</span>,</span><br><span class="line">    secret: Meteor.settings.facebook.secret</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Now, <code>accounts-facebook</code> will be able to find that API key and Facebook login will work properly.</p>
+<h2 id="ssl"><a class="anchor" href="#ssl" aria-hidden="true" data-scroll="">&#x1F517;</a>SSL</h2>
+
+<p>This is a very short section, but it deserves its own place in the table of contents.</p>
+<p><strong>Every production Meteor app that handles user data should run with SSL.</strong></p>
+<p>For the uninitiated, this means all of your HTTP requests should go over HTTPS, and all websocket data should be sent over WSS.</p>
+<p>Yes, Meteor does hash your password or login token on the client before sending it over the wire, but that only prevents an attacker from figuring out your password - it doesn&#x2019;t prevent them from logging in as you, since they could just send the hashed password to the server to log in! No matter how you slice it, logging in requires the client to send sensitive data  to the server, and the only way to secure that transfer is by using SSL. Note that the same issue is present when using cookies for authentication in a normal HTTP web application, so any app that needs to reliably identify users should be running on SSL.</p>
+<p>You can ensure that any unsecured connection to your app redirects to a secure connection by adding the <code>force-ssl</code> package.</p>
+<h4 id="Setting_up_SSL">Setting up SSL</h4><ol>
+<li>On <a href="deployment.html#galaxy">Galaxy</a>, most things are set up for you, but you need to add a certificate. <a href="https://galaxy.meteor.com/help/using-ssl" target="_blank" rel="external">See the help article about SSL on Galaxy</a>.</li>
+<li>If you are running on your own <a href="deployment.html#custom-deployment">infrastructure</a>, there are a few options for setting up SSL, mostly through configuring a proxy web server. See the articles: <a href="http://joshowens.me/ssl-and-meteor-js/" target="_blank" rel="external">Josh Owens on SSL and Meteor</a>, <a href="http://www.meteorpedia.com/read/SSL" target="_blank" rel="external">SSL on Meteorpedia</a>, and <a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-meteor-js-application-on-ubuntu-14-04-with-nginx" target="_blank" rel="external">Digital Ocean tutorial with an Nginx config</a>.</li>
+</ol>
+<h2 id="checklist"><a class="anchor" href="#checklist" aria-hidden="true" data-scroll="">&#x1F517;</a>Security checklist</h2>
+
+<p>This is a collection of points to check about your app that might catch common errors. However, it&#x2019;s not an exhaustive list yet&#x2014;if we missed something, please let us know or file a pull request!</p>
+<ol>
+<li>Make sure your app doesn&#x2019;t have the <code>insecure</code> or <code>autopublish</code> packages.</li>
+<li>Validate all Method and publication arguments, and include the <code>audit-argument-checks</code> to check this automatically.</li>
+<li><a href="accounts.html#dont-use-profile">Deny writes to the <code>profile</code> field on user documents.</a></li>
+<li><a href="security.html#allow-deny">Use Methods instead of client-side insert/update/remove and allow/deny.</a></li>
+<li>Use specific selectors and <a href="http://guide.meteor.com/security.html#fields">filter fields</a> in publications.</li>
+<li>Don&#x2019;t use <a href="blaze.html#rendering-html">raw HTML inclusion in Blaze</a> unless you really know what you are doing.</li>
+<li><a href="security.html#api-keys">Make sure secret API keys and passwords aren&#x2019;t in your source code.</a></li>
+<li>Secure the data, not the UI - redirecting away from a client-side route does nothing for security, it&#x2019;s just a nice UX feature.</li>
+<li><a href="http://guide.meteor.com/security.html#user-id-client">Don&#x2019;t ever trust user IDs passed from the client.</a> Use <code>this.userId</code> inside Methods and publications.</li>
+<li>Set up <a href="https://atmospherejs.com/meteor/browser-policy" target="_blank" rel="external">browser policy</a>, but know that not all browsers support it so it just provides an extra layer of security to users with modern browsers.</li>
+</ol>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-build-tool-1.3.html">Build system</a></span>
+      
+      
+        <span style="float:right"><a href="guide-deployment-1.3.html">Deployment and Monitoring</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/security.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=19667" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="30px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

@@ -1,0 +1,504 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="Suggested style guidelines for your code.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Code style | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Code style
+            </a>
+          <ul class="sub-menu"><li><a href="#benefits-style" data-scroll="" class="H2">Benefits of consistent style</a><ul class="sub-menu"><li><a href="#easy-to-read" data-scroll="" class="H3">Easy to read code</a></li><li><a href="#automatic-error-checking" data-scroll="" class="H3">Automatic error checking</a></li><li><a href="#deeper-understanding" data-scroll="" class="H3">Deeper understanding</a></li></ul></li><li><a href="#javascript" data-scroll="" class="H2">JavaScript style guide</a><ul class="sub-menu"><li><a href="#ecmascript" data-scroll="" class="H3">Use the ecmascript package</a></li><li><a href="#style-guide" data-scroll="" class="H3">Follow a JavaScript style guide</a></li></ul></li><li><a href="#eslint" data-scroll="" class="H2">Check your code with ESLint</a><ul class="sub-menu"><li><a href="#eslint-installing" data-scroll="" class="H3">Installing and running ESLint</a></li><li><a href="#eslint-editor" data-scroll="" class="H3">Integrating with your editor</a></li></ul></li><li><a href="#meteor-features" data-scroll="" class="H2">Meteor code style</a><ul class="sub-menu"><li><a href="#collections" data-scroll="" class="H3">Collections</a></li><li><a href="#methods-and-publications" data-scroll="" class="H3">Methods and publications</a></li><li><a href="#files-and-exports" data-scroll="" class="H3">Files, exports, and packages</a></li><li><a href="#templates-and-components" data-scroll="" class="H3">Templates and components</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Code style</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/code-style.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/20189">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this article, you&#x2019;ll know:</p>
+<ol>
+<li>Why it&#x2019;s a good idea to have consistent code style</li>
+<li>Which style guide we recommend for JavaScript code</li>
+<li>How to set up ESLint to check code style automatically</li>
+<li>Style suggestions for Meteor-specific patterns, such as Methods, publications, and more</li>
+</ol>
+<h2 id="benefits-style"><a class="anchor" href="#benefits-style" aria-hidden="true" data-scroll="">&#x1F517;</a>Benefits of consistent style</h2>
+
+<p>Countless hours have been spent by developers throughout the years arguing over single vs. double quotes, where to put brackets, how many spaces to type, and all kinds of other cosmetic code style questions. These are all questions that have at best a tangential relationship to code quality, but are very easy to have opinions about because they are so visual.</p>
+<p>While it&#x2019;s not necessarily important whether your code base uses single or double quotes for string literals, there are huge benefits to making that decision once and having it be consistent across your organization. These benefits also apply to the Meteor and JavaScript development communities as a whole.</p>
+<h3 id="easy-to-read"><a class="anchor" href="#easy-to-read" aria-hidden="true" data-scroll="">&#x1F517;</a>Easy to read code</h3>
+
+<p>The same way that you don&#x2019;t read English sentences one word at a time, you don&#x2019;t read code one token at a time. Mostly you just look at the shape of a certain expression, or the way it highlights in your editor, and assume what it does. If the style of every bit of code is consistent, that ensures that bits of code that look the same actually <em>are</em> the same - there isn&#x2019;t any hidden punctuation or gotchas that you don&#x2019;t expect, so you can focus on understanding the logic instead of the symbols. One example of this is indentation - while in JavaScript, indentation is not meaningful, it&#x2019;s helpful to have all of your code consistently indented so that you don&#x2019;t need to read all of the brackets in detail to see what is going on.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This code is misleading because it looks like both statements</span></span><br><span class="line"><span class="comment">// are inside the conditional.</span></span><br><span class="line"><span class="keyword">if</span> (condition)</span><br><span class="line">  firstStatement();</span><br><span class="line">  secondStatement();</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Much clearer!</span></span><br><span class="line"><span class="keyword">if</span> (condition) {</span><br><span class="line">  firstStatement();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">secondStatement();</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="automatic-error-checking"><a class="anchor" href="#automatic-error-checking" aria-hidden="true" data-scroll="">&#x1F517;</a>Automatic error checking</h3>
+
+<p>Having a consistent style means that it&#x2019;s easier to adopt standard tools for error checking. For example, if you adopt a convention that you must always use <code>let</code> or <code>const</code> instead of <code>var</code>, you can now use a tool to ensure all of your variables are scoped the way you expect. That means you can avoid bugs where variables act in unexpected ways. Also, by enforcing that all variables are declared before use, you can easily catch typos before even running any code!</p>
+<h3 id="deeper-understanding"><a class="anchor" href="#deeper-understanding" aria-hidden="true" data-scroll="">&#x1F517;</a>Deeper understanding</h3>
+
+<p>It&#x2019;s hard to learn everything about a programming language at once. For example, programmers new to JavaScript often struggle with the <code>var</code> keyword and function scope. Using a community-recommended coding style with automatic linting can warn you about these pitfalls proactively. This means you can jump right into coding without learning about all of the edge cases of JavaScript ahead of time.</p>
+<p>As you write more code and come up against the recommended style rules, you can take that as an opportunity to learn more about your programming language and how different people prefer to use it.</p>
+<h2 id="javascript"><a class="anchor" href="#javascript" aria-hidden="true" data-scroll="">&#x1F517;</a>JavaScript style guide</h2>
+
+<p>Here at Meteor, we strongly believe that JavaScript is the best language to build web applications, for a variety of reasons. JavaScript is constantly improving, and the standards around ES2015 have really brought together the JavaScript community. Here are our recommendations about how to use ES2015 JavaScript in your app today.</p>
+<p><img src="http://guide.meteor.com/images/ben-es2015-demo.gif" alt=""></p>
+<h3 id="ecmascript"><a class="anchor" href="#ecmascript" aria-hidden="true" data-scroll="">&#x1F517;</a>Use the <code>ecmascript</code> package</h3>
+
+<p>ECMAScript, the language standard on which every browser&#x2019;s JavaScript implementation is based, has moved to yearly standards releases. The newest complete standard is ES2015, which includes some long-awaited and very significant improvements to the JavaScript language. Meteor&#x2019;s <code>ecmascript</code> package compiles this standard down to regular JavaScript that all browsers can understand using the <a href="https://babeljs.io/" target="_blank" rel="external">popular Babel compiler</a>. It&#x2019;s fully backwards compatible to &#x201C;regular&#x201D; JavaScript, so you don&#x2019;t have to use any new features if you don&#x2019;t want to. We&#x2019;ve put a lot of effort into making advanced browser features like source maps work great with this package, so that you can debug your code using your favorite developer tools without having to see any of the compiled output.</p>
+<p>The <code>ecmascript</code> package is included in all new apps and packages by default, and compiles all files with the <code>.js</code> file extension automatically. See the <a href="https://docs.meteor.com/#/full/supportedes2015features" target="_blank" rel="external">list of all ES2015 features supported by the ecmascript package</a>.</p>
+<p>To get the full experience, you should also use the <code>es5-shim</code> package which is included in all new apps by default. This means you can rely on runtime features like <code>Array#forEach</code> without worrying about which browsers support them.</p>
+<p>All of the code samples in this guide and future Meteor tutorials will use all of the new ES2015 features. You can also read more about ES2015 and how to get started with it on the Meteor Blog:</p>
+<ul>
+<li><a href="http://info.meteor.com/blog/es2015-get-started" target="_blank" rel="external">Getting started with ES2015 and Meteor</a></li>
+<li><a href="http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting" target="_blank" rel="external">Set up Sublime Text for ES2015</a></li>
+<li><a href="http://info.meteor.com/blog/how-much-does-es2015-cost" target="_blank" rel="external">How much does ES2015 cost?</a></li>
+</ul>
+<h3 id="style-guide"><a class="anchor" href="#style-guide" aria-hidden="true" data-scroll="">&#x1F517;</a>Follow a JavaScript style guide</h3>
+
+<p>We recommend choosing and sticking to a JavaScript style guide and enforcing it with tools. A popular option that we recommend is the <a href="https://github.com/airbnb/javascript" target="_blank" rel="external">Airbnb style guide</a> with the ES6 extensions (and optionally React extensions).</p>
+<h2 id="eslint"><a class="anchor" href="#eslint" aria-hidden="true" data-scroll="">&#x1F517;</a>Check your code with ESLint</h2>
+
+<p>&#x201C;Code linting&#x201D; is the process of automatically checking your code for common errors or style problems. For example, ESLint can determine if you have made a typo in a variable name, or some part of your code is unreachable because of a poorly written <code>if</code> condition.</p>
+<p>We recommend using the <a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb" target="_blank" rel="external">Airbnb eslint configuration</a> which verifies the Airbnb styleguide.</p>
+<p>Below, you can find directions for setting up automatic linting at many different stages of development. In general, you want to run the linter as often as possible, because it&#x2019;s the fastest and easiest way to identify typos and small errors.</p>
+<h3 id="eslint-installing"><a class="anchor" href="#eslint-installing" aria-hidden="true" data-scroll="">&#x1F517;</a>Installing and running ESLint</h3>
+
+<p>To setup ESLint in your application, you can install the following <a href="https://docs.npmjs.com/getting-started/what-is-npm" target="_blank" rel="external">npm</a> packages:</p>
+<figure class="highlight stata"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor npm install --<span class="keyword">save</span>-dev eslint eslint-<span class="keyword">plugin</span>-react eslint-<span class="keyword">plugin</span>-meteor eslint-config-airbnb</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>Meteor comes with npm bundled so that you can type meteor npm without worrying about installing it yourself. If you like, you can also use a globally installed npm command.</p>
+</blockquote>
+<p>You can also add a <code>eslintConfig</code> section to your <code>package.json</code> to specify that you&#x2019;d like to use the Airbnb config, and to enable <a href="https://github.com/dferber90/eslint-plugin-meteor" target="_blank" rel="external">ESLint-plugin-Meteor</a>. You can also setup any extra rules you want to change, as well as adding a lint npm command:</p>
+<figure class="highlight clojure"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">{</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: <span class="collection">{</span><br><span class="line">    <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;eslint .&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pretest&quot;</span>: <span class="string">&quot;npm run lint --silent&quot;</span></span><br><span class="line">  }</span>,</span><br><span class="line">  <span class="string">&quot;eslintConfig&quot;</span>: <span class="collection">{</span><br><span class="line">    <span class="string">&quot;plugins&quot;</span>: <span class="collection">[</span><br><span class="line">      <span class="string">&quot;meteor&quot;</span></span><br><span class="line">    ]</span>,</span><br><span class="line">    <span class="string">&quot;extends&quot;</span>: <span class="collection">[</span><br><span class="line">      <span class="string">&quot;airbnb/base&quot;</span>,</span><br><span class="line">      <span class="string">&quot;plugin:meteor/recommended&quot;</span></span><br><span class="line">    ]</span>,</span><br><span class="line">    <span class="string">&quot;rules&quot;</span>: <span class="collection">{}</span></span><br><span class="line">  }</span></span><br><span class="line">}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Use <code>&quot;airbnb/base&quot;</code> for a normal ecmascript-based config and <code>&quot;airbnb&quot;</code> in a React project.</p>
+<p>To run the linter, you can now simply type:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor npm run lint</span><br></pre></td></tr></tbody></table></figure>
+<p>For more details, read the <a href="http://eslint.org/docs/user-guide/getting-started" target="_blank" rel="external">Getting Started</a> directions from the ESLint website.</p>
+<h3 id="eslint-editor"><a class="anchor" href="#eslint-editor" aria-hidden="true" data-scroll="">&#x1F517;</a>Integrating with your editor</h3>
+
+<p>Linting is the fastest way to find potential bugs in your code. Running a linter is usually faster than running your app or your unit tests, so it&#x2019;s a good idea to run it all the time. Setting up linting in your editor can seem annoying at first since it will complain often when you save poorly-formatted code, but over time you&#x2019;ll develop the muscle memory to just write well-formatted code in the first place. Here are some directions for setting up ESLint in different editors:</p>
+<h4 id="eslint-sublime">Sublime Text</h4>
+
+<p>You can install the Sublime Text packages that integrate them into the text editor. It&#x2019;s generally recommended to use Package Control to add these packages. If you already have that setup, you can just add the these packages by name; if not, click the instructions links:</p>
+<ul>
+<li>Babel (for syntax highlighting &#x2013; <a href="https://github.com/babel/babel-sublime#installation" target="_blank" rel="external">full instructions</a>)</li>
+<li>SublimeLinter (<a href="http://sublimelinter.readthedocs.org/en/latest/installation.html" target="_blank" rel="external">full instructions</a>)</li>
+<li>SublimeLinter-contrib-eslint (<a href="https://github.com/roadhump/SublimeLinter-eslint#plugin-installation" target="_blank" rel="external">full instructions</a>)</li>
+</ul>
+<p>To get proper syntax highlighting, go to a .js file, then select the following through the <em>View</em> dropdown menu: <em>Syntax</em> -&gt; <em>Open all with current extension as&#x2026;</em> -&gt; <em>Babel</em> -&gt; <em>JavaScript (Babel)</em>. If you are using React .jsx files, do the same from a .jsx file. If it&#x2019;s working, you will see &#x201C;JavaScript (Babel)&#x201D; in the lower right hand corner of the window when you are on one of these files. Refer to the <a href="https://github.com/babel/babel-sublime" target="_blank" rel="external">package readme</a> for information on compatible color schemes.</p>
+<p>A side note for Emmet users: You can use <em>\<ctrl-e\></ctrl-e\></em> to expand HTML tags in .jsx files, and it will correctly expand classes to React&#x2019;s &#x201C;className&#x201D; property. You can bind to the tab key for this, but <a href="https://github.com/sergeche/emmet-sublime/issues/548" target="_blank" rel="external">you may not want to</a>.</p>
+<h4 id="eslint-atom">Atom</h4>
+
+<p>Using ESLint with Atom is simple. Just install these three packages:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apm install language-babel</span><br><span class="line">apm install linter</span><br><span class="line">apm install linter-eslint</span><br></pre></td></tr></tbody></table></figure>
+<p>Then <strong>restart</strong> (or <strong>reload</strong> by pressing Ctrl+Alt+R / Cmd+Opt+R) Atom to activate linting.</p>
+<h4 id="eslint-webstorm">WebStorm</h4>
+
+<p>WebStorm provides <a href="https://www.jetbrains.com/webstorm/help/eslint.html" target="_blank" rel="external">these instructions for using ESLint</a>. After you install the ESLint Node packages and set up your <code>package.json</code>, just enable ESLint and click &#x201C;Apply&#x201D;. You can configure how WebStorm should find your <code>.eslintrc</code> file, but on my machine it worked without any changes. It also automatically suggested switching to &#x201C;JSX Harmony&#x201D; syntax highlighting.</p>
+<p><img src="http://guide.meteor.com/images/webstorm-configuration.png" alt="Enable ESLint here."></p>
+<p>Linting can be activated on WebStorm on a project-by-project basis, or you can set ESLint as a default under Editor &gt; Inspections, choosing the Default profile, checking &#x201C;ESLint&#x201D;, and applying.</p>
+<h2 id="meteor-features"><a class="anchor" href="#meteor-features" aria-hidden="true" data-scroll="">&#x1F517;</a>Meteor code style</h2>
+
+<p>The section above talked about JavaScript code in general - you can easily apply it in any JavaScript application, not just with Meteor apps. However, there are some style questions that are Meteor-specific, in particular how to name and structure all of the different components of your app.</p>
+<h3 id="collections"><a class="anchor" href="#collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Collections</h3>
+
+<p>Collections should be named as a plural noun, in PascalCase. The name of the collection in the database (the first argument to the collection constructor) should be the same as the name of the JavaScript symbol.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Defining a collection</span></span><br><span class="line">Lists = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Lists&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>Fields in the database should be camelCased just like your JavaScript variable names.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Inserting a document with camelCased field names</span></span><br><span class="line">Widgets.insert({</span><br><span class="line">  myFieldName: <span class="string">&apos;Hello, world!&apos;</span>,</span><br><span class="line">  otherFieldName: <span class="string">&apos;Goodbye.&apos;</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="methods-and-publications"><a class="anchor" href="#methods-and-publications" aria-hidden="true" data-scroll="">&#x1F517;</a>Methods and publications</h3>
+
+<p>Method and publication names should be camelCased, and namespaced to the module they are in:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in imports/api/todos/methods.js</span></span><br><span class="line">updateText = <span class="keyword">new</span> ValidatedMethod({</span><br><span class="line">  name: <span class="string">&apos;todos.updateText&apos;</span>,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Note that this code sample uses the <a href="methods.html#validated-method">ValidatedMethod package recommended in the Methods article</a>. If you aren&#x2019;t using that package, you can use the name as the property passed to <code>Meteor.methods</code>.</p>
+<p>Here&#x2019;s how this naming convention looks when applied to a publication:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Naming a publication</span></span><br><span class="line">Meteor.publish(<span class="string">&apos;lists.public&apos;</span>, <span class="function"><span class="keyword">function</span> <span class="title">listsPublic</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="files-and-exports"><a class="anchor" href="#files-and-exports" aria-hidden="true" data-scroll="">&#x1F517;</a>Files, exports, and packages</h3>
+
+<p>You should use the ES2015 <code>import</code> and <code>export</code> features to manage your code. This will let you better understand the dependencies between different parts of your code, and it will be easy to know where to look if you need to read the source code of a dependency.</p>
+<p>Each file in your app should represent one logical module. Avoid having catch-all utility modules that export a variety of unrelated functions and symbols. Often, this can mean that it&#x2019;s good to have one class, UI component, or collection per file, but there are cases where it is OK to make an exception, for example if you have a UI component with a small sub-component that isn&#x2019;t used outside of that file.</p>
+<p>When a file represents a single class or UI component, the file should be named the same as the thing it defines, with the same capitalization. So if you have a file that exports a class:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ClickCounter</span> </span>{ ... }</span><br></pre></td></tr></tbody></table></figure>
+<p>This class should be defined inside a file called <code>ClickCounter.js</code>. When you import it, it&#x2019;ll look like this:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ClickCounter <span class="keyword">from</span> <span class="string">&apos;./ClickCounter.js&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>Note that imports use relative paths, and include the file extension at the end of the file name.</p>
+<p>For <a href="guide-using-packages-1.3.html">Atmosphere packages</a>, as the older pre-1.3 <code>api.export</code> syntax allowed more than one export per package, you&#x2019;ll tend to see non-default exports used for symbols. For instance:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// You&apos;ll need to deconstruct here, as Meteor could export more symbols</span></span><br><span class="line"><span class="keyword">import</span> { Meteor } <span class="keyword">from</span> <span class="string">&apos;meteor/meteor&apos;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This will not work</span></span><br><span class="line"><span class="keyword">import</span> Meteor <span class="keyword">from</span> <span class="string">&apos;meteor/meteor&apos;</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="templates-and-components"><a class="anchor" href="#templates-and-components" aria-hidden="true" data-scroll="">&#x1F517;</a>Templates and components</h3>
+
+<p>Since Spacebars templates are always global, can&#x2019;t be imported and exported as modules, and need to have names that are completely unique across the whole app, we recommend naming your Blaze templates with the full path to the namespace, separated by underscores. Underscores are a great choice in this case because then you can easily type the name of the template as one symbol in JavaScript.</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>If this template is a &#x201C;smart&#x201D; component that loads server data and accesses the router, append <code>_page</code> to the name:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Often when you are dealing with templates or UI components, you&#x2019;ll have several closely coupled files to manage. They could be two or more of HTML, CSS, and JavaScript files. In this case, we recommend putting these together in the same directory with the same name:</p>
+<figure class="highlight nsis"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The Lists_show template from the Todos example app has 3 files:</span></span><br><span class="line"><span class="literal">show</span>.html</span><br><span class="line"><span class="literal">show</span>.js</span><br><span class="line"><span class="literal">show</span>.less</span><br></pre></td></tr></tbody></table></figure>
+<p>The whole directory or path should indicate that these templates are related to the <code>Lists</code> module, so it&#x2019;s not necessary to reproduce that information in the file name. Read more about directory structure <a href="structure.html#javascript-structure">above</a>.</p>
+<p>If you are writing your UI in React, you don&#x2019;t need to use the underscore-split names because you can import and export your components using the JavaScript module system.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-1.3.html">Introduction</a></span>
+      
+      
+        <span style="float:right"><a href="guide-structure-1.3.html">Application structure</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/code-style.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=20189" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="1436px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

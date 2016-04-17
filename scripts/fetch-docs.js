@@ -105,60 +105,25 @@ function processResult(name) {
   };
 }
 
-Nightmare()
+var nightmare = Nightmare()
   .goto('http://docs.meteor.com/')
   .wait(1000)
-  .select('.basic-or-full', 'basic')
-  .wait(500)
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('basic'))
-  .select('.basic-or-full', 'full')
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
   }, processResult('full'))
   .goto('http://guide.meteor.com/')
+  .wait(1000)
   .evaluate(function() {
     return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide'))
-  .goto('http://guide.meteor.com/collections.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-collections'))
-  .goto('http://guide.meteor.com/data-loading.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-data-loading'))
-  .goto('http://guide.meteor.com/methods.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-methods'))
-  .goto('http://guide.meteor.com/routing.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-routing'))
-  .goto('http://guide.meteor.com/accounts.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-accounts'))
-  .goto('http://guide.meteor.com/ui-ux.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-ui-ux'))
-  .goto('http://guide.meteor.com/blaze.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-blaze'))
-  .goto('http://guide.meteor.com/security.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-security'))
-  .goto('http://guide.meteor.com/deployment.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-deployment'))
-  .goto('http://guide.meteor.com/build-tool.html')
-  .evaluate(function() {
-    return document.documentElement.outerHTML; //jshint ignore:line
-  }, processResult('guide-build-tool'))
-  .run();
+  }, processResult('guide'));
+
+['code-style', 'structure', '1.3-migration', 'collections', 'data-loading', 'methods', 'accounts', 'testing', 'routing', 'ui-ux', 'blaze', 'react', 'angular', 'using-packages', 'writing-packages', 'mobile', 'build-tool', 'security', 'development', 'CONTRIBUTING', 'CHANGELOG'].forEach(function(name) {
+  nightmare
+    .goto('http://guide.meteor.com/' + name + '.html')
+    .wait(1000)
+    .evaluate(function() {
+      return document.documentElement.outerHTML; //jshint ignore:line
+    }, processResult('guide-' + name));
+});
+
+nightmare.run();

@@ -1,0 +1,594 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to drive your Meteor app&apos;s UI using URLs with FlowRouter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>URLs and Routing | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              URLs and Routing
+            </a>
+          <ul class="sub-menu"><li><a href="#client-side" data-scroll="" class="H2">Client-side Routing</a><ul class="sub-menu"></ul></li><li><a href="#flow-router" data-scroll="" class="H2">Using Flow Router</a><ul class="sub-menu"></ul></li><li><a href="#defining-routes" data-scroll="" class="H2">Defining a simple route</a><ul class="sub-menu"><li><a href="#url-pattern-matching" data-scroll="" class="H3">URL pattern matching</a></li></ul></li><li><a href="#accessing-route-info" data-scroll="" class="H2">Accessing Route information</a><ul class="sub-menu"><li><a href="#current-route" data-scroll="" class="H3">The current route</a></li><li><a href="#active-route" data-scroll="" class="H3">Highlighting the active route</a></li></ul></li><li><a href="#rendering-routes" data-scroll="" class="H2">Rendering based on the route</a><ul class="sub-menu"></ul></li><li><a href="#page-templates" data-scroll="" class="H2">Components as pages</a><ul class="sub-menu"><li><a href="#route-rendering-logic" data-scroll="" class="H3">Changing page when logged out</a></li></ul></li><li><a href="#changing-routes" data-scroll="" class="H2">Changing Routes</a><ul class="sub-menu"><li><a href="#routing-programmatically" data-scroll="" class="H3">Routing programmatically</a></li><li><a href="#storing-data-in-the-url" data-scroll="" class="H3">Storing data in the URL</a></li></ul></li><li><a href="#redirecting" data-scroll="" class="H2">Redirecting</a><ul class="sub-menu"><li><a href="#redirecting-dynamically" data-scroll="" class="H3">Redirecting dynamically</a></li><li><a href="#redirecting-after-user-action" data-scroll="" class="H3">Redirecting after a user&#x2019;s action</a></li></ul></li><li><a href="#advanced" data-scroll="" class="H2">Advanced Routing</a><ul class="sub-menu"><li><a href="#404s" data-scroll="" class="H3">Missing pages</a></li><li><a href="#analytics" data-scroll="" class="H3">Analytics</a></li><li><a href="#server-side" data-scroll="" class="H3">Server Side Routing</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>URLs and Routing</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/routing.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/19663">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this guide, you&#x2019;ll know:</p>
+<ol>
+<li>The role URLs play in a client-rendered app, and how it&#x2019;s different from a traditional server-rendered app.</li>
+<li>How to define client and server routes for your app using Flow Router.</li>
+<li>How to have your app display different content depending on the URL.</li>
+<li>How to construct links to routes and go to routes programmatically.</li>
+</ol>
+<h2 id="client-side"><a class="anchor" href="#client-side" aria-hidden="true" data-scroll="">&#x1F517;</a>Client-side Routing</h2>
+
+<p>In a web application, <em>routing</em> is the process of using URLs to drive the user interface (UI). URLs are a prominent feature in every single web browser, and have several main functions from the user&#x2019;s point of view:</p>
+<ol>
+<li><strong>Bookmarking</strong> - Users can bookmark URLs in their web browser to save content they want to come back to later.</li>
+<li><strong>Sharing</strong> - Users can share content with others by sending a link to a certain page.</li>
+<li><strong>Navigation</strong> - URLs are used to drive the web browser&#x2019;s back/forward functions.</li>
+</ol>
+<p>In a traditional web application stack, where the server renders HTML one page at a time, the URL is the fundamental entry point for the user to access the application. Users navigate an application by clicking through URLs, which are sent to the server via HTTP, and the server responds appropriately via a server-side router.</p>
+<p>In contrast, Meteor operates on the principle of <em>data on the wire</em>, where the server doesn&#x2019;t think in terms of URLs or HTML pages. The client application communicates with the server over DDP. Typically as an application loads, it initializes a series of <em>subscriptions</em> which fetch the data required to render the application. As the user interacts with the application, different subscriptions may load, but there&#x2019;s no technical need for URLs to be involved in this process - you could easily have a Meteor app where the URL never changes.</p>
+<p>However, most of the user-facing features of URLs listed above are still relevant for typical Meteor applications. Since the server is not URL-driven, the URL just becomes a useful representation of the client-side state the user is currently looking at. However, unlike in a server-rendered application, it does not need to describe the entirety of the user&#x2019;s current state; it simply needs to contain the parts that you want to be linkable. For example, the URL should contain any search filters applied on a page, but not necessarily the state of a dropdown menu or popup.</p>
+<h2 id="flow-router"><a class="anchor" href="#flow-router" aria-hidden="true" data-scroll="">&#x1F517;</a>Using Flow Router</h2>
+
+<p>To add routing to your app, install the <a href="https://atmospherejs.com/kadira/flow-router" target="_blank" rel="external"><code>kadira:flow-router</code></a> package:</p>
+<figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor <span class="built_in">add</span> kadir<span class="variable">a:flow</span>-router</span><br></pre></td></tr></tbody></table></figure>
+<p>Flow Router is a community routing package for Meteor. At the time of writing this guide, it is at version 2.x. For detailed information about all of the features Flow Router has to offer, refer to the <a href="https://kadira.io/academy/meteor-routing-guide" target="_blank" rel="external">Kadira Meteor routing guide</a>.</p>
+<h2 id="defining-routes"><a class="anchor" href="#defining-routes" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a simple route</h2>
+
+<p>The basic purpose of a router is to match certain URLs and perform actions as a result. This all happens on the client side, in the app user&#x2019;s browser or mobile app container. Let&#x2019;s take an example from the Todos example app:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FlowRouter.route(<span class="string">&apos;/lists/:_id&apos;</span>, {</span><br><span class="line">  name: <span class="string">&apos;Lists.show&apos;</span>,</span><br><span class="line">  action(params, queryParams) {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Looking at a list?&quot;</span>);</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>This route handler will run in two situations: if the page loads initially at a URL that matches the URL pattern, or if the URL changes to one that matches the pattern while the page is open. Note that, unlike in a server-side-rendered app, the URL can change without any additional requests to the server.</p>
+<p>When the route is matched, the <code>action</code> method executes, and you can perform any actions you need to. The <code>name</code> property of the route is optional, but will let us refer to this route more conveniently later on.</p>
+<h3 id="url-pattern-matching"><a class="anchor" href="#url-pattern-matching" aria-hidden="true" data-scroll="">&#x1F517;</a>URL pattern matching</h3>
+
+<p>Consider the following URL pattern, used in the code snippet above:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&apos;/lists/:_id&apos;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>The above pattern will match certain URLs. You may notice that one segment of the URL is prefixed by <code>:</code> - this means that it is a <em>url parameter</em>, and will match any string that is present in that segment of the path. Flow Router will make that part of the URL available on the <code>params</code> property of the current route.</p>
+<p>Additionally, the URL could contain an HTTP <a href="https://en.wikipedia.org/wiki/Query_string" target="_blank" rel="external"><em>query string</em></a> (the part after an optional <code>?</code>). If so, Flow Router will also split it up into named parameters, which it calls <code>queryParams</code>.</p>
+<p>Here are some example URLs and the resulting <code>params</code> and <code>queryParams</code>:</p>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>matches pattern?</th>
+<th>params</th>
+<th>queryParams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/about</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/lists/</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/lists/eMtGij5AFESbTKfkT</td>
+<td>yes</td>
+<td>{ _id: &#x201C;eMtGij5AFESbTKfkT&#x201D;}</td>
+<td>{ }</td>
+</tr>
+<tr>
+<td>/lists/1</td>
+<td>yes</td>
+<td>{ _id: &#x201C;1&#x201D;}</td>
+<td>{ }</td>
+</tr>
+<tr>
+<td>/lists/1?todoSort=top</td>
+<td>yes</td>
+<td>{ _id: &#x201C;1&#x201D;}</td>
+<td>{ todoSort: &#x201C;top&#x201D; }</td>
+</tr>
+</tbody>
+</table>
+<p>Note that all of the values in <code>params</code> and <code>queryParams</code> are always strings since URLs don&#x2019;t have any way of encoding data types. For example, if you wanted a parameter to represent a number, you might need to use <code>parseInt(value, 10)</code> to convert it when you access it.</p>
+<h2 id="accessing-route-info"><a class="anchor" href="#accessing-route-info" aria-hidden="true" data-scroll="">&#x1F517;</a>Accessing Route information</h2>
+
+<p>In addition to passing in the parameters as arguments to the <code>action</code> function on the route, Flow Router makes a variety of information available via (reactive and otherwise) functions on the global singleton <code>FlowRouter</code>. As the user navigates around your app, the values of these functions will change (reactively in some cases) correspondingly.</p>
+<p>Like any other global singleton in your application (see the <a href="data-loading.html#stores">data loading</a> for info about stores), it&#x2019;s best to limit your access to <code>FlowRouter</code>. That way the parts of your app will remain modular and more independent. In the case of <code>FlowRouter</code>, it&#x2019;s best to access it solely from the top of your component hierarchy, either in the &#x201C;page&#x201D; component, or the layouts that wrap it. Read more about accessing data in the <a href="ui-ux.html#components">UI article</a>.</p>
+<h3 id="current-route"><a class="anchor" href="#current-route" aria-hidden="true" data-scroll="">&#x1F517;</a>The current route</h3>
+
+<p>It&#x2019;s useful to access information about the current route in your code. Here are some reactive functions you can call:</p>
+<ul>
+<li><code>FlowRouter.getRouteName()</code> gets the name of the route</li>
+<li><code>FlowRouter.getParam(paramName)</code> returns the value of a single URL parameter</li>
+<li><code>FlowRouter.getQueryParam(paramName)</code> returns the value of a single URL query parameter</li>
+</ul>
+<p>In our example of the list page from the Todos app, we access the current list&#x2019;s id with <code>FlowRouter.getParam(&apos;_id&apos;)</code> (we&#x2019;ll see more on this below).</p>
+<h3 id="active-route"><a class="anchor" href="#active-route" aria-hidden="true" data-scroll="">&#x1F517;</a>Highlighting the active route</h3>
+
+<p>One situation where it is sensible to access the global <code>FlowRouter</code> singleton to access the current route&#x2019;s information deeper in the component hierarchy is when rendering links via a navigation component. It&#x2019;s often required to highlight the &#x201C;active&#x201D; route in some way (this is the route or section of the site that the user is currently looking at).</p>
+<p>A convenient package for this is <a href="https://atmospherejs.com/zimme/active-route" target="_blank" rel="external"><code>zimme:active-route</code></a>:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add zimme:active-route</span><br></pre></td></tr></tbody></table></figure>
+<p>In the Todos example app, we link to each list the user knows about in the <code>App_body</code> template:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">{{#each list in lists}}</span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&quot;list-todo {{activeListClass list}}&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    {{list.name}}</span><br><span class="line">  <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">{{/each}}</span><br></pre></td></tr></tbody></table></figure>
+<p>We can determine if the user is currently viewing the list with the <code>activeListClass</code> helper:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Template.App_body.helpers({</span><br><span class="line">  activeListClass(list) {</span><br><span class="line">    <span class="keyword">const</span> active = ActiveRoute.name(<span class="string">&apos;Lists.show&apos;</span>)</span><br><span class="line">      &amp;&amp; FlowRouter.getParam(<span class="string">&apos;_id&apos;</span>) === list._id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> active &amp;&amp; <span class="string">&apos;active&apos;</span>;</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="rendering-routes"><a class="anchor" href="#rendering-routes" aria-hidden="true" data-scroll="">&#x1F517;</a>Rendering based on the route</h2>
+
+<p>Now we understand how to define routes and access information about the current route, we are in a position to do what you usually want to do when a user accesses a route&#x2014;render a user interface to the screen that represents it.</p>
+<p><em>In this section, we&#x2019;ll discuss how to render routes using Blaze as the UI engine. If you are building your app with React or Angular, you will end up with similar concepts but the code will be a bit different.</em></p>
+<p>When using Flow Router, the simplest way to display different views on the page for different URLs is to use the complementary Blaze Layout package. First, make sure you have the Blaze Layout package installed:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor add kadira:blaze-layout</span><br></pre></td></tr></tbody></table></figure>
+<p>To use this package, we need to define a &#x201C;layout&#x201D; component. In the Todos example app, that component is called <code>App_body</code>:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;App_body&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  {{&gt; Template.dynamic template=main}}</span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>(This is not the entire <code>App_body</code> component, but we highlight the most important part here).<br>Here, we are using a Blaze feature called <code>Template.dynamic</code> to render a template which is attached to the <code>main</code> property of the data context. Using Blaze Layout, we can change that <code>main</code> property when a route is accessed.</p>
+<p>We do that in the <code>action</code> function of our <code>Lists.show</code> route definition:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FlowRouter.route(<span class="string">&apos;/lists/:_id&apos;</span>, {</span><br><span class="line">  name: <span class="string">&apos;Lists.show&apos;</span>,</span><br><span class="line">  action() {</span><br><span class="line">    BlazeLayout.render(<span class="string">&apos;App_body&apos;</span>, {main: <span class="string">&apos;Lists_show_page&apos;</span>});</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>What this means is that whenever a user visits a URL of the form <code>/lists/X</code>, the <code>Lists.show</code> route will kick in, triggering the <code>BlazeLayout</code> call to set the <code>main</code> property of the <code>App_body</code> component.</p>
+<h2 id="page-templates"><a class="anchor" href="#page-templates" aria-hidden="true" data-scroll="">&#x1F517;</a>Components as pages</h2>
+
+<p>Notice that we called the component to be rendered <code>Lists_show_page</code> (rather than <code>Lists_show</code>). This indicates that this template is rendered directly by a Flow Router action and forms the &#x2018;top&#x2019; of the rendering hierarchy for this URL.</p>
+<p>The <code>Lists_show_page</code> template renders <em>without</em> arguments&#x2014;it is this template&#x2019;s responsibility to collect information from the current route, and then pass this information down into its child templates. Correspondingly the <code>Lists_show_page</code> template is very tied to the route that rendered it, and so it needs to be a smart component. See the article on <a href="guide-ui-ux-1.3.html">UI/UX</a> for more about smart and reusable components.</p>
+<p>It makes sense for a &#x201C;page&#x201D; smart component like <code>Lists_show_page</code> to:</p>
+<ol>
+<li>Collect route information,</li>
+<li>Subscribe to relevant subscriptions,</li>
+<li>Fetch the data from those subscriptions, and</li>
+<li>Pass that data into a sub-component.</li>
+</ol>
+<p>In this case, the HTML template for <code>Lists_show_page</code> will look very simple, with most of the logic in the JavaScript code:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">  {{#each listId in listIdArray}}</span><br><span class="line">    {{&gt; Lists_show (listArgs listId)}}</span><br><span class="line">  {{else}}</span><br><span class="line">    {{&gt; App_notFound}}</span><br><span class="line">  {{/each}}</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>(The <code>{{#each listId in listIdArray}}}</code> is an animation technique for <a href="ui-ux.html#animating-page-changes">page to page transitions</a>).</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.helpers({</span><br><span class="line">  <span class="comment">// We use #each on an array of one item so that the &quot;list&quot; template is</span></span><br><span class="line">  <span class="comment">// removed and a new copy is added when changing lists, which is</span></span><br><span class="line">  <span class="comment">// important for animation purposes.</span></span><br><span class="line">  listIdArray() {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">const</span> listId = instance.getListId();</span><br><span class="line">    <span class="keyword">return</span> Lists.findOne(listId) ? [listId] : [];</span><br><span class="line">  },</span><br><span class="line">  listArgs(listId) {</span><br><span class="line">    <span class="keyword">const</span> instance = Template.instance();</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      todosReady: instance.subscriptionsReady(),</span><br><span class="line">      <span class="comment">// We pass `list` (which contains the full list, with all fields, as a function</span></span><br><span class="line">      <span class="comment">// because we want to control reactivity. When you check a todo item, the</span></span><br><span class="line">      <span class="comment">// `list.incompleteCount` changes. If we didn&apos;t do this the entire list would</span></span><br><span class="line">      <span class="comment">// re-render whenever you checked an item. By isolating the reactiviy on the list</span></span><br><span class="line">      <span class="comment">// to the area that cares about it, we stop it from happening.</span></span><br><span class="line">      list() {</span><br><span class="line">        <span class="keyword">return</span> Lists.findOne(listId);</span><br><span class="line">      },</span><br><span class="line">      <span class="comment">// By finding the list with only the `_id` field set, we don&apos;t create a dependency on the</span></span><br><span class="line">      <span class="comment">// `list.incompleteCount`, and avoid re-rendering the todos when it changes</span></span><br><span class="line">      todos: Lists.findOne(listId, {fields: {_id: <span class="literal">true</span>}}).todos()</span><br><span class="line">    };</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>It&#x2019;s the <code>listShow</code> component (a reusuable component) that actually handles the job of rendering the content of the page. As the page component is passing the arguments into the reusuable component, it is able to be quite mechanical and the concerns of talking to the router and rendering the page have been separated.</p>
+<h3 id="route-rendering-logic"><a class="anchor" href="#route-rendering-logic" aria-hidden="true" data-scroll="">&#x1F517;</a>Changing page when logged out</h3>
+
+<p>There are types of rendering logic that appear related to the route but which also seem related to user interface rendering. A classic example is authorization; for instance, you may want to render a login form for some subset of your pages if the user is not yet logged in.</p>
+<p>It&#x2019;s best to keep all logic around what to render in the component hierarchy (i.e. the tree of rendered components). So this authorization should happen inside a component. Suppose we wanted to add this to the <code>Lists_show_page</code> we were looking at above. We could do something like:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">  {{#if currentUser}}</span><br><span class="line">    {{#each listId in listIdArray}}</span><br><span class="line">      {{&gt; Lists_show (listArgs listId)}}</span><br><span class="line">    {{else}}</span><br><span class="line">      {{&gt; App_notFound}}</span><br><span class="line">    {{/each}}</span><br><span class="line">  {{else}}</span><br><span class="line">    Please log in to edit posts.</span><br><span class="line">  {{/if}}</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Of course, we might find that we need to share this functionality between multiple pages of our app that require access control. We can easily share functionality between templates by wrapping them in a wrapper &#x201C;layout&#x201D; component which includes the behavior we want.</p>
+<p>You can create wrapper components by using the &#x201C;template as block helper&#x201D; ability of Blaze (see the <a href="blaze.html#block-helpers">Blaze Article</a>). Here&#x2019;s how we could write an authorization template:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;App_forceLoggedIn&quot;</span>&gt;</span></span><br><span class="line">  {{#if currentUser}}</span><br><span class="line">    {{&gt; Template.contentBlock}}</span><br><span class="line">  {{else}}</span><br><span class="line">    Please log in see this page.</span><br><span class="line">  {{/if}}</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Once that template exists, we can simply wrap our <code>Lists_show_page</code>:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">  {{#App_forceLoggedIn}}</span><br><span class="line">    {{#each listId in listIdArray}}</span><br><span class="line">      {{&gt; Lists_show (listArgs listId)}}</span><br><span class="line">    {{else}}</span><br><span class="line">      {{&gt; App_notFound}}</span><br><span class="line">    {{/each}}</span><br><span class="line">  {{/App_forceLoggedIn}}</span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>The main advantage of this approach is that it is immediately clear when viewing the <code>Lists_show_page</code> what behavior will occur when a user visits the page.</p>
+<p>Multiple behaviors of this type can be composed by wrapping a template in multiple wrappers, or creating a meta-wrapper that combines multiple wrapper templates.</p>
+<h2 id="changing-routes"><a class="anchor" href="#changing-routes" aria-hidden="true" data-scroll="">&#x1F517;</a>Changing Routes</h2>
+
+<p>Rendering an updated UI when a user reaches a new route is not that useful without giving the user some way to reach a new route! The simplest way is with the trusty <code>&lt;a&gt;</code> tag and a URL. You can generate the URLs yourself using <code>FlowRouter.pathFor</code>, but it is more convenient to use the <a href="https://github.com/arillo/meteor-flow-router-helpers/" target="_blank" rel="external"><code>arillo:flow-router-helpers</code></a> package that defines some helpers for you:</p>
+<figure class="highlight armasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">meteor</span> <span class="keyword">add </span>arillo:flow-router-helpers</span><br></pre></td></tr></tbody></table></figure>
+<p>Now that you have this package, you can use helpers in your templates to display a link to a certain route. For example, in the Todos example app, our nav links look like:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;{{pathFor &apos;Lists.show&apos; _id=list._id}}&quot;</span> <span class="attribute">title</span>=<span class="value">&quot;{{list.name}}&quot;</span></span><br><span class="line">    <span class="attribute">class</span>=<span class="value">&quot;list-todo {{activeListClass list}}&quot;</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="routing-programmatically"><a class="anchor" href="#routing-programmatically" aria-hidden="true" data-scroll="">&#x1F517;</a>Routing programmatically</h3>
+
+<p>In some cases you want to change routes based on user action outside of them clicking on a link. For instance, in the example app, when a user creates a new list, we want to route them to the list they just created. We do this by calling <code>FlowRouter.go()</code> once we know the id of the new list:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { insert } <span class="keyword">from</span> <span class="string">&apos;../../api/lists/methods.js&apos;</span>;</span><br><span class="line"></span><br><span class="line">Template.App_body.events({</span><br><span class="line">  <span class="string">&apos;click .js-new-list&apos;</span>() {</span><br><span class="line">    <span class="keyword">const</span> listId = insert.call();</span><br><span class="line">    FlowRouter.go(<span class="string">&apos;Lists.show&apos;</span>, { _id: listId });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You can also change only part of the URL if you want to, using the <code>FlowRouter.setParams()</code> and <code>FlowRouter.setQueryParams()</code>. For instance, if we were viewing one list and wanted to go to another, we could write:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlowRouter.setParams({_id: newList._id});</span><br></pre></td></tr></tbody></table></figure>
+<p>Of course, calling <code>FlowRouter.go()</code>, will always work, so unless you are trying to optimize for a specific situation it&#x2019;s better to use that.</p>
+<h3 id="storing-data-in-the-url"><a class="anchor" href="#storing-data-in-the-url" aria-hidden="true" data-scroll="">&#x1F517;</a>Storing data in the URL</h3>
+
+<p>As we discussed in the introduction, the URL is really just a serialization of some part of the client-side state the user is looking at. Although parameters can only be strings, it&#x2019;s possible to convert any type of data to a string by serializing it.</p>
+<p>In general if you want to store arbitrary serializable data in a URL param, you can use <a href="http://docs.meteor.com/#/full/ejson_stringify" target="_blank" rel="external"><code>EJSON.stringify()</code></a> to turn it into a string. You&#x2019;ll need to URL-encode the string using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="external"><code>encodeURIComponent</code></a> to remove any characters that have meaning in a URL:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlowRouter.setQueryParams({data: <span class="built_in">encodeURIComponent</span>(EJSON.stringify(data))});</span><br></pre></td></tr></tbody></table></figure>
+<p>You can then get the data back out of Flow Router using <a href="http://docs.meteor.com/#/full/ejson_parse" target="_blank" rel="external"><code>EJSON.parse()</code></a>. Note that Flow Router does the URL decoding for you automatically:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = EJSON.parse(FlowRouter.getQueryParam(<span class="string">&apos;data&apos;</span>));</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="redirecting"><a class="anchor" href="#redirecting" aria-hidden="true" data-scroll="">&#x1F517;</a>Redirecting</h2>
+
+<p>Sometimes, your users will end up on a page that isn&#x2019;t a good place for them to be. Maybe the data they were looking for has moved, maybe they were on an admin panel page and logged out, or maybe they just created a new object and you want them to end up on the page for the thing they just created.</p>
+<p>Usually, we can redirect in response to a user&#x2019;s action by calling <code>FlowRouter.go()</code> and friends, like in our list creation example above, but if a user browses directly to a URL that doesn&#x2019;t exist, it&#x2019;s useful to know how to redirect immediately.</p>
+<p>If a URL is simply out-of-date (sometimes you might change the URL scheme of an application), you can redirect inside the <code>action</code> function of the route:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FlowRouter.route(<span class="string">&apos;/old-list-route/:_id&apos;</span>, {</span><br><span class="line">  action(params) {</span><br><span class="line">    FlowRouter.go(<span class="string">&apos;Lists.show&apos;</span>, params);</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="redirecting-dynamically"><a class="anchor" href="#redirecting-dynamically" aria-hidden="true" data-scroll="">&#x1F517;</a>Redirecting dynamically</h3>
+
+<p>The above approach will only work for static redirects. However, sometimes you need to load some data to figure out where to redirect to. In this case you&#x2019;ll need to render part of the component hierarchy to subscribe to the data you need. For example, in the Todos example app, we want to make the root (<code>/</code>) route redirect to the first known list. To achieve this, we need to render a special <code>App_rootRedirector</code> route:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FlowRouter.route(<span class="string">&apos;/&apos;</span>, {</span><br><span class="line">  name: <span class="string">&apos;App.home&apos;</span>,</span><br><span class="line">  action() {</span><br><span class="line">    BlazeLayout.render(<span class="string">&apos;App_body&apos;</span>, {main: <span class="string">&apos;App_rootRedirector&apos;</span>});</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>The <code>App_rootRedirector</code> component is rendered inside the <code>App_body</code> layout, which takes care of subscribing to the set of lists the user knows about <em>before</em> rendering its sub-component, and we are guaranteed there is at least one such list. This means that if the <code>App_rootRedirector</code> ends up being created, there&#x2019;ll be a list loaded, so we can simply do:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Template.App_rootRedirector.onCreated(() =&gt; {</span><br><span class="line">  <span class="comment">// We need to set a timeout here so that we don&apos;t redirect from inside a redirection</span></span><br><span class="line">  <span class="comment">//   which is a limitation of the current version of FR.</span></span><br><span class="line">  Meteor.setTimeout(() =&gt; {</span><br><span class="line">    FlowRouter.go(<span class="string">&apos;Lists.show&apos;</span>, Lists.findOne());</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>If you need to wait on specific data that you aren&#x2019;t already subscribed to at creation time, you can use an <code>autorun</code> and <code>subscriptionsReady()</code> to wait on that subscription:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Template.App_rootRedirector.onCreated(() =&gt; {</span><br><span class="line">  <span class="comment">// If we needed to open this subscription here</span></span><br><span class="line">  <span class="keyword">this</span>.subscribe(<span class="string">&apos;lists.public&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Now we need to wait for the above subscription. We&apos;ll need the template to</span></span><br><span class="line">  <span class="comment">// render some kind of loading state while we wait, too.</span></span><br><span class="line">  <span class="keyword">this</span>.autorun(() =&gt; {</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.subscriptionsReady()) {</span><br><span class="line">      FlowRouter.go(<span class="string">&apos;Lists.show&apos;</span>, Lists.findOne());</span><br><span class="line">    }</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="redirecting-after-user-action"><a class="anchor" href="#redirecting-after-user-action" aria-hidden="true" data-scroll="">&#x1F517;</a>Redirecting after a user&#x2019;s action</h3>
+
+<p>Often, you just want to go to a new route programmatically when a user has completed a certain action. Above we saw a case (creating a new list) when we wanted to do it <em>optimistically</em>&#x2014;i.e. before we hear back from the server that the Method succeeded. We can do this because we reasonably expect that the Method will succeed in almost all cases (see the <a href="ui-ux.html#optimistic-ui">UI/UX article</a> for further discussion of this).</p>
+<p>However, if we wanted to wait for the method to return from the server, we can put the redirection in the callback of the method:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Template.App_body.events({</span><br><span class="line">  <span class="string">&apos;click .js-new-list&apos;</span>() {</span><br><span class="line">    lists.insert.call((err, listId) =&gt; {</span><br><span class="line">      <span class="keyword">if</span> (!err) {</span><br><span class="line">        FlowRouter.go(<span class="string">&apos;Lists.show&apos;</span>, { _id: listId });  </span><br><span class="line">      }</span><br><span class="line">    });</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>You will also want to show some kind of indication that the method is working in between their click of the button and the redirect completing.  Don&#x2019;t forget to provide feedback if the method is returning an error.</p>
+<h2 id="advanced"><a class="anchor" href="#advanced" aria-hidden="true" data-scroll="">&#x1F517;</a>Advanced Routing</h2>
+
+<h3 id="404s"><a class="anchor" href="#404s" aria-hidden="true" data-scroll="">&#x1F517;</a>Missing pages</h3>
+
+<p>If a user types an incorrect URL, chances are you want to show them some kind of amusing not found page. There are actually two categories of &#x201C;not found&#x201D; pages. The first is when the URL typed in doesn&#x2019;t match any of your route definitions. You can use <code>FlowRouter.notFound</code> to handle this:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the App_notFound template is used for unknown routes and missing lists</span></span><br><span class="line">FlowRouter.notFound = {</span><br><span class="line">  action() {</span><br><span class="line">    BlazeLayout.render(<span class="string">&apos;App_body&apos;</span>, {main: <span class="string">&apos;App_notFound&apos;</span>});</span><br><span class="line">  }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>The second is when the URL is valid, but doesn&#x2019;t actually match any data. In this case, the URL matches a route, but once the route has successfully subscribed, it discovers there is no data. It usually makes sense in this case for the page component (which subscribes and fetches the data) to render a not found template instead of the usual template for the page:</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">&quot;Lists_show_page&quot;</span>&gt;</span></span><br><span class="line">    {{#each listId in listIdArray}}</span><br><span class="line">    {{&gt; Lists_show (listArgs listId)}}</span><br><span class="line">  {{else}}</span><br><span class="line">    {{&gt; App_notFound}}</span><br><span class="line">  {{/each}}</span><br><span class="line"><span class="tag">&lt;<span class="title">template</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="analytics"><a class="anchor" href="#analytics" aria-hidden="true" data-scroll="">&#x1F517;</a>Analytics</h3>
+
+<p>It&#x2019;s common to want to know which pages of your app are most commonly visited, and where users are coming from. You can read about how to set up Flow Router based analytics in the <a href="deployment.html#analytics">Deployment Guide</a>.</p>
+<h3 id="server-side"><a class="anchor" href="#server-side" aria-hidden="true" data-scroll="">&#x1F517;</a>Server Side Routing</h3>
+
+<p>As we&#x2019;ve discussed, Meteor is a framework for client rendered applications, but this doesn&#x2019;t always remove the requirement for server rendered routes. There are two main use cases for server-side routing.</p>
+<h4 id="server-side-apis">Server Routing for API access</h4>
+
+<p>Although Meteor allows you to <a href="http://docs.meteor.com/#/full/webapp" target="_blank" rel="external">write low-level connect handlers</a> to create any kind of API you like on the server-side, if you all you want to do is create a RESTful version of your Methods and Publications, you can often use the <a href="http://atmospherejs.com/simple/rest" target="_blank" rel="external"><code>simple:rest</code></a> package to do this easily. See the <a href="data-loading.html#publications-as-rest">Data Loading</a> and <a href="guide-methods-1.3.html">Methods</a> articles for more information.</p>
+<p>If you need more control, you can use the comprehensive <a href="https://atmospherejs.com/nimble/restivus" target="_blank" rel="external"><code>nimble:restivus</code></a> package to create more or less whatever you need in whatever ontology you require.</p>
+<h4 id="server-side-rendering">Server Rendering</h4>
+
+<p>The Blaze UI library does not have support for server-side rendering, so it&#x2019;s not possible to render your pages on the server if you use Blaze. However, the React UI library does. This means it is possible to render HTML on the server if you use React as your rendering framework.</p>
+<p>Although Flow Router can be used to render React components more or less as we&#x2019;ve described above for Blaze, at the time of this writing Flow Router&#x2019;s support for SSR is <a href="https://kadira.io/blog/meteor/meteor-ssr-support-using-flow-router-and-react" target="_blank" rel="external">still experimental</a>. However, it&#x2019;s probably the best approach right now if you want to use SSR for Meteor.</p>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-testing-1.3.html">Testing</a></span>
+      
+      
+        <span style="float:right"><a href="guide-ui-ux-1.3.html">User Interfaces</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/routing.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=19663" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="30px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

@@ -1,0 +1,571 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to define, use, and maintain MongoDB collections in Meteor.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Collections and Schemas | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Collections and Schemas
+            </a>
+          <ul class="sub-menu"><li><a href="#mongo-collections" data-scroll="" class="H2">MongoDB collections in Meteor</a><ul class="sub-menu"><li><a href="#server-collections" data-scroll="" class="H3">Server-side collections</a></li><li><a href="#client-collections" data-scroll="" class="H3">Client-side collections</a></li><li><a href="#local-collections" data-scroll="" class="H3">Local collections</a></li></ul></li><li><a href="#schemas" data-scroll="" class="H2">Defining a schema</a><ul class="sub-menu"><li><a href="#validating-schemas" data-scroll="" class="H3">Validating against a schema</a></li><li><a href="#validation-error" data-scroll="" class="H3">The ValidationError</a></li></ul></li><li><a href="#schema-design" data-scroll="" class="H2">Designing your data schema</a><ul class="sub-menu"><li><a href="#denormalization" data-scroll="" class="H3">Denormalization and multiple collections</a></li><li><a href="#designing-for-future" data-scroll="" class="H3">Designing for the future</a></li><li><a href="#schemas-on-write" data-scroll="" class="H3">Using schemas on write</a></li><li><a href="#default-value" data-scroll="" class="H3">defaultValue and data cleaning</a></li><li><a href="#hooks" data-scroll="" class="H3">Hooks on insert/update/remove</a></li><li><a href="#abstracting-denormalizers" data-scroll="" class="H3">Abstracting denormalizers</a></li></ul></li><li><a href="#migrations" data-scroll="" class="H2">Migrating to a new schema</a><ul class="sub-menu"><li><a href="#writing-migrations" data-scroll="" class="H3">Writing migrations</a></li><li><a href="#bulk-data-changes" data-scroll="" class="H3">Bulk changes</a></li><li><a href="#running-migrations" data-scroll="" class="H3">Running migrations</a></li><li><a href="#breaking-changes" data-scroll="" class="H3">Breaking schema changes</a></li><li><a href="#migration-caveats" data-scroll="" class="H3">Caveats</a></li></ul></li><li><a href="#associations" data-scroll="" class="H2">Associations between collections</a><ul class="sub-menu"><li><a href="#collection-helpers" data-scroll="" class="H3">Collection helpers</a></li><li><a href="#association-helpers" data-scroll="" class="H3">Association helpers</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Collections and Schemas</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/collections.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/19660">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this guide, you&#x2019;ll know:</p>
+<ol>
+<li>The different types of MongoDB collections in Meteor, and how to use them.</li>
+<li>How to define a schema for a collection to control its content.</li>
+<li>What to consider when defining your collection&#x2019;s schema.</li>
+<li>How to enforce the schema when writing to a collection.</li>
+<li>How to carefully change the schema of your collection.</li>
+<li>How to deal with associations between records.</li>
+</ol>
+<h2 id="mongo-collections"><a class="anchor" href="#mongo-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>MongoDB collections in Meteor</h2>
+
+<p>At its core, a web application offers its users a view into, and a way to modify, a persistent set of data. Whether managing a list of todos, or ordering a car to pick you up, you are interacting with a permanent but constantly changing data layer.</p>
+<p>In Meteor, that data layer is typically stored in MongoDB. A set of related data in MongoDB is referred to as a &#x201C;collection&#x201D;. In Meteor you access MongoDB through <a href="http://docs.meteor.com/#/full/mongo_collection" target="_blank" rel="external">collections</a>, making them the primary persistence mechanism for your app data.</p>
+<p>However, collections are a lot more than a way to save and retrieve data. They also provide the core of the interactive, connected user experience that users expect from the best applications. Meteor makes this user experience easy to implement.</p>
+<p>In this article, we&#x2019;ll look closely at how collections work in various places in the framework, and how to get the most out of them.</p>
+<h3 id="server-collections"><a class="anchor" href="#server-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Server-side collections</h3>
+
+<p>When you create a collection on the server:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Todos&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>You are creating a collection within MongoDB, and an interface to that collection to be used on the server. It&#x2019;s a fairly straightforward layer on top of the underlying Node MongoDB driver, but with a synchronous API:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line won&apos;t complete until the insert is done</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this line will return something</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// Look ma, no callbacks!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="client-collections"><a class="anchor" href="#client-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Client-side collections</h3>
+
+<p>On the client, when you write the same line:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">&apos;Todos&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>It does something totally different!</p>
+<p>On the client, there is no direct connection to the MongoDB database, and in fact a synchronous API to it is not possible (nor probably what you want). Instead, on the client, a collection is a client side <em>cache</em> of the database. This is achieved thanks to the <a href="https://www.meteor.com/mini-databases" target="_blank" rel="external">Minimongo</a> library&#x2014;an in-memory, all JS, implementation of the MongoDB API. What this means is that on the client, when you write:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This line is changing an in-memory Minimongo data structure</span></span><br><span class="line">Todos.insert({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// And this line is querying it</span></span><br><span class="line"><span class="keyword">const</span> todo = Todos.findOne({_id: <span class="string">&apos;my-todo&apos;</span>});</span><br><span class="line"><span class="comment">// So this happens right away!</span></span><br><span class="line"><span class="built_in">console</span>.log(todo);</span><br></pre></td></tr></tbody></table></figure>
+<p>The way that you move data from the server (and MongoDB-backed) collection into the client (in-memory) collection is the subject of the <a href="guide-data-loading-1.3.html">data loading article</a>. Generally speaking, you <em>subscribe</em> to a <em>publication</em>, which pushes data from the server to the client. Usually, you can assume that the client contains an up-to-date copy of some subset of the full MongoDB collection.</p>
+<p>To write data back to the server, you use a <em>Method</em>, the subject of the <a href="guide-methods-1.3.html">methods article</a>.</p>
+<h3 id="local-collections"><a class="anchor" href="#local-collections" aria-hidden="true" data-scroll="">&#x1F517;</a>Local collections</h3>
+
+<p>There is a third way to use a collection in Meteor. On the client or server, if you create a collection but pass <code>null</code> instead of a name:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SelectedTodos = <span class="keyword">new</span> Mongo.Collection(<span class="literal">null</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>This creates a <em>local collection</em>. This is a Minimongo collection that has no database connection (ordinarily a named collection would either be directly connected to the database on the server, or via a subscription on the client).</p>
+<p>A local collection is a convenient way to use the full power of the Minimongo library for in-memory storage. For instance, you might use it instead of a simple array if you need to execute complex queries over your data. Or you may want to take advantage of its <em>reactivity</em> on the client to drive some UI in a way that feels natural in Meteor.</p>
+<h2 id="schemas"><a class="anchor" href="#schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a schema</h2>
+
+<p>Although MongoDB is a schema-less database, which allows maximum flexibility in data structuring, it is generally good practice to use a schema to constrain the contents of your collection to conform to a known format. If you don&#x2019;t, then you tend to end up needing to write defensive code to check and confirm the structure of your data as it <em>comes out</em> of the database, instead of when it <em>goes into</em> the database. As in most things, you tend to <em>read data more often than you write it</em>, and so it&#x2019;s usually easier, and less buggy to use a schema when writing.</p>
+<p>In Meteor, the pre-eminent schema package is <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">aldeed:simple-schema</a>. It&#x2019;s an expressive, MongoDB based schema that&#x2019;s used to insert and update documents.</p>
+<p>To write a schema using <code>simple-schema</code>, you can simply create a new instance of the <code>SimpleSchema</code> class:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Lists.schema = <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">  name: {type: <span class="built_in">String</span>},</span><br><span class="line">  incompleteCount: {type: <span class="built_in">Number</span>, defaultValue: <span class="number">0</span>},</span><br><span class="line">  userId: {type: <span class="built_in">String</span>, regEx: SimpleSchema.RegEx.Id, optional: <span class="literal">true</span>}</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>This example from the Todos app defines a schema with a few simple rules:</p>
+<ol>
+<li>We specify that the <code>name</code> field of a list is required and must be a string.</li>
+<li>We specify the <code>incompleteCount</code> is a number, which on insertion is set to <code>0</code> if not otherwise specified.</li>
+<li>We specify that the <code>userId</code>, which is optional, must be a string that looks like the ID of a user document.</li>
+</ol>
+<p>We attach the schema to the namespace of <code>Lists</code> directly, which allows us to check objects against this schema directly whenever we want, such as in a form or <a href="guide-methods-1.3.html">Method</a>. In the <a href="#schemas-on-write">next section</a> we&#x2019;ll see how to use this schema automatically when writing to the collection.</p>
+<p>You can see that with relatively little code we&#x2019;ve managed to restrict the format of a list significantly. You can read more about more complex things that can be done with schemas in the <a href="http://atmospherejs.com/aldeed/simple-schema" target="_blank" rel="external">Simple Schema docs</a>.</p>
+<h3 id="validating-schemas"><a class="anchor" href="#validating-schemas" aria-hidden="true" data-scroll="">&#x1F517;</a>Validating against a schema</h3>
+
+<p>Now we have a schema, how do we use it?</p>
+<p>It&#x2019;s pretty straightforward to validate a document with a schema. We can write:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = {</span><br><span class="line">  name: <span class="string">&apos;My list&apos;</span>,</span><br><span class="line">  incompleteCount: <span class="number">3</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">Lists.schema.validate(list);</span><br></pre></td></tr></tbody></table></figure>
+<p>In this case, as the list is valid according to the schema, the <code>validate()</code> line will run without problems. If however, we wrote:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = {</span><br><span class="line">  name: <span class="string">&apos;My list&apos;</span>,</span><br><span class="line">  incompleteCount: <span class="number">3</span>,</span><br><span class="line">  madeUpField: <span class="string">&apos;this should not be here&apos;</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">Lists.schema.validate(list);</span><br></pre></td></tr></tbody></table></figure>
+<p>Then the <code>validate()</code> call will throw a <code>ValidationError</code> which contains details about what is wrong with the <code>list</code> document.</p>
+<h3 id="validation-error"><a class="anchor" href="#validation-error" aria-hidden="true" data-scroll="">&#x1F517;</a>The <code>ValidationError</code></h3>
+
+<p>What is a <a href="https://github.com/meteor/validation-error/" target="_blank" rel="external"><code>ValidationError</code></a>? It&#x2019;s a special error that is used in Meteor to indicate a user-input based error in modifying a collection. Typically, the details on a <code>ValidationError</code> are used to mark up a form with information about what inputs don&#x2019;t match the schema. In the <a href="methods.html#validation-error">methods article</a>, we&#x2019;ll see more about how this works.</p>
+<h2 id="schema-design"><a class="anchor" href="#schema-design" aria-hidden="true" data-scroll="">&#x1F517;</a>Designing your data schema</h2>
+
+<p>Now that you are familiar with the basic API of Simple Schema, it&#x2019;s worth considering a few of the constraints of the Meteor data system that can influence the design of your data schema. Although generally speaking you can build a Meteor data schema much like any MongoDB data schema, there are some important details to keep in mind.</p>
+<p>The most important consideration is related to the way DDP, Meteor&#x2019;s data loading protocol, communicates documents over the wire. The key thing to realize is that DDP sends changes to documents at the level of top-level document <em>fields</em>. What this means is that if you have large and complex subfields on document that change often, DDP can send unnecessary changes over the wire.</p>
+<p>For instance, in &#x201C;pure&#x201D; MongoDB you might design the schema so that each list document had a field called <code>todos</code> which was an array of todo items:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Lists.schema = <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">  name: {type: <span class="built_in">String</span>},</span><br><span class="line">  todos: {type: [<span class="built_in">Object</span>]}</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>The issue with this schema is that due to the DDP behavior just mentioned, each change to <em>any</em> todo item in a list will require sending the <em>entire</em> set of todos for that list over the network. This is because DDP has no concept of &#x201C;change the <code>text</code> field of the 3rd item in the field called <code>todos</code>&#x201C;, simply &#x201C;change the field called <code>todos</code> to a totally new array&#x201D;.</p>
+<h3 id="denormalization"><a class="anchor" href="#denormalization" aria-hidden="true" data-scroll="">&#x1F517;</a>Denormalization and multiple collections</h3>
+
+<p>The implication of the above is that we need to create more collections to contain sub-documents. In the case of the Todos application, we need both a <code>Lists</code> collection and a <code>Todos</code> collection to contain each list&#x2019;s todo items. Consequently we need to do some things that you&#x2019;d typically associate with a SQL database, like using foreign keys (<code>todo.listId</code>) to associate one document with another.</p>
+<p>In Meteor, it&#x2019;s often less of a problem doing this than it would be in a typical MongoDB application, as it&#x2019;s easy to publish overlapping sets of documents (we might need one set of users to render one screen of our app, and an intersecting set for another), which may stay on the client as we move around the application. So in that scenario there is an advantage to separating the subdocuments from the parent.</p>
+<p>However, given that MongoDB prior to version 3.2 doesn&#x2019;t support queries over multiple collections (&#x201C;joins&#x201D;), we typically end up having to denormalize some data back onto the parent collection. Denormalization is the practice of storing the same piece of information in the database multiple times (as opposed to a non-redundant &#x201C;normal&#x201D; form). MongoDB is a database where denormalizing is encouraged, and thus optimized for this practice.</p>
+<p>In the case of the Todos application, as we want to display the number of unfinished todos next to each list, we need to denormalize <code>list.incompleteTodoCount</code>. This is an inconvenience but typically reasonably easy to do as we&#x2019;ll see in the section on <a href="#abstracting-denormalizers">abstracting denormalizers</a> below.</p>
+<p>Another denormalization that this architecture sometimes requires can be from the parent document onto sub-documents. For instance, in Todos, as we enforce privacy of the todo lists via the <code>list.userId</code> attribute, but we publish the todos separately, it might make sense to denormalize <code>todo.userId</code> also. To do this, we&#x2019;d need to be careful to take the <code>userId</code> from the list when creating the todo, and updating all relevant todos whenever a list&#x2019;s <code>userId</code> changed.</p>
+<h3 id="designing-for-future"><a class="anchor" href="#designing-for-future" aria-hidden="true" data-scroll="">&#x1F517;</a>Designing for the future</h3>
+
+<p>An application, especially a web application, is rarely finished, and it&#x2019;s useful to consider potential future changes when designing your data schema. As in most things, it&#x2019;s rarely a good idea to add fields before you actually need them (often what you anticipate doesn&#x2019;t actually end up happening, after all).</p>
+<p>However, it&#x2019;s a good idea to think ahead to how the schema may change over time. For instance, you may have a list of strings on a document (perhaps a set of tags). Although it&#x2019;s tempting to leave them as a subfield on the document (assuming they don&#x2019;t change much), if there&#x2019;s a good chance that they&#x2019;ll end up becoming more complicated in the future (perhaps tags will have a creator, or subtags later on?), then it might be easier in the long run to make a separate collection from the beginning.</p>
+<p>The amount of foresight you bake into your schema design will depend on your app&#x2019;s individual constraints, and will need to be a judgement call on your part.</p>
+<h3 id="schemas-on-write"><a class="anchor" href="#schemas-on-write" aria-hidden="true" data-scroll="">&#x1F517;</a>Using schemas on write</h3>
+
+<p>Although there are a variety of ways that you can run data through a Simple Schema before sending it to your collection (for instance you could check a schema in every method call), the simplest and most reliable is to use the <a href="https://atmospherejs.com/aldeed/collection2" target="_blank" rel="external"><code>aldeed:collection2</code></a> package to run every mutator (<code>insert/update/upsert</code> call) through the schema.</p>
+<p>To do so, we use <code>attachSchema()</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lists.attachSchema(Lists.schema);</span><br></pre></td></tr></tbody></table></figure>
+<p>What this means is that now every time we call <code>Lists.insert()</code>, <code>Lists.update()</code>, <code>Lists.upsert()</code>, first our document or modifier will be automatically checked against the schema (in subtly different ways depending on the exact mutator).</p>
+<h3 id="default-value"><a class="anchor" href="#default-value" aria-hidden="true" data-scroll="">&#x1F517;</a><code>defaultValue</code> and data cleaning</h3>
+
+<p>One thing that Collection2 does is <a href="https://github.com/aldeed/meteor-simple-schema#cleaning-data" target="_blank" rel="external">&#x201C;clean&#x201D; the data</a> before sending it to the database. This includes but is not limited to:</p>
+<ol>
+<li>Coercing types - converting strings to numbers</li>
+<li>Removing attributes not in the schema</li>
+<li>Assigning default values based on the <code>defaultValue</code> in the schema definition</li>
+</ol>
+<p>However, sometimes it&#x2019;s useful to do more complex initialization to documents before inserting them into collections. For instance, in the Todos app, we want to set the name of new lists to be <code>List X</code> where <code>X</code> is the next available unique letter.</p>
+<p>To do so, we can subclass <code>Mongo.Collection</code> and write our own <code>insert()</code> method:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListsCollection</span> <span class="keyword">extends</span> <span class="title">Mongo</span>.<span class="title">Collection</span> </span>{</span><br><span class="line">  insert(list, callback) {</span><br><span class="line">    <span class="keyword">if</span> (!list.name) {</span><br><span class="line">      <span class="keyword">let</span> nextLetter = <span class="string">&apos;A&apos;</span>;</span><br><span class="line">      list.name = <span class="string">`List <span class="subst">${nextLetter}</span>`</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> (!!<span class="keyword">this</span>.findOne({name: list.name})) {</span><br><span class="line">        <span class="comment">// not going to be too smart here, can go past Z</span></span><br><span class="line">        nextLetter = <span class="built_in">String</span>.fromCharCode(nextLetter.charCodeAt(<span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        list.name = <span class="string">`List <span class="subst">${nextLetter}</span>`</span>;</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Call the original `insert` method, which will validate</span></span><br><span class="line">    <span class="comment">// against the schema</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.insert(list, callback);</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Lists = <span class="keyword">new</span> ListsCollection(<span class="string">&apos;Lists&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="hooks"><a class="anchor" href="#hooks" aria-hidden="true" data-scroll="">&#x1F517;</a>Hooks on insert/update/remove</h3>
+
+<p>The technique above can also be used to provide a location to &#x201C;hook&#x201D; extra functionality into the collection. For instance, when removing a list, we <em>always</em> want to remove all of its todos at the same time.</p>
+<p>We can use a subclass for this case as well, overriding the <code>remove()</code> method:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListsCollection</span> <span class="keyword">extends</span> <span class="title">Mongo</span>.<span class="title">Collection</span> </span>{</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  remove(selector, callback) {</span><br><span class="line">    Package.todos.Todos.remove({listId: selector});</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.remove(selector, callback);</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>This technique has a few disadvantages:</p>
+<ol>
+<li>Mutators can get very long when you want to hook in multiple times.</li>
+<li>Sometimes a single piece of functionality can be spread over multiple mutators.</li>
+<li>It can be a challenge to write a hook in a completely general way (that covers every possible selector and modifier), and it may not be necessary for your application (because perhaps you only ever call that mutator in one way).</li>
+</ol>
+<p>A way to deal with points 1. and 2. is to separate out the set of hooks into their own module, and simply use the mutator as a point to call out to that module in a sensible way. We&#x2019;ll see an example of that <a href="#abstracting-denormalizers">below</a>.</p>
+<p>Point 3. can usually be resolved by placing the hook in the <em>Method</em> that calls the mutator, rather than the hook itself. Although this is an imperfect compromise (as we need to be careful if we ever add another Method that calls that mutator in the future), it is better than writing a bunch of code that is never actually called (which is guaranteed to not work!), or giving the impression that your hook is more general that it actually is.</p>
+<h3 id="abstracting-denormalizers"><a class="anchor" href="#abstracting-denormalizers" aria-hidden="true" data-scroll="">&#x1F517;</a>Abstracting denormalizers</h3>
+
+<p>Denormalization may need to happen on various mutators of several collections. Therefore, it&#x2019;s sensible to define the denormalization logic in one place, and hook it into each mutator with one line of code. The advantage of this approach is that the denormalization logic is one place rather than spread over many files, but you can still examine the code for each collection and fully understand what happens on each update.</p>
+<p>In the Todos example app, we build a <code>incompleteCountDenormalizer</code> to abstract the counting of incomplete todos on the lists. This code needs to run whenever a todo item is inserted, updated (checked or unchecked), or removed. The code looks like:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> incompleteCountDenormalizer = {</span><br><span class="line">  _updateList(listId) {</span><br><span class="line">    <span class="comment">// Recalculate the correct incomplete count direct from MongoDB</span></span><br><span class="line">    <span class="keyword">const</span> incompleteCount = Todos.find({</span><br><span class="line">      listId,</span><br><span class="line">      checked: <span class="literal">false</span></span><br><span class="line">    }).count();</span><br><span class="line"></span><br><span class="line">    Lists.update(listId, {$set: {incompleteCount}});</span><br><span class="line">  },</span><br><span class="line">  afterInsertTodo(todo) {</span><br><span class="line">    <span class="keyword">this</span>._updateList(todo.listId);</span><br><span class="line">  },</span><br><span class="line">  afterUpdateTodo(selector, modifier) {</span><br><span class="line">    <span class="comment">// We only support very limited operations on todos</span></span><br><span class="line">    check(modifier, {$set: <span class="built_in">Object</span>});</span><br><span class="line"></span><br><span class="line">    <span class="comment">// We can only deal with $set modifiers, but that&apos;s all we do in this app</span></span><br><span class="line">    <span class="keyword">if</span> (_.has(modifier.$set, <span class="string">&apos;checked&apos;</span>)) {</span><br><span class="line">      Todos.find(selector, {fields: {listId: <span class="number">1</span>}}).forEach(todo =&gt; {</span><br><span class="line">        <span class="keyword">this</span>._updateList(todo.listId);</span><br><span class="line">      });</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  <span class="comment">// Here we need to take the list of todos being removed, selected *before* the update</span></span><br><span class="line">  <span class="comment">// because otherwise we can&apos;t figure out the relevant list id(s) (if the todo has been deleted)</span></span><br><span class="line">  afterRemoveTodos(todos) {</span><br><span class="line">    todos.forEach(todo =&gt; <span class="keyword">this</span>._updateList(todo.listId));</span><br><span class="line">  }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>We are then able to wire in the denormalizer into the mutations of the <code>Todos</code> collection like so:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodosCollection</span> <span class="keyword">extends</span> <span class="title">Mongo</span>.<span class="title">Collection</span> </span>{</span><br><span class="line">  insert(doc, callback) {</span><br><span class="line">    doc.createdAt = doc.createdAt || <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">super</span>(doc, callback);</span><br><span class="line">    incompleteCountDenormalizer.afterInsertTodo(doc);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Note that we only handled the mutators we actually use in the application&#x2014;we don&#x2019;t deal with all possible ways the todo count on a list could change. For example, if you changed the <code>listId</code> on a todo item, it would need to change the <code>incompleteCount</code> of <em>two</em> lists. However, since our application doesn&#x2019;t do this, we don&#x2019;t handle it in the denormalizer.</p>
+<p>Dealing with every possible MongoDB operator is difficult to get right, as MongoDB has a rich modifier language. Instead we focus on just dealing with the modifiers we know we&#x2019;ll see in our app. If this gets too tricky, then moving the hooks for the logic into the Methods that actually make the relevant modifications could be sensible (although you need to be diligent to ensure you do it in <em>all</em> the relevant places, both now and as the app changes in the future).</p>
+<p>It could make sense for packages to exist to completely abstract some common denormalization techniques and actually attempt to deal with all possible modifications. If you write such a package, please let us know!</p>
+<h2 id="migrations"><a class="anchor" href="#migrations" aria-hidden="true" data-scroll="">&#x1F517;</a>Migrating to a new schema</h2>
+
+<p>As we discussed above, trying to predict all future requirements of your data schema ahead of time is impossible. Inevitably, as a project matures, there will come a time when you need to change the schema of the database. You need to be careful about how you make the migration to the new schema to make sure your app works smoothly during and after the migration.</p>
+<h3 id="writing-migrations"><a class="anchor" href="#writing-migrations" aria-hidden="true" data-scroll="">&#x1F517;</a>Writing migrations</h3>
+
+<p>A useful package for writing migrations is <a href="https://atmospherejs.com/percolate/migrations" target="_blank" rel="external"><code>percolate:migrations</code></a>, which provides a nice framework for switching between different versions of your schema.</p>
+<p>Suppose, as an example, that we wanted to add a <code>list.todoCount</code> field, and ensure that it was set for all existing lists. Then we might write the following in server-only code (e.g. <code>/server/migrations.js</code>):</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Migrations.add({</span><br><span class="line">  version: <span class="number">1</span>,</span><br><span class="line">  up() {</span><br><span class="line">    Lists.find({todoCount: {$exists: <span class="literal">false</span>}}).forEach(list =&gt; {</span><br><span class="line">      <span class="keyword">const</span> todoCount = Todos.find({listId: list._id})).count();</span><br><span class="line">      Lists.update(list._id, {$set: {todoCount}});</span><br><span class="line">    });</span><br><span class="line">  },</span><br><span class="line">  down() {</span><br><span class="line">    Lists.update({}, {$unset: {todoCount: <span class="literal">true</span>}});</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>This migration, which is sequenced to be the first migration to run over the database, will, when called, bring each list up to date with the current todo count.</p>
+<p>To find out more about the API of the Migrations package, refer to <a href="https://atmospherejs.com/percolate/migrations" target="_blank" rel="external">its documentation</a>.</p>
+<h3 id="bulk-data-changes"><a class="anchor" href="#bulk-data-changes" aria-hidden="true" data-scroll="">&#x1F517;</a>Bulk changes</h3>
+
+<p>If your migration needs to change a lot of data, and especially if you need to stop your app server while it&#x2019;s running, it may be a good idea to use a <a href="https://docs.mongodb.org/v3.0/core/bulk-write-operations/" target="_blank" rel="external">MongoDB Bulk Operation</a>.</p>
+<p>The advantage of a bulk operation is that it only requires a single round trip to MongoDB for the write, which usually means it is a <em>lot</em> faster. The downside is that if your migration is complex (which it usually is if you can&#x2019;t just do an <code>.update(.., .., {multi: true})</code>), it can take a significant amount of time to prepare the bulk update.</p>
+<p>What this means is if users are accessing the site whilst the update is being prepared, it will likely go out of date! Also, a bulk update will lock the entire collection while it is being applied, which can cause a significant blip in your user experience if it takes a while. For these reason, you often need to stop your server and let your users know you are performing maintenance while the update is happening.</p>
+<p>We could write our above migration like so (note that you must be on MongoDB 2.6 or later for the bulk update operations to exist). We can access the native MongoDB API via <a href="http://docs.meteor.com/#/full/Mongo-Collection-rawCollection" target="_blank" rel="external"><code>Collection#rawCollection()</code></a>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Migrations.add({</span><br><span class="line">  version: <span class="number">1</span>,</span><br><span class="line">  up() {</span><br><span class="line">    <span class="comment">// This is how to get access to the raw MongoDB node collection that the Meteor server collection wraps</span></span><br><span class="line">    <span class="keyword">const</span> batch = Lists.rawCollection().initializeUnorderedBulkOp();</span><br><span class="line">    Lists.find({todoCount: {$exists: <span class="literal">false</span>}}).forEach(list =&gt; {</span><br><span class="line">      <span class="keyword">const</span> todoCount = Todos.find({listId: list._id}).count();</span><br><span class="line">      <span class="comment">// We have to use pure MongoDB syntax here, thus the `{_id: X}`</span></span><br><span class="line">      batch.find({_id: list._id}).updateOne({$set: {todoCount}});</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    <span class="comment">// We need to wrap the async function to get a synchronous API that migrations expects</span></span><br><span class="line">    <span class="keyword">const</span> execute = Meteor.wrapAsync(batch.execute, batch);</span><br><span class="line">    <span class="keyword">return</span> execute();</span><br><span class="line">  },</span><br><span class="line">  down() {</span><br><span class="line">    Lists.update({}, {$unset: {todoCount: <span class="literal">true</span>}});</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Note that we could make this migration faster by using an <a href="https://docs.mongodb.org/v2.6/aggregation/" target="_blank" rel="external">Aggregation</a> to gather the initial set of todo counts.</p>
+<h3 id="running-migrations"><a class="anchor" href="#running-migrations" aria-hidden="true" data-scroll="">&#x1F517;</a>Running migrations</h3>
+
+<p>To run a migration against your development database, it&#x2019;s easiest to use the Meteor shell:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// After running `meteor shell` on the command line:</span></span><br><span class="line">Migrations.migrateTo(<span class="string">&apos;latest&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>If the migration logs anything to the console, you&#x2019;ll see it in the terminal window that is running the Meteor server.</p>
+<p>To run a migration against your production database, run your app locally in production mode (with production settings and environment variables, including database settings), and use the Meteor shell in the same way. What this does is run the <code>up()</code> function of all outstanding migrations, against your production database. In our case, it should ensure all lists have a <code>todoCount</code> field set.</p>
+<p>A good way to do the above is to spin up a virtual machine close to your database that has Meteor installed and SSH access (a special EC2 instance that you start and stop for the purpose is a reasonable option), and running the command after shelling into it. That way any latencies between your machine and the database will be eliminated, but you still can be very careful about how the migration is run.</p>
+<p><strong>Note that you should always take a database backup before running any migration!</strong></p>
+<h3 id="breaking-changes"><a class="anchor" href="#breaking-changes" aria-hidden="true" data-scroll="">&#x1F517;</a>Breaking schema changes</h3>
+
+<p>Sometimes when we change the schema of an application, we do so in a breaking way &#x2013; so that the old schema doesn&#x2019;t work properly with the new code base. For instance, if we had some UI code that heavily relied on all lists having a <code>todoCount</code> set, there would be a period, before the migration runs, in which the UI of our app would be broken after we deployed.</p>
+<p>The simple way to work around the problem is to take the application down for the period in between deployment and completing the migration. This is far from ideal, especially considering some migrations can take hours to run (although using <a href="#bulk-data-changes">Bulk Updates</a> probably helps a lot here).</p>
+<p>A better approach is a multi-stage deployment. The basic idea is that:</p>
+<ol>
+<li>Deploy a version of your application that can handle both the old and the new schema. In our case, it&#x2019;d be code that doesn&#x2019;t expect the <code>todoCount</code> to be there, but which correctly updates it when new todos are created.</li>
+<li>Run the migration. At this point you should be confident that all lists have a <code>todoCount</code>.</li>
+<li>Deploy the new code that relies on the new schema and no longer knows how to deal with the old schema. Now we are safe to rely on <code>list.todoCount</code> in our UI.</li>
+</ol>
+<p>Another thing to be aware of, especially with such multi-stage deploys, is that being prepared to rollback is important! For this reason, the migrations package allows you to specify a <code>down()</code> function and call <code>Migrations.migrateTo(x)</code> to migrate <em>back</em> to version <code>x</code>.</p>
+<p>So if we wanted to reverse our migration above, we&#x2019;d run<br></p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The &quot;0&quot; migration is the unmigrated (before the first migration) state</span></span><br><span class="line">Migrations.migrateTo(<span class="number">0</span>);</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>If you find you need to roll your code version back, you&#x2019;ll need to be careful about the data, and step carefully through your deployment steps in reverse.</p>
+<h3 id="migration-caveats"><a class="anchor" href="#migration-caveats" aria-hidden="true" data-scroll="">&#x1F517;</a>Caveats</h3>
+
+<p>Some aspects of the migration strategy outlined above are possibly not the most ideal way to do things (although perhaps appropriate in many situations). Here are some other things to be aware of:</p>
+<ol>
+<li><p>Usually it is better to not rely on your application code in migrations (because the application will change over time, and the migrations should not). For instance, having your migrations pass through your Collection2 collections (and thus check schemas, set autovalues etc) is likely to break them over time as your schemas change over time.</p>
+<p>One way to avoid this problem is simply to not run old migrations on your database. This is a little bit limiting but can be made to work.</p>
+</li>
+<li><p>Running the migration on your local machine will probably make it take a lot longer as your machine isn&#x2019;t as close to the production database as it could be.</p>
+</li>
+</ol>
+<p>Deploying a special &#x201C;migration application&#x201D; to the same hardware as your real application is probably the best way to solve the above issues. It&#x2019;d be amazing if such an application kept track of which migrations ran when, with logs and provided a UI to examine and run them. Perhaps a boilerplate application to do so could be built (if you do so, please let us know and we&#x2019;ll link to it here!).</p>
+<h2 id="associations"><a class="anchor" href="#associations" aria-hidden="true" data-scroll="">&#x1F517;</a>Associations between collections</h2>
+
+<p>As we discussed earlier, it&#x2019;s very common in Meteor applications to have associations between documents in different collections. Consequently, it&#x2019;s also very common to need to write queries fetching related documents once you have a document you are interested in (for instance all the todos that are in a single list).</p>
+<p>To make this easier, we can attach functions to the prototype of the documents that belong to a given collection, to give us &#x201C;methods&#x201D; on the documents (in the object oriented sense). We can then use these methods to create new queries to find related documents.</p>
+<h3 id="collection-helpers"><a class="anchor" href="#collection-helpers" aria-hidden="true" data-scroll="">&#x1F517;</a>Collection helpers</h3>
+
+<p>We can use the <a href="https://atmospherejs.com/dburles/collection-helpers" target="_blank" rel="external"><code>dburles:collection-helpers</code></a> package to easily attach such methods (or &#x201C;helpers&#x201D;) to documents. For instance:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Lists.helpers({</span><br><span class="line">  <span class="comment">// A list is considered to be private if it has a userId set</span></span><br><span class="line">  isPrivate() {</span><br><span class="line">    <span class="keyword">return</span> !!<span class="keyword">this</span>.userId;</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Once we&#x2019;ve attached this helper to the <code>Lists</code> collection, every time we fetch a list from the database (on the client or server), it will have a <code>.isPrivate()</code> function available:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = Lists.findOne();</span><br><span class="line"><span class="keyword">if</span> (list.isPrivate()) {</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;The first list is private!&apos;</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="association-helpers"><a class="anchor" href="#association-helpers" aria-hidden="true" data-scroll="">&#x1F517;</a>Association helpers</h3>
+
+<p>Now we can attach helpers to documents, it&#x2019;s simple to define a helper that fetches related documents</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Lists.helpers({</span><br><span class="line">  todos() {</span><br><span class="line">    <span class="keyword">return</span> Todos.find({listId: <span class="keyword">this</span>._id}, {sort: {createdAt: -<span class="number">1</span>}});</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Now we can easily find all the todos for a list:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = Lists.findOne();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`The first list has <span class="subst">${list.todos().count()}</span> todos`</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="1.3-migration.html">Migrating to Meteor 1.3</a></span>
+      
+      
+        <span style="float:right"><a href="guide-data-loading-1.3.html">Publications and Data Loading</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/collections.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=19660" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="2336px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

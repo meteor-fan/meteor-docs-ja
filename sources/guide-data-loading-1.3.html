@@ -1,0 +1,625 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="How and where to load data in your Meteor app using publications and subscriptions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Publications and Data Loading | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-1.3.html" class="sidebar-link">
+              Introduction
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Publications and Data Loading
+            </a>
+          <ul class="sub-menu"><li><a href="#publications-and-subscriptions" data-scroll="" class="H2">Publications and subscriptions</a><ul class="sub-menu"></ul></li><li><a href="#publications" data-scroll="" class="H2">Defining a publication</a><ul class="sub-menu"><li><a href="#organization-publications" data-scroll="" class="H3">Organizing publications</a></li></ul></li><li><a href="#subscriptions" data-scroll="" class="H2">Subscribing to data</a><ul class="sub-menu"><li><a href="#stopping-subscriptions" data-scroll="" class="H3">Stopping Subscriptions</a></li><li><a href="#organizing-subscriptions" data-scroll="" class="H3">Subscribe in UI components</a></li><li><a href="#fetching" data-scroll="" class="H3">Fetching data</a></li><li><a href="#global-subscriptions" data-scroll="" class="H3">Global subscriptions</a></li></ul></li><li><a href="#patterns" data-scroll="" class="H2">Patterns for data loading</a><ul class="sub-menu"><li><a href="#readiness" data-scroll="" class="H3">Subscription readiness</a></li><li><a href="#changing-arguments" data-scroll="" class="H3">Reactively changing subscription arguments</a></li><li><a href="#publication-behavior-with-arguments" data-scroll="" class="H3">Publication behavior when arguments change</a></li><li><a href="#pagination" data-scroll="" class="H3">Paginating subscriptions</a></li></ul></li><li><a href="#stores" data-scroll="" class="H2">Client-side data with reactive stores</a><ul class="sub-menu"><li><a href="#store-types" data-scroll="" class="H3">Types of stores</a></li><li><a href="#accessing-stores" data-scroll="" class="H3">Accessing stores</a></li><li><a href="#updating-stores" data-scroll="" class="H3">Updating stores</a></li></ul></li><li><a href="#advanced-publications" data-scroll="" class="H2">Advanced publications</a><ul class="sub-menu"><li><a href="#publishing-relations" data-scroll="" class="H3">Publishing relational data</a></li><li><a href="#complex-auth" data-scroll="" class="H3">Complex authorization</a></li><li><a href="#custom-publication" data-scroll="" class="H3">Custom publications with the low level API</a></li><li><a href="#lifecycle" data-scroll="" class="H3">Subscription lifecycle</a></li></ul></li><li><a href="#rest-interop" data-scroll="" class="H2">Working with REST APIs</a><ul class="sub-menu"><li><a href="#loading-from-rest" data-scroll="" class="H3">Loading data from a REST endpoint with a publication</a></li><li><a href="#publications-as-rest" data-scroll="" class="H3">Accessing a publication as a REST endpoint</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Publications and Data Loading</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/data-loading.md" target="_blank">Edit on GitHub</a>
+      
+        |
+        <a href="https://forums.meteor.com/t/19661">Discuss on the Meteor Forums</a>
+      
+    </p>
+    <p>After reading this guide, you&#x2019;ll know:</p>
+<ol>
+<li>What publications and subscriptions are in the Meteor platform.</li>
+<li>How to define a publication on the server.</li>
+<li>Where to subscribe on the client and in which templates.</li>
+<li>Useful patterns for managing subscriptions.</li>
+<li>How to reactively publish related data.</li>
+<li>How to ensure your publication is secure in the face of reactive changes.</li>
+<li>How to use the low-level publish API to publish anything.</li>
+<li>What happens when you subscribe to a publication.</li>
+<li>How to turn a 3rd-party REST endpoint into a publication.</li>
+<li>How to turn a publication in your app into a REST endpoint.</li>
+</ol>
+<h2 id="publications-and-subscriptions"><a class="anchor" href="#publications-and-subscriptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Publications and subscriptions</h2>
+
+<p>In a traditional, HTTP-based web application, the client and server communicate in a &#x201C;request-response&#x201D; fashion. Typically the client makes RESTful HTTP requests to the server and receives HTML or JSON data in response, and there&#x2019;s no way for the server to &#x201C;push&#x201D; data to the client when changes happen at the backend.</p>
+<p>Meteor is built from the ground up on the Distributed Data Protocol (DDP) to allow data transfer in both directions. Building a Meteor app doesn&#x2019;t require you to set up REST endpoints to serialize and send data. Instead you create <em>publication</em> endpoints that can push data from server to client.</p>
+<p>In Meteor a <strong>publication</strong> is a named API on the server that constructs a set of data to send to a client. A client initiates a <strong>subscription</strong> which connects to a publication, and receives that data. That data consists of a first batch sent when the subscription is initialized and then incremental updates as the published data changes.</p>
+<p>So a subscription can be thought of as a set of data that changes over time. Typically, the result of this is that a subscription &#x201C;bridges&#x201D; a <a href="/collections.html#server-collections">server-side MongoDB collection</a>, and the <a href="collections.html#client-collections">client side Minimongo cache</a> of that collection. You can think of a subscription as a pipe that connects a subset of the &#x201C;real&#x201D; collection with the client&#x2019;s version, and constantly keeps it up to date with the latest information on the server.</p>
+<h2 id="publications"><a class="anchor" href="#publications" aria-hidden="true" data-scroll="">&#x1F517;</a>Defining a publication</h2>
+
+<p>A publication should be defined in a server-only file. For instance, in the Todos example app, we want to publish the set of public lists to all users:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;lists.public&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> Lists.find({</span><br><span class="line">    userId: {$exists: <span class="literal">false</span>}</span><br><span class="line">  }, {</span><br><span class="line">    fields: Lists.publicFields</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>There are a few things to understand about this code block. First, we&#x2019;ve named the publication with the unique string <code>Lists.public</code>, and that will be how we access it from the client. Second, we are simply returning a Mongo <em>cursor</em> from the publication function. Note that the cursor is filtered to only return certain fields from the collection, as detailed in the <a href="security.html#fields">Security article</a>.</p>
+<p>What that means is that the publication will simply ensure the set of data matching that query is available to any client that subscribes to it. In this case, all lists that do not have a <code>userId</code> setting. So the collection named <code>Lists</code> on the client will have all of the public lists that are available in the server collection named <code>Lists</code> while that subscription is open. In this particular example in the Todos application, the subscription is initialized when the app starts and never stopped, but a later section will talk about <a href="data-loading.html#patterns">subscription life cycle</a>.</p>
+<p>Every publication takes two types of parameters:</p>
+<ol>
+<li>The <code>this</code> context, which has information about the current DDP connection. For example, you can access the current user&#x2019;s <code>_id</code> with <code>this.userId</code>.</li>
+<li>The arguments to the publication, which can be passed in when calling <code>Meteor.subscribe</code>.</li>
+</ol>
+<blockquote>
+<p>Note: Since we need to access context on <code>this</code> we need to use the <code>function() {}</code> form for publications rather than the ES2015 <code>() =&gt; {}</code>. You can disable the arrow function linting rule for publication files with <code>eslint-disable prefer-arrow-callback</code>. A future version of the publication API will work more nicely with ES2015.</p>
+</blockquote>
+<p>In this publication, which loads private lists, we need to use <code>this.userId</code> to get only the todo lists that belong to a specific user.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;lists.private&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.userId) {</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> Lists.find({</span><br><span class="line">    userId: <span class="keyword">this</span>.userId</span><br><span class="line">  }, {</span><br><span class="line">    fields: Lists.publicFields</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Thanks to the guarantees provided by DDP and Meteor&#x2019;s accounts system, the above publication can be confident that it will only ever publish private lists to the user that they belong to. Note that the publication will re-run if the user logs out (or back in again), which means that the published set of private lists will change as the active user changes.</p>
+<p>In the case of a logged-out user, we explicitly call <code>this.ready()</code>, which indicates to the subscription that we&#x2019;ve sent all the data we are initially going to send (in this case none). It&#x2019;s important to know that if you don&#x2019;t return a cursor from the publication or call <code>this.ready()</code>, the user&#x2019;s subscription will never become ready, and they will likely see a loading state forever.</p>
+<p>Here&#x2019;s an example of a publication which takes a named argument. Note that it&#x2019;s important to check the types of arguments that come in over the network.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;todos.inList&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">listId</span>) </span>{</span><br><span class="line">  <span class="comment">// We need to check the `listId` is the type we expect</span></span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: {type: <span class="built_in">String</span>}</span><br><span class="line">  }).validate({ listId });</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>When we subscribe to this publication on the client, we can provide this argument via the <code>Meteor.subscribe()</code> call:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Meteor.subscribe(<span class="string">&apos;todos.inList&apos;</span>, list._id);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="organization-publications"><a class="anchor" href="#organization-publications" aria-hidden="true" data-scroll="">&#x1F517;</a>Organizing publications</h3>
+
+<p>It makes sense to place a publication alongside the feature that it&#x2019;s targeted for. For instance, sometimes publications provide very specific data that&#x2019;s only really useful for the view for which they were developed. In that case, placing the publication in the same module or directory as the view code makes perfect sense.</p>
+<p>Often, however, a publication is more general. For example in the Todos example application, we create a <code>todos.inList</code> publication, which publishes all the todos in a list. Although in the application we only use this in one place (in the <code>Lists_show</code> template), in a larger app, there&#x2019;s a good chance we might need to access all the todos for a list in other places. So putting the publication in the <code>todos</code> package is a sensible approach.</p>
+<h2 id="subscriptions"><a class="anchor" href="#subscriptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Subscribing to data</h2>
+
+<p>To use publications, you need to create a subscription to it on the client. To do so, you call <code>Meteor.subscribe()</code> with the name of the publication. When you do this, it opens up a subscription to that publication, and the server starts sending data down the wire to ensure that your client collections contain up to date copies of the data specified by the publication.</p>
+<p><code>Meteor.subscribe()</code> also returns a &#x201C;subscription handle&#x201D; with a property called <code>.ready()</code>. This is a reactive function that returns <code>true</code> when the publication is marked ready (either you call <code>this.ready()</code> explicitly, or the initial contents of a returned cursor are sent over).</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handle = Meteor.subscribe(<span class="string">&apos;lists.public&apos;</span>);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="stopping-subscriptions"><a class="anchor" href="#stopping-subscriptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Stopping Subscriptions</h3>
+
+<p>The subscription handle also has another important property, the <code>.stop()</code> method. When you are subscribing, it is very important to ensure that you always call <code>.stop()</code> on the subscription when you are done with it. This ensures that the documents sent by the subscription are cleared from your local Minimongo cache and the server stops doing the work required to service your subscription. If you forget to call stop, you&#x2019;ll consume unnecessary resources both on the client and the server.</p>
+<p><em>However</em>, if you call <code>Meteor.subscribe()</code> conditionally inside a reactive context (such as an <code>autorun</code>, or <code>getMeteorData</code> in React) or via <code>this.subscribe()</code> in a Blaze component, then Meteor&#x2019;s reactive system will automatically call <code>this.stop()</code> for you at the appropriate time.</p>
+<h3 id="organizing-subscriptions"><a class="anchor" href="#organizing-subscriptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Subscribe in UI components</h3>
+
+<p>It is best to place the subscription as close as possible to the place where the data from the subscription is needed. This reduces &#x201C;action at a distance&#x201D; and makes it easier to understand the flow of data through your application. If the subscription and fetch are separated, then it&#x2019;s not always clear how and why changes to the subscriptions (such as changing arguments), will affect the contents of the cursor.</p>
+<p>What this means in practice is that you should place your subscription calls in <em>components</em>. In Blaze, it&#x2019;s best to do this in the <code>onCreated()</code> callback:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.getListId = () =&gt; FlowRouter.getParam(<span class="string">&apos;_id&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.autorun(() =&gt; {</span><br><span class="line">    <span class="keyword">this</span>.subscribe(<span class="string">&apos;todos.inList&apos;</span>, <span class="keyword">this</span>.getListId());</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>In this code snippet we can see two important techniques for subscribing in Blaze templates:</p>
+<ol>
+<li><p>Calling <code>this.subscribe()</code> (rather than <code>Meteor.subscribe</code>), which attaches a special <code>subscriptionsReady()</code> function to the template instance, which is true when all subscriptions made inside this template are ready.</p>
+</li>
+<li><p>Calling <code>this.autorun</code> sets up a reactive context which will re-initialize the subscription whenever the reactive function <code>this.getListId()</code> changes.</p>
+</li>
+</ol>
+<p>Read more about Blaze subscriptions in the <a href="blaze.html#subscribing">Blaze article</a>, and about tracking loading state inside UI components in the <a href="ui-ux.html#subscription-readiness">UI article</a>.</p>
+<h3 id="fetching"><a class="anchor" href="#fetching" aria-hidden="true" data-scroll="">&#x1F517;</a>Fetching data</h3>
+
+<p>Subscribing to data puts it in your client-side collection. To use the data in your user interface, you need to query your client-side collection. There are a couple of important rules to follow when doing this.</p>
+<h4 id="specific-queries">Always use specific queries to fetch data</h4>
+
+<p>If you&#x2019;re publishing a subset of your data, it might be tempting to simply query for all data available in a collection (i.e. <code>Lists.find()</code>) in order to get that subset on the client, without re-specifying the Mongo selector you used to publish that data in the first place.</p>
+<p>But if you do this, then you open yourself up to problems if another subscription pushes data into the same collection, since the data returned by <code>Lists.find()</code> might not be what you expected anymore. In an actively developed application, it&#x2019;s often hard to anticipate what may change in the future and this can be a source of hard to understand bugs.</p>
+<p>Also, when changing between subscriptions, there is a brief period where both subscriptions are loaded (see <a href="#publication-behavior-with-arguments">Publication behavior when changing arguments</a> below), so when doing thing like pagination, it&#x2019;s exceedingly likely that this will be the case.</p>
+<h4 id="fetch-near-subscribe">Fetch the data nearby where you subscribed to it</h4>
+
+<p>We do this for the same reason we subscribe in the component in the first place&#x2014;to avoid action at a distance and to make it easier to understand where data comes from. A common pattern is to fetch the data in a parent template, and then pass it into a &#x201C;pure&#x201D; child component, as we&#x2019;ll see it in the <a href="ui-ux.html#components">UI Article</a>.</p>
+<p>Note that there are some exceptions to this second rule. A common one is <code>Meteor.user()</code>&#x2014;although this is strictly speaking subscribed to (automatically usually), it&#x2019;s typically over-complicated to pass it through the component hierarchy as an argument to each component. However keep in mind it&#x2019;s best not to use it in too many places as it makes components harder to test.</p>
+<h3 id="global-subscriptions"><a class="anchor" href="#global-subscriptions" aria-hidden="true" data-scroll="">&#x1F517;</a>Global subscriptions</h3>
+
+<p>One place where you might be tempted to not subscribe inside a component is when it accesses data that you know you <em>always</em> need. For instance, a subscription to extra fields on the user object (see the <a href="guide-accounts-1.3.html">Accounts Article</a>) that you need on every screen of your app.</p>
+<p>However, it&#x2019;s generally a good idea to use a layout component (which you wrap all your components in) to subscribe to this subscription anyway. It&#x2019;s better to be consistent about such things, and it makes for a more flexible system if you ever decide you have a screen that <em>doesn&#x2019;t</em> need that data.</p>
+<h2 id="patterns"><a class="anchor" href="#patterns" aria-hidden="true" data-scroll="">&#x1F517;</a>Patterns for data loading</h2>
+
+<p>Across Meteor applications, there are some common patterns of data loading and management on the client side that are worth knowing. We&#x2019;ll go into more detail about some of these in the <a href="guide-ui-ux-1.3.html">UI/UX Article</a>.</p>
+<h3 id="readiness"><a class="anchor" href="#readiness" aria-hidden="true" data-scroll="">&#x1F517;</a>Subscription readiness</h3>
+
+<p>It is key to understand that a subscription will not instantly provide its data. There will be a latency between subscribing to the data on the client and it arriving from the publication on the server. You should also be aware that this delay may be a lot longer for your users in production that for you locally in development!</p>
+<p>Although the Tracker system means you often don&#x2019;t <em>need</em> to think too much about this in building your apps, usually if you want to get the user experience right, you&#x2019;ll need to know when the data is ready.</p>
+<p>To find that out, <code>Meteor.subscribe()</code> and (<code>this.subscribe()</code> in Blaze components) returns a &#x201C;subscription handle&#x201D;, which contains a reactive data source called <code>.ready()</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handle = Meteor.subscribe(<span class="string">&apos;lists.public&apos;</span>);</span><br><span class="line">Tracker.autorun(() =&gt; {</span><br><span class="line">  <span class="keyword">const</span> isReady = handle.ready();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Handle is <span class="subst">${isReady ? &apos;ready&apos; : &apos;not ready&apos;}</span>`</span>);  </span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>We can use this information to be more subtle about when we try and show data to users, and when we show a loading screen.</p>
+<h3 id="changing-arguments"><a class="anchor" href="#changing-arguments" aria-hidden="true" data-scroll="">&#x1F517;</a>Reactively changing subscription arguments</h3>
+
+<p>We&#x2019;ve already seen an example of using an <code>autorun</code> to re-subscribe when the (reactive) arguments to a subscription change. It&#x2019;s worth digging in a little more detail to understand what happens in this scenario.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.getListId = () =&gt; FlowRouter.getParam(<span class="string">&apos;_id&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.autorun(() =&gt; {</span><br><span class="line">    <span class="keyword">this</span>.subscribe(<span class="string">&apos;todos.inList&apos;</span>, <span class="keyword">this</span>.getListId());</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>In our example, the <code>autorun</code> will re-run whenever <code>this.getListId()</code> changes, (ultimately because <code>FlowRouter.getParam(&apos;_id&apos;)</code> changes), although other common reactive data sources are:</p>
+<ol>
+<li>Template data contexts (which you can access reactively with <code>Template.currentData()</code>).</li>
+<li>The current user status (<code>Meteor.user()</code> and <code>Meteor.loggingIn()</code>).</li>
+<li>The contents of other application specific client data stores.</li>
+</ol>
+<p>Technically, what happens when one of these reactive sources changes is the following:</p>
+<ol>
+<li>The reactive data source <em>invalidates</em> the autorun computation (marks it so that it re-runs in the next Tracker flush cycle).</li>
+<li>The subscription detects this, and given that anything is possible in next computation run, marks itself for destruction.</li>
+<li>The computation re-runs, with <code>.subscribe()</code> being re-called either with the same or different arguments.</li>
+<li>If the subscription is run with the <em>same arguments</em> then the &#x201C;new&#x201D; subscription discovers the old &#x201C;marked for destruction&#x201D; subscription that&#x2019;s sitting around, with the same data already ready, and simply reuses that.</li>
+<li>If the subscription is run with <em>different arguments</em>, then a new subscription is created, which connects to the publication on the server.</li>
+<li>At the end of the flush cycle (i.e. after the computation is done re-running), the old subscription checks to see if it was re-used, and if not, sends a message to the server to tell the server to shut it down.</li>
+</ol>
+<p>Step 4 above is an important detail&#x2014;that the system cleverly knows not to re-subscribe if the autorun re-runs and subscribes with the exact same arguments. This holds true even if the new subscription is set up somewhere else in the template hierarchy. For example, if a user navigates between two pages that both subscribe to the exact same subscription, the same mechanism will kick in and no unnecessary subscribing will happen.</p>
+<h3 id="publication-behavior-with-arguments"><a class="anchor" href="#publication-behavior-with-arguments" aria-hidden="true" data-scroll="">&#x1F517;</a>Publication behavior when arguments change</h3>
+
+<p>It&#x2019;s also worth knowing a little about what happens on the server when the new subscription is started and the old one is stopped.</p>
+<p>The server <em>explicitly</em> waits until all the data is sent down (the new subscription is ready) for the new subscription before removing the data from the old subscription. The idea here is to avoid flicker&#x2014;you can, if desired, continue to show the old subscription&#x2019;s data until the new data is ready, then instantly switch over to the new subscription&#x2019;s complete data set.</p>
+<p>What this means is in general, when changing subscriptions, there&#x2019;ll be a period where you are <em>over-subscribed</em> and there is more data on the client than you strictly asked for. This is one very important reason why you should always fetch the same data that you have subscribed to (don&#x2019;t &#x201C;over-fetch&#x201D;).</p>
+<h3 id="pagination"><a class="anchor" href="#pagination" aria-hidden="true" data-scroll="">&#x1F517;</a>Paginating subscriptions</h3>
+
+<p>A very common pattern of data access is pagination. This refers to the practice of fetching an ordered list of data one &#x201C;page&#x201D; at a time&#x2014;typically some number of items, say twenty.</p>
+<p>There are two styles of pagination that are commonly used, a &#x201C;page-by-page&#x201D; style&#x2014;where you show only one page of results at a time, starting at some offset (which the user can control), and &#x201C;infinite-scroll&#x201D; style, where you show an increasing number of pages of items, as the user moves through the list (this is the typical &#x201C;feed&#x201D; style user interface).</p>
+<p>In this section, we&#x2019;ll consider a publication/subscription technique for the second, infinite-scroll style pagination. The page-by-page technique is a little tricker to handle in Meteor, due to it being difficult to calculate the offset on the client. If you need to do so, you can follow many of the same techniques that we use here and use the <a href="https://atmospherejs.com/percolate/find-from-publication" target="_blank" rel="external"><code>percolate:find-from-publication</code></a> package to keep track of which records have come from your publication.</p>
+<p>In an infinite scroll publication, we simply need to add a new argument to our publication controlling how many items to load. Suppose we wanted to paginate the todo items in our Todos example app:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MAX_TODOS = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">Meteor.publish(<span class="string">&apos;todos.inList&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">listId, limit</span>) </span>{</span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: { type: <span class="built_in">String</span> },</span><br><span class="line">    limit: { type: <span class="built_in">Number</span> }</span><br><span class="line">  }).validate({ listId, limit });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options = {</span><br><span class="line">    sort: {createdAt: -<span class="number">1</span>},</span><br><span class="line">    limit: <span class="built_in">Math</span>.min(limit, MAX_TODOS)</span><br><span class="line">  };</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>It&#x2019;s important that we set a <code>sort</code> parameter on our query (to ensure a repeatable order of list items as more pages are requested), and that we set an absolute maximum on the number of items a user can request (at least in the case where lists can grow without bound).</p>
+<p>Then on the client side, we&#x2019;d set some kind of reactive state variable to control how many items to request:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Template.Lists_show_page.onCreated(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.getListId = () =&gt; FlowRouter.getParam(<span class="string">&apos;_id&apos;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.autorun(() =&gt; {</span><br><span class="line">    <span class="keyword">this</span>.subscribe(<span class="string">&apos;todos.inList&apos;</span>,</span><br><span class="line">      <span class="keyword">this</span>.getListId(), <span class="keyword">this</span>.state.get(<span class="string">&apos;requestedTodos&apos;</span>));</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>We&#x2019;d increment that <code>requestedTodos</code> variable when the user clicks &#x201C;load more&#x201D; (or perhaps just when they scroll to the bottom of the page).</p>
+<p>One piece of information that&#x2019;s very useful to know when paginating data is the <em>total number of items</em> that you could see. The <a href="https://atmospherejs.com/tmeasday/publish-counts" target="_blank" rel="external"><code>tmeasday:publish-counts</code></a> package can be useful to publish this. We could add a <code>Lists.todoCount</code> publication like so</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;Lists.todoCount&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">{ listId }</span>) </span>{</span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: {type: <span class="built_in">String</span>}</span><br><span class="line">  }).validate({ listId });</span><br><span class="line"></span><br><span class="line">  Counts.publish(<span class="keyword">this</span>, <span class="string">`Lists.todoCount.<span class="subst">${listId}</span>`</span>, Todos.find({listId}));</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Then on the client, after subscribing to that publication, we can access the count with</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Counts.get(<span class="string">`Lists.todoCount.<span class="subst">${listId}</span>`</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="stores"><a class="anchor" href="#stores" aria-hidden="true" data-scroll="">&#x1F517;</a>Client-side data with reactive stores</h2>
+
+<p>In Meteor, persistent or shared data comes over the wire on publications. However, there are some types of data which doesn&#x2019;t need to be persistent or shared between users. For instance, the &#x201C;logged-in-ness&#x201D; of the current user, or the route they are currently viewing.</p>
+<p>Although client-side state is often best contained as state of an individual template (and passed down the template hierarchy as arguments where necessary), sometimes you have a need for &#x201C;global&#x201D; state that is shared between unrelated sections of the template hierarchy.</p>
+<p>Usually such state is stored in a <em>global singleton</em> object which we can call a store. A singleton is a data structure of which only a single copy logically exists. The current user and the router from above are typical examples of such global singletons.</p>
+<h3 id="store-types"><a class="anchor" href="#store-types" aria-hidden="true" data-scroll="">&#x1F517;</a>Types of stores</h3>
+
+<p>In Meteor, it&#x2019;s best to make stores <em>reactive data</em> sources, as that way they tie most naturally into the rest of the ecosystem. There are a few different packages you can use for stores.</p>
+<p>If the store is single-dimensional, you can probably use a <code>ReactiveVar</code> to store it (provided by the <a href="https://atmospherejs.com/meteor/reactive-var" target="_blank" rel="external"><code>reactive-var</code></a> package). A <code>ReactiveVar</code> has two properties, <code>get()</code> and <code>set()</code>:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DocumentHidden = <span class="keyword">new</span> ReactiveVar(<span class="built_in">document</span>.hidden);</span><br><span class="line">$(<span class="built_in">window</span>).on(<span class="string">&apos;visibilitychange&apos;</span>, (event) =&gt; {</span><br><span class="line">  DocumentHidden.set(<span class="built_in">document</span>.hidden);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>If the store is multi-dimensional, you may want to use a <code>ReactiveDict</code> (from the <a href="https://atmospherejs.com/meteor/reactive-dict" target="_blank" rel="external"><code>reactive-dict</code></a> package):</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $<span class="built_in">window</span> = $(<span class="built_in">window</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDimensions</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> {</span><br><span class="line">    width: $<span class="built_in">window</span>.width(),</span><br><span class="line">    height: $<span class="built_in">window</span>.height()</span><br><span class="line">  };</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">WindowSize = <span class="keyword">new</span> ReactiveDict();</span><br><span class="line">WindowSize.set(getDimensions());</span><br><span class="line">$<span class="built_in">window</span>.on(<span class="string">&apos;resize&apos;</span>, () =&gt; {</span><br><span class="line">  WindowSize.set(getDimensions());</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>The advantage of a <code>ReactiveDict</code> is you can access each property individually (<code>WindowSize.get(&apos;width&apos;)</code>), and the dict will diff the field and track changes on it individually (so your template will re-render less often for instance).</p>
+<p>If you need to query the store, or store many related items, it&#x2019;s probably a good idea to use a Local Collection (see the <a href="collections.html#local-collections">Collections Article</a>).</p>
+<h3 id="accessing-stores"><a class="anchor" href="#accessing-stores" aria-hidden="true" data-scroll="">&#x1F517;</a>Accessing stores</h3>
+
+<p>You should access stores in the same way you&#x2019;d access other reactive data in your templates&#x2014;that means centralizing your store access, much like you centralize your subscribing and data fetch. For a Blaze template, that&#x2019;s either in a helper, or from within a <code>this.autorun()</code> inside an <code>onCreated()</code> callback.</p>
+<p>This way you get the full reactive power of the store.</p>
+<h3 id="updating-stores"><a class="anchor" href="#updating-stores" aria-hidden="true" data-scroll="">&#x1F517;</a>Updating stores</h3>
+
+<p>If you need to update a store as a result of user action, you&#x2019;d update the store from an event handler, just like you call Methods.</p>
+<p>If you need to perform complex logic in the update (e.g. not just call <code>.set()</code> etc), it&#x2019;s a good idea to define a mutator on the store. As the store is a singleton, you can just attach a function to the object directly:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WindowSize.simulateMobile = (device) =&gt; {</span><br><span class="line">  <span class="keyword">if</span> (device === <span class="string">&apos;iphone6s&apos;</span>) {</span><br><span class="line">    <span class="keyword">this</span>.set({width: <span class="number">750</span>, height: <span class="number">1334</span>});</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="advanced-publications"><a class="anchor" href="#advanced-publications" aria-hidden="true" data-scroll="">&#x1F517;</a>Advanced publications</h2>
+
+<p>Sometimes, the simple mechanism of returning a query from a publication function won&#x2019;t cover your needs. In those situations, there are some more powerful publication patterns that you can use.</p>
+<h3 id="publishing-relations"><a class="anchor" href="#publishing-relations" aria-hidden="true" data-scroll="">&#x1F517;</a>Publishing relational data</h3>
+
+<p>It&#x2019;s common to need related sets of data from multiple collections on a given page. For instance, in the Todos app, when we render a todo list, we want the list itself, as well as the set of todos that belong to that list.</p>
+<p>One way you might do this is to return more than one cursor from your publication function:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;todos.inList&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">listId</span>) </span>{</span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: {type: <span class="built_in">String</span>}</span><br><span class="line">  }).validate({ listId });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> list = List.findOne(listId);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (list &amp;&amp; (!list.userId || list.userId === <span class="keyword">this</span>.userId)) {</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">      Lists.find(listId),</span><br><span class="line">      Todos.find({listId})</span><br><span class="line">    ];</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// The list doesn&apos;t exist, or the user isn&apos;t allowed to see it.</span></span><br><span class="line">    <span class="comment">// In either case, make it appear like there is no list.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>However, this example will not work as you might expect. The reason is that reactivity doesn&#x2019;t work in the same way on the server as it does on the client. On the client, if <em>anything</em> in a reactive function changes, the whole function will re-run, and the results are fairly intuitive.</p>
+<p>On the server however, the reactivity is limited to the behavior of the cursors you return from your publish functions. You&#x2019;ll see any changes to the data that matches their queries, but <em>their queries will never change</em>.</p>
+<p>So in the case above, if a user subscribes to a list that is later made private by another user, although the <code>list.userId</code> will change to a value that no longer passes the condition, the body of the publication will not re-run, and so the query to the <code>Todos</code> collection (<code>{listId}</code>) will not change. So the first user will continue to see items they shouldn&#x2019;t.</p>
+<p>However, we can write publications that are properly reactive to changes across collections. To do this, we use the <a href="https://atmospherejs.com/reywood/publish-composite" target="_blank" rel="external"><code>reywood:publish-composite</code></a> package.</p>
+<p>The way this package works is to first establish a cursor on one collection, and then explicitly set up a second level of cursors on a second collection with the results of the first cursor. The package uses a query observer behind the scenes to trigger the subscription to change and queries to re-run whenever the source data changes.</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publishComposite(<span class="string">&apos;todos.inList&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">listId</span>) </span>{</span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: {type: <span class="built_in">String</span>}</span><br><span class="line">  }).validate({ listId });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> userId = <span class="keyword">this</span>.userId;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> {</span><br><span class="line">    find() {</span><br><span class="line">      <span class="keyword">const</span> query = {</span><br><span class="line">        _id: listId,</span><br><span class="line">        $or: [{userId: {$exists: <span class="literal">false</span>}}, {userId}]</span><br><span class="line">      };</span><br><span class="line"></span><br><span class="line">      <span class="comment">// We only need the _id field in this query, since it&apos;s only</span></span><br><span class="line">      <span class="comment">// used to drive the child queries to get the todos</span></span><br><span class="line">      <span class="keyword">const</span> options = {</span><br><span class="line">        fields: { _id: <span class="number">1</span> }</span><br><span class="line">      };</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> Lists.find(query, options);</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    children: [{</span><br><span class="line">      find(list) {</span><br><span class="line">        <span class="keyword">return</span> Todos.find({ listId: list._id }, { fields: Todos.publicFields });</span><br><span class="line">      }</span><br><span class="line">    }]</span><br><span class="line">  };</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>In this example, we write a complicated query to make sure that we only ever find a list if we are allowed to see it, then, once per list we find (which can be one or zero times depending on access), we publish the todos for that list. Publish Composite takes care of stopping and starting the dependent cursors if the list stops matching the original query or otherwise.</p>
+<h3 id="complex-auth"><a class="anchor" href="#complex-auth" aria-hidden="true" data-scroll="">&#x1F517;</a>Complex authorization</h3>
+
+<p>We can also use <code>publish-composite</code> to perform complex authorization in publications. For instance, consider if we had a <code>Todos.admin.inList</code> publication that allowed an admin to bypass default publication&#x2019;s security for users with an <code>admin</code> flag set.</p>
+<p>We might want to write:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;Todos.admin.inList&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">{ listId }</span>) </span>{</span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: {type: <span class="built_in">String</span>}</span><br><span class="line">  }).validate({ listId });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> user = Meteor.users.findOne(<span class="keyword">this</span>.userId);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (user &amp;&amp; user.admin) {</span><br><span class="line">    <span class="comment">// We don&apos;t need to worry about the list.userId changing this time</span></span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">      Lists.find(listId),</span><br><span class="line">      Todos.find({listId})</span><br><span class="line">    ];</span><br><span class="line">  } <span class="keyword">else</span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>However, due to the same reasons discussed above, the publication <em>will not re-run</em> if the user&#x2019;s <code>admin</code> status changes. If this is something that is likely to happen and reactive changes are needed, then we&#x2019;ll need to make the publication reactive. We can do this via the same technique as above however:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publishComposite(<span class="string">&apos;Todos.admin.inList&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">listId</span>) </span>{</span><br><span class="line">  <span class="keyword">new</span> SimpleSchema({</span><br><span class="line">    listId: {type: <span class="built_in">String</span>}</span><br><span class="line">  }).validate({ listId });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> userId = <span class="keyword">this</span>.userId;</span><br><span class="line">  <span class="keyword">return</span> {</span><br><span class="line">    find() {</span><br><span class="line">      <span class="keyword">return</span> Meteor.users.find({userId, admin: <span class="literal">true</span>});</span><br><span class="line">    },</span><br><span class="line">    children: [{</span><br><span class="line">      find() {</span><br><span class="line">        <span class="comment">// We don&apos;t need to worry about the list.userId changing this time</span></span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">          Lists.find(listId),</span><br><span class="line">          Todos.find({listId})</span><br><span class="line">        ];</span><br><span class="line">      }  </span><br><span class="line">    }]</span><br><span class="line">  };</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="custom-publication"><a class="anchor" href="#custom-publication" aria-hidden="true" data-scroll="">&#x1F517;</a>Custom publications with the low level API</h3>
+
+<p>In all of our examples so far (outside of using<code>Meteor.publishComposite()</code>) we&#x2019;ve returned a cursor from our <code>Meteor.publish()</code> handlers. Doing this ensures Meteor takes care of the job of keeping the contents of that cursor in sync between the server and the client. However, there&#x2019;s another API you can use for publish functions which is closer to the way the underlying Distributed Data Protocol (DDP) works.</p>
+<p>DDP uses three main messages to communicate changes in the data for a publication: the <code>added</code>, <code>changed</code> and <code>removed</code> messages. So, we can similarly do the same for a publication:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;custom-publication&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="comment">// We can add documents one at a time</span></span><br><span class="line">  <span class="keyword">this</span>.added(<span class="string">&apos;collection-name&apos;</span>, <span class="string">&apos;id&apos;</span>, {field: <span class="string">&apos;values&apos;</span>});</span><br><span class="line"></span><br><span class="line">  <span class="comment">// We can call ready to indicate to the client that the initial document sent has been sent</span></span><br><span class="line">  <span class="keyword">this</span>.ready();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// We may respond to some 3rd party event and want to send notifications</span></span><br><span class="line">  Meteor.setTimeout(() =&gt; {</span><br><span class="line">    <span class="comment">// If we want to modify a document that we&apos;ve already added</span></span><br><span class="line">    <span class="keyword">this</span>.changed(<span class="string">&apos;collection-name&apos;</span>, <span class="string">&apos;id&apos;</span>, {field: <span class="string">&apos;new-value&apos;</span>});</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Or if we don&apos;t want the client to see it any more</span></span><br><span class="line">    <span class="keyword">this</span>.removed(<span class="string">&apos;collection-name&apos;</span>, <span class="string">&apos;id&apos;</span>);</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="comment">// It&apos;s very important to clean up things in the subscription&apos;s onStop handler</span></span><br><span class="line">  <span class="keyword">this</span>.onStop(() =&gt; {</span><br><span class="line">    <span class="comment">// Perhaps kill the connection with the 3rd party server</span></span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>From the client&#x2019;s perspective, data published like this doesn&#x2019;t look any different&#x2014;there&#x2019;s actually no way for the client to know the difference as the DDP messages are the same. So even if you are connecting to, and mirroring, some esoteric data source, on the client it&#x2019;ll appear like any other Mongo collection.</p>
+<p>One point to be aware of is that if you allow the user to <em>modify</em> data in the &#x201C;pseudo-collection&#x201D; you are publishing in this fashion, you&#x2019;ll want to be sure to re-publish the modifications to them via the publication, to achieve an optimistic user experience.</p>
+<h3 id="lifecycle"><a class="anchor" href="#lifecycle" aria-hidden="true" data-scroll="">&#x1F517;</a>Subscription lifecycle</h3>
+
+<p>Although you can use publications and subscriptions in Meteor via an intuitive understanding, sometimes it&#x2019;s useful to know exactly what happens under the hood when you subscribe to data.</p>
+<p>Suppose you have a simple publication of the following form:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">&apos;Posts.all&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> Posts.find({}, {limit: <span class="number">10</span>});</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Then when a client calls <code>Meteor.subscribe(&apos;Posts.all&apos;)</code> the following things happen inside Meteor:</p>
+<ol>
+<li><p>The client sends a <code>sub</code> message with the name of the subscription over DDP.</p>
+</li>
+<li><p>The server starts up the subscription by running the publication handler function.</p>
+</li>
+<li><p>The publication handler identifies that the return value is a cursor. This enables a convenient mode for publishing cursors.</p>
+</li>
+<li><p>The server sets up a query observer on that cursor, unless a such an observer already exists on the server (for any user), in which case that observer is re-used.</p>
+</li>
+<li><p>The observer fetches the current set of documents matching the cursor, and passes them back to the subscription (via the <code>this.added()</code> callback).</p>
+</li>
+<li><p>The subscription passes the added documents to the subscribing client&#x2019;s connection <em>mergebox</em>, which is an on-server cache of the documents that have been published to this particular client. Each document is merged with any existing version of the document that the client knows about, and an <code>added</code> (if the document is new to the client) or <code>changed</code> (if it is known but this subscription is adding or changing fields) DDP message is sent.</p>
+<p>Note that the mergebox operates at the level of top-level fields, so if two subscriptions publish nested fields (e.g. sub1 publishes <code>doc.a.b = 7</code> and sub2 publishes <code>doc.a.c = 8</code>), then the &#x201C;merged&#x201D; document might not look as you expect (in this case <code>doc.a = {c: 8}</code>, if sub2 happens second).</p>
+</li>
+<li><p>The publication calls the <code>.ready()</code> callback, which sends the DDP <code>ready</code> message to the client. The subscription handle on the client is marked as ready.</p>
+</li>
+<li><p>The observer observes the query. Typically, it <a href="https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver" target="_blank" rel="external">uses MongoDB&#x2019;s Oplog</a> to notice changes that affect the query. If it sees a relevant change, like a new matching document or a change in a field on a matching document, it calls into the subscription (via <code>.added()</code>, <code>.changed()</code> or <code>.removed()</code>), which again sends the changes to the mergebox, and then to the client via DDP.</p>
+</li>
+</ol>
+<p>This continues until the client <a href="#stopping-subscriptions">stops</a> the subscription, triggering the following behavior:</p>
+<ol>
+<li><p>The client sends the <code>unsub</code> DDP message.</p>
+</li>
+<li><p>The server stops its internal subscription object, triggering the following effects:</p>
+</li>
+<li><p>Any <code>this.onStop()</code> callbacks setup by the publish handler run. In this case, it is a single automatic callback setup when returning a cursor from the handler, which stops the query observer and cleans it up if necessary.</p>
+</li>
+<li><p>All documents tracked by this subscription are removed from the mergebox, which may or may not mean they are also removed from the client.</p>
+</li>
+<li><p>The <code>nosub</code> message is sent to the client to indicate that the subscription has stopped.</p>
+</li>
+</ol>
+<h2 id="rest-interop"><a class="anchor" href="#rest-interop" aria-hidden="true" data-scroll="">&#x1F517;</a>Working with REST APIs</h2>
+
+<p>Publications and subscriptions are the primary way of dealing with data in Meteor&#x2019;s DDP protocol, but lots of data sources use the popular REST protocol for their API. It&#x2019;s useful to be able to convert between the two.</p>
+<h3 id="loading-from-rest"><a class="anchor" href="#loading-from-rest" aria-hidden="true" data-scroll="">&#x1F517;</a>Loading data from a REST endpoint with a publication</h3>
+
+<p>As a concrete example of using the <a href="#custom-publication">low-level API</a>, consider the situation where you have some 3rd party REST endpoint which provides a changing set of data that&#x2019;s valuable to your users. How do you make that data available?</p>
+<p>One option would be to provide a Method that simply proxies through to the endpoint, for which it&#x2019;s the client&#x2019;s responsibility to poll and deal with the changing data as it comes in. So then it&#x2019;s the clients problem to deal with keeping a local data cache of the data, updating the UI when changes happen, etc. Although this is possible (you could use a Local Collection to store the polled data, for instance), it&#x2019;s simpler, and more natural to create a publication that does this polling for the client.</p>
+<p>A pattern for turning a polled REST endpoint looks something like this:</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> POLL_INTERVAL = <span class="number">5000</span>;</span><br><span class="line"></span><br><span class="line">Meteor.publish(<span class="string">&apos;polled-publication&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">const</span> publishedKeys = {};</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> poll = () =&gt; {</span><br><span class="line">    <span class="comment">// Let&apos;s assume the data comes back as an array of JSON documents, with an _id field, for simplicity</span></span><br><span class="line">    <span class="keyword">const</span> data = HTTP.get(REST_URL, REST_OPTIONS);</span><br><span class="line"></span><br><span class="line">    data.forEach((doc) =&gt; {</span><br><span class="line">      <span class="keyword">if</span> (publishedKeys[doc._id]) {</span><br><span class="line">        <span class="keyword">this</span>.changed(COLLECTION_NAME, doc._id, doc);</span><br><span class="line">      } <span class="keyword">else</span> {</span><br><span class="line">        publishedKeys[doc._id] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (publishedKeys[doc._id]) {</span><br><span class="line">          <span class="keyword">this</span>.added(COLLECTION_NAME, doc._id, doc);</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    });</span><br><span class="line">  };</span><br><span class="line"></span><br><span class="line">  poll();</span><br><span class="line">  <span class="keyword">this</span>.ready();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> interval = Meteor.setInterval(poll, POLL_INTERVAL);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.onStop(() =&gt; {</span><br><span class="line">    Meteor.clearInterval(interval);</span><br><span class="line">  });</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>Things can get more complicated; for instance you may want to deal with documents being removed, or share the work of polling between multiple users (in a case where the data being polled isn&#x2019;t private to that user), rather than doing the exact same poll for each interested user.</p>
+<h3 id="publications-as-rest"><a class="anchor" href="#publications-as-rest" aria-hidden="true" data-scroll="">&#x1F517;</a>Accessing a publication as a REST endpoint</h3>
+
+<p>The opposite scenario occurs when you want to publish data to be consumed by a 3rd party, typically over REST. If the data we want to publish is the same as what we already publish via a publication, then we can use the <a href="https://atmospherejs.com/simple/rest" target="_blank" rel="external">simple:rest</a> package to do this really easily.</p>
+<p>In the Todos example app, we have done this, and you can now access our publications over HTTP:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ curl localhost:<span class="number">3000</span>/publications/lists.public</span><br><span class="line">{</span><br><span class="line">  <span class="string">&quot;Lists&quot;</span>: [</span><br><span class="line">    {</span><br><span class="line">      <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;rBt5iZQnDpRxypu68&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Meteor Principles&quot;</span>,</span><br><span class="line">      <span class="string">&quot;incompleteCount&quot;</span>: <span class="number">7</span></span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;Qzc2FjjcfzDy3GdsG&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Languages&quot;</span>,</span><br><span class="line">      <span class="string">&quot;incompleteCount&quot;</span>: <span class="number">9</span></span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;TXfWkSkoMy6NByGNL&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Favorite Scientists&quot;</span>,</span><br><span class="line">      <span class="string">&quot;incompleteCount&quot;</span>: <span class="number">6</span></span><br><span class="line">    }</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>You can also access authenticated publications (such as <code>lists.private</code>). Suppose we&#x2019;ve signed up (via the web UI) as <code>user@example.com</code>, with the password <code>password</code>, and created a private list. Then we can access it as follows:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># First, we need to &quot;login&quot; on the commandline to get an access token</span></span><br><span class="line">$ curl localhost:<span class="number">3000</span>/users/login  -H <span class="string">&quot;Content-Type: application/json&quot;</span> --data <span class="string">&apos;{&quot;email&quot;: &quot;user@example.com&quot;, &quot;password&quot;: &quot;password&quot;}&apos;</span></span><br><span class="line">{</span><br><span class="line">  <span class="string">&quot;id&quot;</span>: <span class="string">&quot;wq5oLMLi2KMHy5rR6&quot;</span>,</span><br><span class="line">  <span class="string">&quot;token&quot;</span>: <span class="string">&quot;6PN4EIlwxuVua9PFoaImEP9qzysY64zM6AfpBJCE6bs&quot;</span>,</span><br><span class="line">  <span class="string">&quot;tokenExpires&quot;</span>: <span class="string">&quot;2016-02-21T02:27:19.425Z&quot;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># Then, we can make an authenticated API call</span></span><br><span class="line">$ curl localhost:<span class="number">3000</span>/publications/lists.private -H <span class="string">&quot;Authorization: Bearer 6PN4EIlwxuVua9PFoaImEP9qzysY64zM6AfpBJCE6bs&quot;</span></span><br><span class="line">{</span><br><span class="line">  <span class="string">&quot;Lists&quot;</span>: [</span><br><span class="line">    {</span><br><span class="line">      <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;92XAn3rWhjmPEga4P&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;My Private List&quot;</span>,</span><br><span class="line">      <span class="string">&quot;incompleteCount&quot;</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="string">&quot;userId&quot;</span>: <span class="string">&quot;wq5oLMLi2KMHy5rR6&quot;</span></span><br><span class="line">    }</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+    <div class="bottom-nav">
+      
+      
+        <span>&#x2190; <a href="guide-collections-1.3.html">Collections and Schemas</a></span>
+      
+      
+        <span style="float:right"><a href="guide-methods-1.3.html">Methods</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/data-loading.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+      <div id="discourse-comments"><iframe src="https://forums.meteor.com/embed/comments?topic_id=19661" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" height="30px"></iframe></div>
+
+      
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>

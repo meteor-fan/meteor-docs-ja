@@ -1,0 +1,440 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is the guide for using Meteor, a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes a key set of technologies for building connected-client reactive applications, a build tool, and a curated set of packages from the Node.js and general JavaScript community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Introduction | Meteor Guide</title>
+    <link rel="icon" href="https://www.meteor.com/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://guide.meteor.com/style/main.css">
+    <link href="http://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://s.swiftypecdn.com/assets/new_embed-d6004936e85bea3a6779a7de0ff4f850.css"><style type="text/css">.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result .st-ui-type-heading { color:#0089d7 !important }
+.st-install-h1KW95Mz3fNyf4cnqVtr .st-ui-result em {font-style:normal; font-weight:bold; background-color:#f6fcfe !important}</style></head>
+  <body>
+    <div id="wrap">
+  <div id="header">
+    <div id="top-nav">
+  <ul id="top-nav-links">
+    
+      <li><a href="https://www.meteor.com">Meteor.com</a></li>
+    
+      <li><a href="https://www.meteor.com/install">Install</a></li>
+    
+      <li><a href="http://guide.meteor.com">Guide</a></li>
+    
+      <li><a href="https://www.meteor.com/tutorials/blaze/creating-an-app">Tutorials</a></li>
+    
+      <li><a href="http://docs.meteor.com">Docs</a></li>
+    
+      <li><a href="https://forums.meteor.com/">Forums</a></li>
+    
+  </ul>
+</div>
+
+<div id="site-nav">
+  <a class="logo" href="/"><img src="http://guide.meteor.com/images/logo-coralspace.svg"></a>
+  <span class="sub-title">The Official Guide</span>
+  
+    <select class="version-select">
+      
+        <option value="v1.3">1.3</option>
+      
+        <option value="v1.2">1.2</option>
+      
+    </select>
+  
+  
+    <input id="search-input" class="search-box st-default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+  
+</div>
+
+  </div>
+  <div id="sidebar">
+    <div id="sidebar-mobile">
+  <!--
+     Disabled search since it doesn't seem to work well
+    <input class="search-box st-default-search-input">
+    <br>
+  -->
+  <select class="version-select">
+    
+      <option value="v1.3">v1.3</option>
+    
+      <option value="v1.2">v1.2</option>
+    
+  </select>
+</div>
+
+<ul class="categories">
+  
+    <li>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="" class="sidebar-link current">
+              Introduction
+            </a>
+          <ul class="sub-menu"><li><a href="#what-is-meteor" data-scroll="" class="H2">What is Meteor?</a><ul class="sub-menu"><li><a href="#quickstart" data-scroll="" class="H3">Quick start</a></li></ul></li><li><a href="#learning-more" data-scroll="" class="H2">Meteor resources</a><ul class="sub-menu"></ul></li><li><a href="#what-is-it" data-scroll="" class="H2">What is the Meteor Guide?</a><ul class="sub-menu"><li><a href="#audience" data-scroll="" class="H3">Target audience</a></li><li><a href="#example-app" data-scroll="" class="H3">Example app</a></li></ul></li><li><a href="#guide-concepts" data-scroll="" class="H2">Guide development</a><ul class="sub-menu"><li><a href="#contributing" data-scroll="" class="H3">Contributing</a></li><li><a href="#goals" data-scroll="" class="H3">Goals of the project</a></li></ul></li></ul></li>
+        
+          
+          <li>
+            <a href="guide-code-style-1.3.html" class="sidebar-link">
+              Code style
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-structure-1.3.html" class="sidebar-link">
+              Application structure
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="1.3-migration.html" class="sidebar-link">
+              Migrating to Meteor 1.3
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Data</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-collections-1.3.html" class="sidebar-link">
+              Collections and Schemas
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-data-loading-1.3.html" class="sidebar-link">
+              Publications and Data Loading
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-methods-1.3.html" class="sidebar-link">
+              Methods
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-accounts-1.3.html" class="sidebar-link">
+              Users and Accounts
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-testing-1.3.html" class="sidebar-link">
+              Testing
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>View</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-routing-1.3.html" class="sidebar-link">
+              URLs and Routing
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-ui-ux-1.3.html" class="sidebar-link">
+              User Interfaces
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-blaze-1.3.html" class="sidebar-link">
+              Blaze
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-react-1.3.html" class="sidebar-link">
+              React
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-angular-1.3.html" class="sidebar-link">
+              Angular
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Build</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-using-packages-1.3.html" class="sidebar-link">
+              Using Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-writing-packages-1.3.html" class="sidebar-link">
+              Writing Packages
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-mobile-1.3.html" class="sidebar-link">
+              Mobile
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-build-tool-1.3.html" class="sidebar-link">
+              Build system
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Production</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-security-1.3.html" class="sidebar-link">
+              Security
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-deployment-1.3.html" class="sidebar-link">
+              Deployment and Monitoring
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+    <li>
+      
+        <p>Meta</p>
+      
+      <ul class="menu-root">
+        
+          
+          <li>
+            <a href="guide-CONTRIBUTING-1.3.html" class="sidebar-link">
+              Contribution guidelines
+            </a>
+          </li>
+        
+          
+          <li>
+            <a href="guide-CHANGELOG-1.3.html" class="sidebar-link">
+              Change log
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  
+
+  </ul></div>
+  <div id="content">
+    <h1>Introduction</h1>
+    <p class="edit-discuss-links">
+      <a href="https://github.com/meteor/guide/tree/master/content/index.md" target="_blank">Edit on GitHub</a>
+      
+    </p>
+    <h2 id="what-is-meteor"><a class="anchor" href="#what-is-meteor" aria-hidden="true" data-scroll="">&#x1F517;</a>What is Meteor?</h2>
+
+<p>Meteor is a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes a key set of technologies for building connected-client reactive applications, a build tool, and a curated set of packages from the Node.js and general JavaScript community.</p>
+<ul>
+<li><p>Meteor allows you to develop in <strong>one language</strong>, JavaScript, in all environments: application server, web browser, and mobile device.</p>
+</li>
+<li><p>Meteor uses <strong>data on the wire</strong>, meaning the server sends data, not HTML, and the client renders it.</p>
+</li>
+<li><p>Meteor <strong>embraces the ecosystem</strong>, bringing the best parts of the extremely active JavaScript community to you in a careful and considered way.</p>
+</li>
+<li><p>Meteor provides <strong>full stack reactivity</strong>, allowing your UI to seamlessly reflect the true state of the world with minimal development effort.</p>
+</li>
+</ul>
+<h3 id="quickstart"><a class="anchor" href="#quickstart" aria-hidden="true" data-scroll="">&#x1F517;</a>Quick start</h3>
+
+<p>Meteor supports <a href="https://www.meteor.com/install" target="_blank" rel="external">OS X, Windows, and Linux</a>.</p>
+<p>On Windows?  <a href="https://install.meteor.com/windows" target="_blank" rel="external">Download the official Meteor installer here</a>.</p>
+<p>On OS X or Linux?  Install the latest official Meteor release from your terminal:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://install.meteor.com/ | sh</span><br></pre></td></tr></tbody></table></figure>
+<p>The Windows installer supports Windows 7, Windows 8.1, Windows Server<br>2008, and Windows Server 2012.  The command line installer supports Mac OS X<br>10.7 (Lion) and above, and Linux on x86 and x86_64 architectures.</p>
+<p>Once you&#x2019;ve installed Meteor, create a project:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meteor create myapp</span><br></pre></td></tr></tbody></table></figure>
+<p>Run it locally:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> myapp</span><br><span class="line">meteor npm install</span><br><span class="line">meteor</span><br><span class="line"><span class="comment"># Meteor server running on: http://localhost:3000/</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>Meteor comes with npm bundled so that you can type <code>meteor npm</code> without worrying about installing it yourself. If you like, you can also use a globally installed npm to manage your packages.</p>
+</blockquote>
+<h2 id="learning-more"><a class="anchor" href="#learning-more" aria-hidden="true" data-scroll="">&#x1F517;</a>Meteor resources</h2>
+
+<ol>
+<li><p>The place to get started with Meteor is the <a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">official tutorial</a>.</p>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/tagged/meteor" target="_blank" rel="external">Stack Overflow</a> is the best place to ask (and answer!) technical questions. Be sure to add the meteor tag to your question.</p>
+</li>
+<li><p>Visit the <a href="https://forums.meteor.com" target="_blank" rel="external">Meteor discussion forums</a> to announce projects, get help, talk about the community, or discuss changes to core.</p>
+</li>
+<li><p>The <a href="https://docs.meteor.com" target="_blank" rel="external">Meteor docs</a> is the best place to find the core API documentation of the platform.</p>
+</li>
+<li><p><a href="https://atmospherejs.com" target="_blank" rel="external">Atmosphere</a> is the repository of community packages designed especially for Meteor.</p>
+</li>
+<li><p>The <a href="https://www.meteor.com/projects" target="_blank" rel="external">projects</a> section of the Meteor website describes the projects that make up the Meteor platform.</p>
+</li>
+</ol>
+<h2 id="what-is-it"><a class="anchor" href="#what-is-it" aria-hidden="true" data-scroll="">&#x1F517;</a>What is the Meteor Guide?</h2>
+
+<p>This is a set of articles outlining opinions on best-practice application development using the <a href="https://meteor.com" target="_blank" rel="external">Meteor</a> platform. Our aim is to cover patterns that are common to the development of all modern web and mobile applications, so many concepts documented here are not necessarily Meteor specific and could be applied to any application built with a focus on modern, interactive user interfaces.</p>
+<p>Nothing in the Meteor guide is <em>required</em> to build a Meteor application&#x2014;you can certainly use the platform in ways that contradict the principles and patterns of the guide. However, the guide is an attempt to document best practices and community conventions, so we hope that the majority of the Meteor community will benefit from adopting the practices documented here.</p>
+<p>The APIs of the Meteor platform are available at the <a href="https://docs.meteor.com" target="_blank" rel="external">docs site</a>, and you can browse community packages on <a href="https://atmospherejs.com" target="_blank" rel="external">atmosphere</a>.</p>
+<h3 id="audience"><a class="anchor" href="#audience" aria-hidden="true" data-scroll="">&#x1F517;</a>Target audience</h3>
+
+<p>The guide is targeted towards intermediate developers that have some familiarity with JavaScript, the Meteor platform, and web development in general. If you are just getting started with Meteor, we recommend starting with the <a href="https://www.meteor.com/tutorials/blaze/creating-an-app" target="_blank" rel="external">official tutorial</a>.</p>
+<h3 id="example-app"><a class="anchor" href="#example-app" aria-hidden="true" data-scroll="">&#x1F517;</a>Example app</h3>
+
+<p>Many articles reference the Todos example application. This code is being actively developed alongside the guide. You can see the latest source code for the app, and file issues or make suggestions via pull request at its <a href="https://github.com/meteor/todos" target="_blank" rel="external">GitHub repository</a>.</p>
+<h2 id="guide-concepts"><a class="anchor" href="#guide-concepts" aria-hidden="true" data-scroll="">&#x1F517;</a>Guide development</h2>
+
+<h3 id="contributing"><a class="anchor" href="#contributing" aria-hidden="true" data-scroll="">&#x1F517;</a>Contributing</h3>
+
+<p>Ongoing Meteor Guide development takes place <strong>in the open</strong> <a href="https://github.com/meteor/guide" target="_blank" rel="external">on GitHub</a>. We encourage pull requests and issues to discuss problems with and changes that could be made to the content. We hope that keeping our process open and honest will make it clear what we plan to include in the guide and what changes will be coming in future Meteor versions.</p>
+<h3 id="goals"><a class="anchor" href="#goals" aria-hidden="true" data-scroll="">&#x1F517;</a>Goals of the project</h3>
+
+<p>The decisions made and practices outlined in the guide must necessarily be <strong>opinionated</strong>. Certain best practices will be highlighted and other valid approaches ignored. We aim to reach community consensus around major decisions but there will always be other ways to solve problems when developing your application. We believe it&#x2019;s important to know what the &#x201C;standard&#x201D; way to solve a problem is before branching out to other options. If an alternate approach proves itself superior, then it should make its way into a future version of the guide.</p>
+<p>An important function of the guide is to <strong>shape future development</strong> in the Meteor platform. By documenting best practices, the guide shines a spotlight on areas of the platform that could be better, easier, or more performant, and thus will be used to focus a lot of future platform choices.</p>
+<p>Similarly, gaps in the platform highlighted by the guide can often be plugged by <strong>community packages</strong>; we hope that if you see an opportunity to improve the Meteor workflow by writing a package, that you take it! If you&#x2019;re not sure how best to design or architect your package, reach out on the forums and start a discussion.</p>
+
+    <div class="bottom-nav">
+      
+      
+      
+        <span style="float:right"><a href="guide-code-style-1.3.html">Code style</a> &#x2192;</span>
+      
+    </div>
+    <p class="edit-link">
+      <a href="https://github.com/meteor/guide/tree/master/content/index.md" target="_blank">Edit this page on GitHub</a>
+    </p>
+    
+  </div>
+
+  <!-- mobile only -->
+  <div id="mobile-header">
+    <a class="menu-button"></a>
+    <a class="logo" href="/">
+      <img src="http://guide.meteor.com/images/logo.svg">
+    </a>
+  </div>
+  <div id="mobile-shade"></div>
+
+</div>
+
+    
+    
+    
+    
+  
+
+<div class="st-injected-content-generated st-install-h1KW95Mz3fNyf4cnqVtr" data-st-install-key="h1KW95Mz3fNyf4cnqVtr" id="st-injected-content">
+<div class="st-ui-embed st-search-chrome-overlay-output st-search-escape-hide-outputs st-search-zoom-on-mobile" style="display: none; ">
+    <div class="st-ui-overlay st-search-hide-outputs"></div>
+  <!-- Swiftype input and results overlay -->
+  <div class="st-ui-container st-ui-container-overlay  st-ui-injected-overlay-container ">
+    <!-- HEADER -->
+    <div class="st-ui-container-header_bar st-position-container">
+        <section class="st-ui-header">
+          <form>
+            <input class="st-default-search-input st-search-set-focus" type="text" value="" placeholder="Search this site" id="st-overlay-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </form>
+          <span class="st-ui-search-icon"></span>
+
+            <a class="st-ui-close-button st-search-hide-outputs">Close</a>
+
+            <a class="st-ui-stamp" href="https://swiftype.com" target="_blank">search by swiftype</a>
+        </section>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="st-ui-container-left_sidebar st-position-container">
+      <div class="st-ui-injected-search-controls">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="st-ui-container-right_sidebar st-position-container">
+      <div class="st-ui-injected-container-right_sidebar">
+        <div class="st-ui-injected-search-controls">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIMARY CONTENT -->
+    <div class="st-ui-container-primary_content st-position-container">
+        <section class="st-ui-slide-autocomplete st-autocomplete-keyboard-navigable st-autocomplete-transient-on-select-and-results" data-st-target-element="#st-overlay-search-input" data-st-active-query-class="active" style="display: none; ">
+          <span class="st-ui-type-heading-small">suggested results</span>
+          <div class="st-autocomplete-results"><div class="st-query-present" style="display: none; "></div></div>
+        </section>
+
+        <section class="st-ui-content st-search-results"><div class="st-query-not-present">
+          <span class="st-ui-fallback"></span>
+        </div><div class="st-query-present" style="display: none; "></div></section>
+
+      <section class="st-ui-no-results st-search-suggestions"><div class="st-query-not-present">
+      </div></section>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="st-ui-container-footer_bar st-position-container">
+      <section class="st-ui-footer">
+          <span class="st-ui-search-summary st-search-summary"></span>
+        <span class="st-ui-pagination st-search-pagination"></span>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="st-default-autocomplete" data-st-target-element=".st-default-search-input" style="position: absolute; top: 49px; left: 0px; z-index: 999999; display: none; ">
+  <div class="st-autocomplete-results st-ui-autocomplete"><div class="st-query-present" style="display: none; "></div></div>
+</div>
+</div></body></html>
