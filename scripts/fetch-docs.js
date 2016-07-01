@@ -24,10 +24,6 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/* jshint undef: true, unused: true, latedef: true */
-/* jshint quotmark: single, eqeqeq: true */
-/* jshint node: true */
-
 /* global document */
 
 var fs = require('fs');
